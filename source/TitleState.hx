@@ -30,6 +30,15 @@ import openfl.Assets;
 
 using StringTools;
 
+#if desktop
+import Discord.DiscordClient;
+import Sys;
+import openfl.display.BitmapData;
+import polymod.Polymod.Framework;
+import polymod.Polymod.PolymodError;
+import sys.FileSystem;
+#end
+
 class TitleState extends MusicBeatState
 {
 	static var initialized:Bool = false;

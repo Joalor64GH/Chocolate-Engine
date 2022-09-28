@@ -16,7 +16,7 @@ class OutdatedSubState extends MusicBeatState
 		super.create();
 		var bg:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		add(bg);
-		var ver = "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco')));
+		var ver = "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'));
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"HEY! You're running an outdated version of the game!\nCurrent version is "
 			+ ver
