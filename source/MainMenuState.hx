@@ -96,7 +96,13 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "v" + Application.current.meta.get('version'), 12);
+        // Chocolate Engine
+        var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco')), 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
+		// FNF
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "FNF v" + Assets.getText(Paths.txt('versionFNF')), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);

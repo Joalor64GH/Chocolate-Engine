@@ -46,8 +46,53 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if polymod
-		polymod.Polymod.init({modRoot: "mods", dirs: ['introMod']});
+		#if (polymod && sys)
+		// Get all directories in the mod folder
+		var modDirectory:Array<String> = [];
+		var mods = sys.FileSystem.readDirectory("mods");
+
+		for (fileText in mods)
+		{
+			if (sys.FileSystem.isDirectory("mods/" + fileText))
+			{
+				modDirectory.push(fileText);
+			}
+		}
+		trace(modDirectory);
+
+		// Handle mod errors
+		var errors = (error:PolymodError) ->
+		{
+			trace(error.severity + ": " + error.code + " - " + error.message + " - ORIGIN: " + error.origin);
+		};
+
+		// Initialize polymod
+		var modMetadata = polymod.Polymod.init({
+			modRoot: "mods",
+			dirs: modDirectory,
+			errorCallback: errors,
+			framework: OPENFL,
+			ignoredFiles: polymod.Polymod.getDefaultIgnoreList(),
+			frameworkParams: {
+				assetLibraryPaths: [
+					"exclude" => "exclude", "fonts" => "fonts", "songs" => "songs", "data" => "data", "images" => "images", "music" => "music",
+					"sounds" => "sounds", "shared" => "shared", "tutorial" => "tutorial", "videos" => "videos", "week1" => "week1", "week2" => "week2",
+					"week3" => "week3", "week4" => "week4", "week5" => "week5", "week6" => "week6"
+				]
+			}
+		});
+
+		// Display active mods
+		var loadedMods = "";
+		for (modData in modMetadata)
+		{
+			loadedMods += modData.title + "";
+		}
+
+		var modText = new FlxText(5, 5, 0, "", 16);
+		modText.text = "Loaded Mods: " + loadedMods;
+		modText.color = FlxColor.WHITE;
+		add(modText);
 		#end
 
 		PlayerSettings.init();
@@ -290,7 +335,7 @@ class TitleState extends MusicBeatState
 			{
 				// Check if version is outdated
 
-				var version:String = "v" + Application.current.meta.get('version');
+				var version:String = " Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco')));
 
 				if (version.trim() != NGio.GAME_VER_NUMS.trim() && !OutdatedSubState.leftState)
 				{
