@@ -335,7 +335,7 @@ class TitleState extends MusicBeatState
 			{
 				// Check if version is outdated
 
-				var version:String = " Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco')));
+				var version:String = " Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'));
 
 				if (version.trim() != NGio.GAME_VER_NUMS.trim() && !OutdatedSubState.leftState)
 				{
