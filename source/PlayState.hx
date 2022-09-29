@@ -42,6 +42,7 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import lime.app.Application;
+import openfl.keyboard.KeyboardEvent;
 
 using StringTools;
 
@@ -141,15 +142,27 @@ class PlayState extends MusicBeatState
 	#end
 
 	// scuffed ass input shits based on FPS Plus
-	public var upPressed:Bool = false;
-	public var downPressed:Bool = false;
-	public var leftPressed:Bool = false;
-	public var rightPressed:Bool = false;
+	private var skipListener:Bool = false;
+
+	public var upPress:Bool = false;
+	public var downPress:Bool = false;
+	public var leftPress:Bool = false;
+	public var rightPress:Bool = false;
+
+	public var upRelease:Bool = false;
+	public var downRelease:Bool = false;
+	public var leftRelease:Bool = false;
+	public var rightRelease:Bool = false;
 
 	public var upHolding:Bool = false;
 	public var downHolding:Bool = false;
 	public var leftHolding:Bool = false;
 	public var rightHolding:Bool = false;
+
+	public var upTime:Int = 0;
+	public var downTime:Int = 0;
+	public var leftTime:Int = 0;
+	public var rightTime:Int = 0;
 	// end scuffed ass input shits
 
 	override public function create()
@@ -646,7 +659,7 @@ class PlayState extends MusicBeatState
 
 		Conductor.songPosition = -5000;
 
-		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
+		strumLine = new FlxSprite(0, 30).makeGraphic(FlxG.width, 10);
 		strumLine.scrollFactor.set();
 
 		strumLineNotes = new FlxTypedGroup<FlxSprite>();
@@ -654,11 +667,7 @@ class PlayState extends MusicBeatState
 
 		playerStrums = new FlxTypedGroup<FlxSprite>();
 
-		// startCountdown();
-
 		generateSong(SONG.song);
-
-		// add(strumLine);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 
@@ -673,7 +682,6 @@ class PlayState extends MusicBeatState
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, 0.04);
-		// FlxG.camera.setScrollBounds(0, FlxG.width, 0, FlxG.height);
 		FlxG.camera.zoom = defaultCamZoom;
 		FlxG.camera.focusOn(camFollow.getPosition());
 
@@ -1303,6 +1311,8 @@ class PlayState extends MusicBeatState
 		perfectMode = false;
 		#end
 
+		keyCheck();		
+
 		if (FlxG.keys.justPressed.NINE)
 		{
 			if (iconP1.animation.curAnim.name == 'bf-old')
@@ -1892,26 +1902,9 @@ class PlayState extends MusicBeatState
 
 	private function keyShit():Void
 	{
-		// HOLDING
-		var up = controls.UP;
-		var right = controls.RIGHT;
-		var down = controls.DOWN;
-		var left = controls.LEFT;
+		var controlArray:Array<Bool> = [leftPress, downPress, upPress, rightPress];
 
-		var upP = controls.UP_P;
-		var rightP = controls.RIGHT_P;
-		var downP = controls.DOWN_P;
-		var leftP = controls.LEFT_P;
-
-		var upR = controls.UP_R;
-		var rightR = controls.RIGHT_R;
-		var downR = controls.DOWN_R;
-		var leftR = controls.LEFT_R;
-
-		var controlArray:Array<Bool> = [leftP, downP, upP, rightP];
-
-		// FlxG.watch.addQuick('asdfa', upP);
-		if ((upP || rightP || downP || leftP) && !boyfriend.stunned && generatedMusic)
+		if ((upPress || rightPress || downPress || leftPress) && !boyfriend.stunned && generatedMusic)
 		{
 			boyfriend.holdTimer = 0;
 
@@ -2121,6 +2114,32 @@ class PlayState extends MusicBeatState
 		{
 			badNoteCheck();
 		}
+	}
+
+	/**
+	 * [Description] FPS Plus input system.
+	 */
+	private function keyCheck():Void{
+
+		upTime = controls.UP ? upTime + 1 : 0;
+		downTime = controls.DOWN ? downTime + 1 : 0;
+		leftTime = controls.LEFT ? leftTime + 1 : 0;
+		rightTime = controls.RIGHT ? rightTime + 1 : 0;
+
+		upPress = upTime == 1;
+		downPress = downTime == 1;
+		leftPress = leftTime == 1;
+		rightPress = rightTime == 1;
+
+		upRelease = upHold && upTime == 0;
+		downRelease = downHold && downTime == 0;
+		leftRelease = leftHold && leftTime == 0;
+		rightRelease = rightHold && rightTime == 0;
+
+		upHold = upTime > 0;
+		downHold = downTime > 0;
+		leftHold = leftTime > 0;
+		rightHold = rightTime > 0;
 	}
 
 	function goodNoteHit(note:Note):Void
