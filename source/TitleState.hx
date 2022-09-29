@@ -328,7 +328,7 @@ class TitleState extends MusicBeatState
 
 				if (version.trim() !OutdatedSubState.leftState)))
 				{
-					FlxG.switchState(new OutdatedSubState());
+					FlxG.switchState(new MainMenuState());
 					trace('OLD VERSION!');
 					trace('old ver');
 					trace(version.trim());
