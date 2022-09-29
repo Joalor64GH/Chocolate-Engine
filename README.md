@@ -17,8 +17,8 @@ How to build the funny game or something
 ### Installing Stuff
 
 First, install Haxe (USE 4.1.5 BRUH) and HaxeFlixel.
-* [Install Haxe](https://haxe.org/download/version/4.1.5/)
-* [Install HaxeFlixel](https://haxeflixel.com/documentation/install-haxeflixel/) after downloading Haxe
+* [Haxe](https://haxe.org/download/version/4.1.5/)
+* [HaxeFlixel](https://haxeflixel.com/documentation/install-haxeflixel/)
 
 Then, install these or something:
 ```
