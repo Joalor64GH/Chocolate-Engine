@@ -322,20 +322,6 @@ class TitleState extends MusicBeatState
 
 			new FlxTimer().start(2, function(tmr:FlxTimer)
 			{
-				// Check if version is outdated
-
-				var version:String = " Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'));
-
-				if (version.trim() !OutdatedSubState.leftState))))
-				{
-					FlxG.switchState(new MainMenuState());
-					trace('OLD VERSION!');
-					trace('old ver');
-					trace(version.trim());
-					trace('cur ver');
-				}
-				else
-				{
 					FlxG.switchState(new MainMenuState());
 				}
 			});
