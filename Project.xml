@@ -43,6 +43,10 @@
 
 	<classpath name="source" />
 
+	<!--CUSTOM DEFINES-->
+	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
+	<define name="MODS_ALLOWED" if="desktop" />
+
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3" unless="web"/>
 	
@@ -93,7 +97,9 @@
 	<assets path="assets/week6"    library="week6"    exclude="*.ogg" if="web"/>
 	<assets path="assets/week6"    library="week6"    exclude="*.mp3" unless="web"/>
 	
-	<assets path='example_mods' rename='mods' embed='false'/>
+	<section if="MODS_ALLOWED">
+	        <assets path='example_mods' rename='mods' embed='false'/>
+	</section>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<!-- <template path='mods' /> -->
 	
@@ -118,6 +124,7 @@
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
+	<haxelib name="hxCodec" if="VIDEO_PLUGIN"/>
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="polymod"/>
 	<haxelib name="discord_rpc" if="desktop"/>
