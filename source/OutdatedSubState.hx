@@ -19,8 +19,8 @@ class OutdatedSubState extends MusicBeatState
 		add(bg);
 		var ver = "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'));
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"You're running an old version of Chocolate Engine!\nCurrent version is " + Assets.getText(Paths.txt('versionChoco'))); +
-			"!\n\nPress Space / Enter to download latest version,\nor press Escape to close this message.",
+			"You're running an old version of Chocolate Engine!" +
+			"\nPress Space / Enter to download latest version,\notherwise, press ESC to close this message.",
 			32);
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		txt.screenCenter();
