@@ -3,7 +3,7 @@
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="FNF: Chocolate Engine" packageName="com.joalor64gh.choco" package="com.joalor64gh.choco" main="Main" version="1.0.0-beta" company="Joalor64GH" />
-    <app file="ChocoWIN" if="windows" />
+        <app file="ChocoWIN" if="windows" />
 	<app file="ChocoAPP" if="linux" />
 	<app file="ChocoMAC" if="mac" />
 
