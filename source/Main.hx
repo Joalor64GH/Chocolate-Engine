@@ -48,6 +48,11 @@ class Main extends Sprite
 
 		setupGame();
 	}
+
+	/**
+	 * [Description] Crash Handler by Sqirra-Rng for Izzy Engine. (Totally not stole from Psych Engine:trollface:)
+	 * @param e Catches the cause of the error.
+	 */
 	private function onCrash(e:UncaughtErrorEvent):Void
 		{
 			var errMsg:String = "";
