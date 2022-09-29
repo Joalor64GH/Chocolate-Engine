@@ -159,6 +159,11 @@ class PlayState extends MusicBeatState
 	public var leftHolding:Bool = false;
 	public var rightHolding:Bool = false;
 
+	private var upHold:Bool = false;
+	private var downHold:Bool = false;
+	private var leftHold:Bool = false;
+	private var rightHold:Bool = false;
+
 	public var upTime:Int = 0;
 	public var downTime:Int = 0;
 	public var leftTime:Int = 0;
