@@ -10,6 +10,8 @@ import openfl.Assets;
 
 class OutdatedSubState extends MusicBeatState
 {
+	public static var leftState:Bool = false;
+
 	override function create()
 	{
 		super.create();
