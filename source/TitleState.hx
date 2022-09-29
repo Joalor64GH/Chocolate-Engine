@@ -330,7 +330,7 @@ class TitleState extends MusicBeatState
 
 				var version:String = " Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'));
 
-				if (version.trim() != OutdatedSubState.leftState)
+				if (version.trim() !OutdatedSubState.leftState)
 				{
 					FlxG.switchState(new OutdatedSubState());
 					trace('OLD VERSION!');
