@@ -1378,8 +1378,8 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score:" + songScore;
-		missesTxt.text = "Combo Breaks: " + misses;
+		scoreTxt.text = "| Score:" + songScore;
+		missesTxt.text = "| Combo Breaks: " + misses;
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
