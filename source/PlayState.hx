@@ -2017,61 +2017,61 @@ class PlayState extends MusicBeatState
 			else
 				spr.centerOffsets();
 		});
-	}
 
-	for notes.forEachAlive(function(note:Note){
-		//Guitar Hero Type Held Notes
-		if(daNote.isSustainNote && daNote.mustPress){
-
-			if(daNote.prevNote.tooLate && !daNote.prevNote.wasGoodHit){
-				daNote.tooLate = true;
-				daNote.destroy();
-				// updateAccuracy();
-			}
-
-			if(daNote.prevNote.wasGoodHit && !daNote.wasGoodHit){
-
-				switch(daNote.noteData){
-					case 0:
-						if(leftRelease){
-							noteMiss(daNote.noteData);
-							vocals.volume = 0;
-							daNote.tooLate = true;
-							daNote.destroy();
-							boyfriend.holdTimer = 0;
-							// updateAccuracy();
-						}
-					case 1:
-						if(downRelease){
-							noteMiss(daNote.noteData);
-							vocals.volume = 0;
-							daNote.tooLate = true;
-							daNote.destroy();
-							boyfriend.holdTimer = 0;
-							// updateAccuracy();
-						}
-					case 2:
-						if(upRelease){
-							noteMiss(daNote.noteData);
-							vocals.volume = 0;
-							daNote.tooLate = true;
-							daNote.destroy();
-							boyfriend.holdTimer = 0;
-							// updateAccuracy();
-						}
-					case 3:
-						if(rightRelease){
-							noteMiss(daNote.noteData);
-							vocals.volume = 0;
-							daNote.tooLate = true;
-							daNote.destroy();
-							boyfriend.holdTimer = 0;
-							// updateAccuracy();
-						}
+		for notes.forEachAlive(function(note:Note){
+			//Guitar Hero Type Held Notes
+			if(daNote.isSustainNote && daNote.mustPress){
+	
+				if(daNote.prevNote.tooLate && !daNote.prevNote.wasGoodHit){
+					daNote.tooLate = true;
+					daNote.destroy();
+					// updateAccuracy();
+				}
+	
+				if(daNote.prevNote.wasGoodHit && !daNote.wasGoodHit){
+	
+					switch(daNote.noteData){
+						case 0:
+							if(leftRelease){
+								noteMiss(daNote.noteData);
+								vocals.volume = 0;
+								daNote.tooLate = true;
+								daNote.destroy();
+								boyfriend.holdTimer = 0;
+								// updateAccuracy();
+							}
+						case 1:
+							if(downRelease){
+								noteMiss(daNote.noteData);
+								vocals.volume = 0;
+								daNote.tooLate = true;
+								daNote.destroy();
+								boyfriend.holdTimer = 0;
+								// updateAccuracy();
+							}
+						case 2:
+							if(upRelease){
+								noteMiss(daNote.noteData);
+								vocals.volume = 0;
+								daNote.tooLate = true;
+								daNote.destroy();
+								boyfriend.holdTimer = 0;
+								// updateAccuracy();
+							}
+						case 3:
+							if(rightRelease){
+								noteMiss(daNote.noteData);
+								vocals.volume = 0;
+								daNote.tooLate = true;
+								daNote.destroy();
+								boyfriend.holdTimer = 0;
+								// updateAccuracy();
+							}
+					}
 				}
 			}
-		}
-	});
+		});
+	}
 
 	function noteMiss(direction:Int = 1):Void
 	{
