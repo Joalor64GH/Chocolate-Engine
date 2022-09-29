@@ -22,7 +22,7 @@ class OutdatedSubState extends MusicBeatState
 			"HEY! You're running an outdated version of the game!\nCurrent version is "
 			+ ver
 			+ " while the most recent version is "
-			+ Assets.getText(Paths.txt('versionChoco'));
+			+ Assets.getText(Paths.txt('versionChoco')));
 			+ "! Press Space to go to GitHub, or ESCAPE to ignore this!!",
 			32);
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
