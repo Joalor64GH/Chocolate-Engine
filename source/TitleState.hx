@@ -3,6 +3,11 @@ package;
 #if desktop
 import Discord.DiscordClient;
 import sys.thread.Thread;
+import Sys;
+import openfl.display.BitmapData;
+import polymod.Polymod.Framework;
+import polymod.Polymod.PolymodError;
+import sys.FileSystem;
 #end
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -28,15 +33,6 @@ import lime.app.Application;
 import openfl.Assets;
 
 using StringTools;
-
-#if desktop
-import Discord.DiscordClient;
-import Sys;
-import openfl.display.BitmapData;
-import polymod.Polymod.Framework;
-import polymod.Polymod.PolymodError;
-import sys.FileSystem;
-#end
 
 class TitleState extends MusicBeatState
 {
@@ -330,7 +326,7 @@ class TitleState extends MusicBeatState
 
 				var version:String = " Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'));
 
-				if (version.trim() !OutdatedSubState.leftState))
+				if (version.trim() !OutdatedSubState.leftState)))
 				{
 					FlxG.switchState(new OutdatedSubState());
 					trace('OLD VERSION!');
