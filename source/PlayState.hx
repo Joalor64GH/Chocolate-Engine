@@ -1904,7 +1904,7 @@ class PlayState extends MusicBeatState
 	{
 		var controlArray:Array<Bool> = [leftPress, downPress, upPress, rightPress];
 
-		if ((upPress || rightPress || downPress || leftPress) && !boyfriend.stunned && generatedMusic)
+		if ((upPress || rightPress || downPress || leftPress) && generatedMusic)
 		{
 			boyfriend.holdTimer = 0;
 
@@ -1914,64 +1914,36 @@ class PlayState extends MusicBeatState
 
 			notes.forEachAlive(function(daNote:Note)
 			{
-				if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit)
+				if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate)
 				{
 					// the sorting probably doesn't need to be in here? who cares lol
 					possibleNotes.push(daNote);
 					possibleNotes.sort((a, b) -> Std.int(a.strumTime - b.strumTime));
 
 					ignoreList.push(daNote.noteData);
+
+					// if(Config.ghostTapType == 1)
+					// 	setCanMiss();
 				}
+
 			});
 
-			if (possibleNotes.length > 0)
-			{
-				var daNote = possibleNotes[0];
+			var directionsAccounted = [false,false,false,false];
 
-				if (perfectMode)
-					noteCheck(true, daNote);
-
-				// Jump notes
-				if (possibleNotes.length >= 2)
-				{
-					if (possibleNotes[0].strumTime == possibleNotes[1].strumTime)
-					{
-						for (coolNote in possibleNotes)
-						{
-							if (controlArray[coolNote.noteData])
-								goodNoteHit(coolNote);
-							else
-							{
-								var inIgnoreList:Bool = false;
-								for (shit in 0...ignoreList.length)
-								{
-									if (controlArray[ignoreList[shit]])
-										inIgnoreList = true;
-								}
-								if (!inIgnoreList)
-									badNoteCheck();
-							}
-						}
-					}
-					else if (possibleNotes[0].noteData == possibleNotes[1].noteData)
-					{
-						noteCheck(controlArray[daNote.noteData], daNote);
-					}
-					else
-					{
-						for (coolNote in possibleNotes)
-						{
-							noteCheck(controlArray[coolNote.noteData], coolNote);
-						}
+			if (possibleNotes.length > 0){
+				for(note in possibleNotes){
+					if (controlArray[note.noteData] && !directionsAccounted[note.noteData]){
+						goodNoteHit(note);
+						directionsAccounted[note.noteData] = true;
 					}
 				}
-				else // regular notes?
-				{
-					noteCheck(controlArray[daNote.noteData], daNote);
+				for(i in 0...4){
+					if(!ignoreList.contains(i) && controlArray[i]){
+						badNoteCheck();
+					}
 				}
 			}
-			else
-			{
+			else{
 				badNoteCheck();
 			}
 		}
