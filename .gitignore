@@ -1,6 +1,11 @@
 ### FNF-Specific
 # File used for the NG API. Should not be shared with others.
 APIStuff.hx
+### Newgrounds IO Stuff
+source/NGIo.hx
+source/io/
+### Misc
+Preloader.hx
 
 ### Crash Stuff
 crash-dialog/
