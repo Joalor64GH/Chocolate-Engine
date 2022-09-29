@@ -2018,7 +2018,7 @@ class PlayState extends MusicBeatState
 				spr.centerOffsets();
 		});
 
-		for notes.forEachAlive(function(note:Note){
+		notes.forEachAlive(function(note:Note){
 			//Guitar Hero Type Held Notes
 			if(daNote.isSustainNote && daNote.mustPress){
 	
