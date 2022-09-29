@@ -42,7 +42,7 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import lime.app.Application;
-import openfl.keyboard.KeyboardEvent;
+import openfl.events.KeyboardEvent;
 
 using StringTools;
 
@@ -2023,7 +2023,7 @@ class PlayState extends MusicBeatState
 				spr.centerOffsets();
 		});
 
-		notes.forEachAlive(function(note:Note){
+		notes.forEachAlive(function(daNote:Note){
 			//Guitar Hero Type Held Notes
 			if(daNote.isSustainNote && daNote.mustPress){
 	
