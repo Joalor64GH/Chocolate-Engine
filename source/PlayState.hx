@@ -56,6 +56,8 @@ class PlayState extends MusicBeatState
 
 	var halloweenLevel:Bool = false;
 
+	public static var instance:PlayState;
+
 	private var vocals:FlxSound;
 
 	private var dad:Character;
@@ -142,6 +144,9 @@ class PlayState extends MusicBeatState
 	{
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
+
+		// for static access
+		instance = this;
 
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();

@@ -14,6 +14,10 @@ import flixel.graphics.FlxGraphic;
 import flixel.graphics.frames.FlxFramesCollection;
 import flixel.graphics.frames.FlxFrame;
 using StringTools;
+
+/**
+ * @author: Smokeyy555
+ */
 class AtlasFrameMaker extends FlxFramesCollection{
 
 

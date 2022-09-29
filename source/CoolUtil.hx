@@ -13,6 +13,16 @@ class CoolUtil
 		return difficultyArray[PlayState.storyDifficulty];
 	}
 
+	// I thought this would be cool to add
+	// any is so the type isn't void
+	public var receptors(get, never):Any;
+	
+	function get_receptors():Any
+	{
+		@:privateAccess
+		return PlayState.instance.strumLineNotes.length();
+	}
+
 	public static function coolTextFile(path:String):Array<String>
 	{
 		var daList:Array<String> = Assets.getText(path).trim().split('\n');
