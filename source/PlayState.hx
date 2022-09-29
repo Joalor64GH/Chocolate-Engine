@@ -1953,7 +1953,7 @@ class PlayState extends MusicBeatState
 			}
 		}
 
-		if ((up || right || down || left) && !boyfriend.stunned && generatedMusic)
+		if ((upHold || rightHold || downHold || leftHold) && !boyfriend.stunned && generatedMusic)
 		{
 			notes.forEachAlive(function(daNote:Note)
 			{
@@ -1963,16 +1963,16 @@ class PlayState extends MusicBeatState
 					{
 						// NOTES YOU ARE HOLDING
 						case 0:
-							if (left)
+							if (leftHold)
 								goodNoteHit(daNote);
 						case 1:
-							if (down)
+							if (downHold)
 								goodNoteHit(daNote);
 						case 2:
-							if (up)
+							if (upHold)
 								goodNoteHit(daNote);
 						case 3:
-							if (right)
+							if (rightHold)
 								goodNoteHit(daNote);
 					}
 				}
