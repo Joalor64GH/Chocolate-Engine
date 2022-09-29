@@ -2,7 +2,7 @@
 <project xmlns="http://lime.software/project/1.0.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lime.software/project/1.0.3 http://lime.software/xsd/project-1.0.3.xsd">
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="FNF: Chocolate Engine" packageName="com.joalor64gh.choco" package="com.joalor64gh.choco" main="Main" version="1.0.0-git" company="Joalor64GH" />
+	<app title="FNF: Chocolate Engine" packageName="com.joalor64gh.choco" package="com.joalor64gh.choco" main="Main" version="1.0.0-beta" company="Joalor64GH" />
     <app file="ChocoWIN" if="windows" />
 	<app file="ChocoAPP" if="linux" />
 	<app file="ChocoMAC" if="mac" />
