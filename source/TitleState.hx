@@ -324,7 +324,7 @@ class TitleState extends MusicBeatState
 			{
 				FlxG.switchState(new MainMenuState());
 			}
-		)}
+		);}
 
 		if (pressedEnter && !skippedIntro)
 		{
