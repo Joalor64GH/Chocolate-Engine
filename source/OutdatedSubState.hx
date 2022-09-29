@@ -10,8 +10,6 @@ import openfl.Assets;
 
 class OutdatedSubState extends MusicBeatState
 {
-	public static var leftState:Bool = false;
-
 	override function create()
 	{
 		super.create();
@@ -19,11 +17,8 @@ class OutdatedSubState extends MusicBeatState
 		add(bg);
 		var ver = "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'));
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
-			"HEY! You're running an outdated version of the game!\nCurrent version is "
-			+ ver
-			+ " while the most recent version is "
-			+ Application.current.meta.get('version'));
-			+ "! Press Space to go to GitHub, or ESCAPE to ignore this!!",
+			"You're running an old version of Chocolate Engine!\nCurrent version is " + Assets.getText(Paths.txt('versionChoco')); +
+			"!\n\nPress Space / Enter to download latest version,\nor press Escape to close this message.",
 			32);
 		txt.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, CENTER);
 		txt.screenCenter();
