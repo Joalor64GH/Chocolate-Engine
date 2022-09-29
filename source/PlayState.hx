@@ -1904,7 +1904,7 @@ class PlayState extends MusicBeatState
 	{
 		var controlArray:Array<Bool> = [leftPress, downPress, upPress, rightPress];
 
-		if ((upPress || rightPress || downPress || leftPress) && generatedMusic)
+		if ((upPress || rightPress || downPress || leftPress) && !boyfriend.stunned && generatedMusic)
 		{
 			boyfriend.holdTimer = 0;
 
