@@ -1,8 +1,8 @@
 {
-	"title":"Template",
-	"description":"A mod template by me!",
-	"author":"Joalor64GH",
-	"api_version":"1.5.3",
-	"mod_version":"1.0.0",
-	"license":"Apache-2.0"
+	"title": "Template",
+	"description": "A template for your mods made with polymod.",
+	"author": "Joalor64GH",
+	"api_version": "1.6.0",
+	"mod_version": "1.0.0",
+	"license": "Apache-2.0"
 }
