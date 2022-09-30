@@ -132,7 +132,7 @@ class ModsMenuState extends MusicBeatState
 		bgtwo = new FlxSprite(720, 0).loadGraphic(Paths.image("menuDesat"));
 		bgtwo.screenCenter(Y);
 
-		ModsMenu.enableButton = new FlxButton(bg.x + 1120, 309, "Enable Mod", function()
+		ModsMenuState.enableButton = new FlxButton(bg.x + 1120, 309, "Enable Mod", function()
 		{
 			page.members[curSelected].Mod_Enabled = true;
 			if (!enabledMods.contains(page.members[curSelected].Option_Value))
@@ -142,7 +142,7 @@ class ModsMenuState extends MusicBeatState
 			ModList.setModEnabled(page.members[curSelected].Option_Value, page.members[curSelected].Mod_Enabled);
 		});
 
-		ModsMenu.disableButton = new FlxButton(bg.x + 1120, 380, "Disable Mod", function()
+		ModsMenuState.disableButton = new FlxButton(bg.x + 1120, 380, "Disable Mod", function()
 		{
 			page.members[curSelected].Mod_Enabled = false;
 			if (enabledMods.contains(page.members[curSelected].Option_Value))
