@@ -40,7 +40,7 @@ class ModsMenuState extends MusicBeatState
 
 	var page:FlxTypedGroup<ModsMenuStateOption> = new FlxTypedGroup<ModsMenuStateOption>();
 
-	public static var instance:ModsMenu;
+	public static var instance:ModsMenuState;
 
 	public static var enabledMods = [];
 
