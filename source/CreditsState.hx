@@ -14,7 +14,7 @@ import flixel.addons.text.FlxTypeText;
 import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import lime.utils.Assets;
+import openfl.Assets;
 #if sys
 import sys.io.File;
 import sys.FileSystem;
@@ -36,7 +36,7 @@ class CreditsState extends MusicBeatState
 
 	override function create()
 	{
-		var initCreditlist = CoolUtil.coolTextFile(Paths.txt('data/creditsList'));
+		var initCreditlist = Assets.getText(Paths.txt('creditsList')));
 
 		for (i in 0...initCreditlist.length)
 		{
