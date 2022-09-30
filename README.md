@@ -1,3 +1,5 @@
+![](https://github.com/Joalor64GH/Chocolate-Engine/blob/main/art/Chocolate-Engine-Logo.png?raw=true)
+
 # FNF - Chocolate Engine
 
 This is the repository for Chocolate Engine, which is basically a fork of the original FNF.
