@@ -22,7 +22,7 @@ import sys.FileSystem;
 
 using StringTools;
 
-class CreditsMenu extends MusicBeatState
+class CreditsState extends MusicBeatState
 {
 	var credits:Array<CreditsMetadata> = [];
 
@@ -37,15 +37,6 @@ class CreditsMenu extends MusicBeatState
 	override function create()
 	{
 		var initCreditlist = CoolUtil.coolTextFile(Paths.txt('data/creditsList'));
-
-		if (FileSystem.exists(Paths.modTxt('data/creditsList')) && FileSystem.exists(Paths.txt('data/creditsList')))
-		{
-			for (i in 0...initCreditlist.length)
-			{
-				initCreditlist[i] = initCreditlist[i].trim();
-			}
-		}
-		else
 		{
 			initCreditlist = CoolUtil.coolTextFile(Paths.txt('data/creditsList'));
 		}
