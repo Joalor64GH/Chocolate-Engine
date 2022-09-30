@@ -38,7 +38,7 @@ class ModsMenuStateOption extends FlxTypedGroup<FlxSprite>
 		this.Option_Row = _Option_Row;
 
 		var scale:Float = Math.min(9.2 / (Option_Name.length), 1);
-		Alphabet_Text = new Alphabet(0, 0 + (Option_Row * 100), Option_Name, true, 0.05);
+		Alphabet_Text = new Alphabet(0, 0 + (Option_Row * 100), Option_Name, true);
 		Alphabet_Text.isMenuItem = true;
 		Alphabet_Text.targetY = Option_Row;
 		add(Alphabet_Text);
