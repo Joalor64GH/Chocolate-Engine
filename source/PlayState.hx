@@ -1951,8 +1951,8 @@ class PlayState extends MusicBeatState
 									if (controlArray[ignoreList[shit]])
 										inIgnoreList = true;
 								}
-								if (!inIgnoreList)
-									badNoteCheck();
+								// if (!inIgnoreList)
+								// 	badNoteCheck();
 							}
 						}
 					}
@@ -1973,10 +1973,10 @@ class PlayState extends MusicBeatState
 					noteCheck(controlArray[daNote.noteData], daNote);
 				}
 			}
-			else
-			{
-				badNoteCheck();
-			}
+			// else
+			// {
+			// 	badNoteCheck();
+			// }
 		}
 
 		if ((up || right || down || left) && !boyfriend.stunned && generatedMusic)
@@ -2113,10 +2113,10 @@ class PlayState extends MusicBeatState
 	{
 		if (keyP)
 			goodNoteHit(note);
-		else
-		{
-			badNoteCheck();
-		}
+		// else
+		// {
+		// 	badNoteCheck();
+		// }
 	}
 
 	function goodNoteHit(note:Note):Void
