@@ -1,4 +1,4 @@
-![](https://github.com/Joalor64GH/Chocolate-Engine/blob/main/art/Chocolate-Engine-Logo.png?raw=true)
+![](https://github.com/Joalor64GH/Chocolate-Engine/blob/master/art/Chocolate-Engine-Logo.png?raw=true)
 
 # FNF - Chocolate Engine
 
