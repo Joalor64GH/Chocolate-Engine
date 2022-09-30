@@ -70,7 +70,7 @@ class Main extends Sprite
 			// Normal global volume when focused
 			if (focusMusicTween != null)
 				focusMusicTween.cancel();
-			focusMusicTween = FlxTween.tween(FlxG.sound, FlxG.sound.volume, 0.5);
+			focusMusicTween = FlxTween.tween(FlxG.sound, {volume: FlxG.sound.volume}, 0.5);
 	
 			// Bring framerate back when focused
 			FlxG.drawFramerate = framerate;
