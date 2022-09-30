@@ -13,6 +13,15 @@ class CoolUtil
 		return difficultyArray[PlayState.storyDifficulty];
 	}
 
+    public function openURL(url:String):String
+	{
+		#if linux
+		Sys.command('/usr/bin/xdg-open', [url]);
+		#else
+		FlxG.openURL(url);
+		#end
+	}
+
 	public static function coolTextFile(path:String):Array<String>
 	{
 		var daList:Array<String> = Assets.getText(path).trim().split('\n');

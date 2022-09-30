@@ -146,11 +146,7 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					#if linux
-					Sys.command('/usr/bin/xdg-open', [Assets.getText(Paths.txt('donate_button_link')), "&"]);
-					#else
-					FlxG.openURL(Assets.getText(Paths.txt('donate_button_link')));
-					#end
+					CoolUtil.openURL(Assets.getText(Paths.txt('donate_button_link'));
 				}
 				else
 				{
