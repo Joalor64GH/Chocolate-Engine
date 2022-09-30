@@ -1,7 +1,9 @@
 Joalor64 YT:Main Programmer
 MemeHoovy:Assistant Coder
-RozeBud:FPS Plus Input
+ShadowMario:Psych Input
 PolybiusProxy:MP4 Video Support
 Smokey:Adobe Animate Texture Atlas Support
 Sqirra-RNG:Window focus and unfocus code
+Leather128:Some Polymod Code
+stephensrt:Lots of Polymod Code
 Lars Doucet:Polymod
