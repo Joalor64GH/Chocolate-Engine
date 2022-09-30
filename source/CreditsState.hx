@@ -36,7 +36,7 @@ class CreditsState extends MusicBeatState
 
 	override function create()
 	{
-		var initCreditlist = Assets.getText(Paths.txt('creditsList')));
+		var initCreditlist = Assets.getText(Paths.txt('creditsList'));
 
 		for (i in 0...initCreditlist.length)
 		{
