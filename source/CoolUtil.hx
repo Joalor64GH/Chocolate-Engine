@@ -14,7 +14,7 @@ class CoolUtil
 		return difficultyArray[PlayState.storyDifficulty];
 	}
 
-    public function openURL(url:String)
+    public function browserLoad(url:String)
 	{
 		#if linux
 		Sys.command('/usr/bin/xdg-open', [url]);
