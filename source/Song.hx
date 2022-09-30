@@ -5,10 +5,6 @@ import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
 
-#if MODS_ALLOWED
-import polymod.backends.PolymodAssets;
-#end
-
 using StringTools;
 
 typedef SwagSong =
