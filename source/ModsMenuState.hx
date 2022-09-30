@@ -25,6 +25,15 @@ import Controls;
 
 class ModsMenuState extends FlxState
 {
+    var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBGBlue'));
+    bg.scrollFactor.x = 0;
+    bg.scrollFactor.y = 0.18;
+    bg.setGraphicSize(Std.int(bg.width * 1.1));
+    bg.updateHitbox();
+    bg.screenCenter();
+    bg.antialiasing = true;
+    add(bg);
+
     var curSelected:Int = 0;
     #if polymod
     var NoMods:String = "No mods are installed.";
