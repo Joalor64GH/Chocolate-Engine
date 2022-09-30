@@ -146,7 +146,7 @@ class MainMenuState extends MusicBeatState
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
-					CoolUtil.openURL(Assets.getText(Paths.txt('donate_button_link'));
+					CoolUtil.openURL(Assets.getText(Paths.txt('donate_button_link')));
 				}
 				else
 				{
