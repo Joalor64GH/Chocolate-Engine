@@ -7,6 +7,9 @@ Also, the readme is currently in a WIP.
 ## Credits
 
 * [Joalor64 YT](https://github.com/Joalor64GH) - Main Programmer
+* [MemeHoovy](https://github.com/MemeHoovy) - Assistant Coder
+* [RozeBud](https://github.com/ThatRozebudDude) - FPS Plus Input
+* [PolybiusProxy](https://github.com/polybiusproxy) - MP4 Video Support
 * [Ninjamuffin99](https://github.com/ninjamuffin99) - The Base Game (WOULD NOT BE POSSIBLE WITHOUT HIM)
 * [Lars Doucet](https://github.com/larsiusprime) - Polymod
 
