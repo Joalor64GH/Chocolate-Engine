@@ -5,8 +5,6 @@ import Discord.DiscordClient;
 import sys.thread.Thread;
 import Sys;
 import openfl.display.BitmapData;
-import polymod.Polymod.Framework;
-import polymod.Polymod.PolymodError;
 import sys.FileSystem;
 #end
 import flixel.FlxG;
@@ -32,6 +30,15 @@ import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
 
+#if MODS_ALLOWED
+import modding.PolymodHandler;
+import modding.ModList;
+import modding.ModsMenu;
+import polymod.Polymod;
+import polymod.Polymod.Framework;
+import polymod.Polymod.PolymodError;
+#end
+
 using StringTools;
 
 class TitleState extends MusicBeatState
@@ -50,53 +57,31 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		#if (polymod && sys)
-		// Get all directories in the mod folder
-		var modDirectory:Array<String> = [];
-		var mods = sys.FileSystem.readDirectory("mods");
-
-		for (fileText in mods)
+		#if MODS_ALLOWED
+		if (sys.FileSystem.exists('mods/'))
 		{
-			if (sys.FileSystem.isDirectory("mods/" + fileText))
+			var folders:Array<String> = [];
+			for (file in sys.FileSystem.readDirectory('mods/'))
 			{
-				modDirectory.push(fileText);
+				var path = haxe.io.Path.join(['mods/', file]);
+				if (sys.FileSystem.isDirectory(path))
+				{
+					folders.push(file);
+				}
 			}
 		}
-		trace(modDirectory);
-
-		// Handle mod errors
-		var errors = (error:PolymodError) ->
+		if (sys.FileSystem.exists('mods/' + ModsMenu.coolId + '/'))
 		{
-			trace(error.severity + ": " + error.code + " - " + error.message + " - ORIGIN: " + error.origin);
-		};
-
-		// Initialize polymod
-		var modMetadata = polymod.Polymod.init({
-			modRoot: "mods",
-			dirs: modDirectory,
-			errorCallback: errors,
-			framework: OPENFL,
-			ignoredFiles: polymod.Polymod.getDefaultIgnoreList(),
-			frameworkParams: {
-				assetLibraryPaths: [
-					"exclude" => "exclude", "fonts" => "fonts", "songs" => "songs", "data" => "data", "images" => "images", "music" => "music",
-					"sounds" => "sounds", "shared" => "shared", "tutorial" => "tutorial", "videos" => "videos", "week1" => "week1", "week2" => "week2",
-					"week3" => "week3", "week4" => "week4", "week5" => "week5", "week6" => "week6"
-				]
+			var folders:Array<String> = [];
+			for (file in sys.FileSystem.readDirectory('mods/' + ModsMenu.coolId + '/'))
+			{
+				var path = haxe.io.Path.join(['mods/' + ModsMenu.coolId + '/', file]);
+				if (sys.FileSystem.isDirectory(path))
+				{
+					folders.push(file);
+				}
 			}
-		});
-
-		// Display active mods
-		var loadedMods = "";
-		for (modData in modMetadata)
-		{
-			loadedMods += modData.title + "";
 		}
-
-		var modText = new FlxText(5, 5, 0, "", 16);
-		modText.text = "Loaded Mods: " + loadedMods;
-		modText.color = FlxColor.WHITE;
-		add(modText);
 		#end
 
 		PlayerSettings.init();
@@ -148,6 +133,10 @@ class TitleState extends MusicBeatState
 	{
 		if (!initialized)
 		{
+			#if MODS_ALLOWED
+			ModList.load();
+			#end
+
 			var diamond:FlxGraphic = FlxGraphic.fromClass(GraphicTransTileDiamond);
 			diamond.persist = true;
 			diamond.destroyOnNoUse = false;

@@ -28,7 +28,9 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = [
 		'story mode', 
 		'freeplay',
-		//'mods', // probably gonna use leather engine code...
+		#if MODS_ALLOWED
+		'mods',
+		#end
 		'donate', 
 		'credits'
 	];
@@ -181,9 +183,11 @@ class MainMenuState extends MusicBeatState
 									case 'freeplay':
 										FlxG.switchState(new FreeplayState());
 										trace("Freeplay Menu Selected");
-									/*case 'mods':
+									#if MODS_ALLOWED
+									case 'mods':
 										FlxG.switchState(new ModsMenuState());
-										trace("Mods Menu Selected");*/
+										trace("Mods Menu Selected");
+									#end
 									case 'credits':
 										FlxG.switchState(new CreditsState());
 										trace("Credits Selected");

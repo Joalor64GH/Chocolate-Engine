@@ -16,6 +16,10 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.net.curl.CURLCode;
 
+#if MODS_ALLOWED
+import polymod.backends.PolymodAssets;
+#end
+
 using StringTools;
 
 class StoryMenuState extends MusicBeatState
@@ -46,7 +50,7 @@ class StoryMenuState extends MusicBeatState
 	];
 
 	var weekNames:Array<String> = [
-		"",
+		"How to Funk",
 		"Daddy Dearest",
 		"Spooky Month",
 		"PICO",

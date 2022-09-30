@@ -95,7 +95,9 @@
 	<assets path="assets/week6"    library="week6"    exclude="*.mp3" unless="web"/>
 	
 	<section if="MODS_ALLOWED">
+	        <assets path='art/mod.url' rename='How to make a mod.url' />
 	        <assets path='example_mods' rename='mods' embed='false'/>
+			<assets path='modsList' rename='' />
 	</section>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<assets path='LICENSE' rename='LICENSE.txt' />

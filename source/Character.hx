@@ -5,6 +5,10 @@ import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
 
+#if MODS_ALLOWED
+import polymod.backends.PolymodAssets;
+#end
+
 using StringTools;
 
 class Character extends FlxSprite

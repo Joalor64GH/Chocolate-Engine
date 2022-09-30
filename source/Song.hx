@@ -5,6 +5,10 @@ import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
 
+#if MODS_ALLOWED
+import polymod.backends.PolymodAssets;
+#end
+
 using StringTools;
 
 typedef SwagSong =
@@ -40,7 +44,12 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
+		#if MODS_ALLOWED
+		rawJson = File.getContent(Sys.getCwd() + Paths.jsonSYS(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
+		rawJson = PolymodAssets.getText(Paths.json(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
+		#else
+		rawJson = Assets.getText(Paths.json(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
+		#end
 
 		while (!rawJson.endsWith("}"))
 		{

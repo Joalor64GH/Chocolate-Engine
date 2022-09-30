@@ -2,6 +2,12 @@ package;
 
 import flixel.FlxSprite;
 
+#if MODS_ALLOWED
+import polymod.backends.PolymodAssetLibrary;
+import polymod.Polymod;
+import polymod.backends.PolymodAssets;
+#end
+
 class HealthIcon extends FlxSprite
 {
 	/**
