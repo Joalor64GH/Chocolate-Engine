@@ -6,6 +6,10 @@ This is the repository for Chocolate Engine, which is basically a fork of the or
 
 Also, the readme is currently in a WIP.
 
+## Things to get done
+* [ ] Fix the Main Menu
+* [ ] Options
+
 ## Credits
 
 * [Joalor64 YT](https://github.com/Joalor64GH) - Main Programmer
