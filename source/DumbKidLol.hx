@@ -9,7 +9,7 @@ class DumbKidLol extends RealDumbass
     var STUPID:Bool = false;
     var ratio(default, set):Int;
     var hasBrain:Bool = true;
-    var stupidKid:String = 'NimuDevUwU';
+    var stupidKid:String = 'NimuDevUwU'; // fuck you nimu, I reported your account, don't think I won't do it again
 
     function set_ratio(r:Int):Int
     {
