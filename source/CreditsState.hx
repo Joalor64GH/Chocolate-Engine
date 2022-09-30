@@ -36,20 +36,10 @@ class CreditsMenu extends MusicBeatState
 
 	override function create()
 	{
-		MemoryManager.freeTrashedAssets();
-		MemoryManager.freeAllAssets();
-
-		if (FlxG.save.data.mousescroll)
-		{
-			FlxG.mouse.visible = true;
-		}
-
 		var initCreditlist = CoolUtil.coolTextFile(Paths.txt('data/creditsList'));
 
 		if (FileSystem.exists(Paths.modTxt('data/creditsList')) && FileSystem.exists(Paths.txt('data/creditsList')))
 		{
-			initCreditlist = File.getContent(Paths.modTxt('data/creditsList')).trim().split('\n');
-
 			for (i in 0...initCreditlist.length)
 			{
 				initCreditlist[i] = initCreditlist[i].trim();
@@ -84,7 +74,7 @@ class CreditsMenu extends MusicBeatState
 		add(bg);
 
 		descText = new FlxText(50, 600, 1180, "", 32);
-		descText.setFormat(Paths.font("funkin.otf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		descText.scrollFactor.set();
 		descText.text = 'what';
 		descText.borderSize = 2.4;
@@ -110,7 +100,7 @@ class CreditsMenu extends MusicBeatState
 		// FlxG.sound.music.fadeIn(2, 0, 0.8);
 
 		var descText:FlxText = new FlxText(50, 600, 1180, "", 32);
-		descText.setFormat(Paths.font("funkin.otf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		descText.scrollFactor.set();
 		descText.borderSize = 2.4;
 		add(descText);
@@ -158,7 +148,7 @@ class CreditsMenu extends MusicBeatState
 		}
 
 		if (controls.BACK)
-			MusicBeatState.switchState(new MainMenuState());
+			FlxG.switchState(new MainMenuState());
 	}
 
 	function changeSelection(change:Int = 0)
