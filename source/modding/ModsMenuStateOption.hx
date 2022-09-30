@@ -13,7 +13,7 @@ import flixel.util.FlxColor;
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 
-class ModsMenuOption extends FlxTypedGroup<FlxSprite>
+class ModsMenuStateOption extends FlxTypedGroup<FlxSprite>
 {
 	public var Alphabet_Text:Alphabet;
 	public var Mod_Icon:ModIcon;

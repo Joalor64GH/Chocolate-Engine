@@ -31,9 +31,9 @@ import lime.app.Application;
 import openfl.Assets;
 
 #if MODS_ALLOWED
+import ModsMenuState;
 import modding.PolymodHandler;
 import modding.ModList;
-import modding.ModsMenu;
 import polymod.Polymod;
 import polymod.Polymod.Framework;
 import polymod.Polymod.PolymodError;
@@ -70,12 +70,12 @@ class TitleState extends MusicBeatState
 				}
 			}
 		}
-		if (sys.FileSystem.exists('mods/' + ModsMenu.coolId + '/'))
+		if (sys.FileSystem.exists('mods/' + ModsMenuState.coolId + '/'))
 		{
 			var folders:Array<String> = [];
-			for (file in sys.FileSystem.readDirectory('mods/' + ModsMenu.coolId + '/'))
+			for (file in sys.FileSystem.readDirectory('mods/' + ModsMenuState.coolId + '/'))
 			{
-				var path = haxe.io.Path.join(['mods/' + ModsMenu.coolId + '/', file]);
+				var path = haxe.io.Path.join(['mods/' + ModsMenuState.coolId + '/', file]);
 				if (sys.FileSystem.isDirectory(path))
 				{
 					folders.push(file);

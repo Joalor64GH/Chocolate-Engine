@@ -18,7 +18,7 @@ package;
 
 import modding.ModList;
 import modding.PolymodHandler;
-import modding.ModsMenuOption;
+import modding.ModsMenuStateOption;
 import flixel.group.FlxGroup;
 import flixel.system.FlxSound;
 import flash.text.TextField;
@@ -38,7 +38,7 @@ class ModsMenuState extends MusicBeatState
 	#if MODS_ALLOWED
 	var curSelected:Int = 0;
 
-	var page:FlxTypedGroup<ModsMenuOption> = new FlxTypedGroup<ModsMenuOption>();
+	var page:FlxTypedGroup<ModsMenuStateOption> = new FlxTypedGroup<ModsMenuStateOption>();
 
 	public static var instance:ModsMenu;
 
@@ -99,7 +99,7 @@ class ModsMenuState extends MusicBeatState
 
 	function loadMods()
 	{
-		page.forEachExists(function(option:ModsMenuOption)
+		page.forEachExists(function(option:ModsMenuStateOption)
 		{
 			page.remove(option);
 			option.kill();
@@ -110,7 +110,7 @@ class ModsMenuState extends MusicBeatState
 
 		for (modId in PolymodHandler.metadataArrays)
 		{
-			var modOption = new ModsMenuOption(ModList.modMetadatas.get(modId).title, modId, optionLoopNum);
+			var modOption = new ModsMenuStateOption(ModList.modMetadatas.get(modId).title, modId, optionLoopNum);
 			page.add(modOption);
 			optionLoopNum++;
 			coolId = modId;
