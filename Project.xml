@@ -129,6 +129,8 @@
 	<!--In case you want to use nape with flixel-->
 	<!--<haxelib name="nape-haxe4" />-->
 
+	<haxedef name="no-deprecation-warnings" />
+
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
 	<!--Disable the Flixel core focus lost screen-->
