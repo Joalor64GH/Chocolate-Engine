@@ -96,7 +96,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.antialiasing = true;
 		}
 
-		FlxG.camera.follow(camFollow, null, 0.06);
+		FlxG.camera.follow(camFollow, null, 1);
 
                 // Chocolate Engine
                 var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco')), 12);
