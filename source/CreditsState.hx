@@ -37,23 +37,12 @@ class CreditsState extends MusicBeatState
 	override function create()
 	{
 		var initCreditlist = CoolUtil.coolTextFile(Paths.txt('data/creditsList'));
-		{
-			initCreditlist = CoolUtil.coolTextFile(Paths.txt('data/creditsList'));
-		}
 
 		for (i in 0...initCreditlist.length)
 		{
 			var data:Array<String> = initCreditlist[i].split(':');
 			credits.push(new CreditsMetadata(data[0], data[1]));
 		}
-
-		/* 
-			if (FlxG.sound.music != null)
-			{
-				if (!FlxG.sound.music.playing)
-					FlxG.sound.playMusic(Paths.music('freakyMenu'));
-			}
-		 */
 
 		#if desktop
 		// Updating Discord Rich Presence
@@ -95,23 +84,6 @@ class CreditsState extends MusicBeatState
 		descText.scrollFactor.set();
 		descText.borderSize = 2.4;
 		add(descText);
-
-		// JUST DOIN THIS SHIT FOR TESTING!!!
-		/* 
-			var md:String = Markdown.markdownToHtml(Assets.getText('CHANGELOG.md'));
-
-			var texFel:TextField = new TextField();
-			texFel.width = FlxG.width;
-			texFel.height = FlxG.height;
-			// texFel.
-			texFel.htmlText = md;
-
-			FlxG.stage.addChild(texFel);
-
-			// scoreText.textField.htmlText = md;
-
-			trace(md);
-		 */
 
 		super.create();
 	}
