@@ -7,7 +7,7 @@ This is the repository for Chocolate Engine, which is basically a fork of the or
 Also, the readme is currently in a WIP.
 
 ## Things to get done
-* [ ] Fix the Main Menu
+* [ ] Fix the Main Menu and Credits Menu
 * [ ] Options
 
 ## Credits
