@@ -19,7 +19,7 @@ class CoolUtil
 		#if linux
 		Sys.command('/usr/bin/xdg-open', [url]);
 		#else
-		FlxG.openURL(url);
+		FlxG.openURL(url:String);
 		#end
 	}
 
