@@ -27,7 +27,8 @@ class MainMenuState extends MusicBeatState
 
 	var optionShit:Array<String> = [
 		'story mode', 
-		'freeplay', 
+		'freeplay',
+		//'mods', // probably gonna use leather engine code...
 		'donate', 
 		'credits'
 	];
@@ -97,8 +98,8 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.06);
 
-        // Chocolate Engine
-        var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco')), 12);
+                // Chocolate Engine
+                var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco')), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -184,6 +185,9 @@ class MainMenuState extends MusicBeatState
 									case 'freeplay':
 										FlxG.switchState(new FreeplayState());
 										trace("Freeplay Menu Selected");
+									/*case 'mods':
+										FlxG.switchState(new ModsMenuState());
+										trace("Mods Menu Selected");*/
 									case 'credits':
 										FlxG.switchState(new CreditsState());
 										trace("Credits Selected");
