@@ -7,6 +7,7 @@ import openfl.Lib;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
+import flixel.tweens.FlxTween;
 
 class Main extends Sprite
 {
@@ -17,6 +18,8 @@ class Main extends Sprite
 	var framerate:Int = 60; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
+	// final lowFps:Int = 30;
+	var focusMusicTween:FlxTween;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -36,6 +39,41 @@ class Main extends Sprite
 		else
 		{
 			addEventListener(Event.ADDED_TO_STAGE, init);
+		}
+		// Add event listeners for window focus
+		// code by sqirra-rng for izzy engine
+		Application.current.window.onFocusOut.add(onWindowFocusOut);
+		Application.current.window.onFocusIn.add(onWindowFocusIn);
+	}
+
+	function onWindowFocusOut()
+	{
+		// No I didn't nab code from indie cross
+		if (Type.getClass(FlxG.state) != PlayState) {
+			trace("Game unfocused");
+
+			// Lower global volume when unfocused
+			if (focusMusicTween != null)
+				focusMusicTween.cancel();
+			focusMusicTween = FlxTween.tween(FlxG.sound, {volume: 0.3}, 0.5);
+	
+			// Conserve power by lowering draw framerate when unfocuced
+			FlxG.drawFramerate = 30;
+		}
+	}
+
+	function onWindowFocusIn()
+	{
+		if (Type.getClass(FlxG.state) != PlayState) {
+			trace("Game focused");
+
+			// Normal global volume when focused
+			if (focusMusicTween != null)
+				focusMusicTween.cancel();
+			focusMusicTween = FlxTween.tween(FlxG.sound, {FlxG.sound.volume}, 0.5);
+	
+			// Bring framerate back when focused
+			FlxG.drawFramerate = framerate;
 		}
 	}
 

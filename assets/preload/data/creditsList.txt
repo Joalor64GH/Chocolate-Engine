@@ -4,4 +4,5 @@ RozeBud:FPS Plus Input
 Yoshubs:New Inputs
 PolbiusyProxy:MP4 Video Support
 Smokey:Adobe Animate Texture Atlas Support
+Sqirra-RNG:Window focus and unfocus code
 Lars Doucet:Polymod
