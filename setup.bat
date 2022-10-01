@@ -34,6 +34,12 @@ pause >nul
 title Chocolate Engine Setup - Installing libraries
 haxelib git hxCodec https://github.com/polybiusproxy/hxcodec
 cls
+echo Press any key to install extension-webm and its component.
+pause >nul
+title Chocolate Engine Setup - Installing libraries
+haxelib git extension-webm https://github.com/KadeDev/extension-webm
+haxelib install actuate
+cls
 goto UserActions1
 
 :UserActions1
