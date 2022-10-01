@@ -39,7 +39,7 @@
 
 	<!--CUSTOM DEFINES-->
 	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
-	<define name="WEBM_EXTENSION" if="windows"/>
+	<define name="WEBM_EXTENSION" if="windows || mac"/>
 	<define name="MODS_ALLOWED" if="desktop" />
 
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
@@ -123,7 +123,7 @@
 	<haxelib name="hscript-ex" />
 	<haxedef name="hscriptPos" value="true" />
 
-	<haxelib name="actuate" if="WEBM_EXTENSION"/>
+	<haxelib name="actuate"/>
 	<haxelib name="extension-webm" if="WEBM_EXTENSION"/> <!-- Make sure to use https://github.com/KadeDev/extension-webm/ -->
 
 	<!--In case you want to use the ui package-->
