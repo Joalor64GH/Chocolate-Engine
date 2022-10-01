@@ -48,6 +48,7 @@ class ModsMenuState extends MusicBeatState
 	public static var disableButton:FlxButton;
 	public static var enableButton:FlxButton;
 
+	var bgtwo:FlxSprite;
 	var bg:FlxSprite;
 
 	var infoText:FlxText;
@@ -125,8 +126,11 @@ class ModsMenuState extends MusicBeatState
 
 	function buildUI()
 	{
-		bg = new FlxSprite(720, 0).loadGraphic(Paths.image("menuDesat"));
-		bg.screenCenter(Y);
+		bg = new FlxSprite(0, 0).loadGraphic(Paths.image("menuDesat"));
+		// bg.screenCenter(Y);
+
+		bgtwo = new FlxSprite(720, 0).loadGraphic(Paths.image("menuDesat"));
+		bgtwo.screenCenter(Y);
 
 		ModsMenuState.enableButton = new FlxButton(bg.x + 1120, 309, "Enable Mod", function()
 		{
@@ -162,7 +166,7 @@ class ModsMenuState extends MusicBeatState
 		disableButton.label.fieldWidth = 135;
 		setLabelOffset(disableButton, 5, 22);
 
-		add(bg);
+		add(bgtwo);
 		add(infoTextcool);
 		add(disableButton);
 		add(enableButton);
