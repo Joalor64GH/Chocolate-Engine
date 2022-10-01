@@ -34,7 +34,7 @@ class CreditsState extends MusicBeatState
 	var bg:FlxSprite;
 	var colorTween:FlxTween;
 
-	override function create() // why do you not work?
+	override function create()
 	{
 		var initCreditlist = CoolUtil.coolTextFile(Paths.txt('creditsList'));
 
