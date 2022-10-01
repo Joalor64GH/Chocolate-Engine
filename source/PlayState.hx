@@ -44,6 +44,8 @@ import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
 
+// reminder to change this for polymod
+
 using StringTools;
 
 class PlayState extends MusicBeatState

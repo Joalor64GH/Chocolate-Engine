@@ -41,6 +41,7 @@ class Song
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
 		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
+		// i need to adjust this for polymod
 
 		while (!rawJson.endsWith("}"))
 		{
