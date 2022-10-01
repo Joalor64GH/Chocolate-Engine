@@ -43,6 +43,11 @@ import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
+import openfl.Assets;
+
+#if VIDEO_PLUGIN
+import vlc.MP4Handler;
+#end
 
 using StringTools;
 
@@ -685,15 +690,15 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
 		missesTxt = new FlxText(healthBarBG.x + healthBarBG.width - 90, healthBarBG.y + 30, 0, "", 20);
-		missesTxt.setFormat("assets/fonts/vcr.ttf", 16, FlxColor.WHITE, RIGHT);
+		missesTxt.setFormat("assets/fonts/vcr.ttf", 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		missesTxt.scrollFactor.set();
 		add(missesTxt);
 		chocoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 450, healthBarBG.y + 30, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
-		chocoTxt.setFormat("assets/fonts/vcr.ttf", 16, FlxColor.WHITE, RIGHT);
+		chocoTxt.setFormat("assets/fonts/vcr.ttf", 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		chocoTxt.scrollFactor.set();
 		add(chocoTxt);
 
@@ -771,6 +776,37 @@ class PlayState extends MusicBeatState
 		}
 
 		super.create();
+	}
+
+	public function startVideo(name:String)
+	{
+		#if VIDEO_PLUGIN
+		inCutscene = true;
+
+		var filepath:String = Paths.video(name);
+		#if sys
+		if(!FileSystem.exists(filepath))
+		#else
+		if(!OpenFlAssets.exists(filepath))
+		#end
+		{
+			FlxG.log.warn('Couldnt find video file: ' + name);
+			startAndEnd();
+			return;
+		}
+
+		var video:MP4Handler = new MP4Handler();
+		video.playVideo(filepath);
+		video.finishCallback = function()
+		{
+			startAndEnd();
+			return;
+		}
+		#else
+		FlxG.log.warn('Platform not supported!');
+		startAndEnd();
+		return;
+		#end
 	}
 
 	function schoolIntro(?dialogueBox:DialogueBox):Void
@@ -1320,8 +1356,10 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "| Score:" + songScore;
-		missesTxt.text = "| Combo Breaks: " + misses;
+		var divider:String = " | ";
+
+		scoreTxt.text += divider + "Score:" + songScore;
+		missesTxt.text += divider + "Combo Breaks: " + misses;
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
