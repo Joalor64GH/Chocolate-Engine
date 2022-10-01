@@ -32,8 +32,7 @@ class MainMenuState extends MusicBeatState
 		'mods',
 		#end
 		'donate', 
-		'credits',
-		'options'
+		'credits'
 	];
 
 	var magenta:FlxSprite;
@@ -95,7 +94,8 @@ class MainMenuState extends MusicBeatState
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
-			menuItem.scrollFactor.set();
+			menuItem.scale.set(0.7, 0.7);
+			menuItem.scrollFactor.set(0, 0.15);
 			menuItem.antialiasing = true;
 		}
 
@@ -192,9 +192,6 @@ class MainMenuState extends MusicBeatState
 									case 'credits':
 										FlxG.switchState(new CreditsState());
 										trace("Credits Selected");
-									case 'options':
-										FlxG.switchState(new OptionsMenu());
-										trace("Options Selected");
 								}
 							});
 						}
