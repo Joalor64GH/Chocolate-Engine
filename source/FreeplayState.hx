@@ -38,6 +38,8 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
+	var songList:Dynamic;
+
 	override function create()
 	{
 		if (FileSystem.exists(Paths.modTxt('data/freeplaySonglist')) && FileSystem.exists(Paths.txt('data/freeplaySonglist')))
