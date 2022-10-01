@@ -5,11 +5,6 @@ import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
 
-#if MODS_ALLOWED
-import sys.io.File;
-import sys.FileSystem;
-#end
-
 using StringTools;
 
 typedef SwagSong =
@@ -45,26 +40,7 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		var rawJson = null;
-
-		var formattedFolder:String = Paths.formatToSongPath(folder);
-		var formattedSong:String = Paths.formatToSongPath(jsonInput);
-		#if MODS_ALLOWED
-		var moddyFile:String = Paths.modsJson(formattedFolder + '/' + formattedSong);
-		if (FileSystem.exists(moddyFile))
-		{
-			rawJson = File.getContent(moddyFile).trim();
-		}
-		#end
-
-		if (rawJson == null)
-		{
-			#if MODS_ALLOWED
-			rawJson = File.getContent(Paths.json(formattedFolder + '/' + formattedSong)).trim();
-			#else
-			rawJson = Assets.getText(Paths.json(formattedFolder + '/' + formattedSong)).trim();
-			#end
-		}
+		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
 
 		while (!rawJson.endsWith("}"))
 		{
