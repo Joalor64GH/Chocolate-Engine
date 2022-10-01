@@ -98,8 +98,6 @@ class CreditsState extends MusicBeatState
 		descText.borderSize = 2.4;
 		add(descText);
 
-		changeSelection();
-
 		super.create();
 	}
 
@@ -118,11 +116,11 @@ class CreditsState extends MusicBeatState
 
 		if (upP)
 		{
-			changeSelection(-1);
+			FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 		}
 		if (downP)
 		{
-			changeSelection(1);
+			FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 		}
 
 		if (controls.BACK)
@@ -131,20 +129,19 @@ class CreditsState extends MusicBeatState
 
 	function changeSelection(change:Int = 0)
 	{
-		FlxG.sound.play('assets/sounds/scrollMenu', 0.4);
-
 		curSelected += change;
 
 		if (curSelected < 0)
-			curSelected = songs.length - 1;
-		if (curSelected >= songs.length)
+			curSelected = credits.length - 1;
+		if (curSelected >= credits.length)
 			curSelected = 0;
 
-		// selector.y = (70 * curSelected) + 30;
+		descText.text = credits[curSelected].desc;
 
+		// selector.y = (70 * curSelected) + 30;
 		var bullShit:Int = 0;
 
-		for (item in grpSongs.members)
+		for (item in grpCredits.members)
 		{
 			item.targetY = bullShit - curSelected;
 			bullShit++;
