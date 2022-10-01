@@ -45,31 +45,6 @@ goto UserActions1
 :UserActions1
 cls
 title Chocolate Engine Setup - User action required
-set /p menu2="Would you like to automatically make the APIStuff file? [Y/N]"
-       if %menu2%==Y goto APIStuffYes
-       if %menu2%==y goto APIStuffYes
-       if %menu2%==N goto APIStuffNo
-       if %menu2%==n goto APIStuffNo
-       cls
-
-:APIStuffYes
-rem Stores the APIStuff.hx contents automatically
-cd source
-(
-echo package;
-echo class APIStuff
-echo {
-echo         public static var API:String = "";
-echo         public static var EncKey:String = "";
-echo }
-)>APIStuff.hx
-cd ..
-goto APIStuffNo
-
-
-:APIStuffNo
-cls
-title Chocolate Engine Setup - User action required
 set /p menu="Would you like to install Visual Studio Community and components? (Necessary to compile/ 5.5GB) [Y/N]"
        if %menu%==Y goto InstallVSCommunity
        if %menu%==y goto InstallVSCommunity

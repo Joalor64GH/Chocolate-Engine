@@ -4,7 +4,8 @@
 
 This is the repository for Chocolate Engine, which is basically a fork of the original FNF.
 
-Also, the readme is currently in a WIP.
+## Features
+UNFINISHED
 
 ## Things to get done
 * [ ] Fix the Main Menu
@@ -12,12 +13,16 @@ Also, the readme is currently in a WIP.
 
 ## Credits
 
-* [Joalor64 YT](https://github.com/Joalor64GH) - Main Programmer
-* [MemeHoovy](https://github.com/MemeHoovy) - Assistant Coder
-* [RozeBud](https://github.com/ThatRozebudDude) - FPS Plus Input
+* [Joalor64 YT](https://www.youtube.com/channel/UC4tRMRL_iAHX5n1qQpHibfg) - Main Programmer and Director
+* [MemeHoovy](https://linktr.ee/memehoovy) - Assistant Coder
+* [ShadowMario](https://github.com/ShadowMario) - Psych Input
 * [PolybiusProxy](https://github.com/polybiusproxy) - MP4 Video Support
-* [Ninjamuffin99](https://github.com/ninjamuffin99) - The Base Game (WOULD NOT BE POSSIBLE WITHOUT HIM)
+* [Smokey](https://twitter.com/Smokey_5_) - Adobe Animate Texture Atlas Support
+* [Sqirra-RNG](https://gedehari.github.io/) - Window Focus and Unfocus Code
+* [Leather128](https://github.com/Leather128) - Some Polymod Code
+* [stephensrt](https://github.com/stephensrt) - Lots of Polymod Code and Mag Engine Code
 * [Lars Doucet](https://github.com/larsiusprime) - Polymod
+* [Ninjamuffin99](https://github.com/ninjamuffin99) - The Base Game (WOULD NOT BE POSSIBLE WITHOUT HIM)
 
 ## Building
 

@@ -1,9 +1,10 @@
-Joalor64 YT:Main Programmer
+Joalor64 YT:Main Programmer and Director
 MemeHoovy:Assistant Coder
 ShadowMario:Psych Input
 PolybiusProxy:MP4 Video Support
 Smokey:Adobe Animate Texture Atlas Support
-Sqirra-RNG:Window focus and unfocus code
+Sqirra-RNG:Window Focus and Unfocus Code
 Leather128:Some Polymod Code
-stephensrt:Lots of Polymod Code
+stephensrt:Lots of Polymod Code and Mag Engine Code
 Lars Doucet:Polymod
+Ninjamuffin99:Base Game
