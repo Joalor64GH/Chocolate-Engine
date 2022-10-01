@@ -8,7 +8,7 @@ This is the repository for Chocolate Engine, which is basically a fork of the or
 UNFINISHED
 
 ## Things to get done
-* [ ] Fix the Main Menu
+* [X] Fix the Main Menu **[Completed]**
 * [ ] Options
 
 ## Credits
