@@ -42,7 +42,14 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import lime.app.Application;
+import openfl.Assets;
 import openfl.events.KeyboardEvent;
+
+#if MODS_ALLOWED
+import ModsMenuState;
+import sys.io.File;
+import sys.FileSystem;
+#end
 
 using StringTools;
 
@@ -178,6 +185,26 @@ class PlayState extends MusicBeatState
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
 			case 'thorns':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
+			default:
+				var path:String = 'data/' + SONG.song.toLowerCase() + '/' + SONG.song.toLowerCase() + '-Dialogue';
+				var daPath:String;
+				#if MODS_ALLOWED
+				daPath = Paths.modTxt(path);
+				if (FileSystem.exists(daPath))
+				{
+					dialogue = CoolUtil.evenCoolerTextFile(daPath);
+				}
+				else
+				{
+					daPath = Paths.txt(path);
+					if (FileSystem.exists(daPath))
+						dialogue = CoolUtil.coolTextFile(daPath);
+				}
+				#else
+				daPath = Paths.txt(path);
+				if (OpenFlAssets.exists(daPath))
+					dialogue = CoolUtil.coolTextFile(daPath);
+				#end
 		}
 
 		#if desktop
