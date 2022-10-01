@@ -43,11 +43,6 @@ import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
-import openfl.Assets;
-
-#if VIDEO_PLUGIN
-import vlc.MP4Handler;
-#end
 
 using StringTools;
 
@@ -776,45 +771,6 @@ class PlayState extends MusicBeatState
 		}
 
 		super.create();
-	}
-
-	public function startVideo(name:String)
-	{
-		#if VIDEO_PLUGIN
-		inCutscene = true;
-
-		var filepath:String = Paths.video(name);
-		#if sys
-		if(!FileSystem.exists(filepath))
-		#else
-		if(!OpenFlAssets.exists(filepath))
-		#end
-		{
-			FlxG.log.warn('Couldnt find video file: ' + name);
-			startAndEnd();
-			return;
-		}
-
-		var video:MP4Handler = new MP4Handler();
-		video.playVideo(filepath);
-		video.finishCallback = function()
-		{
-			startAndEnd();
-			return;
-		}
-		#else
-		FlxG.log.warn('Platform not supported!');
-		startAndEnd();
-		return;
-		#end
-	}
-
-	function startAndEnd()
-	{
-		if(endingSong)
-			endSong();
-		else
-			startCountdown();
 	}
 
 	function schoolIntro(?dialogueBox:DialogueBox):Void
