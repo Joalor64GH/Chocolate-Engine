@@ -210,11 +210,6 @@ class Paths
 		return modFolder('images/' + key + '.xml');
 	}
 
-	inline static public function skinsXml(key:String)
-	{
-		return skinFolder(key + '.xml');
-	}
-
 	inline static public function modVideo(key:String)
 	{
 		return modFolder('videos/' + key + '.' + VIDEO_EXT);
@@ -228,11 +223,6 @@ class Paths
 	inline static public function modsImages(key:String)
 	{
 		return modFolder('images/' + key + '.png');
-	}
-
-	inline static public function skinImages(key:String)
-	{
-		return skinFolder('images/' + key + '.png');
 	}
 
 	inline static public function modsPng(key:String)
