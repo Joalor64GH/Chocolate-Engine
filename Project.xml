@@ -98,7 +98,7 @@
 	<section if="MODS_ALLOWED">
 	        <assets path='art/mod.url' rename='How to make a mod.url' />
 	        <assets path='example_mods' rename='mods' embed='false'/>
-			<assets path='modsList.txt' rename='' />
+		<assets path='modsList.txt' rename='' />
 	</section>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<assets path='LICENSE' rename='LICENSE.txt' />
@@ -150,7 +150,7 @@
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
 	<!-- Defines whether the Mods menu will display before launching. Will be used later on.-->
-    <haxedef name="FEATURE_MODCORE" if="desktop" />
+        <haxedef name="FEATURE_MODCORE" if="desktop" />
 
 	<!-- Defines whether WebM videos should be enabled. Currently only enabled on Windows. -->
 	<haxedef name="FEATURE_WEBM" if="windows" unless="neko" />
