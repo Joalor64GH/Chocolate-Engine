@@ -18,6 +18,16 @@ class CoolUtil
 		return difficultyArray[PlayState.storyDifficulty];
 	}
 
+	public static function getScore():Int
+	{
+		return PlayState.songScore;
+	}
+
+	public static function blueBalls():Int
+	{
+		return PlayState.deaths;
+	}
+
     public static function browserLoad(url:String)
 	{
 		#if linux
