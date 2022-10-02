@@ -27,6 +27,16 @@ class CoolUtil
 		#end
 	}
 
+	public static inline function getScore():Int
+	{
+		return PlayState.instance.songScore;
+	}
+
+	public static inline function blueBalls():Int
+	{
+		return PlayState.instance.deaths;
+	}	
+
 	public static function coolTextFile(path:String):Array<String>
 	{
 		var daList:Array<String> = Assets.getText(path).trim().split('\n');
