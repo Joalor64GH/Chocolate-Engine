@@ -17,17 +17,10 @@ class PauseSubState extends MusicBeatSubstate
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Exit to freeplay', 'Exit to main menu', 'Close Game'];
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Exit to freeplay', 'Exit to main menu', 'Close Game'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
-
-	var levelInfo:FlxText;
-	var levelDifficulty:FlxText;
-	var curScore:FlxText;
-	var deaths:FlxText;
-
-	var difficultyChoices:Array<String> = ['EASY', 'NORMAL', 'HARD', 'BACK'];
 
 	public function new(x:Float, y:Float)
 	{
@@ -44,49 +37,29 @@ class PauseSubState extends MusicBeatSubstate
 		bg.scrollFactor.set();
 		add(bg);
 
-		levelInfo = new FlxText(20, 15, 0, "", 32);
+		var levelInfo:FlxText = new FlxText(20, 15, 0, "", 32);
 		levelInfo.text += PlayState.SONG.song;
 		levelInfo.scrollFactor.set();
 		levelInfo.setFormat(Paths.font("vcr.ttf"), 32);
 		levelInfo.updateHitbox();
 		add(levelInfo);
 
-		levelDifficulty = new FlxText(20, 15 + 32, 0, "", 32);
+		var levelDifficulty:FlxText = new FlxText(20, 15 + 32, 0, "", 32);
 		levelDifficulty.text += CoolUtil.difficultyString();
 		levelDifficulty.scrollFactor.set();
 		levelDifficulty.setFormat(Paths.font('vcr.ttf'), 32);
 		levelDifficulty.updateHitbox();
 		add(levelDifficulty);
 
-		curScore = new FlxText(20, levelDifficulty.y + 32, 0, "", 32);
-		curScore.text += "SCORE: " + CoolUtil.getScore();
-		curScore.scrollFactor.set();
-		curScore.setFormat(Paths.font('vcr.ttf'), 32);
-		curScore.updateHitbox();
-		add(curScore);
-
-		deaths = new FlxText(20, curScore.y + 32, 0, "", 32);
-		deaths.text += "Blue balled: " + CoolUtil.blueBalls();
-		deaths.scrollFactor.set();
-		deaths.setFormat(Paths.font('vcr.ttf'), 32);
-		deaths.updateHitbox();
-		add(deaths);
-
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;
-		curScore.alpha = 0;
-		deaths.alpha = 0;
 
 		levelInfo.x = FlxG.width - (levelInfo.width + 20);
 		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
-		curScore.x = FlxG.width - (curScore.width + 20);
-		deaths.x = FlxG.width - (deaths.width + 20);
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(levelDifficulty, {alpha: 1, y: levelDifficulty.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.5});
-		FlxTween.tween(curScore, {alpha: 1, y: curScore.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});
-		FlxTween.tween(deaths, {alpha: 1, y: deaths.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.9});
 
 		grpMenuShit = new FlxTypedGroup<Alphabet>();
 		add(grpMenuShit);
@@ -134,18 +107,6 @@ class PauseSubState extends MusicBeatSubstate
 					close();
 				case "Restart Song":
 					FlxG.resetState();
-				case "Change Difficulty":
-					menuItems = difficultyChoices;
-					regenMenu();
-				case "EASY" | "NORMAL" | "HARD":
-					PlayState.SONG = Song.loadFromJson(Highscore.formatSong(PlayState.SONG.song.toLowerCase(), curSelected),
-						PlayState.SONG.song.toLowerCase());
-					PlayState.storyDifficulty = curSelected;
-					FlxG.resetState();
-					trace('changing difficulty to' + curSelected);
-				case "BACK":
-					menuItems = pauseOG;
-					regenMenu();
 				case "Exit to freeplay":
 					FlxG.switchState(new FreeplayState());
 				case "Exit to main menu":
