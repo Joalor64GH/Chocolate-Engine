@@ -14,8 +14,8 @@ import flixel.util.FlxColor;
 import lime.utils.Assets;
 
 #if MODS_ALLOWED
-import polymod.Polymod;
-import polymod.backends.PolymodAssets;
+import sys.io.File;
+import sys.FileSystem;
 #end
 
 using StringTools;
@@ -40,7 +40,7 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		var initSonglist:String = "";
+		var initSonglist = null;
 
 		#if MODS_ALLOWED
 		initSonglist = CoolUtil.coolTextFilePolymod(Paths.txt('freeplaySonglist'));
