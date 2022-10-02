@@ -5,10 +5,12 @@
 This is the repository for Chocolate Engine, which is basically a fork of the original FNF.
 
 ## Features
-UNFINISHED
+* Polymod Support
+* Customizable Watermarks
+* Easy to Use Credits System (From Mag Engine)
+* MP4 and WebM Video Support
 
 ## Things to get done
-* [X] Fix the Main Menu **[Completed]**
 * [ ] Options
 
 ## Credits
@@ -21,6 +23,7 @@ UNFINISHED
 * [Sqirra-RNG](https://gedehari.github.io/) - Window Focus and Unfocus Code
 * [Leather128](https://github.com/Leather128) - Some Polymod Code
 * [stephensrt](https://github.com/stephensrt) - Lots of Polymod Code and Mag Engine Code
+* [KadeDev](https://twitter.com/kade0921) - Extension WebM
 * [Lars Doucet](https://github.com/larsiusprime) - Polymod
 * [Ninjamuffin99](https://github.com/ninjamuffin99) - The Base Game (WOULD NOT BE POSSIBLE WITHOUT HIM)
 

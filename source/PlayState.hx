@@ -690,7 +690,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
 		chocoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 450, healthBarBG.y + 30, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
-		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		chocoTxt.scrollFactor.set();
 		add(chocoTxt);
 
@@ -1677,6 +1677,11 @@ class PlayState extends MusicBeatState
 
 				// if ()
 				StoryMenuState.weekUnlocked[Std.int(Math.min(storyWeek + 1, StoryMenuState.weekUnlocked.length - 1))] = true;
+
+				if (SONG.validScore)
+				{
+					Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
+				}
 
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
