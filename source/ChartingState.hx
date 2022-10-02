@@ -31,7 +31,6 @@ import openfl.events.IOErrorEvent;
 import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.ByteArray;
-import CoolUtil.coolTextFilePolymod;
 
 #if MODS_ALLOWED
 import polymod.fs.PolymodFileSystem;
@@ -229,11 +228,7 @@ class ChartingState extends MusicBeatState
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 
-        #if MODS_ALLOWED
-		var characters:Array<String> = CoolUtil.coolTextFilePolymod(Paths.txt('characterList'));
-		#else
 		var characters:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
-		#end
 
 		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{

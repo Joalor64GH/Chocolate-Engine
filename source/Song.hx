@@ -4,7 +4,6 @@ import Section.SwagSection;
 import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
-import CoolUtil.coolTextFilePolymod;
 
 #if MODS_ALLOWED
 import sys.io.File;
@@ -46,13 +45,8 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-        #if MODS_ALLOWED        
-		var rawJson = File.getContent(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
-        #else
 		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
-		#end
-
-		// how do i change this correctly for polymod??
+        // how do i change this correctly for polymod??
 
 		while (!rawJson.endsWith("}"))
 		{
