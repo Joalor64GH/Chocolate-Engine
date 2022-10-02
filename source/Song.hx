@@ -5,6 +5,11 @@ import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
 
+#if MODS_ALLOWED
+import sys.io.File;
+import sys.FileSystem;
+#end
+
 using StringTools;
 
 typedef SwagSong =
@@ -40,8 +45,13 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
-		// i need to adjust this for polymod
+		var rawJson:String = "";
+
+        #if MODS_ALLOWED
+        rawJson = File.getContent(Paths.json(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
+		#else
+		rawJson = Assets.getText(Paths.json(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
+		#end
 
 		while (!rawJson.endsWith("}"))
 		{
