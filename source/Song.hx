@@ -45,13 +45,8 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		var rawJson:String = "";
-
-        #if MODS_ALLOWED
-        rawJson = File.getContent(Paths.json(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
-		#else
-		rawJson = Assets.getText(Paths.json(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
-		#end
+		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
+		// how do i change this correctly for polymod??
 
 		while (!rawJson.endsWith("}"))
 		{

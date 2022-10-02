@@ -40,13 +40,8 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		var initSonglist = null;
-
-		#if MODS_ALLOWED
-		initSonglist = CoolUtil.coolTextFilePolymod(Paths.txt('freeplaySonglist'));
-		#else
-		initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
-		#end
+		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+		// how do i change this correctly for polymod??
 
 		for (i in 0...initSonglist.length)
 		{
