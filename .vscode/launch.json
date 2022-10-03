@@ -1,0 +1,47 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+	  {
+		"name": "Windows",
+		"type": "hxcpp",
+		"preLaunchTask": "Build Windows",
+		"request": "launch",
+		"program": "${workspaceFolder}/export/release/windows/bin/ChocoWIN.exe"
+	  },
+	  {
+		"name": "Linux",
+		"type": "hxcpp",
+		"preLaunchTask": "Build Linux",
+		"request": "launch",
+		"program": "${workspaceFolder}/export/release/linux/bin/ChocoAPP"
+	  },
+	  {
+		"name": "Mac",
+		"type": "hxcpp",
+		"preLaunchTask": "Build Mac",
+		"request": "launch",
+		"program": "${workspaceFolder}/export/release/macos/bin/ChocoMAC"
+	  },
+	  {
+		"name": "Windows Debug",
+		"type": "hxcpp",
+		"preLaunchTask": "Build Windows Debug",
+		"request": "launch",
+		"program": "${workspaceFolder}/export/debug/windows/bin/ChocoWIN.exe"
+	  },
+	  {
+		"name": "Linux Debug",
+		"type": "hxcpp",
+		"preLaunchTask": "Build Linux Debug",
+		"request": "launch",
+		"program": "${workspaceFolder}/export/debug/linux/bin/ChocoAPP"
+	  },
+	  {
+		"name": "Mac Debug",
+		"type": "hxcpp",
+		"preLaunchTask": "Build Mac Debug",
+		"request": "launch",
+		"program": "${workspaceFolder}/export/debug/macos/bin/ChocoMAC"
+	  },
+	],
+  }
