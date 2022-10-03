@@ -4,6 +4,11 @@
 
 This is the repository for Chocolate Engine, which is basically a fork of the original FNF.
 
+## Downloads
+* [itch.io](https://joalor64.itch.io/chocolate-engine)
+* [GitHub](https://github.com/Joalor64GH/Chocolate-Engine/releases/latest)
+* [Gamebanana](https://gamebanana.com/tools/10774)
+
 ## Features
 * Polymod Support
 * Customizable Watermarks
