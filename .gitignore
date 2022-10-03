@@ -20,6 +20,14 @@ FNFBot.exe
 source/GJKeys.hx
 source/GameJolt.hx
 
+### Android-Specific
+source/SUtil.hx
+source/android/
+assets/android/
+assets/images/androidcontrols/
+art/build_android.bat
+art/build_android-debug.bat
+
 ### Add these regardless of them getting ignored.
 !TempFiles/
 !modchartexample.mc
