@@ -46,6 +46,7 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
+		// TODO: make this work with polymod
 		if (!Assets.exists(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())) {
 			return null;
 		}
