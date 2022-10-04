@@ -24,6 +24,11 @@ pause >nul
 title Chocolate Engine Setup - Installing libraries
 haxelib git polymod https://github.com/larsiusprime/polymod.git
 cls
+echo Press any key to install LUA JIT.
+pause >nul
+title Chocolate Engine Setup - Installing libraries
+haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
+cls
 echo Press any key to install Discord RPC.
 pause >nul
 title Chocolate Engine Setup - Installing libraries

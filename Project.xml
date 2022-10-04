@@ -41,6 +41,7 @@
 	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
 	<define name="WEBM_EXTENSION" if="windows || mac"/>
 	<define name="MODS_ALLOWED" if="desktop" />
+	<define name="LUA_EXTENSION" if="desktop" />
 
 	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/preload" rename="assets" exclude="*.mp3" unless="web"/>
@@ -128,6 +129,7 @@
 
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
+	<haxelib name="linc_luajit" if="LUA_EXTENSION"/>
 	<haxelib name="hxCodec" if="VIDEO_PLUGIN"/>
 	<haxelib name="polymod" if="MODS_ALLOWED"/>
 	<haxelib name="discord_rpc" if="desktop"/>
