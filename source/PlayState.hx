@@ -43,6 +43,7 @@ import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
+import scripting.Script;
 
 using StringTools;
 
@@ -147,6 +148,8 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+        Script.onCreate();
+
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -1286,6 +1289,9 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		Script.onUpdate();
+
+
 		#if !debug
 		perfectMode = false;
 		#end
@@ -2049,6 +2055,8 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
+		Script.onNoteMiss();
+
 		if (!boyfriend.stunned)
 		{
 			misses += 1;
@@ -2118,6 +2126,7 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
+		Script.onNoteHit();
 		if (!note.wasGoodHit)
 		{
 			if (!note.isSustainNote)
