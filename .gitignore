@@ -28,6 +28,9 @@ assets/images/androidcontrols/
 art/build_android.bat
 art/build_android-debug.bat
 
+### Misc
+source/modding/ModCore.hx
+
 ### Add these regardless of them getting ignored.
 !TempFiles/
 !modchartexample.mc

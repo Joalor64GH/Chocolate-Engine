@@ -2,5 +2,6 @@ Options
 Hscript Support
 Lua Support
 HX/Custom States Support
+HXS Support
 Adjust FreeplayState.hx for Polymod
 Adjust Song.hx for Polymod
