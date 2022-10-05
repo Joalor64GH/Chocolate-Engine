@@ -49,6 +49,8 @@ class CreditsState extends MusicBeatState
 		}
 		else {
 			trace("Cannot find 'creditsList' in data directory.");
+			// initCreditlist = null;
+			// initCreditlist = 'Credits List not found.';
 		}
 
 		for (i in 0...initCreditlist.length)
