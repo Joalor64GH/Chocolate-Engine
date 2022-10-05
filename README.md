@@ -17,7 +17,7 @@ This is the repository for Chocolate Engine, which is basically a fork of the or
 
 ## Things to get done
 * [ ] Options
-* [ ] HX and Hscript support
+* [ ] Support for Hscript, HX, and Lua Scripts
 
 ## Credits
 
