@@ -7,10 +7,10 @@ title Chocolate Engine Setup - Installing libraries
 echo Installing haxelib libraries...
 haxelib install lime 7.8.0
 haxelib install openfl 9.0.2
-haxelib --never install flixel 4.8.1
+haxelib --never git flixel https://github.com/YoshiCrafter29/flixel
 haxelib install flixel-addons
 haxelib install flixel-ui
-haxelib install hscript
+haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
 haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
 haxelib run lime setup
 haxelib install flixel-tools
