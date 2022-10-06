@@ -27,7 +27,7 @@ jobs:
 
       - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.5
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
@@ -39,9 +39,9 @@ jobs:
           sudo apt-get -y install libidn12
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
-          haxelib install lime 7.8.0
-          haxelib install openfl 9.0.2
-          haxelib --never install flixel 4.8.1
+          haxelib install lime 8.0.0
+          haxelib install openfl 9.2.0
+          haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
@@ -74,15 +74,15 @@ jobs:
 
       - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.5
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
           haxelib setup C:/haxelib
           haxelib install hxcpp > nul
-          haxelib install lime 7.8.0
-          haxelib install openfl 9.0.2
-          haxelib --never install flixel 4.8.1
+          haxelib install lime 8.0.0
+          haxelib install openfl 9.2.0
+          haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
@@ -117,15 +117,15 @@ jobs:
 
       - uses: krdlab/setup-haxe@master
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.5
       # Runs a set of commands using the runners shell
       - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp > /dev/null
-          haxelib install lime 7.8.0
-          haxelib install openfl 9.0.2
-          haxelib --never install flixel 4.8.1
+          haxelib install lime 8.0.0
+          haxelib install openfl 9.2.0
+          haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
           haxelib run lime setup
           haxelib install flixel-tools
