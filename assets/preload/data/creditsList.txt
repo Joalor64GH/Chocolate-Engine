@@ -7,5 +7,6 @@ Sqirra-RNG:Window Focus and Unfocus Code
 Leather128:Some Polymod Code
 stephensrt:Lots of Polymod Code and Mag Engine Code
 KadeDev:Extension WebM
+Manux123:Cool Engine Code
 Lars Doucet:Polymod
 Ninjamuffin99:Base Game
