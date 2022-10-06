@@ -16,6 +16,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import lime.app.Application;
 import openfl.Assets;
+import scripting.MMScript;
 
 using StringTools;
 
@@ -41,6 +42,8 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+		MMScript.onCreate();
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -122,6 +125,9 @@ class MainMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		
+		MMScript.onUpdate();
+
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
@@ -214,6 +220,8 @@ class MainMenuState extends MusicBeatState
 
 	function changeItem(huh:Int = 0)
 	{
+		MMScript.onItemChange();
+
 		curSelected += huh;
 
 		if (curSelected >= menuItems.length)
