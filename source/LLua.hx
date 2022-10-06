@@ -12,6 +12,7 @@ class LLua
     {
 		LuaL.openlibs(lua);
 		Lua.init_callbacks(lua);
+		// just for security reasons
 		LuaL.dostring(lua, "
             os.execute, os.getenv, os.rename, os.remove, os.tmpname = nil, nil, nil, nil, nil
             io, load, loadfile, loadstring, dofile = nil, nil, nil, nil, nil

@@ -5,6 +5,7 @@ import flixel.FlxSprite;
 /**
  * Compared to `MP4Handler`. This loads slower!!
  */
+// is this even needed?
 class MP4Sprite extends FlxSprite {
 	public var readyCallback:Void->Void;
 	public var finishCallback:Void->Void;
