@@ -30,6 +30,8 @@ art/build_android-debug.bat
 
 ### Misc
 source/modding/ModCore.hx
+mods/introMod/*
+mods/modList.txt
 
 ### Add these regardless of them getting ignored.
 !TempFiles/
