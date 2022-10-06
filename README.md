@@ -16,8 +16,8 @@ This is the repository for Chocolate Engine, which is basically a fork of the or
 * MP4 and WebM Video Support
 
 ## Things to get done
-* [ ] Options
-* [ ] Support for Hscript, HX, and Lua Scripts
+* [X] Options **[Completed]**
+* [ ] Support for Hscript, HX, HXS, and Lua Scripts
 
 ## Credits
 
@@ -30,6 +30,8 @@ This is the repository for Chocolate Engine, which is basically a fork of the or
 * [Leather128](https://github.com/Leather128) - Some Polymod Code
 * [stephensrt](https://github.com/stephensrt) - Lots of Polymod Code and Mag Engine Code
 * [KadeDev](https://twitter.com/kade0921) - Extension WebM
+* [Manux123](https://github.com/Manux123) - Cool Engine Code
+* [Juanen100](https://github.com/Juanen100) - Options Menu
 * [Lars Doucet](https://github.com/larsiusprime) - Polymod
 * [Ninjamuffin99](https://github.com/ninjamuffin99) - The Base Game (WOULD NOT BE POSSIBLE WITHOUT HIM)
 

@@ -1,4 +1,3 @@
-Options
 Hscript Support
 Lua Support
 HX/Custom States Support
