@@ -3,23 +3,23 @@ package scripting;
 import PlayState;
 
 class Script {
-    public static function onCreate() {
+    public function onCreate() {
 
     }
 
-    public static function onUpdate() {
+    public function onUpdate() {
 
     }
 
-    public static function onNoteHit() {
+    public function onNoteHit() {
 
     }
 
-    public static function onNoteMiss() {
+    public function onNoteMiss() {
 
     }
 
-    public static function onPlayerDeath() {
+    public function onPlayerDeath() {
 
     }
 
