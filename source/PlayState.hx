@@ -56,8 +56,6 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 
-	var halloweenLevel:Bool = false;
-
 	public static var instance:PlayState;
 
 	private var vocals:FlxSound;
@@ -238,7 +236,6 @@ class PlayState extends MusicBeatState
 			case 'spookeez' | 'monster' | 'south': 
 			{
 				curStage = 'spooky';
-				halloweenLevel = true;
 
 				var hallowTex = Paths.getSparrowAtlas('halloween_bg');
 				halloweenBG = new FlxSprite(-200, -100);
