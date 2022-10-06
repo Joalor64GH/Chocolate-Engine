@@ -41,10 +41,10 @@ class OptionsMenu extends MusicBeatState
 
 		for (i in 0...controlsStrings.length)
 		{
-				var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i], true, false);
-				controlLabel.isMenuItem = true;
-				controlLabel.targetY = i;
-				grpControls.add(controlLabel);
+			var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i], true, false);
+			controlLabel.isMenuItem = true;
+			controlLabel.targetY = i;
+			grpControls.add(controlLabel);
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 		}
 
@@ -61,57 +61,57 @@ class OptionsMenu extends MusicBeatState
 	{
 		super.update(elapsed);
 
-			if (controls.BACK)
-				FlxG.switchState(new MainMenuState());
-			if (controls.UP_P)
-				changeSelection(-1);
-			if (controls.DOWN_P)
-				changeSelection(1);
-			
-			if (controls.RIGHT_R)
+		if (controls.BACK)
+			FlxG.switchState(new MainMenuState());
+		if (controls.UP_P)
+			changeSelection(-1);
+		if (controls.DOWN_P)
+			changeSelection(1);
+		
+		if (controls.RIGHT_R)
+		{
+			FlxG.save.data.offset++;
+			versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
+		}
+
+		if (controls.LEFT_R)
 			{
-				FlxG.save.data.offset++;
+				FlxG.save.data.offset--;
 				versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
 			}
 
-			if (controls.LEFT_R)
-				{
-					FlxG.save.data.offset--;
-					versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
-				}
-	
 
-			if (controls.ACCEPT)
+		if (controls.ACCEPT)
+		{
+			if (curSelected != 4)
+				grpControls.remove(grpControls.members[curSelected]);
+			switch(curSelected)
 			{
-				if (curSelected != 4)
-					grpControls.remove(grpControls.members[curSelected]);
-				switch(curSelected)
-				{
-					case 0:
-						FlxG.save.data.dfjk = !FlxG.save.data.dfjk;
-						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.dfjk ? 'DFJK' : 'WASD'), true, false);
-						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected;
-						grpControls.add(ctrl);
-						if (FlxG.save.data.dfjk)
-							controls.setKeyboardScheme(KeyboardScheme.Solo, true);
-						else
-							controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
-						
-					case 1:
-						FlxG.save.data.newInput = !FlxG.save.data.newInput;
-						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.newInput ? "New input" : "Old Input"), true, false);
-						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected - 1;
-						grpControls.add(ctrl);
-					case 2:
-						FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
-						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll'), true, false);
-						ctrl.isMenuItem = true;
-						ctrl.targetY = curSelected - 2;
-						grpControls.add(ctrl);
-				}
+				case 0:
+					FlxG.save.data.dfjk = !FlxG.save.data.dfjk;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.dfjk ? 'DFJK' : 'WASD'), true, false);
+					ctrl.isMenuItem = true;
+					ctrl.targetY = curSelected;
+					grpControls.add(ctrl);
+					if (FlxG.save.data.dfjk)
+						controls.setKeyboardScheme(KeyboardScheme.Solo, true);
+					else
+						controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
+					
+				case 1:
+					FlxG.save.data.newInput = !FlxG.save.data.newInput;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.newInput ? "New input" : "Old Input"), true, false);
+					ctrl.isMenuItem = true;
+					ctrl.targetY = curSelected - 1;
+					grpControls.add(ctrl);
+				case 2:
+					FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll'), true, false);
+					ctrl.isMenuItem = true;
+					ctrl.targetY = curSelected - 2;
+					grpControls.add(ctrl);
 			}
+		}
 	}
 
 	var isSettingControl:Bool = false;
