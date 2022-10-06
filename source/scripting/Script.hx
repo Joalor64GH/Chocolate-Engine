@@ -1,6 +1,6 @@
 package scripting;
 
-import states.PlayState;
+import PlayState;
 
 class Script {
     public static function onCreate() {
