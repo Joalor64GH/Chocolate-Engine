@@ -146,9 +146,11 @@ class PlayState extends MusicBeatState
 
 	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
+	public var hornyScript:Script; // we do a little trolling
+
 	override public function create()
 	{
-        Script.onCreate();
+        hornyScript.onCreate();
 
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -1289,8 +1291,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		Script.onUpdate();
-
+		hornyScript.onUpdate();
 
 		#if !debug
 		perfectMode = false;
@@ -2055,7 +2056,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
-		Script.onNoteMiss();
+		hornyScript.onNoteMiss();
 
 		if (!boyfriend.stunned)
 		{
@@ -2126,7 +2127,7 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
-		Script.onNoteHit();
+		hornyScript.onNoteHit();
 		if (!note.wasGoodHit)
 		{
 			if (!note.isSustainNote)
