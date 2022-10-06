@@ -1,8 +1,6 @@
 package;
 
-#if desktop
-import Discord.DiscordClient;
-#end
+import Controls.KeyboardScheme;
 import Controls.Control;
 import flash.text.TextField;
 import flixel.FlxG;
@@ -20,18 +18,18 @@ class OptionsMenu extends MusicBeatState
 	var selector:FlxText;
 	var curSelected:Int = 0;
 
-	var options:Array<Option> = [
-		new NewInputOption(),
-		new DownscrollOption()
-	];
+	var controlsStrings:Array<String> = [];
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
 	var versionShit:FlxText;
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		controlsStrings = CoolUtil.coolStringFile((FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + "\n" + (FlxG.save.data.newInput ? "New input" : "Old Input") + "\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll'));
+		
+		trace(controlsStrings);
 
-		menuBG.color = 0xFF453F3F;
+		menuBG.color = 0xFFea71fd;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
 		menuBG.screenCenter();
@@ -40,20 +38,21 @@ class OptionsMenu extends MusicBeatState
 
 		grpControls = new FlxTypedGroup<Alphabet>();
 		add(grpControls);
-		
-		#if desktop
-		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Options", null);
-		#end
 
-		for (i in 0...options.length)
+		for (i in 0...controlsStrings.length)
 		{
-			var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, options[i].getDisplay(), true, false);
-			controlLabel.isMenuItem = true;
-			controlLabel.targetY = i;
-			grpControls.add(controlLabel);
+				var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, controlsStrings[i], true, false);
+				controlLabel.isMenuItem = true;
+				controlLabel.targetY = i;
+				grpControls.add(controlLabel);
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 		}
+
+
+		versionShit = new FlxText(5, FlxG.height - 18, 0, "Offset (Left, Right): " + FlxG.save.data.offset, 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(versionShit);
 
 		super.create();
 	}
@@ -68,24 +67,58 @@ class OptionsMenu extends MusicBeatState
 				changeSelection(-1);
 			if (controls.DOWN_P)
 				changeSelection(1);
+			
+			if (controls.RIGHT_R)
+			{
+				FlxG.save.data.offset++;
+				versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
+			}
+
+			if (controls.LEFT_R)
+				{
+					FlxG.save.data.offset--;
+					versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
+				}
+	
 
 			if (controls.ACCEPT)
 			{
-				if (options[curSelected].press()) {
+				if (curSelected != 4)
 					grpControls.remove(grpControls.members[curSelected]);
-					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, options[curSelected].getDisplay(), true, false);
-					ctrl.isMenuItem = true;
-					grpControls.add(ctrl);
+				switch(curSelected)
+				{
+					case 0:
+						FlxG.save.data.dfjk = !FlxG.save.data.dfjk;
+						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.dfjk ? 'DFJK' : 'WASD'), true, false);
+						ctrl.isMenuItem = true;
+						ctrl.targetY = curSelected;
+						grpControls.add(ctrl);
+						if (FlxG.save.data.dfjk)
+							controls.setKeyboardScheme(KeyboardScheme.Solo, true);
+						else
+							controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
+						
+					case 1:
+						FlxG.save.data.newInput = !FlxG.save.data.newInput;
+						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.newInput ? "New input" : "Old Input"), true, false);
+						ctrl.isMenuItem = true;
+						ctrl.targetY = curSelected - 1;
+						grpControls.add(ctrl);
+					case 2:
+						FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
+						var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll'), true, false);
+						ctrl.isMenuItem = true;
+						ctrl.targetY = curSelected - 2;
+						grpControls.add(ctrl);
 				}
 			}
-		FlxG.save.flush();
 	}
 
 	var isSettingControl:Bool = false;
 
 	function changeSelection(change:Int = 0)
 	{
-		FlxG.sound.play(Paths.sound("scrollMenu"), 0.4);
+		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 
 		curSelected += change;
 
@@ -112,53 +145,5 @@ class OptionsMenu extends MusicBeatState
 				// item.setGraphicSize(Std.int(item.width));
 			}
 		}
-	}
-}
-
-class Option
-{
-	public function new()
-	{
-		display = updateDisplay();
-	}
-
-	private var display:String;
-	public final function getDisplay():String
-	{
-		return display;
-	}
-
-	// Returns whether the label is to be updated.
-	public function press():Bool { return throw "stub!"; }
-	private function updateDisplay():String { return throw "stub!"; }
-}
-
-class DownscrollOption extends Option
-{
-	public override function press():Bool
-	{
-		FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
-		display = updateDisplay();
-		return true;
-	}
-
-	private override function updateDisplay():String
-	{
-		return FlxG.save.data.downscroll ? "Downscroll" : "Upscroll";
-	}
-}
-
-class NewInputOption extends Option
-{
-	public override function press():Bool
-	{
-		FlxG.save.data.newInput = !FlxG.save.data.newInput;
-		display = updateDisplay();
-		return true;
-	}
-
-	private override function updateDisplay():String
-	{
-		return !FlxG.save.data.newInput ? "Old Input" : "New Input";
 	}
 }

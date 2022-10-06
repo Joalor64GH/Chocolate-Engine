@@ -200,7 +200,7 @@ class MainMenuState extends MusicBeatState
 										FlxG.switchState(new CreditsState());
 										trace("Credits Selected");
 									case 'options':
-										FlxG.switchState(new OptionsSelection());
+										FlxG.switchState(new OptionsMenu());
 										trace("Options Selected");
 								}
 							});

@@ -132,10 +132,9 @@ class PlayState extends MusicBeatState
 	var defaultCamZoom:Float = 1.05;
 
 	// how big to stretch the pixel art assets
+	public static var daPixelZoom:Float = 6;
 
 	public static var theFunne:Bool = true;
-
-	public static var daPixelZoom:Float = 6;
 
 	var inCutscene:Bool = false;
 
@@ -651,6 +650,9 @@ class PlayState extends MusicBeatState
 		strumLine = new FlxSprite(0, 50).makeGraphic(FlxG.width, 10);
 		strumLine.scrollFactor.set();
 
+		if (FlxG.save.data.downscroll)
+			strumLine.y = FlxG.height - 165;
+
 		strumLineNotes = new FlxTypedGroup<FlxSprite>();
 		add(strumLineNotes);
 
@@ -684,6 +686,8 @@ class PlayState extends MusicBeatState
 		FlxG.fixedTimestep = false;
 
 		healthBarBG = new FlxSprite(0, FlxG.height * 0.9).loadGraphic(Paths.image('healthBar'));
+		if (FlxG.save.data.downscroll)
+			healthBarBG.y = 50;
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
 		add(healthBarBG);
@@ -696,15 +700,17 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
-		missesTxt = new FlxText(healthBarBG.x + healthBarBG.width - 90, healthBarBG.y + 40, 0, "", 20);
-		missesTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+
+		missesTxt = new FlxText(healthBarBG.x + healthBarBG.width - 90, healthBarBG.y + 30, 0, "", 20);
+		missesTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		missesTxt.scrollFactor.set();
 		add(missesTxt);
-		chocoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 450, healthBarBG.y + 50, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
-		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+
+		chocoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 450, healthBarBG.y + 30, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
+		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		chocoTxt.scrollFactor.set();
 		add(chocoTxt);
 
@@ -1635,35 +1641,39 @@ class PlayState extends MusicBeatState
 					notes.remove(daNote, true);
 					daNote.destroy();
 				}
-
+				if (FlxG.save.data.downscroll)
+						daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (-0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
+					else
+						daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
+					//trace(daNote.y)
 				// WIP interpolation shit? Need to fix the pause issue
 				// daNote.y = (strumLine.y - (songTime - daNote.strumTime) * (0.45 * PlayState.SONG.speed));
 
-				if (daNote.y < -daNote.height && !FlxG.save.data.downscroll || daNote.y >= strumLine.y + 106 && FlxG.save.data.downscroll)
-				{
-					if (daNote.isSustainNote && daNote.wasGoodHit)
+				iif (daNote.y < -daNote.height && !FlxG.save.data.downscroll || daNote.y >= strumLine.y + 106 && FlxG.save.data.downscroll)
 					{
+						if (daNote.isSustainNote && daNote.wasGoodHit)
+						{
+							daNote.kill();
+							notes.remove(daNote, true);
+							daNote.destroy();
+						}
+						else
+						{
+							health -= 0.0475;
+							vocals.volume = 0;
+							if (theFunne)
+								noteMiss(daNote.noteData);
+						}
+	
+						daNote.active = false;
+						daNote.visible = false;
+	
 						daNote.kill();
 						notes.remove(daNote, true);
 						daNote.destroy();
 					}
-					else
-					{
-						health -= 0.0475;
-						vocals.volume = 0;
-						if (theFunne)
-							noteMiss(daNote.noteData);
-					}
-
-					daNote.active = false;
-					daNote.visible = false;
-
-					daNote.kill();
-					notes.remove(daNote, true);
-					daNote.destroy();
-				}
-			});
-		}
+				});
+			}
 
 		if (!inCutscene)
 			keyShit();
@@ -1974,8 +1984,8 @@ class PlayState extends MusicBeatState
 									if (controlArray[ignoreList[shit]])
 										inIgnoreList = true;
 								}
-								if (!inIgnoreList && !theFunne)
-								        badNoteCheck();
+								 if (!inIgnoreList)
+								 	     badNoteCheck();
 							}
 						}
 					}

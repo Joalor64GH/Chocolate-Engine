@@ -92,6 +92,15 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
+		if (FlxG.save.data.newInput == null)
+			FlxG.save.data.newInput = true;
+
+		if (FlxG.save.data.downscroll == null)
+			FlxG.save.data.downscroll = false;
+
+		if (FlxG.save.data.dfjk == null)
+			FlxG.save.data.dfjk = false;
+
 		FlxG.save.bind('funkin', 'joalor64gh');
 
 		Highscore.load();
