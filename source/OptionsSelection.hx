@@ -15,13 +15,12 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
 
-class OptionsMenu extends MusicBeatState
+class OptionsSelection extends MusicBeatState
 {
 	var selector:FlxText;
 	var curSelected:Int = 0;
 
 	var options:Array<Option> = [
-		new NewInputOption(),
 		new DownscrollOption()
 	];
 
@@ -137,28 +136,13 @@ class DownscrollOption extends Option
 {
 	public override function press():Bool
 	{
-		FlxG.save.data.downscroll = !FlxG.save.data.downscroll;
-		display = updateDisplay();
+		//FlxG.switchState(new OptionsMenu());
+		//display = updateDisplay();
 		return true;
 	}
 
 	private override function updateDisplay():String
 	{
-		return FlxG.save.data.downscroll ? "Downscroll" : "Upscroll";
-	}
-}
-
-class NewInputOption extends Option
-{
-	public override function press():Bool
-	{
-		FlxG.save.data.newInput = !FlxG.save.data.newInput;
-		display = updateDisplay();
-		return true;
-	}
-
-	private override function updateDisplay():String
-	{
-		return !FlxG.save.data.newInput ? "Old Input" : "New Input";
+		return "Preferences";
 	}
 }

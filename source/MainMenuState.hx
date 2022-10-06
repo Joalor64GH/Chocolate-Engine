@@ -33,8 +33,8 @@ class MainMenuState extends MusicBeatState
 		'mods',
 		#end
 		'donate', 
-		'credits'
-		//'options' //this is gonna use kade engine's 1.2 options menu
+		'credits',
+		'options'
 	];
 
 	var magenta:FlxSprite;
@@ -199,9 +199,9 @@ class MainMenuState extends MusicBeatState
 									case 'credits':
 										FlxG.switchState(new CreditsState());
 										trace("Credits Selected");
-									/*case 'options':
-										FlxG.switchState(new OptionsMenu());
-										trace("Options Selected");*/
+									case 'options':
+										FlxG.switchState(new OptionsSelection());
+										trace("Options Selected");
 								}
 							});
 						}

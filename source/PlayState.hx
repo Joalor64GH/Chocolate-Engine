@@ -122,6 +122,7 @@ class PlayState extends MusicBeatState
 	var talking:Bool = true;
 	public var songScore:Int = 0;
 	var scoreTxt:FlxText;
+	var missesTxt:FlxText;
 	var chocoTxt:FlxText;
 
 	public var deaths:Int = 0;
@@ -131,6 +132,9 @@ class PlayState extends MusicBeatState
 	var defaultCamZoom:Float = 1.05;
 
 	// how big to stretch the pixel art assets
+
+	public static var theFunne:Bool = true;
+
 	public static var daPixelZoom:Float = 6;
 
 	var inCutscene:Bool = false;
@@ -152,6 +156,7 @@ class PlayState extends MusicBeatState
 	{
         hornyScript.onCreate();
 
+        theFunne = FlxG.save.data.newInput;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
@@ -694,7 +699,11 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
-		chocoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 450, healthBarBG.y + 40, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
+		missesTxt = new FlxText(healthBarBG.x + healthBarBG.width - 90, healthBarBG.y + 40, 0, "", 20);
+		missesTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		missesTxt.scrollFactor.set();
+		add(missesTxt);
+		chocoTxt = new FlxText(healthBarBG.x + healthBarBG.width - 450, healthBarBG.y + 50, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
 		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		chocoTxt.scrollFactor.set();
 		add(chocoTxt);
@@ -714,6 +723,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		missesTxt.cameras = [camHUD];
 		chocoTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
@@ -1323,7 +1333,8 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score:" + songScore;
+		scoreTxt.text = "Score: " + songScore;
+		missesTxt.text = "Combo Breaks: " + misses;
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -1628,12 +1639,20 @@ class PlayState extends MusicBeatState
 				// WIP interpolation shit? Need to fix the pause issue
 				// daNote.y = (strumLine.y - (songTime - daNote.strumTime) * (0.45 * PlayState.SONG.speed));
 
-				if (daNote.y < -daNote.height)
+				if (daNote.y < -daNote.height && !FlxG.save.data.downscroll || daNote.y >= strumLine.y + 106 && FlxG.save.data.downscroll)
 				{
-					if (daNote.tooLate || !daNote.wasGoodHit)
+					if (daNote.isSustainNote && daNote.wasGoodHit)
+					{
+						daNote.kill();
+						notes.remove(daNote, true);
+						daNote.destroy();
+					}
+					else
 					{
 						health -= 0.0475;
 						vocals.volume = 0;
+						if (theFunne)
+							noteMiss(daNote.noteData);
 					}
 
 					daNote.active = false;
@@ -1955,8 +1974,8 @@ class PlayState extends MusicBeatState
 									if (controlArray[ignoreList[shit]])
 										inIgnoreList = true;
 								}
-								// if (!inIgnoreList)
-								// 	badNoteCheck();
+								if (!inIgnoreList && !theFunne)
+								        badNoteCheck();
 							}
 						}
 					}
@@ -1977,10 +1996,10 @@ class PlayState extends MusicBeatState
 					noteCheck(controlArray[daNote.noteData], daNote);
 				}
 			}
-			// else
-			// {
-			// 	badNoteCheck();
-			// }
+			else
+			{
+			 	badNoteCheck();
+			}
 		}
 
 		if ((up || right || down || left) && !boyfriend.stunned && generatedMusic)
@@ -2119,10 +2138,10 @@ class PlayState extends MusicBeatState
 	{
 		if (keyP)
 			goodNoteHit(note);
-		// else
-		// {
-		// 	badNoteCheck();
-		// }
+		else
+		{
+		 	badNoteCheck();
+		}
 	}
 
 	function goodNoteHit(note:Note):Void
