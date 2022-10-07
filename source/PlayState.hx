@@ -1916,6 +1916,11 @@ class PlayState extends MusicBeatState
 		curSection += 1;
 	}
 
+	var upHold:Bool = false;
+		var downHold:Bool = false;
+		var rightHold:Bool = false;
+		var leftHold:Bool = false;
+
 	private function keyShit():Void
 	{
 		// HOLDING
