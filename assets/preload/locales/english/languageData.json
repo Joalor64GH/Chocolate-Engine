@@ -1,0 +1,16 @@
+{
+    "difficulties": ["EASY", "NORMAL", "HARD"],
+    "personalBest": "PERSONAL BEST:",
+
+    "resumeSong": "Resume",
+	"restartSong": "Restart Song",
+	"exitFreeplay": "Exit to freeplay",
+	"exitMenu": "Exit to main menu",
+	"exitgame": "Close Game",
+	"blueballedTxt": "Blue balled:",
+	"backButton": "BACK",
+
+    "scoreTxt": "Score:",
+    "missesTxt": "Combo Breaks:",
+    "chocoTxt": "Acc:"
+}

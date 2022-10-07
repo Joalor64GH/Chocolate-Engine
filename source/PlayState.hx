@@ -1,5 +1,8 @@
 package;
 
+#if MODS_ALLOWED
+import modding.PolymodHandler.loadModMetadata
+#end
 #if desktop
 import Discord.DiscordClient;
 #end
