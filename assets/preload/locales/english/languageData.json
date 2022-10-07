@@ -8,9 +8,8 @@
 	"exitMenu": "Exit to main menu",
 	"exitgame": "Close Game",
 	"blueballedTxt": "Blue balled:",
-	"backButton": "BACK",
 
     "scoreTxt": "Score:",
     "missesTxt": "Combo Breaks:",
-    "chocoTxt": "Acc:"
+    "chocoTxt": "Chocolate Engine v"
 }

@@ -1,0 +1,15 @@
+{
+    "difficulties": ["FÁCIL", "NORMAL", "DURO"],
+    "personalBest": "MELHOR PESSOAL:",
+
+    "resumeSong": "Retomar",
+	"restartSong": "Reiniciar Música",
+	"exitFreeplay": "Sair para jogar grátis",
+	"exitMenu": "Sair para o menu principal",
+	"exitgame": "Fechar jogo",
+	"blueballedTxt": "Bola azul:",
+
+    "scoreTxt": "Pontuação:",
+    "missesTxt": "Quebras de combinação:",
+    "chocoTxt": "Chocolate Engine v:"
+}
