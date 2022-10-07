@@ -369,10 +369,8 @@ class AlphaCharacter extends FlxSprite
 	{
 		super(x, y);
 		this.textSize = textSize;
-		var tex = Paths.getSparrowAtlas('UI/default/base/alphabet');
+		var tex = Paths.getSparrowAtlas('alphabet');
 		frames = tex;
-
-		antialiasing = !Init.getSetting('Disable Antialiasing');
 	}
 
 	public function createBoldSymbol(letter:String)
