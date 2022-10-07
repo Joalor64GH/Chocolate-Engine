@@ -6,8 +6,7 @@ Smokey:Adobe Animate Texture Atlas Support
 Sqirra-RNG:Window Focus and Unfocus Code
 Leather128:Some Polymod Code
 stephensrt:Lots of Polymod Code and Mag Engine Code
-KadeDev:Extension WebM
+KadeDev:Extension WebM and Kade Engine Code
 Manux123:Cool Engine Code
-Juanen100:Options Menu
 Lars Doucet:Polymod
 Ninjamuffin99:Base Game

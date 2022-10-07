@@ -80,7 +80,12 @@ class ModPaths {
 	}
 
     inline static public function getModScripts(key:String, mod:String){
-        return getPath('scripts/$key', TEXT,mod);
+        return getPath('scripts/$key.hx', TEXT,mod);
+    }
+
+    inline static public function getModLocales(key:String, mod:String)
+    {
+        return getPath('locales/$language/languageData.json', TEXT,mod);
     }
 
     static public function getPath(file:String, type:AssetType, ?mod:String)
