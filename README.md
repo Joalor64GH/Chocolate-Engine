@@ -16,7 +16,8 @@ This is the repository for Chocolate Engine, which is basically a fork of the or
 * MP4 and WebM Video Support
 
 ## Things to get done
-* [X] Options **[Completed so they should work properly]**
+* [X] Options **[Completed]**
+* [ ] Fix the Main Menu Again for some reason
 * [ ] Support for Hscript, HX, HXS, and Lua Scripts
 * [ ] Multiple Languages Support
 
