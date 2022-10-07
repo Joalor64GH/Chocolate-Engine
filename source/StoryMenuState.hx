@@ -50,7 +50,7 @@ class StoryMenuState extends MusicBeatState
 		['senpai', 'bf', 'gf']
 	];
 
-	var weekNames:Array<String> = Assets.getText(Paths.txt('weekNames'));
+	var weekNames:Array<String> = CoolUtil.coolTextFile(Paths.txt('weekNames'));
 
 	var txtWeekTitle:FlxText;
 
