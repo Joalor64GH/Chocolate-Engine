@@ -82,18 +82,6 @@ class TitleState extends MusicBeatState
 				}
 			}
 		}
-
-		// Display active mods
-		var loadedMods = "";
-		for (modData in modMetadata)
-		{
-			loadedMods += modData.title + "";
-		}
-
-		var modText = new FlxText(5, 5, 0, "", 16);
-		modText.text = "Loaded Mods: " + loadedMods;
-		modText.color = FlxColor.WHITE;
-		add(modText);
 		#end
 
 		PlayerSettings.init();
