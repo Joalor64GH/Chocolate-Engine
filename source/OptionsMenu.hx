@@ -27,7 +27,7 @@ class OptionsMenu extends MusicBeatState
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
 		var english = FlxG.save.data.lang ? "English" : "Spanish";
 		var french = FlxG.save.data.lang ? "Portuguese" : "French";
-		controlsStrings = CoolUtil.coolStringFile((FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + "\n" + (FlxG.save.data.newInput ? "New input" : "Old Input") + "\n" + (english ? "English" : "Spanish" ? french ? "Portuguese" : "French"));
+		controlsStrings = CoolUtil.coolStringFile((FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + "\n" + (FlxG.save.data.newInput ? "New input" : "Old Input") + "\n" + (english ? "English" : "Spanish" : french ? "Portuguese" : "French"));
 		
 		trace(controlsStrings);
 
