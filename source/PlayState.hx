@@ -753,7 +753,7 @@ class PlayState extends MusicBeatState
 						blackScreen.scrollFactor.set();
 						camHUD.visible = false;
 
-					    new FlxTimer().start(0.1, function(tmr:FlxTimer)
+						new FlxTimer().start(0.1, function(tmr:FlxTimer)
 						{
 							remove(blackScreen);
 							FlxG.sound.play(Paths.sound('Lights_Turn_On'));
@@ -773,7 +773,7 @@ class PlayState extends MusicBeatState
 										startCountdown();
 									}
 								});
-							}
+							});
 						}); // this is why you don't copy & paste code joalor, because it causes problems like this
 					case 'senpai':
 						schoolIntro(doof);
