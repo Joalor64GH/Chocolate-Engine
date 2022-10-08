@@ -82,6 +82,18 @@ class TitleState extends MusicBeatState
 				}
 			}
 		}
+
+		// Display active mods
+		var loadedMods = "";
+		for (modData in modMetadata)
+		{
+			loadedMods += modData.title + "";
+		}
+
+		var modText = new FlxText(5, 5, 0, "", 16);
+		modText.text = "Loaded Mods: " + loadedMods;
+		modText.color = FlxColor.WHITE;
+		add(modText);
 		#end
 
 		PlayerSettings.init();
@@ -104,7 +116,7 @@ class TitleState extends MusicBeatState
 			if (FlxG.save.data.lang == null)
 			FlxG.save.data.lang = false;
 
-		FlxG.save.bind('funkin', 'joalor64gh');
+		FlxG.save.bind('chocolateengine', 'joalor64gh');
 
 		Highscore.load();
 

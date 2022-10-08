@@ -51,7 +51,6 @@ class Song
 			return null;
 		}
 		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
-        // how do i change this correctly for polymod??
 
 		while (!rawJson.endsWith("}"))
 		{
