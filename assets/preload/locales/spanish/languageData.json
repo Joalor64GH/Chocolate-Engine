@@ -2,11 +2,13 @@
     "difficulties": ["FÁCIL", "NORMAL", "DIFÍCIL"],
     "personalBest": "MEJOR MARCA PERSONAL:",
 
+    "pauseScoreTxt": "Score:",
     "resumeSong": "Reanudar",
 	"restartSong": "Reiniciar Canción",
 	"exitFreeplay": "Salir al juego libre",
+    "gotoOptions": "Opciones",
 	"exitMenu": "Salir al menú principal",
-	"exitgame": "Cerrar Juego",
+	"exitGame": "Cerrar Juego",
 	"deathsText": "Bola azul:",
 
     "scoreTxt": "Puntaje:",

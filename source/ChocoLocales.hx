@@ -11,11 +11,13 @@ typedef LangDataDef =
 	var personalBest:String;
 
 	// PAUSE MENU
+	var pauseScoreTxt:String;
 	var resumeSong:String;
 	var restartSong:String;
 	var exitFreeplay:String;
+	var gotoOptions:String;
 	var exitMenu:String;
-	var exitgame:String;
+	var exitGame:String;
 	var deathsText:String;
 	// HUD INFO BAR
 	var scoreTxt:String;
