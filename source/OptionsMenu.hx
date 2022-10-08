@@ -25,9 +25,7 @@ class OptionsMenu extends MusicBeatState
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
-		var english = FlxG.save.data.lang ? "English" : "Spanish";
-		var french = FlxG.save.data.lang ? "Portuguese" : "French";
-		controlsStrings = CoolUtil.coolStringFile((FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + "\n" + (FlxG.save.data.newInput ? "New input" : "Old Input") + "\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + "\n" + (english ? "English" : "Spanish" ? french ? "Portuguese" : "French"));
+		controlsStrings = CoolUtil.coolStringFile((FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + "\n" + (FlxG.save.data.newInput ? "New input" : "Old Input") + "\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + "\n" + (FlxG.save.data.lang ? "English" : "Spanish" : "Portuguese" : "French"));
 		
 		trace(controlsStrings);
 
@@ -111,6 +109,12 @@ class OptionsMenu extends MusicBeatState
 					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll'), true, false);
 					ctrl.isMenuItem = true;
 					ctrl.targetY = curSelected - 2;
+					grpControls.add(ctrl);
+				case 3:
+					FlxG.save.data.lang = !FlxG.save.data.lang;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.lang ? 'English' : 'Spanish' : 'Portuguese' : 'French'), true, false);
+					ctrl.isMenuItem = true;
+					ctrl.targetY = curSelected - 3;
 					grpControls.add(ctrl);
 			}
 		}
