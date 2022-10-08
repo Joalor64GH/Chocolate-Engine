@@ -3,6 +3,7 @@
 # FNF - Chocolate Engine
 
 This is the repository for Chocolate Engine, which is basically a fork of the original FNF.
+Not everything is perfect, so contributions and/or pull requests would be nice!
 
 ## Downloads
 * [itch.io](https://joalor64.itch.io/chocolate-engine)

@@ -6,9 +6,10 @@ import haxe.format.JsonParser;
 import lime.utils.Assets;
 // import openfl.utils.Assets as OpenFLAssets;
 
-#if MODS_ALLOWED
+#if sys
 import sys.io.File;
 import sys.FileSystem;
+import polymod.backends.PolymodAssets;
 #end
 
 using StringTools;
@@ -24,6 +25,8 @@ typedef SwagSong =
 	var player1:String;
 	var player2:String;
 	var validScore:Bool;
+
+	var cutscene:String;
 }
 
 class Song
@@ -46,11 +49,13 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		// TODO: make this work with polymod
-		if (!Assets.exists(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase()))) {
-			return null;
-		}
-		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
+		var rawJson:String = "";
+
+		#if sys
+		rawJson = PolymodAssets.getText(Paths.json(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
+		#else
+		rawJson = Assets.getText(Paths.json(folder.toLowerCase() + jsonInput.toLowerCase())).trim();
+		#end
 
 		while (!rawJson.endsWith("}"))
 		{

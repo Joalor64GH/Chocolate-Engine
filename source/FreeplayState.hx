@@ -13,9 +13,10 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
 
-#if MODS_ALLOWED
+#if sys
 import sys.io.File;
 import sys.FileSystem;
+import polymod.backends.PolymodAssets;
 #end
 
 using StringTools;
@@ -40,7 +41,13 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+		var initSonglist:String = "";
+
+		#if sys
+        initSonglist = PolymodAssets.getText(Paths.txt('freeplaySonglist'));
+		#else
+		initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
+		#end
 
 		for (i in 0...initSonglist.length)
 		{
