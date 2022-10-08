@@ -1,6 +1,7 @@
 package modding;
 
 import flixel.FlxG;
+import haxe.Json;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenflAssets;
 

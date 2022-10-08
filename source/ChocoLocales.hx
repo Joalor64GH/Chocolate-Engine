@@ -16,7 +16,7 @@ typedef LangDataDef =
 	var exitFreeplay:String;
 	var exitMenu:String;
 	var exitgame:String;
-	var blueballedTxt:String;
+	var deathsText:String;
 	// HUD INFO BAR
 	var scoreTxt:String;
 	var missTxt:String;
