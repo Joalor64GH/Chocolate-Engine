@@ -41,13 +41,7 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		var initSonglist:String = "";
-
-		#if sys
-        initSonglist = PolymodAssets.getText(Paths.txt('freeplaySonglist'));
-		#else
-		initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
-		#end
+		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
 		for (i in 0...initSonglist.length)
 		{
