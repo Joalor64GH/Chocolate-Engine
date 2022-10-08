@@ -773,6 +773,7 @@ class PlayState extends MusicBeatState
 										startCountdown();
 									}
 								});
+							}
 						});
 					}
 					case 'senpai':
