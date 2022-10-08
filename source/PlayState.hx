@@ -774,7 +774,7 @@ class PlayState extends MusicBeatState
 									}
 								});
 							}
-						});
+						}); // this is why you don't copy & paste code joalor, because it causes problems like this
 					case 'senpai':
 						schoolIntro(doof);
 					case 'roses':
