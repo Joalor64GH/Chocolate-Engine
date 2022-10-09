@@ -39,7 +39,6 @@
 
 	<!--CUSTOM DEFINES-->
 	<define name="DVD_PLUGIN" if="windows || mac"/>
-	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
 	<define name="WEBM_EXTENSION" if="windows || mac"/>
 	<define name="MODS_ALLOWED" if="desktop" />
 	<define name="LUA_EXTENSION" if="desktop" />
@@ -132,7 +131,6 @@
 	<haxelib name="flixel-ui" />
 	<haxelib name="linc_luajit" if="LUA_EXTENSION"/>
 	<haxelib name="hxCodec" if="VIDEO_PLUGIN"/>
-	<haxelib name="hxDVD" if="DVD_PLUGIN"/>
 	<haxelib name="polymod" if="MODS_ALLOWED"/>
 	<!--<haxelib name="firetounge" />-->
 	<haxelib name="discord_rpc" if="desktop"/>

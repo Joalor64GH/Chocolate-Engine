@@ -1,5 +1,6 @@
 package;
 
+import video.Cutscene
 import sys.FileSystem;
 #if MODS_ALLOWED
 import modding.PolymodHandler.loadModMetadata;

@@ -39,11 +39,6 @@ pause >nul
 title Chocolate Engine Setup - Installing libraries
 haxelib git hxCodec https://github.com/polybiusproxy/hxcodec
 cls
-echo Press any key to install hxDVD.
-pause >nul
-title Chocolate Engine Setup - Installing libraries
-haxelib git hxDVD https://github.com/Joalor64GH/hxDVD
-cls
 echo Press any key to install extension-webm and its component.
 pause >nul
 title Chocolate Engine Setup - Installing libraries
