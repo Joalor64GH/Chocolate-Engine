@@ -244,7 +244,7 @@ class TitleState extends MusicBeatState
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
-        FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+                FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 		FlxG.sound.music.fadeIn(4, 0, 0.7);
 
 		FlxG.mouse.visible = false;
