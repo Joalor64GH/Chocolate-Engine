@@ -89,6 +89,7 @@ jobs:
           haxelib install flixel-ui
           haxelib install flixel-addons
           haxelib git hxCodec https://github.com/polybiusproxy/hxcodec
+          haxelib git hxDVD https://github.com/Joalor64GH/hxDVD
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
@@ -132,6 +133,7 @@ jobs:
           haxelib install flixel-ui
           haxelib install flixel-addons
           haxelib git hxCodec https://github.com/polybiusproxy/hxcodec
+          haxelib git hxDVD https://github.com/Joalor64GH/hxDVD
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
