@@ -16,7 +16,6 @@ import lime.utils.Assets;
 #if sys
 import sys.io.File;
 import sys.FileSystem;
-import polymod.backends.PolymodAssets;
 #end
 
 using StringTools;
@@ -39,18 +38,17 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
+	var initSonglist:Dynamic;
+
 	override function create()
 	{
-		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
-
-		if (Assets.exists(Paths.txt('freeplaySonglist')))
+		if (FileSystem.exists(ModPaths.getModJson('data/freeplaySonglist')) && FileSystem.exists(Paths.txt('data/freeplaySonglist')))
 		{
-			initSonglist = Assets.getText(Paths.txt('freeplaySonglist')).trim().split('\n');
-
-			for (i in 0...initSonglist.length)
-			{
-				initSonglist[i] = initSonglist[i].trim();
-			}
+			initSonglist = CoolUtil.evenCoolerTextFile(ModPaths.getModJson('data/freeplaySonglist'));
+		}
+		else
+		{
+			initSonglist = CoolUtil.coolTextFile(Paths.txt('data/freeplaySonglist'));
 		}
 
 		for (i in 0...initSonglist.length)
