@@ -43,6 +43,16 @@ class FreeplayState extends MusicBeatState
 	{
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
+		if (Assets.exists(Paths.txt('freeplaySonglist')))
+		{
+			initSonglist = Assets.getText(Paths.txt('freeplaySonglist')).trim().split('\n');
+
+			for (i in 0...initSonglist.length)
+			{
+				initSonglist[i] = initSonglist[i].trim();
+			}
+		}
+
 		for (i in 0...initSonglist.length)
 		{
 			var data:Array<String> = initSonglist[i].split(':');
