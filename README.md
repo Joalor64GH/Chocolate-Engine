@@ -18,9 +18,11 @@ Not everything is perfect, so contributions and/or pull requests would be nice!
 
 ## Things to get done
 * [X] Options **[Completed]**
+* [X] Multiple Languages Support **[Beta]**
+* [ ] Support for Hscript, HXS, and Lua Scripts **[HX Finished]**
 * [ ] Fix the Main Menu Again for some reason
-* [ ] Support for Hscript, HX, HXS, and Lua Scripts
-* [ ] Multiple Languages Support
+* [ ] Fix the Score HUD
+* [ ] Attempt to softcode characters
 
 ## Credits
 
