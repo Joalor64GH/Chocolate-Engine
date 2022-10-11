@@ -1,0 +1,17 @@
+{
+    "difficulties": ["EASY", "NORMAL", "HARD"],
+    "personalBest": "PERSONAL BEST:",
+
+    "pauseScoreTxt": "Score:",
+    "resumeSong": "Resume",
+	"restartSong": "Restart Song",
+	"exitFreeplay": "Exit to freeplay",
+    "gotoOptions": "Options",
+	"exitMenu": "Exit to main menu",
+	"exitGame": "Close Game",
+	"deathsText": "Blue balled:",
+
+    "scoreTxt": "Score:",
+    "missesTxt": "Combo Breaks:",
+    "chocoTxt": "Chocolate Engine v"
+}
