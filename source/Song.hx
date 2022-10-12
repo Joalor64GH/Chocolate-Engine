@@ -48,26 +48,26 @@ class Song
 	{
 		var rawJson = "";
 
-        if (rawJson == null)
-		{
-			try {
-				#if sys
-				rawJson = File.getContent(Paths.json(jsonInput.toLowerCase())).trim();
-				#else
-				rawJson = Assets.getText(Paths.json(jsonInput.toLowerCase())).trim();
-				#end
-			}
-			catch (e:Dynamic){
-				trace("Error loading from Json: " + e.message);
-				return null;
-			}
+		try {
+			#if sys
+			rawJson = File.getContent(Paths.json(jsonInput.toLowerCase())).trim();
+			#else
+			rawJson = Assets.getText(Paths.json(jsonInput.toLowerCase())).trim();
+			#end
+		}
+		catch (e:Dynamic){
+			trace("Error loading from Json: " + e.message);
+			return null;
 		}
 
 		while (!rawJson.endsWith("}"))
 		{
 			rawJson = rawJson.substr(0, rawJson.length - 1);
 		}
-		return parseJSONshit(rawJson);
+		if (rawJson != null)
+			return parseJSONshit(rawJson);
+		else
+			return null;
 	}
 
 	public static function parseJSONshit(rawJson:String):SwagSong
