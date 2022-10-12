@@ -77,7 +77,22 @@ class ModPaths {
 	}
     
     inline static public function getModImage(key:String, mod:String){
-		return getPath('data/$key.json', IMAGE, mod);
+		return getPath('images/$key.png', IMAGE, mod);
+	}
+
+    inline static public function sharedModImage(key:String,mod:String)
+	{
+        return getPath('shared/images/$key.png',BINARY,mod);
+	}
+
+    inline static public function sharedModMusic(key:String,mod:String)
+	{
+        return getPath('shared/music/$key.$SOUND_EXT',MUSIC, mod);
+	}
+
+    static public function sharedModSound(key:String, mod:String)
+	{
+		return getPath('shared/sounds/$key.$SOUND_EXT', SOUND, mod);
 	}
 
     inline static public function getModFont(key:String,mod:String)
@@ -92,6 +107,11 @@ class ModPaths {
     inline static public function getModLocales(key:String, mod:String)
     {
         return getPath('locales/$key/languageData.json', TEXT,mod);
+    }
+
+    inline static public function getModCutscenes(key:String, mod:String)
+    {
+        return getPath('cutscenes/$key.json', TEXT,mod);
     }
 
     static public function getPath(file:String, type:AssetType, ?mod:String)
@@ -114,5 +134,10 @@ class ModPaths {
     inline static public function getSparrowAtlas(key:String, ?mod:String)
     {
         return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), getPath('images/$key.xml', TEXT, mod));
+    }
+
+    inline static public function sharedSparrowAtlas(key:String, ?mod:String)
+    {
+        return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(sharedModImage(key, mod), getPath('shared/images/$key.xml', TEXT, mod));
     }
 }
