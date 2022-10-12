@@ -124,8 +124,7 @@ class MainMenuState extends MusicBeatState
 	var selectedSomethin:Bool = false;
 
 	override function update(elapsed:Float)
-	{
-		
+	{	
 		MMScript.onUpdate();
 
 		if (FlxG.sound.music.volume < 0.8)
