@@ -14,6 +14,10 @@ class ModPaths {
 		return getPath('$mod/_polymod_icon.png', IMAGE, mod);
 	}
 
+    inline static public function appendTxt(key:String, ?mod:String){
+        return getPath('_append/data/$key.txt',TEXT,mod);
+    }
+
     inline static public function getModTxt(key:String, ?mod:String){
         return getPath('data/$key.txt',TEXT,mod);
     }
