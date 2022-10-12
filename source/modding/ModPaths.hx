@@ -6,8 +6,7 @@ import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenflAssets;
 
 class ModPaths {
-    @:privateAccess
-    static final currentLevel:String = Paths.currentLevel;
+    @:privateAccess static final currentLevel:String = Paths.currentLevel;
 
     private static final SOUND_EXT = Paths.SOUND_EXT;
 
@@ -15,7 +14,7 @@ class ModPaths {
 		return getPath('$mod/_polymod_icon.png', IMAGE, mod);
 	}
 
-    inline static public function getModTxt(key:String, mod:String){
+    inline static public function getModTxt(key:String, ?mod:String){
         return getPath('data/$key.txt',TEXT,mod);
     }
 
