@@ -88,7 +88,7 @@ class ModPaths {
 
     inline static public function getModLocales(key:String, mod:String)
     {
-        return getPath('locales/$language/languageData.json', TEXT,mod);
+        return getPath('locales/$key/languageData.json', TEXT,mod);
     }
 
     static public function getPath(file:String, type:AssetType, ?mod:String)
