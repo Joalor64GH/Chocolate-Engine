@@ -123,7 +123,6 @@ class PlayState extends MusicBeatState
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 
-	var talking:Bool = true;
 	public var songScore:Int = 0;
 	var scoreTxt:FlxText;
 	var missesTxt:FlxText;
@@ -888,7 +887,6 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 
-		talking = false;
 		startedCountdown = true;
 		Conductor.songPosition = 0;
 		Conductor.songPosition -= Conductor.crochet * 5;
