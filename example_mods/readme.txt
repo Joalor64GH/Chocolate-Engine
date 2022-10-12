@@ -1,2 +1,2 @@
-THIS MOD FOLDER DOES NOT ENTIRELY WORK JUST YET!!!
-DONT EXPECT MUCH OUT OF IT RIGHT NOW!!!
+Your mods go here!
+Make sure they include _polymod_icon.png and _polymod_meta.json!
