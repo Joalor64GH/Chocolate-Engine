@@ -6,7 +6,6 @@ import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenflAssets;
 
 class ModPaths {
-    @:privateAccess
     static final currentLevel:String = Paths.currentLevel;
 
     private static final SOUND_EXT = Paths.SOUND_EXT;
