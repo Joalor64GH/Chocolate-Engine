@@ -46,7 +46,7 @@ class FreeplayState extends MusicBeatState
 		{
 			initSonglist = CoolUtil.evenCoolerTextFile(modding.ModPaths.getModTxt('data/freeplaySonglist'));
 		}
-		else if FileSystem.exists(Paths.txt('data/freeplaySonglist'))
+		else if (FileSystem.exists(Paths.txt('data/freeplaySonglist')))
 		{
 			initSonglist = CoolUtil.coolTextFile(Paths.txt('data/freeplaySonglist'));
 		}
