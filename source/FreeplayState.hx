@@ -42,11 +42,11 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-		if (FileSystem.exists(modding.ModPaths.getModTxt('data/freeplaySonglist')) && FileSystem.exists(Paths.txt('data/freeplaySonglist')))
+		if (FileSystem.exists(modding.ModPaths.getModTxt('data/freeplaySonglist')))
 		{
 			initSonglist = CoolUtil.evenCoolerTextFile(modding.ModPaths.getModTxt('data/freeplaySonglist'));
 		}
-		else
+		else if FileSystem.exists(Paths.txt('data/freeplaySonglist'))
 		{
 			initSonglist = CoolUtil.coolTextFile(Paths.txt('data/freeplaySonglist'));
 		}
