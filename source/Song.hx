@@ -50,11 +50,17 @@ class Song
 
         if (rawJson == null)
 		{
-		    #if sys
-		    rawJson = File.getContent(Paths.json(jsonInput.toLowerCase())).trim();
-		    #else
-		    rawJson = Assets.getText(Paths.json(jsonInput.toLowerCase())).trim();
-		    #end
+			try {
+				#if sys
+				rawJson = File.getContent(Paths.json(jsonInput.toLowerCase())).trim();
+				#else
+				rawJson = Assets.getText(Paths.json(jsonInput.toLowerCase())).trim();
+				#end
+			}
+			catch (e:Dynamic){
+				trace("Error loading from Json: " + e.message);
+				return null;
+			}
 		}
 
 		while (!rawJson.endsWith("}"))
