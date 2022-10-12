@@ -64,10 +64,7 @@ class Song
 		{
 			rawJson = rawJson.substr(0, rawJson.length - 1);
 		}
-		if (rawJson != null)
-			return parseJSONshit(rawJson);
-		else
-			return null;
+		return parseJSONshit(rawJson);
 	}
 
 	public static function parseJSONshit(rawJson:String):SwagSong
