@@ -47,6 +47,8 @@ class Main extends Sprite
 		// code by sqirra-rng for izzy engine
 		Application.current.window.onFocusOut.add(onWindowFocusOut);
 		Application.current.window.onFocusIn.add(onWindowFocusIn);
+
+		FlxG.fixedTimestep = false;		
 	}
 
 	function onWindowFocusOut()
