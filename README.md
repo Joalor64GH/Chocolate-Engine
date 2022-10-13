@@ -22,6 +22,7 @@ Not everything is perfect, so contributions and/or pull requests would be nice!
 * [ ] Support for Hscript, HXS, and Lua Scripts **[HX Finished]**
 * [ ] Fix the Main Menu Again for some reason
 * [ ] Fix the Score HUD
+* [ ] Attempt to softcode stages
 * [ ] Attempt to softcode characters
 
 ## Credits

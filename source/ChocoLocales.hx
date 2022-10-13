@@ -23,6 +23,10 @@ typedef LangDataDef =
 	var scoreTxt:String;
 	var missTxt:String;
 	var chocoTxt:String;
+	// OTHER STUFF
+	var useCustomFont:Bool;
+	var fontPath:String;
+	var fontKey:String;
 }
 
 /*
