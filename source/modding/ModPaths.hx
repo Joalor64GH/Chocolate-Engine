@@ -28,7 +28,7 @@ class ModPaths {
     }
 
     inline static public function getModJson(key:String, mod:String){
-            return getPath('data/${song.toLowerCase()}/$key.json',TEXT,mod);
+            return getPath('data/$key.json',TEXT,mod);
     }
     
         static public function getModSound(key:String, mod:String)
@@ -80,21 +80,6 @@ class ModPaths {
 		return getPath('images/$key.png', IMAGE, mod);
 	}
 
-        inline static public function sharedModImage(key:String,mod:String)
-	{
-        return getPath('shared/images/$key.png', IMAGE,mod);
-	}
-
-        inline static public function sharedModMusic(key:String,mod:String)
-	{
-        return getPath('shared/music/$key.$SOUND_EXT',MUSIC, mod);
-	}
-
-        static public function sharedModSound(key:String, mod:String)
-	{
-		return getPath('shared/sounds/$key.$SOUND_EXT', SOUND, mod);
-	}
-
         inline static public function getModFont(key:String,mod:String)
 	{
         return getPath('fonts/$key',BINARY,mod);
@@ -136,8 +121,8 @@ class ModPaths {
         return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), getPath('images/$key.xml', TEXT, mod));
     }
 
-    inline static public function sharedSparrowAtlas(key:String, ?mod:String)
+    inline static public function getPackerAtlas(key:String, ?mod:String)
     {
-        return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(sharedModImage(key, mod), getPath('shared/images/$key.xml', TEXT, mod));
+        return FlxAtlasFrames.fromSpriteSheetPacker(getModImage(key, mod), getPath('images/$key.txt', TEXT, mod));
     }
 }

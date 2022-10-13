@@ -111,6 +111,16 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
+    inline static public function locales(key:String, mod:String)
+    {
+        return getPath('locales/$key/languageData.json', TEXT, library);
+    }
+
+    inline static public function cutscenes(key:String, mod:String)
+    {
+        return getPath('cutscenes/$key.json', TEXT, library);
+    }
+
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
