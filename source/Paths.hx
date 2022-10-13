@@ -111,12 +111,12 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-    inline static public function locales(key:String, mod:String)
+    inline static public function locales(key:String, ?library:String)
     {
         return getPath('locales/$key/languageData.json', TEXT, library);
     }
 
-    inline static public function cutscenes(key:String, mod:String)
+    inline static public function cutscene(key:String, ?library:String)
     {
         return getPath('cutscenes/$key.json', TEXT, library);
     }
