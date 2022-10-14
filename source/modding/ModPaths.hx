@@ -16,7 +16,7 @@ class ModPaths {
     }
 
     inline static public function appendTxt(key:String, ?mod:String){
-        return getPath('$mod/_append/data/$key.txt',TEXT,mod);
+        return getPath('_append/data/$key.txt',TEXT,mod);
     }
 
     inline static public function getModTxt(key:String, ?mod:String){
