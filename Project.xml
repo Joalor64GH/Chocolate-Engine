@@ -164,9 +164,6 @@
 	<!--No DCE is performed-->
 	<haxeflag name="-dce no" />
 
-	<!--Hscript Power go brrr-->
-	<haxeflag name="--macro" value="macros.Includes.run()" />
-
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
