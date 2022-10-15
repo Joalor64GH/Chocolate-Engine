@@ -155,6 +155,17 @@
 
 	<!-- Defines whether the Mods menu will display before launching. Will be used later on.-->
         <haxedef name="FEATURE_MODCORE" if="desktop" />
+	
+	<!-- Da Script Extension for Polymod -->
+	<haxedef name="POLYMOD_SCRIPT_EXT" value=".hx" />
+	
+	<!-- ______________________________ Haxe Flags _____________________________ -->
+
+	<!--No DCE is performed-->
+	<haxeflag name="-dce no" />
+
+	<!--Hscript Power go brrr-->
+	<haxeflag name="--macro" value="macros.Includes.run()" />
 
 	<!-- _________________________________ Custom _______________________________ -->
 
