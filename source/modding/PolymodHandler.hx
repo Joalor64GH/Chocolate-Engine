@@ -25,7 +25,7 @@ class PolymodHandler
 					"songs" => "songs",
 					"shared" => "shared",
 					"fonts" => "fonts",
-                    "tutorial" => "tutorial",
+                                        "tutorial" => "tutorial",
 					"week1" => "week1",
 					"week2" => "week2",
 					"week3" => "week3",
