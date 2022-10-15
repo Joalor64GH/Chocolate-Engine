@@ -18,17 +18,17 @@ Not everything is perfect, so contributions and/or pull requests would be nice!
 
 ## Things to get done
 * [X] Options **[Completed]**
+* [X] Fix the Main Menu Again for some reason **[Completed]**
+* [X] Fix the Score HUD **[Somewhat Completed]**
 * [X] Multiple Languages Support **[Beta]**
-* [ ] Support for Hscript, HXS, and Lua Scripts **[HX Finished]**
-* [ ] Fix the Main Menu Again for some reason
-* [ ] Fix the Score HUD
+* [ ] Support for Hscript, HXS, and Lua Scripts
 * [ ] Attempt to softcode stages
 * [ ] Attempt to softcode characters
 
 ## Credits
 
 * [Joalor64 YT](https://www.youtube.com/channel/UC4tRMRL_iAHX5n1qQpHibfg) - Main Programmer and Director
-* [MemeHoovy](https://linktr.ee/memehoovy) - Assistant Coder
+* [MemeHoovy](https://linktr.ee/memehoovy) - Assistant Coder and MemeHoovy Engine Code
 * [ShadowMario](https://github.com/ShadowMario) - Psych Input
 * [PolybiusProxy](https://github.com/polybiusproxy) - MP4 Video Support
 * [Smokey](https://twitter.com/Smokey_5_) - Adobe Animate Texture Atlas Support

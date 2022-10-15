@@ -48,6 +48,12 @@ class ModPaths {
 		return getPath('videos/$key.mp4', BINARY, mod);
 	}
 
+    inline static public function getModWebm(key:String, mod:String)
+	{
+		trace('mods/$mod/videos/$key.webm');
+		return getPath('videos/$key.webm', BINARY, mod);
+	}
+
         inline static public function getModMusic(key:String, mod:String)
 	{
 		return getPath('music/$key.$SOUND_EXT',MUSIC, mod);

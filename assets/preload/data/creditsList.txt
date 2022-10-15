@@ -1,5 +1,5 @@
 Joalor64 YT:Main Programmer and Director
-MemeHoovy:Assistant Coder
+MemeHoovy:Assistant Coder and MemeHoovy Engine Code
 ShadowMario:Psych Input
 PolybiusProxy:MP4 Video Support
 Smokey:Adobe Animate Texture Atlas Support

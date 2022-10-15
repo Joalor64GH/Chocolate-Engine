@@ -52,7 +52,7 @@ class TitleState extends MusicBeatState
 	var ngSpr:FlxSprite;
 
 	var curWacky:Array<String> = [];
-
+    var gameName:Array<String> = [];
 	var wackyImage:FlxSprite;
 
 	override public function create():Void
@@ -87,6 +87,7 @@ class TitleState extends MusicBeatState
 		PlayerSettings.init();
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
+		gameName = getName();
 
 		// DEBUG BULLSHIT
 
@@ -271,6 +272,14 @@ class TitleState extends MusicBeatState
 
 		return swagGoodArray;
 	}
+	
+	function getName():Array<String>
+	{
+		var fullText:String = Assets.getText(Paths.txt('gameName'));
+
+		var firstArray:Array<String> = fullText.split('--');
+		return firstArray;
+	}
 
 	var transitioning:Bool = false;
 
@@ -381,7 +390,8 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['Joalor64 YT', 'MemeHoovy']);
+				var teamStuff = Assets.getText(Paths.txt('team')).split('--');
+				createCoolText(teamStuff);
 			// credTextShit.visible = true;
 			case 3:
 				addMoreText('present');
@@ -417,13 +427,13 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Friday Night Funkin');
+				addMoreText(gameName[0]);
 			// credTextShit.visible = true;
 			case 14:
-				addMoreText('Chocolate');
+				addMoreText(gameName[1]);
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Engine'); // credTextShit.text += '\nFunkin';
+				addMoreText(gameName[2]); // credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();

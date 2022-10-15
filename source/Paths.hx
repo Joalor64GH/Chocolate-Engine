@@ -86,6 +86,12 @@ class Paths
 		return getPath('videos/$key.mp4', BINARY, library);
 	}
 
+	inline static public function webm(key:String, ?library:String)
+	{
+		trace('assets/videos/$key.webm');
+		return getPath('videos/$key.webm', BINARY, library);
+	}
+
 	inline static public function music(key:String, ?library:String)
 	{
 		return getPath('music/$key.$SOUND_EXT', MUSIC, library);

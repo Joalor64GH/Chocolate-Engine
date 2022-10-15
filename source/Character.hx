@@ -1,5 +1,6 @@
 package;
 
+import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
@@ -20,6 +21,7 @@ class Character extends FlxSprite
 	public var curCharacter:String = 'bf';
 
 	public var holdTimer:Float = 0;
+	public var hpcolor:FlxColor;
 
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
@@ -66,6 +68,8 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
+				hpcolor = 0xFFA5004D;
+
 			case 'gf-christmas':
 				tex = Paths.getSparrowAtlas('christmas/gfChristmas');
 				frames = tex;
@@ -97,6 +101,8 @@ class Character extends FlxSprite
 
 				playAnim('danceRight');
 
+				hpcolor = 0xFFA5004D;
+
 			case 'gf-car':
 				tex = Paths.getSparrowAtlas('gfCar');
 				frames = tex;
@@ -109,6 +115,8 @@ class Character extends FlxSprite
 				addOffset('danceRight', 0);
 
 				playAnim('danceRight');
+
+				hpcolor = 0xFFA5004D;
 
 			case 'gf-pixel':
 				tex = Paths.getSparrowAtlas('weeb/gfPixel');
@@ -143,6 +151,8 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 0, -30);
 
 				playAnim('idle');
+
+				hpcolor = 0xFFAF66CE;
 			case 'spooky':
 				tex = Paths.getSparrowAtlas('spooky_kids_assets');
 				frames = tex;
@@ -162,6 +172,8 @@ class Character extends FlxSprite
 				addOffset("singDOWN", -50, -130);
 
 				playAnim('danceRight');
+
+				hpcolor = 0xFFD57E00;
 			case 'mom':
 				tex = Paths.getSparrowAtlas('Mom_Assets');
 				frames = tex;
@@ -182,6 +194,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
+                hpcolor = 0xFFD8558E;
 			case 'mom-car':
 				tex = Paths.getSparrowAtlas('momCar');
 				frames = tex;
@@ -201,6 +214,8 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 20, -160);
 
 				playAnim('idle');
+
+				hpcolor = 0xFFD8558E;
 			case 'monster':
 				tex = Paths.getSparrowAtlas('Monster_Assets');
 				frames = tex;
@@ -216,6 +231,8 @@ class Character extends FlxSprite
 				addOffset("singLEFT", -30);
 				addOffset("singDOWN", -30, -40);
 				playAnim('idle');
+
+				hpcolor = 0xFFF3FF6E;
 			case 'monster-christmas':
 				tex = Paths.getSparrowAtlas('christmas/monsterChristmas');
 				frames = tex;
@@ -231,6 +248,8 @@ class Character extends FlxSprite
 				addOffset("singLEFT", -30);
 				addOffset("singDOWN", -40, -94);
 				playAnim('idle');
+
+				hpcolor = 0xFFF3FF6E;
 			case 'pico':
 				tex = Paths.getSparrowAtlas('Pico_FNF_assetss');
 				frames = tex;
@@ -270,6 +289,7 @@ class Character extends FlxSprite
 
 				flipX = true;
 
+                hpcolor = 0xFFB7D855;
 			case 'bf':
 				var tex = Paths.getSparrowAtlas('BOYFRIEND');
 				frames = tex;
@@ -309,6 +329,7 @@ class Character extends FlxSprite
 
 				flipX = true;
 
+                hpcolor = 0xFF31B0D1;
 			case 'bf-christmas':
 				var tex = Paths.getSparrowAtlas('christmas/bfChristmas');
 				frames = tex;
@@ -337,6 +358,8 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				flipX = true;
+
+				hpcolor = 0xFF31B0D1;
 			case 'bf-car':
 				var tex = Paths.getSparrowAtlas('bfCar');
 				frames = tex;
@@ -362,6 +385,8 @@ class Character extends FlxSprite
 				playAnim('idle');
 
 				flipX = true;
+
+				hpcolor = 0xFF31B0D1;
 			case 'bf-pixel':
 				frames = Paths.getSparrowAtlas('weeb/bfPixel');
 				animation.addByPrefix('idle', 'BF IDLE', 24, false);
@@ -395,6 +420,8 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 				flipX = true;
+
+				hpcolor = 0xFF7BD6F6;
 			case 'bf-pixel-dead':
 				frames = Paths.getSparrowAtlas('weeb/bfPixelsDEAD');
 				animation.addByPrefix('singUP', "BF Dies pixel", 24, false);
@@ -433,6 +460,8 @@ class Character extends FlxSprite
 				updateHitbox();
 
 				antialiasing = false;
+
+				hpcolor = 0xFFFFAA6F;
 			case 'senpai-angry':
 				frames = Paths.getSparrowAtlas('weeb/senpai');
 				animation.addByPrefix('idle', 'Angry Senpai Idle', 24, false);
@@ -453,6 +482,7 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+                hpcolor = 0xFFFFAA6F;
 			case 'spirit':
 				frames = Paths.getPackerAtlas('weeb/spirit');
 				animation.addByPrefix('idle', "idle spirit_", 24, false);
@@ -474,6 +504,7 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
+                hpcolor = 0xFFFFAA6F;
 			case 'parents-christmas':
 				frames = Paths.getSparrowAtlas('christmas/mom_dad_christmas_assets');
 				animation.addByPrefix('idle', 'Parent Christmas Idle', 24, false);
@@ -499,6 +530,8 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", -30, -27);
 
 				playAnim('idle');
+
+				hpcolor = 0xFFAF66CE;
 		}
 
 		dance();

@@ -224,6 +224,16 @@ class ChartingState extends MusicBeatState
 
 		var characters:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
 
+		if (Assets.exists(Paths.txt('characterList')))
+		{
+			characters = Assets.getText(Paths.txt('characterList')).trim().split('\n');
+
+			for (i in 0...characters.length)
+			{
+				characters[i] = characters[i].trim();
+			}
+		}
+
 		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player1 = characters[Std.parseInt(character)];

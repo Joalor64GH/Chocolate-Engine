@@ -1,10 +1,5 @@
-Multiple Languages Support
 Hscript Support
 Lua Support
 HXS Support
-Adjust FreeplayState.hx for Polymod
-Adjust Song.hx for Polymod
-Adjust StoryMenuState.hx for Polymod
-Fix the Main Menu and Score HUD
 Softcode Stages
 Softcode Characters
