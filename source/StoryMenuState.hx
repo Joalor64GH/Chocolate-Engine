@@ -52,16 +52,6 @@ class StoryMenuState extends MusicBeatState
 
 	var weekNames:Array<String> = CoolUtil.coolTextFile(Paths.txt('weekNames'));
 
-	if (Assets.exists(Paths.txt('weekNames')))
-		{
-			weekNames = Assets.getText(Paths.txt('weekNames')).trim().split('\n');
-
-			for (i in 0...weekNames.length)
-			{
-				weekNames[i] = weekNames[i].trim();
-			}
-		}
-
 	var txtWeekTitle:FlxText;
 
 	var curWeek:Int = 0;
