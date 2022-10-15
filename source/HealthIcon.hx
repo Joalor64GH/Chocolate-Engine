@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxSprite;
+import openfl.utils.Assets;
 
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssetLibrary;
@@ -8,40 +9,47 @@ import polymod.Polymod;
 import polymod.backends.PolymodAssets;
 #end
 
+using StringTools;
+
 class HealthIcon extends FlxSprite
 {
 	/**
 	 * Used for FreeplayState! If you use it elsewhere, prob gonna annoying
+	 * I wouldn't count on that ninjamuffin99
 	 */
 	public var sprTracker:FlxSprite;
+
+	public var char:String;
+	public var isPlayer:Bool = false;
+	public var isOldIcon:Bool = false;
 
 	public function new(char:String = 'bf', isPlayer:Bool = false)
 	{
 		super();
-		loadGraphic(Paths.image('iconGrid'), true, 150, 150);
-
+		this.isPlayer = isPlayer;
+		changeIcon(char);
 		antialiasing = true;
-		animation.add('bf', [0, 1], 0, false, isPlayer);
-		animation.add('bf-car', [0, 1], 0, false, isPlayer);
-		animation.add('bf-christmas', [0, 1], 0, false, isPlayer);
-		animation.add('bf-pixel', [21], 0, false, isPlayer);
-		animation.add('spooky', [2, 3], 0, false, isPlayer);
-		animation.add('pico', [4, 5], 0, false, isPlayer);
-		animation.add('mom', [6, 7], 0, false, isPlayer);
-		animation.add('mom-car', [6, 7], 0, false, isPlayer);
-		animation.add('tankman', [8, 9], 0, false, isPlayer);
-		animation.add('face', [10, 11], 0, false, isPlayer);
-		animation.add('dad', [12, 13], 0, false, isPlayer);
-		animation.add('senpai', [22, 24], 0, false, isPlayer);
-		animation.add('senpai-angry', [24, 25], 0, false, isPlayer);
-		animation.add('spirit', [26, 27], 0, false, isPlayer);
-		animation.add('bf-old', [14, 15], 0, false, isPlayer);
-		animation.add('gf', [16], 0, false, isPlayer);
-		animation.add('parents-christmas', [17, 18], 0, false, isPlayer);
-		animation.add('monster', [19, 20], 0, false, isPlayer);
-		animation.add('monster-christmas', [19, 20], 0, false, isPlayer);
-		animation.play(char);
 		scrollFactor.set();
+	}
+	
+	public function changeIcon(char:String)
+	{
+		if (char != 'bf-pixel' && char != 'bf-old')
+			char = char.split('-')[0].trim();
+
+		if (char != this.char)
+		{
+			if (!Assets.exists(Paths.image('icons/icon-' + char))){
+				loadGraphic(Paths.image('icons/icon-face'), true, 150, 150); // wouldn't it be ironic if it didn't exist?
+				animation.add('face', [0, 1], 0, false, isPlayer);
+			}
+			else {
+				loadGraphic(Paths.image('icons/icon-' + char), true, 150, 150);
+				animation.add(char, [0, 1], 0, false, isPlayer);
+			}
+		}
+		animation.play(char);
+		this.char = char;
 	}
 
 	override function update(elapsed:Float)
