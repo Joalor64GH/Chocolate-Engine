@@ -156,6 +156,7 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
+		
         hornyScript.onCreate();
 
         theFunne = FlxG.save.data.newInput;
