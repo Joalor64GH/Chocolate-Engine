@@ -83,7 +83,7 @@ class ModsMenuState extends MusicBeatState
 
 		infoTextcool = new FlxText(340, 340, Std.int(FlxG.width * 0.9), "", 12);
 		infoTextcool.scrollFactor.set();
-		infoTextcool.setFormat(Paths.font("vcr.ttf"), 40, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		infoTextcool.setFormat(Paths.font("FridayNightFunkin-Regular.ttf"), 40, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		infoTextcool.borderSize = 2;
 		infoTextcool.screenCenter(Y);
 

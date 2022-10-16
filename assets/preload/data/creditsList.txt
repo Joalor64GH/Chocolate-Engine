@@ -8,5 +8,6 @@ Leather128:Some Polymod Code
 stephensrt:Lots of Polymod Code and Mag Engine Code
 KadeDev:Extension WebM and Kade Engine Code
 Manux123:Cool Engine Code
+EnDev:HX Date and Time
 Lars Doucet:Polymod
 Ninjamuffin99:Base Game
