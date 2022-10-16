@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 * Everything. This is the initial release or something.
 
-## [1.1.0] - 2022-10-??
+## [1.1.0] - 2022-10-16
 ### Added
-* TBA
+* Options
+* Beta Multilanguage Support
+* Template Files
+* More Customizables
+* New Alphabet
+* New Icon System
+* Health Bar Colors
+* Code Cleanups
+* And some other stuff lol.
