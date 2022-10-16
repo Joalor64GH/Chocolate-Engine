@@ -105,6 +105,9 @@ class TitleState extends MusicBeatState
 		if (FlxG.save.data.lang == null)
 			FlxG.save.data.lang = false;
 
+		if (FlxG.save.data.splash == null)
+			FlxG.save.data.splash = false;
+
 		FlxG.save.bind('chocolateengine', 'joalor64gh');
 
 		Highscore.load();

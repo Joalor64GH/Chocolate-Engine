@@ -25,7 +25,7 @@ class OptionsMenu extends MusicBeatState
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuDesat'));
-		controlsStrings = CoolUtil.coolStringFile((FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + "\n" + (FlxG.save.data.newInput ? "New Input" : "Old Input") + "\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + "\n" + (FlxG.save.data.lang ? "English" : "Spanish"));
+		controlsStrings = CoolUtil.coolStringFile((FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + "\n" + (FlxG.save.data.newInput ? "New Input" : "Old Input") + "\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + "\n" + (FlxG.save.data.lang ? "English" : "Spanish") + "\n" + (FlxG.save.data.splash ? "Notesplashes On" : "Notesplashes Off"));
 
 		trace(controlsStrings);
 
@@ -115,6 +115,12 @@ class OptionsMenu extends MusicBeatState
 					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.lang ? 'English' : 'Spanish'), true, false);
 					ctrl.isMenuItem = true;
 					ctrl.targetY = curSelected - 3;
+					grpControls.add(ctrl);
+				case 4:
+					FlxG.save.data.splash = !FlxG.save.data.splash;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.splashes ? 'Notesplashes On' : 'Notesplashes Off'), true, false);
+					ctrl.isMenuItem = true;
+					ctrl.targetY = curSelected - 4;
 					grpControls.add(ctrl);
 			}
 		}
