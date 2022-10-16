@@ -1294,7 +1294,8 @@ class PlayState extends MusicBeatState
 		#end
 
 		if (SONG.song.toLowerCase() == 'test' && curBeat % 2 == 0){
-			trace('FUCK YOU:' + cunt)
+			trace('FUCK YOU:' + cunt);
+			FlxG.log.add('FUCK YOU:' + cunt);
 			cunt++;
 		}
 
