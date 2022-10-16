@@ -156,7 +156,6 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-		
         hornyScript.onCreate();
 
         theFunne = FlxG.save.data.newInput;
@@ -1284,6 +1283,8 @@ class PlayState extends MusicBeatState
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
 
+	var cunt:Int = 0;
+
 	override public function update(elapsed:Float)
 	{
 		hornyScript.onUpdate();
@@ -1291,6 +1292,11 @@ class PlayState extends MusicBeatState
 		#if !debug
 		perfectMode = false;
 		#end
+
+		if (SONG.song.toLowerCase() == 'test' && curBeat % 2 == 0){
+			trace('FUCK YOU:' + cunt)
+			cunt++;
+		}
 
 		if (FlxG.keys.justPressed.NINE)
 		{
@@ -1349,9 +1355,6 @@ class PlayState extends MusicBeatState
 			DiscordClient.changePresence("Chart Editor", null, null, true);
 			#end
 		}
-
-		// FlxG.watch.addQuick('VOL', vocals.amplitudeLeft);
-		// FlxG.watch.addQuick('VOLRight', vocals.amplitudeRight);
 
 		iconP1.setGraphicSize(Std.int(FlxMath.lerp(150, iconP1.width, 0.50)));
 		iconP2.setGraphicSize(Std.int(FlxMath.lerp(150, iconP2.width, 0.50)));
