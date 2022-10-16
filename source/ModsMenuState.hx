@@ -63,7 +63,7 @@ class ModsMenuState extends MusicBeatState
 			FlxG.mouse.visible = true;
 		}
 
-		menuBG = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		menuBG = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuDesat'));
 
 		menuBG.color = FlxColor.GRAY;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
@@ -126,10 +126,10 @@ class ModsMenuState extends MusicBeatState
 
 	function buildUI()
 	{
-		bg = new FlxSprite(0, 0).loadGraphic(Paths.image("menuDesat"));
+		bg = new FlxSprite(0, 0).loadGraphic(Paths.image("mainmenu/menuDesat"));
 		// bg.screenCenter(Y);
 
-		bgtwo = new FlxSprite(720, 0).loadGraphic(Paths.image("menuDesat"));
+		bgtwo = new FlxSprite(720, 0).loadGraphic(Paths.image("mainmenu/menuDesat"));
 		bgtwo.screenCenter(Y);
 
 		ModsMenuState.enableButton = new FlxButton(bg.x + 1120, 309, "Enable Mod", function()
