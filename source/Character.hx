@@ -226,10 +226,10 @@ class Character extends FlxSprite
 				animation.addByPrefix('singRIGHT', 'Monster Right note', 24, false);
 
 				addOffset('idle');
-				addOffset("singUP", -20, 50);
-				addOffset("singRIGHT", -51);
-				addOffset("singLEFT", -30);
-				addOffset("singDOWN", -30, -40);
+				addOffset("singUP", -23, 87);
+				addOffset("singRIGHT", -51, 15);
+				addOffset("singLEFT", -31, 4);
+				addOffset("singDOWN", -63, -86);
 				playAnim('idle');
 
 				hpcolor = 0xFFF3FF6E;
