@@ -64,7 +64,7 @@ class CreditsState extends MusicBeatState
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuDesat'));
 		bg.color = FlxColor.PINK;
 		add(bg);
 
