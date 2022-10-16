@@ -17,10 +17,6 @@ Not everything is perfect, so contributions and/or pull requests would be nice!
 * MP4 and WebM Video Support
 
 ## Things to get done
-* [X] Options **[Completed]**
-* [X] Fix the Main Menu Again for some reason **[Completed]**
-* [X] Fix the Score HUD **[Somewhat Completed]**
-* [X] Multiple Languages Support **[Beta]**
 * [ ] Support for Hscript, HXS, and Lua Scripts
 * [ ] Attempt to softcode stages
 * [ ] Attempt to softcode characters
