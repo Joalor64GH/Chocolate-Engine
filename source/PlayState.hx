@@ -688,12 +688,12 @@ class PlayState extends MusicBeatState
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
                 // Misses Counter
-		missesTxt = new FlxText(601, healthBarBG.y + 30, 0, "", 20);
+		missesTxt = new FlxText(796, healthBarBG.y + 30, 0, "", 20);
 		missesTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		missesTxt.scrollFactor.set();
 		add(missesTxt);
                 // Watermark
-		chocoTxt = new FlxText(100, healthBarBG.y + 30, 0, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
+		chocoTxt = new FlxText(113, healthBarBG.y + 30, 0, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
 		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		chocoTxt.scrollFactor.set();
 		add(chocoTxt);
