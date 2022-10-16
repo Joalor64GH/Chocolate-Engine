@@ -12,7 +12,7 @@ Not everything is perfect, so contributions and/or pull requests would be nice!
 
 ## Features
 * Polymod Support
-* Customizable Watermarks
+* A LOT of Customizables
 * Easy to Use Credits System (From Mag Engine)
 * MP4 and WebM Video Support
 

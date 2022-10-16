@@ -683,17 +683,17 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
                 // Score Text
-		scoreTxt = new FlxText(487, healthBarBG.y + 30, 0, "", 20);
+		scoreTxt = new FlxText(505, healthBarBG.y + 30, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
                 // Misses Counter
-		missesTxt = new FlxText(796, healthBarBG.y + 30, 0, "", 20);
+		missesTxt = new FlxText(950, healthBarBG.y + 30, 0, "", 20);
 		missesTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		missesTxt.scrollFactor.set();
 		add(missesTxt);
                 // Watermark
-		chocoTxt = new FlxText(113, healthBarBG.y + 30, 0, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
+		chocoTxt = new FlxText(125, healthBarBG.y + 30, 0, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
 		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		chocoTxt.scrollFactor.set();
 		add(chocoTxt);
@@ -1813,6 +1813,8 @@ class PlayState extends MusicBeatState
 
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
 		add(rating);
+		if(combo > 9)
+			add(comboSpr);
 
 		if (!curStage.startsWith('school'))
 		{
