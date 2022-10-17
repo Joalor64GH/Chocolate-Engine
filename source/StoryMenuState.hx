@@ -183,10 +183,9 @@ class StoryMenuState extends MusicBeatState
 
 		sprDifficulty = new FlxSprite(leftArrow.x + 130, leftArrow.y);
 		sprDifficulty.frames = ui_tex;
-		sprDifficulty.animation.addByPrefix('easy', 'EASY');
-		sprDifficulty.animation.addByPrefix('normal', 'NORMAL');
-		sprDifficulty.animation.addByPrefix('hard', 'HARD');
-		sprDifficulty.animation.play('easy');
+		for(dif in CoolUtil.difficultyArray)
+			sprDifficulty.animation.addByPrefix(dif.toLowerCase(), dif.toUpperCase());
+		sprDifficulty.animation.play(CoolUtil.defaultDifficulty.toLowerCase());
 		changeDifficulty();
 
 		difficultySelectors.add(sprDifficulty);
@@ -307,13 +306,8 @@ class StoryMenuState extends MusicBeatState
 
 			var diffic = "";
 
-			switch (curDifficulty)
-			{
-				case 0:
-					diffic = '-easy';
-				case 2:
-					diffic = '-hard';
-			}
+			if(CoolUtil.difficultyArray[curDifficulty] != CoolUtil.defaultDifficulty)
+				diffic = '-' + CoolUtil.difficultyArray[curDifficulty];
 
 			PlayState.storyDifficulty = curDifficulty;
 
@@ -333,22 +327,18 @@ class StoryMenuState extends MusicBeatState
 
 		if (curDifficulty < 0)
 			curDifficulty = 2;
-		if (curDifficulty > 2)
+		if (curDifficulty > CoolUtil.difficultyArray.length)
 			curDifficulty = 0;
 
 		sprDifficulty.offset.x = 0;
 
+		sprDifficulty.animation.play(CoolUtil.difficultyArray[curDifficulty].toLowerCase());
 		switch (curDifficulty)
 		{
-			case 0:
-				sprDifficulty.animation.play('easy');
+			case 0 | 2: // easy, hard
 				sprDifficulty.offset.x = 20;
-			case 1:
-				sprDifficulty.animation.play('normal');
+			case 1: // normal
 				sprDifficulty.offset.x = 70;
-			case 2:
-				sprDifficulty.animation.play('hard');
-				sprDifficulty.offset.x = 20;
 		}
 
 		sprDifficulty.alpha = 0;
