@@ -11,14 +11,16 @@ using StringTools;
 
 class CoolUtil
 {
-	public static var difficultyArray:Array<String> = ['EASY', "NORMAL", "HARD"];
+	public static var difficultyArray:Array<String> = ['EASY', 'NORMAL', 'HARD'];
+
+	public static var defaultDifficulty:String = 'NORMAL';
 
 	public static function difficultyString():String
 	{
 		return difficultyArray[PlayState.storyDifficulty];
 	}
 
-    public static function browserLoad(url:String)
+	public static function browserLoad(url:String)
 	{
 		#if linux
 		Sys.command('/usr/bin/xdg-open', [url]);
@@ -91,7 +93,7 @@ class CoolUtil
 	}
 	#end
 
-	public static function numberArray(max:Int, ?min = 0):Array<Int>
+	public static function numberArray(max:Int, min = 0):Array<Int>
 	{
 		var dumbArray:Array<Int> = [];
 		for (i in min...max)
