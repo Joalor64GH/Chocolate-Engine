@@ -306,8 +306,8 @@ class StoryMenuState extends MusicBeatState
 
 			var diffic = "";
 
-			if(CoolUtil.difficultyArray[curDifficulty] != CoolUtil.defaultDifficulty)
-				diffic = '-' + CoolUtil.difficultyArray[curDifficulty];
+			if(CoolUtil.difficultyArray[curDifficulty].toLowerCase() != CoolUtil.defaultDifficulty.toLowerCase())
+				diffic = '-' + CoolUtil.difficultyArray[curDifficulty].toLowerCase();
 
 			PlayState.storyDifficulty = curDifficulty;
 
@@ -326,8 +326,8 @@ class StoryMenuState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = 2;
-		if (curDifficulty > CoolUtil.difficultyArray.length)
+			curDifficulty = CoolUtil.difficultyArray.length-1;
+		if (curDifficulty > CoolUtil.difficultyArray.length-1)
 			curDifficulty = 0;
 
 		sprDifficulty.offset.x = 0;
