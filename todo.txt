@@ -1,5 +1,4 @@
 Hscript Support
 Lua Support
 HXS Support
-Softcode Stages
 Softcode Characters

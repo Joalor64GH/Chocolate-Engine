@@ -127,6 +127,11 @@ class Paths
         return getPath('cutscenes/$key.json', TEXT, library);
     }
 
+	inline static public function script(key:String, ?library:String)
+    {
+        return getPath('scripts/$key.hx', TEXT, library);
+    }
+
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));

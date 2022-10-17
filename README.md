@@ -18,7 +18,6 @@ Not everything is perfect, so contributions and/or pull requests would be nice!
 
 ## Things to get done
 * [ ] Support for Hscript, HXS, and Lua Scripts
-* [ ] Attempt to softcode stages
 * [ ] Attempt to softcode characters
 
 ## Credits

@@ -11,7 +11,6 @@ import polymod.backends.PolymodAssets;
 #end
 import Section.SwagSection;
 import Song.SwagSong;
-// import Stage;
 import WiggleEffect.WiggleEffectType;
 import flixel.FlxBasic;
 import flixel.FlxCamera;
