@@ -106,16 +106,6 @@ class ModPaths {
         return getPath('cutscenes/$key.json', TEXT,mod);
     }
 
-    /*inline static public function getModStage(key:String, mod:String)
-    {
-        return getPath('stages/$key.json', TEXT,mod);
-    }
-
-    inline static public function getModStageHelper(key:String, mod:String)
-    {
-        return getPath('stages/$key.hx', TEXT,mod);
-    }*/
-
     static public function getPath(file:String, type:AssetType, ?mod:String)
     {
         var path = "";
