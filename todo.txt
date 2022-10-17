@@ -1,4 +1,6 @@
 Hscript Support
 Lua Support
 HXS Support
+Reorganize all of the asstes
+Softcode Stages
 Softcode Characters
