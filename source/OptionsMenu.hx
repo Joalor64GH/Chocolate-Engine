@@ -111,16 +111,16 @@ class OptionsMenu extends MusicBeatState
 					ctrl.targetY = curSelected - 2;
 					grpControls.add(ctrl);
 				case 3:
-					FlxG.save.data.lang = !FlxG.save.data.lang;
-					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.lang ? 'English' : 'Spanish'), true, false);
+					FlxG.save.data.splash = !FlxG.save.data.splash;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.splashes ? 'Notesplashes On' : 'Notesplashes Off'), true, false);
 					ctrl.isMenuItem = true;
 					ctrl.targetY = curSelected - 3;
 					grpControls.add(ctrl);
 				case 4:
-					FlxG.save.data.splash = !FlxG.save.data.splash;
-					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.splashes ? 'Notesplashes On' : 'Notesplashes Off'), true, false);
+					FlxG.save.data.lang = !FlxG.save.data.lang;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.lang ? 'English' : 'Spanish'), true, false);
 					ctrl.isMenuItem = true;
-					ctrl.targetY = curSelected - 4;
+					ctrl.targetY = curSelected - 34;
 					grpControls.add(ctrl);
 			}
 		}
