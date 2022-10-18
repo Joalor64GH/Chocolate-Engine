@@ -120,7 +120,7 @@ class OptionsMenu extends MusicBeatState
 					FlxG.save.data.lang = !FlxG.save.data.lang;
 					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.lang ? 'English' : 'Spanish'), true, false);
 					ctrl.isMenuItem = true;
-					ctrl.targetY = curSelected - 34;
+					ctrl.targetY = curSelected - 4;
 					grpControls.add(ctrl);
 			}
 		}
