@@ -58,7 +58,7 @@ hscript
 Then, these I think:
 1. Download [git-scm](https://git-scm.com/downloads). Works for Windows, Mac, and Linux, just select your build.
 2. Follow instructions to install the application properly.
-3. Run `haxelib git polymod https://github.com/larsiusprime/polymod.git` to install Polymod.
+3. Run `haxelib git polymod https://github.com/MasterEric/polymod` to install Polymod.
 4. Run `haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc` to install Discord RPC.
 5. Run `haxelib git hxCodec https://github.com/polybiusproxy/hxCodec` to install hxCodec.
 
