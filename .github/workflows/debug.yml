@@ -51,7 +51,7 @@ jobs:
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
-          haxelib git polymod https://github.com/MasterEric/polymod.git
+          haxelib git polymod https://github.com/MasterEric/polymod
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib install hxcpp-debug-server
           haxelib install actuate
@@ -92,7 +92,7 @@ jobs:
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
-          haxelib git polymod https://github.com/MasterEric/polymod.git
+          haxelib git polymod https://github.com/MasterEric/polymod
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git extension-webm https://github.com/KadeDev/extension-webm
           haxelib run lime rebuild extension-webm windows
@@ -135,7 +135,7 @@ jobs:
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
           haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
-          haxelib git polymod https://github.com/MasterEric/polymod.git
+          haxelib git polymod https://github.com/MasterEric/polymod
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git extension-webm https://github.com/KadeDev/extension-webm
           haxelib run lime rebuild extension-webm mac
