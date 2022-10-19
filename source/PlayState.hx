@@ -9,6 +9,10 @@ import modding.PolymodHandler.loadModMetadata;
 #if desktop
 import Discord.DiscordClient;
 #end
+#if sys
+import sys.io.File;
+import sys.FileSystem;
+#end
 import Section.SwagSection;
 import Song.SwagSong;
 import WiggleEffect.WiggleEffectType;
@@ -49,6 +53,12 @@ import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
+import Script.ScriptType;
+#if hscript
+import hscript.Parser;
+import hscript.Interp;
+import hscript.Expr;
+#end
 import scripting.Script;
 
 using StringTools;
@@ -63,6 +73,10 @@ class PlayState extends MusicBeatState
 	public static var storyDifficulty:Int = 1;
 
 	public static var instance:PlayState;
+
+	public var hscriptParser:Parser;
+
+	public var Scripts:Array<Script> = [];
 
 	private var vocals:FlxSound;
 
@@ -91,6 +105,8 @@ class PlayState extends MusicBeatState
 	private var combo:Int = 0;
 	private var misses:Float = 0;
 
+	public var hasScript:Bool = false;
+
 	private var healthBarBG:FlxSprite;
 	private var healthBar:FlxBar;
 
@@ -106,7 +122,6 @@ class PlayState extends MusicBeatState
 	var dialogue:Array<String> = ['strange code', '>:]'];
 
 	var halloweenBG:FlxSprite;
-	var isHalloween:Bool = false;
 
 	var phillyCityLights:FlxTypedGroup<FlxSprite>;
 	var phillyTrain:FlxSprite;
@@ -150,6 +165,24 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
+	public function CallFunction(funcName:String, ?args:Array<Dynamic>, ?ignoreBlacklist:Bool = false):Dynamic
+	{
+		#if hscript
+		for (s in Scripts)
+		{
+			if (ignoreBlacklist || !Script.functionBlacklist[s.type].contains(funcName))
+			{
+				var output:Dynamic = s.CallFunction(funcName,args);
+				if (output != null)
+				{
+					return output;
+				}
+			}
+		}
+		#end
+		return null;
+	}
+
 	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
 	public var hornyScript:Script; // we do a little trolling
@@ -158,6 +191,9 @@ class PlayState extends MusicBeatState
 	{
         hornyScript.onCreate();
 
+        hscriptParser = new Parser();
+		hscriptParser.allowTypes = true;
+		hscriptParser.allowJSON = true;
         theFunne = FlxG.save.data.newInput;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -183,6 +219,17 @@ class PlayState extends MusicBeatState
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
+
+		var scriptPath:String = Paths.songScript(SONG.song.toLowerCase() + '/script','hx');
+
+		#if desktop
+		if (FileSystem.exists(scriptPath))
+		{
+
+			Scripts.push(new Script(hscriptParser,Assets.getText(scriptPath)));
+
+		}
+		#end
 
 		switch (SONG.song.toLowerCase())
 		{
@@ -253,7 +300,7 @@ class PlayState extends MusicBeatState
 
 				isHalloween = true;
 			}
-			case 'pico' | 'phillt' | 'blammed': 
+			case 'pico' | 'philly' | 'blammed': 
 			{
 				curStage = 'philly';
 
@@ -767,6 +814,8 @@ class PlayState extends MusicBeatState
 		}
 
 		super.create();
+
+		CallFunction("create");
 	}
 
 	function schoolIntro(?dialogueBox:DialogueBox):Void
@@ -978,6 +1027,8 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC, true, songLength);
 		#end
+
+		CallFunction("songStarted");
 	}
 
 	var debugNum:Int = 0;
@@ -1645,6 +1696,8 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
 		#end
+
+		CallFunction("update",[elapsed]);
 	}
 
 	function endSong():Void
@@ -2258,6 +2311,7 @@ class PlayState extends MusicBeatState
 
 		boyfriend.playAnim('scared', true);
 		gf.playAnim('scared', true);
+		
 	}
 
 	override function stepHit()
@@ -2272,6 +2326,8 @@ class PlayState extends MusicBeatState
 		{
 			// dad.dance();
 		}
+
+		CallFunction("stepHit");
 	}
 
 	var lightningStrikeBeat:Int = 0;
@@ -2331,6 +2387,8 @@ class PlayState extends MusicBeatState
 		{
 			boyfriend.playAnim('idle');
 		}
+
+		CallFunction('beatHit');
 
 		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
 		{

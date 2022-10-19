@@ -96,6 +96,10 @@ class ModPaths {
         return getPath('scripts/$key.hx', TEXT,mod);
     }
 
+    inline static public function getModSongScripts(key:String, mod:String){
+        return getPath('data/$key.hx', TEXT,mod);
+    }
+
     inline static public function getModLocales(key:String, mod:String)
     {
         return getPath('locales/$key/languageData.json', TEXT,mod);

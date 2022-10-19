@@ -1,4 +1,4 @@
-package modding;
+package modding.llua;
 
 #if LUA_EXTENSION
 import llua.*;

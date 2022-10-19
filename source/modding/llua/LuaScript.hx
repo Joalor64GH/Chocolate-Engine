@@ -1,4 +1,4 @@
-package modding.scripts;
+package modding.llua;
 
 import openfl.display.BlendMode;
 import states.PlayState;
