@@ -2,7 +2,7 @@ package scripting;
 
 import PlayState;
 
-class Script {
+class HornyScript {
     public function onCreate() {
 
     }
