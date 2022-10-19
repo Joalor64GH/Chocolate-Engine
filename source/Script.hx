@@ -20,6 +20,7 @@ class Script //give every script its own interpreter so no variable conflicts!!!
     ];
 
     public var hscriptInterp:Interp = new Interp();
+    public var hscriptCurScript:Expr;
     public var type:ScriptType = ScriptType.Basic;
 
     public function new(parser:Parser, script:String, ?tp:ScriptType = ScriptType.Basic)
@@ -34,6 +35,7 @@ class Script //give every script its own interpreter so no variable conflicts!!!
 		    FlxTransitionableState.skipNextTransOut = true;
             FlxG.switchState(new ErrorScene(e.message));
         }
+        Config.AllowInterpStuff(hscriptInterp);
         hscriptInterp.errorHandler = Script.ErrorHandler;
         hscriptInterp.execute(hscriptCurScript);
         type = tp;
@@ -76,7 +78,7 @@ class Script //give every script its own interpreter so no variable conflicts!!!
 
 enum ScriptType
 {
-    Basic; Stage; NoteScript;
+    Basic; NoteScript;
 }
 
 #end
