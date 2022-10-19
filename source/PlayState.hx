@@ -187,7 +187,7 @@ class PlayState extends MusicBeatState
 
 	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
-	public var HornyScript:Script; // we do a little trolling
+	public var HornyScript:HornyScript; // we do a little trolling
 
 	override public function create()
 	{
