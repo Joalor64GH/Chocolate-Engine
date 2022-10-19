@@ -854,7 +854,6 @@ class PlayState extends MusicBeatState
 	}
 
 	var startTimer:FlxTimer;
-	var perfectMode:Bool = false;
 
 	function startCountdown():Void
 	{
@@ -1279,10 +1278,6 @@ class PlayState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		hornyScript.onUpdate();
-
-		#if !debug
-		perfectMode = false;
-		#end
 
 		if (SONG.song.toLowerCase() == 'test' && curBeat % 2 == 0){
 			trace('FUCK YOU:' + cunt);
@@ -1944,9 +1939,6 @@ class PlayState extends MusicBeatState
 			if (possibleNotes.length > 0)
 			{
 				var daNote = possibleNotes[0];
-
-				if (perfectMode)
-					noteCheck(true, daNote);
 
 				// Jump notes
 				if (possibleNotes.length >= 2)
