@@ -33,7 +33,6 @@ import openfl.net.FileReference;
 import openfl.utils.ByteArray;
 
 #if MODS_ALLOWED
-import polymod.fs.PolymodFileSystem;
 import polymod.backends.PolymodAssets;
 #end
 
