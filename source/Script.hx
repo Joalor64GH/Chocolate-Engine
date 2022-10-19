@@ -10,7 +10,6 @@ import flixel.tweens.FlxTween;
 import flixel.FlxG;
 import flixel.addons.transition.FlxTransitionableState;
 
-
 class Script //give every script its own interpreter so no variable conflicts!!!!
 {
 
@@ -20,8 +19,6 @@ class Script //give every script its own interpreter so no variable conflicts!!!
 
 
     ];
-
-
 
     public var hscriptInterp:Interp = new Interp();
 	public var hscriptCurScript:Expr;
@@ -39,9 +36,8 @@ class Script //give every script its own interpreter so no variable conflicts!!!
 		    FlxTransitionableState.skipNextTransOut = true;
             FlxG.switchState(new ErrorScene(e.message));
         }
-        Config.AllowInterpStuff(hscriptInterp);
-        hscriptInterp.errorHandler = Script.ErrorHandler;
-        hscriptInterp.execute(hscriptCurScript);
+        hscript.Interp.errorHandler = Script.ErrorHandler;
+        hscript.Interp.execute(hscriptCurScript);
         type = tp;
     }
 
@@ -79,7 +75,6 @@ class Script //give every script its own interpreter so no variable conflicts!!!
     }
 
 }
-
 
 enum ScriptType
 {
