@@ -1,6 +1,7 @@
 package scripting;
 
 // it keeps crashing the game :shrug:
+// maybe because there's literally nothing here
 import PlayState;
 
 class HornyScript {
