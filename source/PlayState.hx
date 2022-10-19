@@ -122,6 +122,7 @@ class PlayState extends MusicBeatState
 	var dialogue:Array<String> = ['strange code', '>:]'];
 
 	var halloweenBG:FlxSprite;
+	var isHalloween:Bool = false;
 
 	var phillyCityLights:FlxTypedGroup<FlxSprite>;
 	var phillyTrain:FlxSprite;
