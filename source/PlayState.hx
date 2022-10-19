@@ -187,11 +187,11 @@ class PlayState extends MusicBeatState
 
 	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
-	public var hornyScript:Script; // we do a little trolling
+	public var HornyScript:Script; // we do a little trolling
 
 	override public function create()
 	{
-        hornyScript.onCreate();
+        HornyScript.onCreate();
 
         hscriptParser = new Parser();
 		hscriptParser.allowTypes = true;
@@ -927,8 +927,8 @@ class PlayState extends MusicBeatState
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
 			introAssets.set('default', ['ready', "set", "go"]);
-			introAssets.set('school', ['UI/pixel/ready-pixel', 'UI/pixel/set-pixel', 'UI/pixel/date-pixel']);
-			introAssets.set('schoolEvil', ['UI/pixel/ready-pixel', 'UI/pixel/set-pixel', 'UI/pixel/date-pixel']);
+			introAssets.set('school', ['UI/pixelUI/ready-pixel', 'UI/pixelUI/set-pixel', 'UI/pixelUI/date-pixel']);
+			introAssets.set('schoolEvil', ['UI/pixelUI/ready-pixel', 'UI/pixelUI/set-pixel', 'UI/pixelUI/date-pixel']);
 
 			var introAlts:Array<String> = introAssets.get('default');
 			var altSuffix:String = "";
@@ -1137,7 +1137,7 @@ class PlayState extends MusicBeatState
 			switch (curStage)
 			{
 				case 'school' | 'schoolEvil':
-					babyArrow.loadGraphic(Paths.image('UI/pixel/arrows-pixels'), true, 17, 17);
+					babyArrow.loadGraphic(Paths.image('UI/pixelUI/arrows-pixels'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
 					babyArrow.animation.add('red', [7]);
 					babyArrow.animation.add('blue', [5]);
@@ -1330,7 +1330,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		hornyScript.onUpdate();
+		HornyScript.onUpdate();
 
 		if (SONG.song.toLowerCase() == 'test' && curBeat % 2 == 0){
 			trace('FUCK YOU:' + cunt);
@@ -1832,7 +1832,7 @@ class PlayState extends MusicBeatState
 
 		if (curStage.startsWith('school'))
 		{
-			pixelShitPart1 = 'UI/pixel/';
+			pixelShitPart1 = 'UI/pixelUI/';
 			pixelShitPart2 = '-pixel';
 		}
 
@@ -2107,7 +2107,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
-		hornyScript.onNoteMiss();
+		HornyScript.onNoteMiss();
 
 		if (!boyfriend.stunned)
 		{
@@ -2178,7 +2178,7 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
-		hornyScript.onNoteHit();
+		HornyScript.onNoteHit();
 		if (!note.wasGoodHit)
 		{
 			if (!note.isSustainNote)
