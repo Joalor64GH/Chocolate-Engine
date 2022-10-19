@@ -4,10 +4,10 @@ import video.Cutscene;
 import sys.FileSystem;
 #if MODS_ALLOWED
 import modding.PolymodHandler.loadModMetadata;
+// import polymod.backends.PolymodAssets;
 #end
 #if desktop
 import Discord.DiscordClient;
-import polymod.backends.PolymodAssets;
 #end
 import Section.SwagSection;
 import Song.SwagSong;
