@@ -34,7 +34,7 @@ Not everything is perfect, so contributions and/or pull requests would be nice!
 * [stephensrt](https://github.com/stephensrt) - Lots of Polymod Code and Mag Engine Code
 * [KadeDev](https://twitter.com/kade0921) - Extension WebM and Kade Engine Code
 * [Manux123](https://github.com/Manux123) - Cool Engine Code
-* [MissingTextureMan101](https://twitter.com/OfficialMTM101)
+* [MissingTextureMan101](https://twitter.com/OfficialMTM101) - Funkin Strawberry Code
 * [Lars Doucet](https://github.com/larsiusprime) - Polymod
 * [Ninjamuffin99](https://github.com/ninjamuffin99) - The Base Game (WOULD NOT BE POSSIBLE WITHOUT HIM)
 
