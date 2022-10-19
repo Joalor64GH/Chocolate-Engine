@@ -22,7 +22,7 @@ echo Make sure you have git installed. You can download it here: https://git-scm
 echo Press any key to install polymod.
 pause >nul
 title Chocolate Engine Setup - Installing libraries
-haxelib git polymod https://github.com/larsiusprime/polymod.git
+haxelib git polymod https://github.com/MasterEric/polymod.git
 cls
 echo Press any key to install LUA JIT.
 pause >nul
