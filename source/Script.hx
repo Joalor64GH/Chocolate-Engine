@@ -15,8 +15,6 @@ class Script //give every script its own interpreter so no variable conflicts!!!
 
     public static var functionBlacklist:Map<ScriptType,Array<String>> = [
         ScriptType.Basic => []
-
-
     ];
 
     public var hscriptInterp:Interp = new Interp();
