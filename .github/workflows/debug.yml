@@ -49,7 +49,7 @@ jobs:
           haxelib install flixel-addons
           haxelib git hxCodec https://github.com/polybiusproxy/hxcodec
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
-          haxelib install hscript
+          haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
@@ -90,7 +90,7 @@ jobs:
           haxelib install flixel-addons
           haxelib git hxCodec https://github.com/polybiusproxy/hxcodec
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
-          haxelib install hscript
+          haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
@@ -133,7 +133,7 @@ jobs:
           haxelib install flixel-addons
           haxelib git hxCodec https://github.com/polybiusproxy/hxcodec
           haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
-          haxelib install hscript
+          haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc

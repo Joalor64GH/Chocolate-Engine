@@ -10,7 +10,7 @@ haxelib install openfl 9.2.0
 haxelib --never install flixel 4.11.0
 haxelib install flixel-addons
 haxelib install flixel-ui
-haxelib install hscript
+haxelib git hscript-yoshiengine https://github.com/YoshiCrafter29/hscript-improved
 haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
 haxelib run lime setup
 haxelib install flixel-tools
