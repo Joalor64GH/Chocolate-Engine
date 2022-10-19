@@ -60,7 +60,7 @@ import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
 #end
-import scripting.HornyScript;
+// import scripting.HornyScript;
 
 using StringTools;
 
@@ -187,11 +187,11 @@ class PlayState extends MusicBeatState
 
 	private var singAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 
-	public var HornyScript:HornyScript; // we do a little trolling
+	// public var HornyScript:HornyScript; // we do a little trolling
 
 	override public function create()
 	{
-        HornyScript.onCreate();
+        // HornyScript.onCreate();
 
         hscriptParser = new Parser();
 		hscriptParser.allowTypes = true;
@@ -1330,7 +1330,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		HornyScript.onUpdate();
+		// HornyScript.onUpdate();
 
 		if (SONG.song.toLowerCase() == 'test' && curBeat % 2 == 0){
 			trace('FUCK YOU:' + cunt);
@@ -2077,7 +2077,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
-		HornyScript.onNoteMiss();
+		// HornyScript.onNoteMiss();
 
 		if (!boyfriend.stunned)
 		{
@@ -2148,7 +2148,7 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
-		HornyScript.onNoteHit();
+		// HornyScript.onNoteHit();
 		if (!note.wasGoodHit)
 		{
 			if (!note.isSustainNote)
