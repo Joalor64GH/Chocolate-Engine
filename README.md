@@ -17,9 +17,9 @@ Not everything is perfect, so contributions and/or [pull requests](https://githu
 * MP4 and WebM Video Support
 
 ## Things to get done
+* [X] Attempt to softcode stages **[Completed]**
 * [ ] Support for Hscript, HXS, and Lua Scripts
 * [ ] Reorganize all of the assets
-* [ ] Attempt to softcode stages
 * [ ] Attempt to softcode characters
 
 ## Credits
