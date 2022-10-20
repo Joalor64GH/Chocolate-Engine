@@ -60,7 +60,7 @@ import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
 #end
-// import scripting.HornyScript;
+import scripting.HornyScript;
 
 using StringTools;
 
