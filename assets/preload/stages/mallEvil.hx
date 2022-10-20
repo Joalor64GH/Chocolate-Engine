@@ -1,6 +1,6 @@
 function createBG()
 {
-	var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('stages/mallEvil/evilBG'));
+	var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('backgrounds/mallEvil/evilBG'));
 	bg.antialiasing = true;
 	bg.scrollFactor.set(0.2, 0.2);
 	bg.active = false;
@@ -8,12 +8,12 @@ function createBG()
 	bg.updateHitbox();
 	CurState.add(bg);
 
-	var evilTree:FlxSprite = new FlxSprite(300, -300).loadGraphic(Paths.image('stages/mallEvil/evilTree'));
+	var evilTree:FlxSprite = new FlxSprite(300, -300).loadGraphic(Paths.image('backgrounds/mallEvil/evilTree'));
 	evilTree.antialiasing = true;
 	evilTree.scrollFactor.set(0.2, 0.2);
 	CurState.add(evilTree);
 
-	var evilSnow:FlxSprite = new FlxSprite(-200, 700).loadGraphic(Paths.image("stages/mallEvil/evilSnow"));
+	var evilSnow:FlxSprite = new FlxSprite(-200, 700).loadGraphic(Paths.image("backgrounds/mallEvil/evilSnow"));
 	evilSnow.antialiasing = true;
 	CurState.add(evilSnow);
 	

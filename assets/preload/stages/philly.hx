@@ -13,13 +13,13 @@ var startedMoving = false;
 
 function createBG()
 {
-	var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('stages/philly/sky'));
+	var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('backgrounds/philly/sky'));
 	bg.scrollFactor.set(0.1, 0.1);
 	bg.antialiasing = true;
 	
 	CurState.add(bg);
 
-	var city:FlxSprite = new FlxSprite(-10).loadGraphic(Paths.image('stages/philly/city'));
+	var city:FlxSprite = new FlxSprite(-10).loadGraphic(Paths.image('backgrounds/philly/city'));
 	city.scrollFactor.set(0.3, 0.3);
 	city.setGraphicSize(Std.int(city.width * 0.85));
 	city.updateHitbox();
@@ -30,7 +30,7 @@ function createBG()
 
 	for (i in 0...5)
 	{
-		var light:FlxSprite = new FlxSprite(city.x).loadGraphic(Paths.image('stages/philly/win' + i));
+		var light:FlxSprite = new FlxSprite(city.x).loadGraphic(Paths.image('backgrounds/philly/win' + i));
 		light.scrollFactor.set(0.3, 0.3);
 		light.visible = false;
 		light.setGraphicSize(Std.int(light.width * 0.85));
@@ -41,10 +41,10 @@ function createBG()
 	
 	CurState.add(phillyCityLights);
 
-	var streetBehind:FlxSprite = new FlxSprite(-40, 50).loadGraphic(Paths.image('stages/philly/behindTrain'));
+	var streetBehind:FlxSprite = new FlxSprite(-40, 50).loadGraphic(Paths.image('backgrounds/philly/behindTrain'));
 	CurState.add(streetBehind);
 
-	phillyTrain = new FlxSprite(2000, 360).loadGraphic(Paths.image('stages/philly/train'));
+	phillyTrain = new FlxSprite(2000, 360).loadGraphic(Paths.image('backgrounds/philly/train'));
 	CurState.add(phillyTrain);
 
 	trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes'));
@@ -52,7 +52,7 @@ function createBG()
 
 	// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
 
-	var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('stages/philly/street'));
+	var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('backgrounds/philly/street'));
 	CurState.add(street);
 	street.antialiasing = true;
 	streetBehind.antialiasing = true;

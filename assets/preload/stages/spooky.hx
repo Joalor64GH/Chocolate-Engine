@@ -5,7 +5,7 @@ var lightningOffset = 8;
 
 function createBG()
 {
-	var hallowTex = Paths.getSparrowAtlas('stages/spooky/halloween_bg');
+	var hallowTex = Paths.getSparrowAtlas('backgrounds/spooky/halloween_bg');
 
 	halloweenBG = new FlxSprite(-200, -75);
 	halloweenBG.frames = hallowTex;

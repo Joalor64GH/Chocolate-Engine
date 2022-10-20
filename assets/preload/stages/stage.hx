@@ -2,13 +2,13 @@ function createBG()
 {
 
 	CurState.defaultCamZoom = 0.9;
-	var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('stages/stage/stageback'));
+	var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('backgrounds/stage/stageback'));
 	bg.antialiasing = true;
 	bg.scrollFactor.set(0.9, 0.9);
 	bg.active = false;
 	CurState.add(bg);
 
-	var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stages/stage/stagefront'));
+	var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('backgrounds/stage/stagefront'));
 	stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 	stageFront.updateHitbox();
 	stageFront.antialiasing = true;
@@ -16,7 +16,7 @@ function createBG()
 	stageFront.active = false;
 	CurState.add(stageFront);
 
-	var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stages/stage/stagecurtains'));
+	var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('backgrounds/stage/stagecurtains'));
 	stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
 	stageCurtains.updateHitbox();
 	stageCurtains.antialiasing = true;

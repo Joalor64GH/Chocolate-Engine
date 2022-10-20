@@ -4,7 +4,7 @@ function createBG()
 	var posY = 200;
 
 	var bg:FlxSprite = new FlxSprite(posX, posY);
-	bg.frames = Paths.getSparrowAtlas('stages/schoolEvil/animatedEvilSchool');
+	bg.frames = Paths.getSparrowAtlas('backgrounds/schoolEvil/animatedEvilSchool');
 	bg.animation.addByPrefix('idle', 'background 2', 24);
 	bg.animation.play('idle');
 	bg.scrollFactor.set(0.8, 0.9);

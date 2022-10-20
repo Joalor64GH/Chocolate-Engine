@@ -10,12 +10,12 @@ function createBG()
 {
 	CurState.defaultCamZoom = 0.90;
 
-	var skyBG:FlxSprite = new FlxSprite(-120, -50).loadGraphic(Paths.image('stages/limo/limoSunset'));
+	var skyBG:FlxSprite = new FlxSprite(-120, -50).loadGraphic(Paths.image('backgrounds/limo/limoSunset'));
 	skyBG.scrollFactor.set(0.1, 0.1);
 	CurState.add(skyBG);
 
 	var bgLimo:FlxSprite = new FlxSprite(-200, 480);
-	bgLimo.frames = Paths.getSparrowAtlas('stages/limo/bgLimo');
+	bgLimo.frames = Paths.getSparrowAtlas('backgrounds/limo/bgLimo');
 	bgLimo.animation.addByPrefix('drive', "background limo pink", 24);
 	bgLimo.animation.play('drive');
 	bgLimo.scrollFactor.set(0.4, 0.4);
@@ -31,7 +31,7 @@ function createBG()
 		grpLimoDancers.add(dancer);
 	}
 
-	var overlayShit:FlxSprite = new FlxSprite(-500, -600).loadGraphic(Paths.image('stages/limo/limoOverlay'));
+	var overlayShit:FlxSprite = new FlxSprite(-500, -600).loadGraphic(Paths.image('backgrounds/limo/limoOverlay'));
 	overlayShit.alpha = 0.5;
 	// add(overlayShit);
 
@@ -41,7 +41,7 @@ function createBG()
 
 	// overlayShit.shader = shaderBullshit;
 
-	var limoTex = Paths.getSparrowAtlas('stages/limo/limoDrive');
+	var limoTex = Paths.getSparrowAtlas('backgrounds/limo/limoDrive');
 
 	limo = new FlxSprite(-120, 550);
 	limo.frames = limoTex;
@@ -49,7 +49,7 @@ function createBG()
 	limo.animation.play('drive');
 	limo.antialiasing = true;
 
-	fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('stages/limo/fastCarLol'));
+	fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('backgrounds/limo/fastCarLol'));
 	CurState.add(fastCar);
 	
 	CurState.add(CurState.gf);
