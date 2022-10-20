@@ -122,7 +122,7 @@ class PlayState extends MusicBeatState
 
 	var dialogue:Array<String> = ['strange code', '>:]'];
 
-    var wiggleShit:WiggleEffect = new WiggleEffect();
+        var wiggleShit:WiggleEffect = new WiggleEffect();
 
 	public var songScore:Int = 0;
 	var scoreTxt:FlxText;
@@ -317,7 +317,7 @@ class PlayState extends MusicBeatState
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
 
-		boyfriend = new Boyfriend(770, 450, SONG.player1, true);
+		boyfriend = new Boyfriend(770, 450, SONG.player1);
 
 		switch (curStage) //ONE DAY, THIS SHALL BE GONE
 		{
