@@ -9,7 +9,6 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxTween;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
-
 class ScriptUtils
 {
     public static function createTypedGroup():FlxTypedGroup<Dynamic>
@@ -17,6 +16,5 @@ class ScriptUtils
         return new FlxTypedGroup<Dynamic>();
     }
 }
-
 
 #end

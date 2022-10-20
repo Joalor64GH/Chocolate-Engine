@@ -18,6 +18,7 @@ typedef SwagSong =
 	var song:String;
 	var notes:Array<SwagSection>;
 	var bpm:Int;
+	var stage:String;
 	var needsVoices:Bool;
 	var speed:Float;
 

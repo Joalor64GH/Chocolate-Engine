@@ -14,7 +14,8 @@ class Script //give every script its own interpreter so no variable conflicts!!!
 {
 
     public static var functionBlacklist:Map<ScriptType,Array<String>> = [
-        ScriptType.Basic => []
+        ScriptType.Basic => [],
+        ScriptType.Stage => []
     ];
 
     public var hscriptInterp:Interp = new Interp();
@@ -76,7 +77,7 @@ class Script //give every script its own interpreter so no variable conflicts!!!
 
 enum ScriptType
 {
-    Basic; NoteScript;
+    Basic; Stage;
 }
 
 #end

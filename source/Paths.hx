@@ -137,6 +137,11 @@ class Paths
         return getPath('data/$key.hx', TEXT, library);
     }
 
+	inline static public function stageScript(key:String, ?library:String)
+    {
+        return getPath('stages/$key.hx', TEXT, library);
+    }
+
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
