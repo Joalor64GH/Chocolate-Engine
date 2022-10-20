@@ -2,8 +2,8 @@
 
 # FNF - Chocolate Engine
 
-This is the repository for Chocolate Engine, which is basically a fork of the original FNF.
-Not everything is perfect, so contributions and/or pull requests would be nice!
+This is the repository for Chocolate Engine, which is basically a fork of the [original FNF](https://github.com/ninjamuffin99/Funkin).
+Not everything is perfect, so contributions and/or [pull requests](https://github.com/Joalor64GH/Chocolate-Engine/pulls) would be nice!
 
 ## Downloads
 * [itch.io](https://joalor64.itch.io/chocolate-engine)
@@ -56,7 +56,7 @@ flixel-ui
 hscript
 ```
 Then, these I think:
-1. Download [git-scm](https://git-scm.com/downloads). Works for Windows, Mac, and Linux, just select your build.
+1. Download [git-scm](https://git-scm.com/downloads). Works for [Windows](https://git-scm.com/download/win), [Mac](https://git-scm.com/download/mac), and [Linux](https://git-scm.com/download/linux), just select your build.
 2. Follow instructions to install the application properly.
 3. Run `haxelib git polymod https://github.com/MasterEric/polymod` to install Polymod.
 4. Run `haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc` to install Discord RPC.
@@ -74,13 +74,13 @@ And you should be good to go.
 ### Compilation
 
 Once you have all those installed, it's pretty easy to compile the game. You just need to run `lime test html5 -debug` in the root of the project to build and run the HTML5 version. (command prompt navigation guide can be found here: [https://ninjamuffin99.newgrounds.com/news/post/1090480](https://ninjamuffin99.newgrounds.com/news/post/1090480))
-To run it from your desktop (Windows, Mac, Linux) it can be a bit more involved. For Linux, you only need to open a terminal in the project directory and run `lime test linux -debug` and then run the executable file in export/release/linux/bin. For Windows, you need to install Visual Studio Community 2019. While installing VSC, don't click on any of the options to install workloads. Instead, go to the individual components tab and choose the following:
+To run it from your desktop (Windows, Mac, Linux) it can be a bit more involved. For Linux, you only need to open a terminal in the project directory and run `lime test linux -debug` and then run the executable file in export/release/linux/bin. For Windows, you need to install Visual Studio Community 2019<!--I didnt found any links :'(-->. While installing VSC, don't click on any of the options to install workloads. Instead, go to the individual components tab and choose the following:
 * MSVC v142 - VS 2019 C++ x64/x86 build tools
 * Windows SDK (10.0.17763.0)
 
 Once that is done you can open up a command line in the project's directory and run `lime test windows -debug`. Once that command finishes (it takes forever even on a higher end PC), you can run FNF from the .exe file under export\release\windows\bin
-As for Mac, 'lime test mac -debug' should work, if not the internet surely has a guide on how to compile Haxe stuff for Mac.
+As for Mac, `lime test mac -debug` should work, if not the internet surely has a guide on how to compile Haxe stuff for Mac.
 
 ### Additional guides
 
-- [Command line basics](https://ninjamuffin99.newgrounds.com/news/post/1090480)
+- [Command line basics (newgrounds)](https://ninjamuffin99.newgrounds.com/news/post/1090480)
