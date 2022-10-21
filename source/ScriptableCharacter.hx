@@ -1,3 +1,5 @@
+package;
+
 import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 import flixel.FlxG;
@@ -12,7 +14,6 @@ using StringTools;
 
 class ScriptableCharacter extends Character
 {
-
     public var script:Script;
 
     public override function animationExists(animationToCheck:String):Bool 
@@ -46,8 +47,6 @@ class ScriptableCharacter extends Character
         Config.AllowInterpStuff(script.hscriptInterp,this);
 
         script.CallFunction("new",[x,y,character,isActPlayer]);
-
-
     }
 
     public override function update(elapsed:Float) 

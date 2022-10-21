@@ -206,7 +206,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (FileSystem.exists(scriptPath))
 		{
-			Scripts.push(new Script(Main.hscriptParser,Assets.getText(scriptPath)));
+			Scripts.push(new Script(Main.hscriptParser,Assets.getText(scriptPath))); // gotta fix this also
 		}
 		#end
 
