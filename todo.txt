@@ -1,6 +1,5 @@
 Hscript Support
 Lua Support
 HXS Support
-Reorganize all of the asstes
-Softcode Stages
+Reorganize all of the assets
 Softcode Characters
