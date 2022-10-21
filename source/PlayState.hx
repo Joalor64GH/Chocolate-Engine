@@ -75,8 +75,6 @@ class PlayState extends MusicBeatState
 
 	public static var instance:PlayState;
 
-	public var hscriptParser:Parser;
-
 	public var Scripts:Array<Script> = [];
 
 	private var vocals:FlxSound;
@@ -177,9 +175,6 @@ class PlayState extends MusicBeatState
 	{
         // HornyScript.onCreate();
 
-        hscriptParser = new Parser();
-		hscriptParser.allowTypes = true;
-		hscriptParser.allowJSON = true;
         theFunne = FlxG.save.data.newInput;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -211,7 +206,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (FileSystem.exists(scriptPath))
 		{
-			Scripts.push(new Script(hscriptParser,Assets.getText(scriptPath)));
+			Scripts.push(new Script(Main.hscriptParser,Assets.getText(scriptPath)));
 		}
 		#end
 
@@ -320,7 +315,7 @@ class PlayState extends MusicBeatState
 		switch (curStage) //ONE DAY, THIS SHALL BE GONE
 		{
 			default:
-				var stagescript = new Script(hscriptParser,Assets.getText(stagepath),ScriptType.Stage); // gotta fix this
+				var stagescript = new Script(Main.hscriptParser,Assets.getText(stagepath),ScriptType.Stage); // gotta fix this
 				Scripts.push(stagescript);
 				stagescript.CallFunction("createBG");
 		}

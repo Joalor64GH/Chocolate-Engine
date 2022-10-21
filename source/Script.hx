@@ -76,7 +76,7 @@ class Script //give every script its own interpreter so no variable conflicts!!!
 
 enum ScriptType
 {
-    Basic; Stage;
+    Basic; Stage; Character;
 }
 
 #end
