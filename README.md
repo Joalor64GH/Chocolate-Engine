@@ -19,9 +19,9 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * MP4 and WebM Video Support
 
 ## Things to get done
+* [X] Reorganize all of the assets **[Completed]**
 * [X] Attempt to softcode stages **[Completed]**
 * [ ] Support for Hscript, HXS, and Lua Scripts
-* [ ] Reorganize all of the assets
 * [ ] Attempt to softcode characters
 
 ## Credits
