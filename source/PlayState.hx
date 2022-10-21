@@ -320,7 +320,7 @@ class PlayState extends MusicBeatState
 		switch (curStage) //ONE DAY, THIS SHALL BE GONE
 		{
 			default:
-				var stagescript = new Script(hscriptParser,Assets.getText(stagepath),ScriptType.Stage);
+				var stagescript = new Script(hscriptParser,Assets.getText(stagepath),ScriptType.Stage); // gotta fix this
 				Scripts.push(stagescript);
 				stagescript.CallFunction("createBG");
 		}
