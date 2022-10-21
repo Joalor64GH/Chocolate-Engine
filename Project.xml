@@ -37,17 +37,17 @@
 
 	<classpath name="source" />
 
+	<assets path="assets/fonts" embed='true'/>
+	<assets path="assets/" rename="assets" exclude="*.ogg" if="web"/>
+	<assets path="assets/" rename="assets" exclude="*.mp3" unless="web"/>
+
 	<!--CUSTOM DEFINES-->
 	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
 	<define name="WEBM_EXTENSION" if="windows || mac"/>
 	<define name="MODS_ALLOWED" if="desktop" />
 	<define name="LUA_EXTENSION" if="desktop" />
 
-	<assets path="assets/preload" rename="assets" exclude="*.ogg" if="web"/>
-	<assets path="assets/preload" rename="assets" exclude="*.mp3" unless="web"/>
-
 	<define name="PRELOAD_ALL" unless="web" />
-	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
 
 	<!-- Do you really wanna try that?-->
 	<error value="Nintendo Switch is not supported." if="switch" />
@@ -55,8 +55,6 @@
         <library name="videos"        preload="true" />
 	<section if="PRELOAD_ALL">
 		<library name="songs"    preload="true" />
-		<library name="shared"   preload="true" />
-		<library name="week6"    preload="true" />
 	</section>
 	
 	<section if="NO_PRELOAD_ALL">
@@ -68,11 +66,7 @@
 	<assets path="assets/videos"   library="videos"   if="VIDEO_PLUGIN"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3" unless="web"/>
-	<assets path="assets/shared"   library="shared"   exclude="*.ogg" if="web"/>
-	<assets path="assets/shared"   library="shared"   exclude="*.mp3" unless="web"/>
-	<assets path="assets/week6"    library="week6"    exclude="*.ogg" if="web"/>
-	<assets path="assets/week6"    library="week6"    exclude="*.mp3" unless="web"/>
-	
+
 	<section if="MODS_ALLOWED">
 	        <assets path='art/mod.url' rename='How to make a mod.url' />
 	        <assets path='example_mods' rename='mods' embed='false'/>
@@ -81,12 +75,6 @@
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<assets path='LICENSE' rename='LICENSE.txt' />
 
-	<!-- NOTE FOR FUTURE SELF SINCE FONTS ARE ALWAYS FUCKY 
-		TO FIX ONE OF THEM, I CONVERTED IT TO OTF. DUNNO IF YOU NEED TO
-		THEN UHHH I USED THE NAME OF THE FONT WITH SETFORMAT() ON THE TEXT!!!
-		NOT USING A DIRECT THING TO THE ASSET!!!
-	-->
-	<assets path="assets/fonts" embed='true'/>
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
