@@ -1754,8 +1754,6 @@ class PlayState extends MusicBeatState
 			songScore -= 10;
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
-			// FlxG.sound.play(Paths.sound('missnote1'), 1, false);
-			// FlxG.log.add('played imss note');
 
 			boyfriend.stunned = true;
 
@@ -1826,17 +1824,6 @@ class PlayState extends MusicBeatState
 
 			var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData))];
 
-			// switch (note.noteData)
-			// {
-			// 	case 0:
-			// 		boyfriend.playAnim('singLEFT', true);
-			// 	case 1:
-			// 		boyfriend.playAnim('singDOWN', true);
-			// 	case 2:
-			// 		boyfriend.playAnim('singUP', true);
-			// 	case 3:
-			// 		boyfriend.playAnim('singRIGHT', true);
-			// }
 			boyfriend.playAnim(animToPlay, true);
 
 			playerStrums.forEach(function(spr:FlxSprite)
