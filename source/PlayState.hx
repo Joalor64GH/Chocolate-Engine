@@ -120,7 +120,7 @@ class PlayState extends MusicBeatState
 
 	var dialogue:Array<String> = ['strange code', '>:]'];
 
-        var wiggleShit:WiggleEffect = new WiggleEffect();
+	var wiggleShit:WiggleEffect = new WiggleEffect();
 
 	public var songScore:Int = 0;
 	var scoreTxt:FlxText;
@@ -182,7 +182,6 @@ class PlayState extends MusicBeatState
 		// for static access
 		instance = this;
 
-		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new FlxCamera();
 		camHUD = new FlxCamera();
 		camHUD.bgColor.alpha = 0;
@@ -411,17 +410,17 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 
-                // Score Text
+		// Score Text
 		scoreTxt = new FlxText(710, healthBarBG.y + 30, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
-                // Misses Counter
+		// Misses Counter
 		missesTxt = new FlxText(895, healthBarBG.y + 30, 0, "", 20);
 		missesTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		missesTxt.scrollFactor.set();
 		add(missesTxt);
-                // Watermark
+		// Watermark
 		chocoTxt = new FlxText(360, healthBarBG.y + 30, 0, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
 		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		chocoTxt.scrollFactor.set();
@@ -1889,8 +1888,6 @@ class PlayState extends MusicBeatState
 				Conductor.changeBPM(SONG.notes[Math.floor(curStep / 16)].bpm);
 				FlxG.log.add('CHANGED BPM!');
 			}
-			// else
-			// Conductor.changeBPM(SONG.bpm);
 
 			// Dad doesnt interupt his own notes
 			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
