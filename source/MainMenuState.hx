@@ -153,38 +153,32 @@ class MainMenuState extends MusicBeatState
 
 			if (controls.ACCEPT)
 			{
-				if (optionShit[curSelected] == 'donate')
-				{
-					CoolUtil.browserLoad(Assets.getText(Paths.txt('donate_button_link')));
-				}
-				else
-				{
-					selectedSomethin = true;
-					FlxG.sound.play(Paths.sound('confirmMenu'));
+				selectedSomethin = true;
+				FlxG.sound.play(Paths.sound('confirmMenu'));
 
 					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
 					menuItems.forEach(function(spr:FlxSprite)
+				    {
+					if (curSelected != spr.ID)
 					{
-						if (curSelected != spr.ID)
-						{
-							FlxTween.tween(spr, {alpha: 0}, 0.4, {
-								ease: FlxEase.quadOut,
-								onComplete: function(twn:FlxTween)
-								{
-									spr.kill();
-								}
-							});
-						}
-						else
-						{
-							FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
+						FlxTween.tween(spr, {alpha: 0}, 0.4, {
+							ease: FlxEase.quadOut,
+							onComplete: function(twn:FlxTween)
 							{
-								var daChoice:String = optionShit[curSelected];
+								spr.kill();
+							}
+						});
+					}
+					else
+					{
+						FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
+						{
+							var daChoice:String = optionShit[curSelected];
 
-								switch (daChoice)
-								{
-									case 'story mode':
+							switch (daChoice)
+							{
+								case 'story mode':
 										FlxG.switchState(new StoryMenuState());
 										trace("Story Menu Selected");
 									case 'freeplay':
@@ -195,17 +189,19 @@ class MainMenuState extends MusicBeatState
 										FlxG.switchState(new ModsMenuState());
 										trace("Mods Menu Selected");
 									#end
+								case 'donate':
+									FlxG.switchState(new DonateScreenState());
+									trace("Donate Screen Selected");
 									case 'credits':
 										FlxG.switchState(new CreditsState());
 										trace("Credits Selected");
 									case 'options':
 										FlxG.switchState(new OptionsMenu());
 										trace("Options Selected");
-								}
-							});
-						}
-					});
-				}
+							}
+						});
+					}
+				});
 			}
 		}
 
