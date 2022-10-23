@@ -9,5 +9,6 @@ stephensrt:Lots of Polymod Code and Mag Engine Code
 KadeDev:Extension WebM and Kade Engine Code
 Manux123:Cool Engine Code
 MissingTextureMan101:Funkin Strawberry Code
+Wither362:Cool Pull Requests
 Lars Doucet:Polymod
 Ninjamuffin99:Base Game

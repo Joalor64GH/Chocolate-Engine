@@ -211,7 +211,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (FileSystem.exists(scriptPath))
 		{
-			Scripts.push(new Script(Main.hscriptParser,Assets.getText(scriptPath))); // gotta fix this also
+			Scripts.push(new Script(Main.hscriptParser, Assets.getText(scriptPath)));
 		}
 		#end
 
@@ -312,7 +312,7 @@ class PlayState extends MusicBeatState
 		switch (curStage) //ONE DAY, THIS SHALL BE GONE
 		{
 			default:
-				var stagescript = new Script(Main.hscriptParser, Assets.getText(stagepath), ScriptType.Stage); // gotta fix this
+				var stagescript = new Script(Main.hscriptParser, Assets.getText(stagepath), ScriptType.Stage);
 				Scripts.push(stagescript);
 				stagescript.CallFunction("createBG");
 		}

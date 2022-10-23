@@ -23,6 +23,7 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * [X] Attempt to softcode stages **[Completed]**
 * [ ] Support for Hscript, HXS, and Lua Scripts
 * [ ] Attempt to softcode characters
+* [ ] Notesplashes
 
 ## Credits
 
@@ -37,6 +38,7 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * [KadeDev](https://twitter.com/kade0921) - Extension WebM and Kade Engine Code
 * [Manux123](https://github.com/Manux123) - Cool Engine Code
 * [MissingTextureMan101](https://twitter.com/OfficialMTM101) - Funkin Strawberry Code
+* [Wither362](https://github.com/Wither362) - Cool Pull Requests
 * [Lars Doucet](https://github.com/larsiusprime) - Polymod
 * [Ninjamuffin99](https://github.com/ninjamuffin99) - The Base Game (WOULD NOT BE POSSIBLE WITHOUT HIM)
 
