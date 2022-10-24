@@ -52,7 +52,7 @@ class TitleState extends MusicBeatState
 	var ngSpr:FlxSprite;
 
 	var curWacky:Array<String> = [];
-    var gameName:Array<String> = [];
+        var gameName:Array<String> = [];
 	var wackyImage:FlxSprite;
 
 	override public function create():Void
@@ -102,7 +102,7 @@ class TitleState extends MusicBeatState
 		if (FlxG.save.data.dfjk == null)
 			FlxG.save.data.dfjk = false;
 
-        if (FlxG.save.data.splash == null)
+                if (FlxG.save.data.splash == null)
 			FlxG.save.data.splash = false;
 
 		if (FlxG.save.data.lang == null)
