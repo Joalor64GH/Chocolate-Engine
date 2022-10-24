@@ -23,15 +23,17 @@ class PolymodHandler
 			frameworkParams: {
 				assetLibraryPaths: [
 					"songs" => "songs",
-					"shared" => "shared",
+					"data" => "data",
 					"fonts" => "fonts",
-                                        "tutorial" => "tutorial",
-					"week1" => "week1",
-					"week2" => "week2",
-					"week3" => "week3",
-					"week4" => "week4",
-					"week5" => "week5",
-					"week6" => "week6"
+                                        "characters" => "characters",
+					"scripts" => "scripts",
+					"cutscenes" => "cutscenes",
+					"locales" => "locales",
+					"music" => "music",
+					"sounds" => "sounds",
+					"stages" => "stages",
+					"images" => "images",
+					"videos" => "videos"
 				]
 			}
 		});
