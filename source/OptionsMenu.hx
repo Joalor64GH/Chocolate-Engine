@@ -25,7 +25,13 @@ class OptionsMenu extends MusicBeatState
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuDesat'));
-		controlsStrings = CoolUtil.coolStringFile((FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + "\n" + (FlxG.save.data.newInput ? "New Input" : "Old Input") + "\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + "\n" + (FlxG.save.data.lang ? "English" : "Spanish") + "\n" + (FlxG.save.data.splash ? "Notesplashes On" : "Notesplashes Off"));
+		controlsStrings = CoolUtil.coolStringFile(
+			(FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + 
+			"\n" + (FlxG.save.data.newInput ? "New Input" : "Old Input") + 
+			"\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + 
+			"\n" + (FlxG.save.data.lang ? "English" : "Spanish") + 
+			"\n" + (FlxG.save.data.splash ? "Notesplashes On" : "Notesplashes Off")
+			);
 
 		trace(controlsStrings);
 
