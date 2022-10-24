@@ -241,7 +241,7 @@ class TitleState extends MusicBeatState
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = true;
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Chocolate Engine v1.1.0 (FNF 0.2.7.1)" #if debug + " DEBUG BUILD" #end, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Chocolate Engine v1.2.0 (FNF 0.2.7.1)" #if debug + " DEBUG BUILD" #end, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);

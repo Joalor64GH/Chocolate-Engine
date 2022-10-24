@@ -2,7 +2,7 @@
 <project xmlns="http://lime.software/project/1.0.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lime.software/project/1.0.3 http://lime.software/xsd/project-1.0.3.xsd">
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="FNF: Chocolate Engine" packageName="com.joalor64gh.choco" package="com.joalor64gh.choco" main="Main" version="1.1.0" company="Joalor64GH" />
+	<app title="FNF: Chocolate Engine" packageName="com.joalor64gh.choco" package="com.joalor64gh.choco" main="Main" version="1.2.0" company="Joalor64GH" />
         <app file="ChocoWIN" if="windows" />
 	<app file="ChocoAPP" if="linux" />
 	<app file="ChocoMAC" if="mac" />
@@ -68,7 +68,7 @@
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3" unless="web"/>
 
 	<section if="MODS_ALLOWED">
-	        <assets path='art/mod.url' rename='How to make a mod.url' />
+	        <assets path='art/mod.url' rename='How to make a mod.url' if="windows"/>
 	        <assets path='example_mods' rename='mods' embed='false'/>
 		<assets path='modsList.txt' rename='' />
 	</section>
