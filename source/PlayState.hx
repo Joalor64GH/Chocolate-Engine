@@ -120,8 +120,9 @@ class PlayState extends MusicBeatState
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
 
-    if (FlxG.save.data.splash)
+    if (FlxG.save.data.splash){
 	var grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
+	}
 
 	var dialogue:Array<String> = ['strange code', '>:]'];
 
