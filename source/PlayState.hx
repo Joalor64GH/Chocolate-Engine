@@ -120,9 +120,7 @@ class PlayState extends MusicBeatState
 	public var camHUD:FlxCamera;
 	public var camGame:FlxCamera;
 
-    if (FlxG.save.data.splash){
 	var grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
-	}
 
 	var dialogue:Array<String> = ['strange code', '>:]'];
 
@@ -197,10 +195,11 @@ class PlayState extends MusicBeatState
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
 
-        if (FlxG.save.data.splash)
-		var tempNoteSplash = new NoteSplash(0, 0, 0);
-		grpNoteSplashes.add(tempNoteSplash);
-		tempNoteSplash.alpha = 0.1;
+		if (FlxG.save.data.splash) {
+			var tempNoteSplash = new NoteSplash(0, 0, 0);
+			grpNoteSplashes.add(tempNoteSplash);
+			tempNoteSplash.alpha = 0.1;
+		}
 
 		FlxCamera.defaultCameras = [camGame];
 
@@ -381,8 +380,8 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<FlxSprite>();
 		add(strumLineNotes);
 
-        if (FlxG.save.data.splash)
-		add(grpNoteSplashes);
+		if (FlxG.save.data.splash)
+			add(grpNoteSplashes);
 
 		playerStrums = new FlxTypedGroup<FlxSprite>();
 
@@ -453,9 +452,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		missesTxt.cameras = [camHUD];
 		chocoTxt.cameras = [camHUD];
-		if (FlxG.save.data.splash){
-			grpNoteSplashes.cameras = [camHUD];
-		}
+		if (FlxG.save.data.splash) grpNoteSplashes.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
 		startingSong = true;
@@ -1455,7 +1452,8 @@ class PlayState extends MusicBeatState
 		var rating:FlxSprite = new FlxSprite();
 		var score:Int = 350;
 
-		var daRating:String = "sick";
+		var daRating:String = 'sick';
+		var shouldSplash:Bool = false;
 
 		if (noteDiff > Conductor.safeZoneOffset * 0.9)
 		{
@@ -1471,8 +1469,10 @@ class PlayState extends MusicBeatState
 		{
 			daRating = 'good';
 			score = 200;
+		} else { // sick
+			shouldSplash = true;
 		}
-		if (daRating == 'sick' && FlxG.save.data.splash) {
+		if (shouldSplash && FlxG.save.data.splash) {
 			// notesplashes
 			var daNoteSplash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
 			daNoteSplash.setupNoteSplash(daNote.x, strumLine.y, daNote.noteData);
