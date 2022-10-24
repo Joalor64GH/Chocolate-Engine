@@ -118,7 +118,7 @@ class OptionsMenu extends MusicBeatState
 					grpControls.add(ctrl);
 				case 3:
 					FlxG.save.data.splash = !FlxG.save.data.splash;
-					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.splashes ? 'Notesplashes On' : 'Notesplashes Off'), true, false);
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.splash ? 'Notesplashes On' : 'Notesplashes Off'), true, false);
 					ctrl.isMenuItem = true;
 					ctrl.targetY = curSelected - 3;
 					grpControls.add(ctrl);
