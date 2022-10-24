@@ -1438,7 +1438,7 @@ class PlayState extends MusicBeatState
 
 	var endingSong:Bool = false;
 
-	private function popUpScore(strumtime:Float):Void
+	private function popUpScore(strumtime:Float, daNote:Note):Void
 	{
 		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
 		vocals.volume = 1;
@@ -1814,7 +1814,7 @@ class PlayState extends MusicBeatState
 		{
 			if (!note.isSustainNote)
 			{
-				popUpScore(note.strumTime);
+				popUpScore(note.strumTime, note);
 				combo += 1;
 			}
 
