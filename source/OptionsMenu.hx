@@ -30,8 +30,7 @@ class OptionsMenu extends MusicBeatState
 			"\n" + (FlxG.save.data.newInput ? "New Input" : "Old Input") + 
 			"\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + 
 			"\n" + (FlxG.save.data.splash ? "Notesplashes On" : "Notesplashes Off") +
-			"\n" + (FlxG.save.data.lang ? "English" : "Spanish")
-			);
+			"\n" + (FlxG.save.data.lang ? "English" : "Spanish"));
 
 		trace(controlsStrings);
 
