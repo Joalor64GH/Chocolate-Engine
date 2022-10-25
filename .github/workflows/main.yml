@@ -65,6 +65,7 @@ jobs:
         with:
           name: linuxBuild
           path: 'export/release/linux/bin'
+          retention-days: 5
   buildWindows:
     runs-on: windows-latest
 
@@ -108,6 +109,7 @@ jobs:
         with:
           name: windowsBuild
           path: export/release/windows/bin
+          retention-days: 5
   buildMac:
     runs-on: macos-latest
 
@@ -151,3 +153,4 @@ jobs:
         with:
           name: macBuild
           path: export/release/macos/bin
+          retention-days: 5
