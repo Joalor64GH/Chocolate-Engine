@@ -44,6 +44,33 @@ import polymod.Polymod.PolymodError;
 
 using StringTools;
 
+class Fixer {
+	public static function initPlayerSettings() {
+		if (FlxG.save.data.newInput == null)
+			FlxG.save.data.newInput = true;
+
+		if (FlxG.save.data.downscroll == null)
+			FlxG.save.data.downscroll = false;
+
+		if (FlxG.save.data.dfjk == null)
+			FlxG.save.data.dfjk = false;
+
+		if (FlxG.save.data.splash == null)
+			FlxG.save.data.splash = true;
+
+		if (FlxG.save.data.timebar == null)
+			FlxG.save.data.timebar = true;
+
+		if (FlxG.save.data.botplay == null)
+			FlxG.save.data.botplay = false;
+
+		if (FlxG.save.data.lang == null)
+			FlxG.save.data.lang = false; // english
+
+		FlxG.save.bind('chocolateengine', 'joalor64gh');
+	}
+}
+
 class TitleState extends MusicBeatState
 {
 	static var initialized:Bool = false;
@@ -99,28 +126,7 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
-		if (FlxG.save.data.newInput == null)
-			FlxG.save.data.newInput = true;
-
-		if (FlxG.save.data.downscroll == null)
-			FlxG.save.data.downscroll = false;
-
-		if (FlxG.save.data.dfjk == null)
-			FlxG.save.data.dfjk = false;
-
-                if (FlxG.save.data.splash == null)
-			FlxG.save.data.splash = true;
-
-                if (FlxG.save.data.timebar == null)
-			FlxG.save.data.timebar = true;
-
-		if (FlxG.save.data.botplay == null)
-			FlxG.save.data.botplay = false;
-
-		if (FlxG.save.data.lang == null)
-			FlxG.save.data.lang = false;
-
-		FlxG.save.bind('chocolateengine', 'joalor64gh');
+		Fixer.initPlayerSettings();
 
 		Highscore.load();
 
@@ -242,9 +248,7 @@ class TitleState extends MusicBeatState
 
 		credTextShit = new Alphabet(0, 0, "ninjamuffin99\nPhantomArcade\nkawaisprite\nevilsk8er", true);
 		credTextShit.screenCenter();
-
 		// credTextShit.alignment = CENTER;
-
 		credTextShit.visible = false;
 
 		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('titlescreen/newgrounds_logo'));
@@ -346,25 +350,25 @@ class TitleState extends MusicBeatState
 			transitioning = true;
 			// FlxG.sound.music.stop();
 
-			new FlxTimer().start(2, function(tmr:FlxTimer)
-			{
+			new FlxTimer().start(2, function(tmr:FlxTimer) {
 				FlxG.switchState(new MainMenuState());
-			}
-		);}
+			});
+		}
 
 		if (pressedEnter && !skippedIntro)
 		{
 			skipIntro();
 		}
 
-		if (controls.LEFT)
-		{
-			colorShader.update(0.1 * -elapsed);
-		}
-
-		if (controls.RIGHT)
-		{
-			colorShader.update(0.1 * elapsed);
+		if(!transitioning) {
+			if (controls.LEFT)
+			{
+				colorShader.update(0.1 * -elapsed);
+			}
+			if (controls.RIGHT)
+			{
+				colorShader.update(0.1 * elapsed);
+			}
 		}
 
 		super.update(elapsed);
@@ -419,48 +423,49 @@ class TitleState extends MusicBeatState
 			case 1:
 				var teamStuff = Assets.getText(Paths.txt('team')).split('--');
 				createCoolText(teamStuff);
-			// credTextShit.visible = true;
+				// credTextShit.visible = true;
 			case 3:
 				addMoreText('present');
-			// credTextShit.text += '\npresent...';
-			// credTextShit.addText();
+				// credTextShit.text += '\npresent...';
+				// credTextShit.addText();
 			case 4:
 				deleteCoolText();
-			// credTextShit.visible = false;
-			// credTextShit.text = 'In association \nwith';
-			// credTextShit.screenCenter();
+				// credTextShit.visible = false;
+				// credTextShit.text = 'In association \nwith';
+				// credTextShit.screenCenter();
 			case 5:
 				createCoolText(['Not in association', 'with']);
 			case 7:
 				addMoreText('newgrounds');
 				ngSpr.visible = true;
-			// credTextShit.text += '\nNewgrounds';
+				// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
 				ngSpr.visible = false;
-			// credTextShit.visible = false;
+				// credTextShit.visible = false;
 
-			// credTextShit.text = 'Shoutouts Tom Fulp';
-			// credTextShit.screenCenter();
+				// credTextShit.text = 'Shoutouts Tom Fulp';
+				// credTextShit.screenCenter();
 			case 9:
 				createCoolText([curWacky[0]]);
-			// credTextShit.visible = true;
+				// credTextShit.visible = true;
 			case 11:
 				addMoreText(curWacky[1]);
-			// credTextShit.text += '\nlmao';
+				// credTextShit.text += '\nlmao';
 			case 12:
 				deleteCoolText();
-			// credTextShit.visible = false;
-			// credTextShit.text = "Friday";
-			// credTextShit.screenCenter();
+				// credTextShit.visible = false;
+				// credTextShit.text = "Friday";
+				// credTextShit.screenCenter();
 			case 13:
 				addMoreText(gameName[0]);
-			// credTextShit.visible = true;
+				// credTextShit.visible = true;
 			case 14:
 				addMoreText(gameName[1]);
-			// credTextShit.text += '\nNight';
+				// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText(gameName[2]); // credTextShit.text += '\nFunkin';
+				addMoreText(gameName[2]);
+				// credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();
