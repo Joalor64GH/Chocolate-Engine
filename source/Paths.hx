@@ -16,7 +16,7 @@ class Paths
 		currentLevel = name.toLowerCase();
 	}
 
-	static function getPath(file:String, type:AssetType, library:Null<String>)
+	static function getPath(file:String, ?type:AssetType, library:Null<String>)
 	{
 		if (library != null)
 			return getLibraryPath(file, library);
@@ -50,7 +50,7 @@ class Paths
 		return 'assets/$file';
 	}
 
-	inline static public function file(file:String, type:AssetType = TEXT, ?library:String)
+	inline static public function file(file:String, ?type:AssetType, ?library:String)
 	{
 		return getPath(file, type, library);
 	}
@@ -92,9 +92,9 @@ class Paths
 		return getPath('videos/$key.webm', BINARY, library);
 	}
 
-	inline static public function music(key:String, ?library:String)
+	inline static public function music(key:String, ?library:String, type:AssetType = MUSIC)
 	{
-		return getPath('music/$key.$SOUND_EXT', MUSIC, library);
+		return getPath('music/$key.$SOUND_EXT', type, library);
 	}
 
 	inline static public function voices(song:String)
@@ -117,35 +117,35 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-    inline static public function locales(key:String, ?library:String)
-    {
-        return getPath('locales/$key/languageData.json', TEXT, library);
-    }
+	inline static public function locales(key:String, ?library:String)
+	{
+		return getPath('locales/$key/languageData.json', TEXT, library);
+	}
 
-    inline static public function cutscene(key:String, ?library:String)
-    {
-        return getPath('cutscenes/$key.json', TEXT, library);
-    }
+	inline static public function cutscene(key:String, ?library:String, type:AssetType = TEXT)
+	{
+		return getPath('cutscenes/$key.json', type, library);
+	}
 
 	inline static public function script(key:String, ?library:String)
-    {
-        return getPath('scripts/$key.hx', TEXT, library);
-    }
+	{
+		return getPath('scripts/$key.hx', TEXT, library);
+	}
 
 	inline static public function songScript(key:String, ?library:String)
-    {
-        return getPath('data/$key.hx', TEXT, library);
-    }
+	{
+		return getPath('data/$key.hx', TEXT, library);
+	}
 
 	inline static public function stageScript(key:String, ?library:String)
-    {
-        return getPath('stages/$key.hx', TEXT, library);
-    }
+	{
+		return getPath('stages/$key.hx', TEXT, library);
+	}
 
 	inline static public function charScript(key:String, ?library:String)
-    {
-        return getPath('characters/$key.hx', TEXT, library);
-    }
+	{
+		return getPath('characters/$key.hx', TEXT, library);
+	}
 
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
