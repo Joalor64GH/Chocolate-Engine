@@ -32,7 +32,7 @@ class Note extends FlxSprite
 	public static var BLUE_NOTE:Int = 1;
 	public static var RED_NOTE:Int = 3;
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, sustainNote:Bool = false)
 	{
 		super();
 
@@ -70,10 +70,10 @@ class Note extends FlxSprite
 					animation.add('redholdend', [7]);
 					animation.add('blueholdend', [5]);
 
-					animation.add('purplehold', [0]);
-					animation.add('greenhold', [2]);
-					animation.add('redhold', [3]);
-					animation.add('bluehold', [1]);
+					animation.add('purplehold', [PURP_NOTE]);
+					animation.add('greenhold', [GREEN_NOTE]);
+					animation.add('redhold', [RED_NOTE]);
+					animation.add('bluehold', [BLUE_NOTE]);
 				}
 
 				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
