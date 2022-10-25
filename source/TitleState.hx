@@ -57,7 +57,7 @@ class TitleState extends MusicBeatState
 	var curWacky:Array<String> = [];
         var gameName:Array<String> = [];
 
-	    var colorShader:shaders.ColorSwapEffect;
+	var colorShader:shaders.ColorSwapEffect;
 
 	var wackyImage:FlxSprite;
 
@@ -111,7 +111,7 @@ class TitleState extends MusicBeatState
                 if (FlxG.save.data.splash == null)
 			FlxG.save.data.splash = true;
 
-        if (FlxG.save.data.timebar == null)
+                if (FlxG.save.data.timebar == null)
 			FlxG.save.data.timebar = true;
 
 		if (FlxG.save.data.botplay == null)
@@ -358,14 +358,14 @@ class TitleState extends MusicBeatState
 		}
 
 		if (controls.LEFT)
-			{
-				colorShader.update(0.1 * -elapsed);
-			}
+		{
+			colorShader.update(0.1 * -elapsed);
+		}
 
-			if (controls.RIGHT)
-			{
-				colorShader.update(0.1 * elapsed);
-			}
+		if (controls.RIGHT)
+		{
+			colorShader.update(0.1 * elapsed);
+		}
 
 		super.update(elapsed);
 	}
