@@ -203,7 +203,7 @@ class ModsMenuState extends MusicBeatState
 
 	function changeMod(bah:Int = 0) {
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
-		curSelected =+ bah; // wtfdym expected expression??
+		curSelected += bah; // wtfdym expected expression??
 		if (curSelected < 0)
 			curSelected = page.length - 1;
 
