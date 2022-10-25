@@ -103,7 +103,10 @@ class TitleState extends MusicBeatState
 			FlxG.save.data.dfjk = false;
 
                 if (FlxG.save.data.splash == null)
-			FlxG.save.data.splash = false;
+			FlxG.save.data.splash = true;
+
+        if (FlxG.save.data.timebar == null)
+			FlxG.save.data.timebar = true;
 
 		if (FlxG.save.data.lang == null)
 			FlxG.save.data.lang = false;

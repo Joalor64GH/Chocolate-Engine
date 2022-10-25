@@ -30,6 +30,7 @@ class OptionsMenu extends MusicBeatState
 			"\n" + (FlxG.save.data.newInput ? "New Input" : "Old Input") + 
 			"\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + 
 			"\n" + (FlxG.save.data.splash ? "Notesplashes On" : "Notesplashes Off") +
+			"\n" + (FlxG.save.data.timebar ? "Timebar On" : "Timebar Off") +
 			"\n" + (FlxG.save.data.lang ? "English" : "Spanish"));
 
 		trace(controlsStrings);
@@ -122,10 +123,16 @@ class OptionsMenu extends MusicBeatState
 					ctrl.targetY = curSelected - 3;
 					grpControls.add(ctrl);
 				case 4:
+					FlxG.save.data.timebar = !FlxG.save.data.timebar;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.timebar ? 'Timebar On' : 'Timebar Off'), true, false);
+					ctrl.isMenuItem = true;
+					ctrl.targetY = curSelected - 4;
+					grpControls.add(ctrl);
+				case 5:
 					FlxG.save.data.lang = !FlxG.save.data.lang;
 					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.lang ? 'English' : 'Spanish'), true, false);
 					ctrl.isMenuItem = true;
-					ctrl.targetY = curSelected - 4;
+					ctrl.targetY = curSelected - 5;
 					grpControls.add(ctrl);
 			}
 		}
