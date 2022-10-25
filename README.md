@@ -25,7 +25,6 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * [ ] Support for Hscript, HXS, and Lua Scripts
 * [ ] Attempt to softcode characters
 * [ ] Freeplay Colors
-* [ ] Customizable Main Menu
 
 ## Credits
 
