@@ -30,6 +30,7 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 
 * [Joalor64 YT](https://www.youtube.com/channel/UC4tRMRL_iAHX5n1qQpHibfg) - Main Programmer and Director
 * [MemeHoovy](https://linktr.ee/memehoovy) - Assistant Coder and MemeHoovy Engine Code
+* [Wither362](https://github.com/Wither362) - Assitant Coder and Fixer
 * [ShadowMario](https://github.com/ShadowMario) - Psych Input
 * [PolybiusProxy](https://github.com/polybiusproxy) - MP4 Video Support
 * [Smokey](https://twitter.com/Smokey_5_) - Adobe Animate Texture Atlas Support
@@ -39,7 +40,6 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * [KadeDev](https://twitter.com/kade0921) - Extension WebM and Kade Engine Code
 * [Manux123](https://github.com/Manux123) - Cool Engine Code
 * [MissingTextureMan101](https://twitter.com/OfficialMTM101) - Funkin Strawberry Code
-* [Wither362](https://github.com/Wither362) - Cool Pull Requests
 * [Lars Doucet](https://github.com/larsiusprime) - Polymod
 * [Ninjamuffin99](https://github.com/ninjamuffin99) - The Base Game (WOULD NOT BE POSSIBLE WITHOUT HIM)
 
@@ -49,7 +49,7 @@ How to build the funny game or something
 
 ### Installing Stuff
 
-First, install Haxe (USE 4.2.5 BRUH) and HaxeFlixel.
+First, install Haxe (USE 4.2.5 BRUH) and HaxeFlixel:
 * [Haxe](https://haxe.org/download/version/4.2.5/)
 * [HaxeFlixel](https://haxeflixel.com/documentation/install-haxeflixel/)
 
