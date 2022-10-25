@@ -1228,8 +1228,6 @@ class PlayState extends MusicBeatState
 			deaths++;
 
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
-
-			// FlxG.switchState(new GameOverState(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 			
 			#if desktop
 			// Game Over doesn't get his own variable because it's only used here
@@ -1867,7 +1865,7 @@ class PlayState extends MusicBeatState
 			if (SONG.notes[Math.floor(curStep / 16)].mustHitSection)
 				dad.dance();
 		}
-		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
+
 		wiggleShit.update(Conductor.crochet);
 
 		if (camZooming && FlxG.camera.zoom < 1.35 && curBeat % 4 == 0)
