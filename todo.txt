@@ -3,4 +3,3 @@ Lua Support
 HXS Support
 Softcode Characters
 Freeplay Colors
-Customizable Main Menu

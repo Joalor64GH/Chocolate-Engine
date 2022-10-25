@@ -1,5 +1,6 @@
 package;
 
+import openfl.filters.ShaderFilter;
 #if desktop
 import Discord.DiscordClient;
 import sys.thread.Thread;
@@ -30,6 +31,8 @@ import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
 
+import shaders.ColorSwapShader;
+
 #if MODS_ALLOWED
 import ModsMenuState;
 import modding.PolymodHandler;
@@ -53,6 +56,9 @@ class TitleState extends MusicBeatState
 
 	var curWacky:Array<String> = [];
         var gameName:Array<String> = [];
+
+	    var colorShader:shaders.ColorSwapEffect;
+
 	var wackyImage:FlxSprite;
 
 	override public function create():Void
@@ -204,7 +210,9 @@ class TitleState extends MusicBeatState
 		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		gfDance.antialiasing = true;
+		gfDance.shader = colorShader.shader;
 		add(gfDance);
+		logoBl.shader = colorShader.shader;
 		add(logoBl);
 
 		titleText = new FlxSprite(100, FlxG.height * 0.8);
@@ -348,6 +356,16 @@ class TitleState extends MusicBeatState
 		{
 			skipIntro();
 		}
+
+		if (controls.LEFT)
+			{
+				colorShader.update(0.1 * -elapsed);
+			}
+
+			if (controls.RIGHT)
+			{
+				colorShader.update(0.1 * elapsed);
+			}
 
 		super.update(elapsed);
 	}
