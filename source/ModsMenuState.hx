@@ -1,7 +1,7 @@
 /*
  * Apache License, Version 2.0
  *
- * Copyright (c) 2022 MemeHoovy and Joalor64
+ * Copyright (c) 2022 MemeHoovy, Joalor64 and Wither362
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -203,7 +203,7 @@ class ModsMenuState extends MusicBeatState
 
 	function changeMod(bah:Int = 0) {
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
-		curSelected =+ bah;
+		curSelected =+ bah; // wtfdym expected expression??
 		if (curSelected < 0)
 			curSelected = page.length - 1;
 

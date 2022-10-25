@@ -108,6 +108,9 @@ class TitleState extends MusicBeatState
         if (FlxG.save.data.timebar == null)
 			FlxG.save.data.timebar = true;
 
+		if (FlxG.save.data.botplay == null)
+			FlxG.save.data.botplay = false;
+
 		if (FlxG.save.data.lang == null)
 			FlxG.save.data.lang = false;
 
