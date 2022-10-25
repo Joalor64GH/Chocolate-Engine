@@ -65,6 +65,7 @@ jobs:
         with:
           name: linuxDebugBuild
           path: 'export/debug/linux/bin'
+          retention-days: 5
   buildDebugWindows:
     runs-on: windows-latest
 
@@ -108,6 +109,7 @@ jobs:
         with:
           name: windowsDebugBuild
           path: export/debug/windows/bin
+          retention-days: 5
   buildDebugMac:
     runs-on: macos-latest
 
@@ -151,3 +153,4 @@ jobs:
         with:
           name: macDebugBuild
           path: export/debug/macos/bin
+          retention-days: 5
