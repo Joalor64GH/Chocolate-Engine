@@ -2,4 +2,5 @@ Hscript Support
 Lua Support
 HXS Support
 Softcode Characters
-Notesplashes
+Freeplay Colors
+Customizable Main Menu

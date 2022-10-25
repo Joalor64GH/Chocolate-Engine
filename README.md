@@ -19,11 +19,13 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * MP4 and WebM Video Support
 
 ## Things to get done
+* [X] Notesplashes **[Completed]**
 * [X] Reorganize all of the assets **[Completed]**
 * [X] Attempt to softcode stages **[Completed]**
 * [ ] Support for Hscript, HXS, and Lua Scripts
 * [ ] Attempt to softcode characters
-* [ ] Notesplashes
+* [ ] Freeplay Colors
+* [ ] Customizable Main Menu
 
 ## Credits
 

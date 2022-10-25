@@ -5,7 +5,6 @@ import sys.FileSystem;
 #if MODS_ALLOWED
 import modding.PolymodHandler.loadModMetadata;
 import polymod.fs.SysFileSystem;
-// import polymod.backends.PolymodAssets;
 #end
 #if desktop
 import Discord.DiscordClient;
@@ -60,7 +59,6 @@ import hscript.Parser;
 import hscript.Interp;
 import hscript.Expr;
 #end
-// import scripting.HornyScript;
 
 using StringTools;
 
@@ -175,12 +173,8 @@ class PlayState extends MusicBeatState
 		'singLEFT', 'singDOWN', 'singUP', 'singRIGHT' // im starting to frikin' like this idea
 	];
 
-	// public var HornyScript:HornyScript; // we do a little trolling
-
 	override public function create()
 	{
-		// HornyScript.onCreate();
-
 		theFunne = FlxG.save.data.newInput;
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
@@ -219,7 +213,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (FileSystem.exists(scriptPath))
 		{
-			Scripts.push(new Script(Main.hscriptParser, Assets.getText(scriptPath)));
+			Scripts.push(new Script(Main.hscriptParser, Assets.getText(scriptPath), ScriptType.Basic)); // this keeps crashing the game
 		}
 		#end
 
@@ -320,7 +314,7 @@ class PlayState extends MusicBeatState
 		switch (curStage) //ONE DAY, THIS SHALL BE GONE
 		{
 			default:
-				var stagescript = new Script(Main.hscriptParser, Assets.getText(stagepath), ScriptType.Stage);
+				var stagescript = new Script(Main.hscriptParser, Assets.getText(stagepath), ScriptType.Stage); // this also keeps crashing the game
 				Scripts.push(stagescript);
 				stagescript.CallFunction("createBG");
 		}
@@ -1020,8 +1014,6 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-		// HornyScript.onUpdate();
-
 		if (daSongName == 'test' && curBeat % 2 == 0) {
 			trace('FUCK YOU:' + cunt);
 			FlxG.log.add('FUCK YOU:' + cunt);
@@ -1756,8 +1748,6 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
-		// HornyScript.onNoteMiss();
-
 		if (!boyfriend.stunned)
 		{
 			misses += 1;
@@ -1809,7 +1799,6 @@ class PlayState extends MusicBeatState
 
 	function goodNoteHit(note:Note):Void
 	{
-		// HornyScript.onNoteHit();
 		if (!note.wasGoodHit)
 		{
 			if (!note.isSustainNote)
