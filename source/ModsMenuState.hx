@@ -108,15 +108,18 @@ class ModsMenuState extends MusicBeatState
 			option.destroy();
 		});
 
+		var mods:Int = 0;
+
 		for (i in 0...PolymodHandler.metadataArrays.length)
 		{
 			var modId = PolymodHandler.metadataArrays[i];
 			var modOption = new ModsMenuStateOption(ModList.modMetadatas.get(modId).title, modId, i);
 			page.add(modOption);
 			coolId = modId;
+			mods = i;
 		}
 
-		if (optionLoopNum > 0)
+		if (mods > 0)
 		{
 			buildUI();
 		}
