@@ -151,6 +151,8 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
+	public var scriptPrivateAccess:Bool = false;
+
 	public function CallFunction(funcName:String, ?args:Array<Dynamic>, ignoreBlacklist:Bool = false):Dynamic
 	{
 		#if hscript
@@ -213,7 +215,7 @@ class PlayState extends MusicBeatState
 		#if desktop
 		if (FileSystem.exists(scriptPath))
 		{
-			Scripts.push(new Script(Main.hscriptParser, Assets.getText(scriptPath), ScriptType.Basic)); // this keeps crashing the game
+			Scripts.push(new Script(Main.hscriptParser, Assets.getText(scriptPath), ScriptType.Basic, scriptPrivateAccess)); // this keeps crashing the game
 		}
 		#end
 
@@ -314,7 +316,7 @@ class PlayState extends MusicBeatState
 		switch (curStage) //ONE DAY, THIS SHALL BE GONE
 		{
 			default:
-				var stagescript = new Script(Main.hscriptParser, Assets.getText(stagepath), ScriptType.Stage); // this also keeps crashing the game
+				var stagescript = new Script(Main.hscriptParser, Assets.getText(stagepath), ScriptType.Stage, scriptPrivateAccess); // this also keeps crashing the game
 				Scripts.push(stagescript);
 				stagescript.CallFunction("createBG");
 		}
