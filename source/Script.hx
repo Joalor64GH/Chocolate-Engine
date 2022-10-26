@@ -23,7 +23,7 @@ class Script //give every script its own interpreter so no variable conflicts!!!
 
     /**
      * Allows private access to the script.
-     * Wither might find a better way to do this. 🤷🏻‍♂️
+     * Wither might find a better way to do this. :man_shrugging:
      */
     public var allowPrivate:Bool = false;
 
