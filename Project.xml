@@ -52,7 +52,7 @@
 	<!-- Do you really wanna try that?-->
 	<error value="Nintendo Switch is not supported." if="switch" />
 	
-        <library name="videos"        preload="true" />
+        <library name="videos"           preload="true" />
 	<section if="PRELOAD_ALL">
 		<library name="songs"    preload="true" />
 	</section>
