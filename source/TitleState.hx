@@ -1,6 +1,7 @@
 package;
 
-import openfl.filters.ShaderFilter;
+import shaders.BuildingShaders;
+import shaders.ColorSwap;
 #if desktop
 import Discord.DiscordClient;
 import sys.thread.Thread;
@@ -30,8 +31,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
-
-import shaders.ColorSwapShader;
 
 #if MODS_ALLOWED
 import ModsMenuState;
@@ -83,10 +82,10 @@ class TitleState extends MusicBeatState
 
 	var curWacky:Array<String> = [];
         var gameName:Array<String> = [];
-
-	var colorShader:shaders.ColorSwapEffect;
-
 	var wackyImage:FlxSprite;
+
+	var swagShader:ColorSwap;
+	var alphaShader:BuildingShaders;
 
 	override public function create():Void
 	{
@@ -118,6 +117,9 @@ class TitleState extends MusicBeatState
 		#end
 
 		PlayerSettings.init();
+
+		swagShader = new ColorSwap();
+		alphaShader = new BuildingShaders();
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 		gameName = getName();
@@ -210,15 +212,15 @@ class TitleState extends MusicBeatState
 		logoBl.updateHitbox();
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
+		logoBl.shader = swagShader.shader;
 
 		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
 		gfDance.frames = Paths.getSparrowAtlas('titlescreen/gfDanceTitle');
 		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
 		gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		gfDance.antialiasing = true;
-		gfDance.shader = colorShader.shader;
 		add(gfDance);
-		logoBl.shader = colorShader.shader;
+		gfDance.shader = swagShader.shader;
 		add(logoBl);
 
 		titleText = new FlxSprite(100, FlxG.height * 0.8);
@@ -293,6 +295,10 @@ class TitleState extends MusicBeatState
 
 		return swagGoodArray;
 	}
+
+	var transitioning:Bool = false;
+
+	var isRainbow:Bool = false;
 	
 	function getName():Array<String>
 	{
@@ -360,15 +366,13 @@ class TitleState extends MusicBeatState
 			skipIntro();
 		}
 
-		if(!transitioning) {
-			if (controls.LEFT)
-			{
-				colorShader.update(0.1 * -elapsed);
-			}
-			if (controls.RIGHT)
-			{
-				colorShader.update(0.1 * elapsed);
-			}
+		if (controls.LEFT)
+		{
+			swagShader.update(elapsed * 0.1);
+		}
+		if (controls.RIGHT)
+		{
+			swagShader.update(-elapsed * 0.1);
 		}
 
 		super.update(elapsed);
