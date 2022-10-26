@@ -308,8 +308,6 @@ class TitleState extends MusicBeatState
 		return firstArray;
 	}
 
-	var transitioning:Bool = false;
-
 	override function update(elapsed:Float)
 	{
 		if (FlxG.sound.music != null)
