@@ -151,6 +151,7 @@ class PlayState extends MusicBeatState
 	var detailsPausedText:String = "";
 	#end
 
+	// placeholder var ig
 	public var scriptPrivateAccess:Bool = false;
 
 	public function CallFunction(funcName:String, ?args:Array<Dynamic>, ignoreBlacklist:Bool = false):Dynamic
