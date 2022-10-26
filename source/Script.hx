@@ -21,11 +21,22 @@ class Script //give every script its own interpreter so no variable conflicts!!!
     public var hscriptCurScript:Expr;
     public var type:ScriptType = ScriptType.Basic;
 
-    public function new(parser:Parser, script:String, ?tp:ScriptType = ScriptType.Basic)
+    /**
+     * Allows private access to the script.
+     * Wither might find a better way to do this. 🤷🏻‍♂️
+     */
+    public var allowPrivate:Bool = false;
+
+    public function new(parser:Parser, script:String, ?tp:ScriptType = ScriptType.Basic, ?privateAccess:Bool = false)
     {
         try 
         {
-            hscriptCurScript = parser.parseString(script);
+            if (!privateAccess) {
+                hscriptCurScript = parser.parseString(script);
+            } else {
+                @:privateAccess
+                hscriptCurScript = parser.parseString(script);
+            }
         }
         catch(e)
         {
