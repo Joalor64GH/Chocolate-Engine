@@ -49,6 +49,16 @@ class CreditsState extends MusicBeatState
 		}
 		else {
 			trace("Cannot find 'creditsList' in data directory.");
+			trace("Replacing it with normal credits...");
+			initCreditlist = 
+			"Joalor64 YT:Main Programmer and Director\n
+			MemeHoovy:Assistant Coder and MemeHoovy Engine Code\n
+			Wither362:Assistant Coder".trim().split('\n');
+
+			for (i in 0...initCreditlist.length)
+			{
+				initCreditlist[i] = initCreditlist[i].trim();
+			}
 			// initCreditlist = null;
 			// initCreditlist = 'Credits List not found.';
 		}
@@ -130,7 +140,7 @@ class CreditsState extends MusicBeatState
 		if (FlxG.mouse.wheel != 0)
 		{
 			FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
-			changeSelection(-FlxG.mouse.wheel);
+			changeSelection(-Std.int(FlxG.mouse.wheel));
 		}
 
 		if (controls.BACK)
