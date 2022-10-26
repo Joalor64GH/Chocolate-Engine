@@ -30,7 +30,7 @@ class Main extends Sprite
 	// final lowFps:Int = 30;
 	var focusMusicTween:FlxTween;
 
-        public static var hscriptParser:Parser;
+	public static var hscriptParser:Parser;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
