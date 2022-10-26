@@ -57,12 +57,6 @@
 		<library name="songs"    preload="true" />
 	</section>
 	
-	<section if="NO_PRELOAD_ALL">
-		<library name="songs"    preload="false" />
-		<library name="shared"   preload="false" />
-		<library name="week6"    preload="false" />
-	</section>
-	
 	<assets path="assets/videos"   library="videos"   if="VIDEO_PLUGIN"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.mp3" unless="web"/>
