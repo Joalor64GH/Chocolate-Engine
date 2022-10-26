@@ -18,7 +18,7 @@ import flixel.util.FlxTimer;
 
 class Config
 {
-    public static function AllowInterpStuff(interp:Interp, ?me:Dynamic)
+    public static function AllowInterpStuff(interp:Interp)
     {
         interp.variables.set("Math",Math);
         interp.variables.set("PlayState",PlayState);
@@ -35,7 +35,6 @@ class Config
         interp.variables.set("FlxSound",FlxSound);
         interp.variables.set("FlxTimer",FlxTimer);
         interp.variables.set("ScriptUtils",ScriptUtils);
-        interp.variables.set("this",me);
 
         //stupid
         interp.variables.set("BackgroundDancer",BackgroundDancer);
