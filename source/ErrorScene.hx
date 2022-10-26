@@ -12,11 +12,11 @@ import flixel.FlxState;
 
 class ErrorScene extends FlxState
 {
-    public var DisplayText:FlxText;
+	public var DisplayText:FlxText;
 
 	public function new(str:String)
 	{
-        super();
+		super();
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('mainmenu/menuBG'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.18;
@@ -26,22 +26,21 @@ class ErrorScene extends FlxState
 		bg.antialiasing = true;
 		add(bg);
 
-        DisplayText = new FlxText(0, 0, FlxG.width, "Error!\n" + str + "\nPress enter to continue.", 32);
-        DisplayText.setFormat(Paths.font("vcr.ttf"), 54, FlxColor.WHITE, FlxTextAlign.CENTER,FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		DisplayText = new FlxText(0, 0, FlxG.width, "Error!\n" + str + "\nPress any key to continue.", 32);
+		DisplayText.setFormat(Paths.font("vcr.ttf"), 54, FlxColor.WHITE, FlxTextAlign.CENTER,FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 
-        add(DisplayText);
+		add(DisplayText);
 
-        FlxG.sound.playMusic(Paths.music('freakyMenu'), 1);
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 1);
 	}
 
-    public override function update(elapsed:Float)
-    {
-        super.update(elapsed);
+	override public function update(elapsed:Float)
+	{
+		super.update(elapsed);
 
-        if (FlxG.keys.justPressed.ENTER)
-        {
-            FlxG.switchState(new MainMenuState());
-        }
-    }
-
+		if (FlxG.keys.justPressed.ANY)
+		{
+			FlxG.switchState(new MainMenuState());
+		}
+	}
 }
