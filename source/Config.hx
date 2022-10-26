@@ -35,6 +35,7 @@ class Config
         interp.variables.set("FlxSound",FlxSound);
         interp.variables.set("FlxTimer",FlxTimer);
         interp.variables.set("ScriptUtils",ScriptUtils);
+        interp.variables.set("Type",Type);
 
         //stupid
         interp.variables.set("BackgroundDancer",BackgroundDancer);
