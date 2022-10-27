@@ -33,10 +33,6 @@ class LoadingScreen extends MusicBeatState {
         loadingBG.color = rotatingColor;
     }
 }
- 6  
-source/DwmAPI.hx
-@@ -0,0 +1,6 @@
-package windows;
 
 @:include("dwmapi.h")
 extern class DwmAPI {
