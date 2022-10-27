@@ -59,10 +59,10 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
-		 #if desktop
-		 // Updating Discord Rich Presence
-		 DiscordClient.changePresence("In the Menus", null);
-		 #end
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
 
 		var isDebug:Bool = false;
 
@@ -210,8 +210,8 @@ class FreeplayState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = CoolUtil.difficultyArray.length-1;
-		if (curDifficulty > CoolUtil.difficultyArray.length-1)
+			curDifficulty = CoolUtil.difficultyArray.length - 1;
+		if (curDifficulty >= CoolUtil.difficultyArray.length)
 			curDifficulty = 0;
 
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
