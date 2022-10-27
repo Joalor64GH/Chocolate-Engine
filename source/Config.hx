@@ -18,6 +18,8 @@ import flixel.util.FlxTimer;
 
 class Config
 {
+    var instance:Interp;
+
     public static function AllowInterpStuff(interp:Interp)
     {
         interp.variables.set("Math",Math);
@@ -36,6 +38,7 @@ class Config
         interp.variables.set("FlxTimer",FlxTimer);
         interp.variables.set("ScriptUtils",ScriptUtils);
         interp.variables.set("Type",Type);
+        interp.variables.set('Me', instance);
 
         //stupid
         interp.variables.set("BackgroundDancer",BackgroundDancer);
