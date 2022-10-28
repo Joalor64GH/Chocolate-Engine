@@ -34,7 +34,7 @@ class LoadingScreen extends MusicBeatState {
     }
 }
 
-package;
+//package;
 
 @:include("dwmapi.h")
 extern class DwmAPI {
