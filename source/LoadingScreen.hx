@@ -22,7 +22,7 @@ class LoadingScreen extends MusicBeatState {
 
         @:privateAccess
         var handle = Application.current.window.__backend.handle;
-        windows.DwmAPI.DwmSetWindowAttribute(handle, 20, 1, 32);
+        DwmAPI.DwmSetWindowAttribute(handle, 20, 1, 32);
     }
 
     public override function update(elapsed:Float) {
@@ -33,8 +33,6 @@ class LoadingScreen extends MusicBeatState {
         loadingBG.color = rotatingColor;
     }
 }
-
-//package;
 
 @:include("dwmapi.h")
 extern class DwmAPI {
