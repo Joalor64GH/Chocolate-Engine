@@ -219,12 +219,8 @@ class PlayState extends MusicBeatState
 
 		switch (daSongName)
 		{
-			case 'senpai':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('senpai/senpaiDialogue'));
-			case 'roses':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
-			case 'thorns':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
+			case 'senpai' | 'roses' | 'thorns':
+				dialogue = CoolUtil.coolTextFile(Paths.txt('${daSongName}/${daSongName}' + 'Dialogue'));
 		}
 
 		#if desktop
@@ -296,9 +292,7 @@ class PlayState extends MusicBeatState
 				gfVersion = 'gf-car';
 			case 'mall' | 'mallEvil':
 				gfVersion = 'gf-christmas';
-			case 'school':
-				gfVersion = 'gf-pixel';
-			case 'schoolEvil':
+			case 'school' | 'schoolEvil':
 				gfVersion = 'gf-pixel';
 		}
 
@@ -629,7 +623,7 @@ class PlayState extends MusicBeatState
 			switch (swagCounter)
 			{
 				case 0:
-				var prepare:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+					var prepare:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 					prepare.scrollFactor.set();
 					prepare.updateHitbox();
 
@@ -1173,10 +1167,7 @@ class PlayState extends MusicBeatState
 						camFollow.x = boyfriend.getMidpoint().x - 300;
 					case 'mall':
 						camFollow.y = boyfriend.getMidpoint().y - 200;
-					case 'school':
-						camFollow.x = boyfriend.getMidpoint().x - 200;
-						camFollow.y = boyfriend.getMidpoint().y - 200;
-					case 'schoolEvil':
+					case 'school' | 'schoolEvil':
 						camFollow.x = boyfriend.getMidpoint().x - 200;
 						camFollow.y = boyfriend.getMidpoint().y - 200;
 				}
@@ -1204,12 +1195,10 @@ class PlayState extends MusicBeatState
 				case 16:
 					camZooming = true;
 					gfSpeed = 2;
-				case 48:
+				case 48 | 112:
 					gfSpeed = 1;
 				case 80:
 					gfSpeed = 2;
-				case 112:
-					gfSpeed = 1;
 			}
 		}
 
@@ -1561,11 +1550,10 @@ class PlayState extends MusicBeatState
 			numScore.velocity.y -= FlxG.random.int(140, 160);
 			numScore.velocity.x = FlxG.random.float(-5, 5);
 
-			if (combo >= 10)
+			if (combo >= 10) {
 				add(numScore);
-
-				if (combo >= 10)
 				add(comboSpr);
+			}
 
 			FlxTween.tween(numScore, {alpha: 0}, 0.2, {
 				onComplete: function(tween:FlxTween)
@@ -1624,7 +1612,7 @@ class PlayState extends MusicBeatState
 		var controlArray:Array<Bool> = [leftP, downP, upP, rightP];
 
 		// FlxG.watch.addQuick('asdfa', upP);
-		if ((upP || rightP || downP || leftP) && !boyfriend.stunned && generatedMusic)
+		if (controlArray.contains(true) && !boyfriend.stunned && generatedMusic)
 		{
 			boyfriend.holdTimer = 0;
 
@@ -1714,10 +1702,10 @@ class PlayState extends MusicBeatState
 						case 0:
 							if (left || leftHold)
 								goodNoteHit(daNote);
-						}
 					}
-				});
-			}
+				}
+			});
+		}
 
 		if (boyfriend.holdTimer > Conductor.stepCrochet * 4 * 0.001 && !up && !down && !right && !left)
 		{
