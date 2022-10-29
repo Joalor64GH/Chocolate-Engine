@@ -610,9 +610,9 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-			introAssets.set('default', ['ready', "set", "go"]);
-			introAssets.set('school', ['UI/pixelUI/ready-pixel', 'UI/pixelUI/set-pixel', 'UI/pixelUI/date-pixel']);
-			introAssets.set('schoolEvil', ['UI/pixelUI/ready-pixel', 'UI/pixelUI/set-pixel', 'UI/pixelUI/date-pixel']);
+			introAssets.set('default', ['prepare', 'ready', "set", "go"]);
+			introAssets.set('school', ['UI/pixelUI/prepare-pixel', 'UI/pixelUI/ready-pixel', 'UI/pixelUI/set-pixel', 'UI/pixelUI/date-pixel']);
+			introAssets.set('schoolEvil', ['UI/pixelUI/prepare-pixel', 'UI/pixelUI/ready-pixel', 'UI/pixelUI/set-pixel', 'UI/pixelUI/date-pixel']);
 
 			var introAlts:Array<String> = introAssets.get('default');
 			var altSuffix:String = "";
@@ -629,9 +629,25 @@ class PlayState extends MusicBeatState
 			switch (swagCounter)
 			{
 				case 0:
+				var prepare:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+					prepare.scrollFactor.set();
+					prepare.updateHitbox();
+
+					if (curStage.startsWith('school'))
+						prepare.setGraphicSize(Std.int(prepare.width * daPixelZoom));
+
+					prepare.screenCenter();
+					add(prepare);
+					FlxTween.tween(prepare, {y: prepare.y += 100, alpha: 0}, Conductor.crochet / 1000, {
+						ease: FlxEase.cubeInOut,
+						onComplete: function(twn:FlxTween)
+						{
+							prepare.destroy();
+						}
+					});
 					FlxG.sound.play(Paths.sound('intro3'), 0.6);
 				case 1:
-					var ready:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
+					var ready:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 					ready.scrollFactor.set();
 					ready.updateHitbox();
 
@@ -649,7 +665,7 @@ class PlayState extends MusicBeatState
 					});
 					FlxG.sound.play(Paths.sound('intro2'), 0.6);
 				case 2:
-					var set:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
+					var set:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 					set.scrollFactor.set();
 
 					if (curStage.startsWith('school'))
@@ -666,7 +682,7 @@ class PlayState extends MusicBeatState
 					});
 					FlxG.sound.play(Paths.sound('intro1'), 0.6);
 				case 3:
-					var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
+					var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[3]));
 					go.scrollFactor.set();
 
 					if (curStage.startsWith('school'))
