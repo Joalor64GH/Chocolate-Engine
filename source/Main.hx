@@ -1,6 +1,5 @@
 package;
 
-import LoadingScreen;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
