@@ -57,13 +57,13 @@ class Song
 	}
 
         #if MODS_ALLOWED
-	public static function loadFromModJson(jsonInput:String, ?folder:String):SwagSong
+	public static function loadFromModJson(jsonInput:String, ?mod:String):SwagSong
 	{
-		var modJson = Assets.getText(modding.ModPaths.getModJson(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
+		var modJson = Assets.getText(modding.ModPaths.getModJson(mod.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
 
 		while (!modJson.endsWith("}"))
 		{
-			modJson = modJson.substr(0, rawJson.length - 1);
+			modJson = modJson.substr(0, modJson.length - 1);
 		}
 		return parseJSONshit(modJson);
 	}
