@@ -76,11 +76,12 @@ class Song
 		return swagShit;
 	}
 
-    #if MODS_ALLOWED
+        #if MODS_ALLOWED
 	public static function parseModJSONshit(modJson:String):SwagSong
 	{
 		var swagShit:SwagSong = cast Json.parse(modJson).song;
 		swagShit.validScore = true;
 		return swagShit;
 	}
+	#end
 }
