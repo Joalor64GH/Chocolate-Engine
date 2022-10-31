@@ -226,6 +226,11 @@ class ChartingState extends MusicBeatState
 
 		var stages:Array<String> = CoolUtil.coolTextFile(Paths.txt('stageList'));
 
+		#if MODS_ALLOWED
+		var modcharacters:Array<String> = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/characterList'));
+		var modstages:Array<String> = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/stageList'));
+		#end
+
 		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
 			_song.player1 = characters[Std.parseInt(character)];
