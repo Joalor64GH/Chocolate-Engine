@@ -1232,6 +1232,8 @@ class PlayState extends MusicBeatState
 
 			deaths++;
 
+            if (SONG.song.toLowerCase() == 'tutorial')
+				trace('bro how tf did you die on tutorial :skull:');
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 			
 			#if desktop
