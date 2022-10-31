@@ -60,6 +60,19 @@ class Song
 		return parseJSONshit(rawJson);
 	}
 
+    #if MODS_ALLOWED
+	public static function loadFromModJson(jsonInput:String, ?folder:String):SwagSong
+	{
+		var modJson = Assets.getText(modding.ModPaths.getModJson(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
+
+		while (!modJson.endsWith("}"))
+		{
+			modJson = modJson.substr(0, rawJson.length - 1);
+		}
+		return parseJSONshit(modJson);
+	}
+	#end
+
 	public static function parseJSONshit(rawJson:String):SwagSong
 	{
 		var swagShit:SwagSong = cast Json.parse(rawJson).song;
