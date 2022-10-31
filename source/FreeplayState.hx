@@ -59,7 +59,7 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
-        #if MODS_ALLOWED
+                #if MODS_ALLOWED
 		var modSonglist = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/freeplaySonglist'));
 
 		if (Assets.exists(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')))
