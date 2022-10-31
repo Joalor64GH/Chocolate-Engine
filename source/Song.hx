@@ -57,7 +57,7 @@ class Song
 	}
 
         #if MODS_ALLOWED
-	public static function loadFromModJson(jsonInput:String, ?mod:String):SwagSong
+	public static function loadFromModJson(jsonInput:String, ?folder:String):SwagSong
 	{
 		var modJson = Assets.getText(modding.ModPaths.getModJson(mod.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
 
