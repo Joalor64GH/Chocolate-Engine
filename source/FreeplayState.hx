@@ -59,10 +59,30 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
-		 #if desktop
-		 // Updating Discord Rich Presence
-		 DiscordClient.changePresence("In the Menus", null);
-		 #end
+                #if MODS_ALLOWED
+		var modSonglist = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/freeplaySonglist'));
+
+		if (Assets.exists(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')))
+		{
+			modSonglist = Assets.getText(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')).trim().split('\n');
+
+			for (i in 0...modSonglist.length)
+			{
+				modSonglist[i] = modSonglist[i].trim();
+			}
+		}
+
+		for (i in 0...modSonglist.length)
+		{
+			var data:Array<String> = modSonglist[i].split(':');
+			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
+		}
+		#end
+
+		#if desktop
+		// Updating Discord Rich Presence
+		DiscordClient.changePresence("In the Menus", null);
+		#end
 
 		var isDebug:Bool = false;
 
@@ -210,8 +230,8 @@ class FreeplayState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = CoolUtil.difficultyArray.length-1;
-		if (curDifficulty > CoolUtil.difficultyArray.length-1)
+			curDifficulty = CoolUtil.difficultyArray.length - 1;
+		if (curDifficulty >= CoolUtil.difficultyArray.length)
 			curDifficulty = 0;
 
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);

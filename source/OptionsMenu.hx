@@ -22,16 +22,20 @@ class OptionsMenu extends MusicBeatState
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
 	var versionShit:FlxText;
+	private function onOff(thing:Bool):String {
+		return thing ? 'On' : 'Off';
+	}
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuDesat'));
 		controlsStrings = CoolUtil.coolStringFile(
 			(FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + 
-			"\n" + (FlxG.save.data.newInput ? "New Input" : "Old Input") + 
-			"\n" + (FlxG.save.data.downscroll ? 'Downscroll' : 'Upscroll') + 
-			"\n" + (FlxG.save.data.splash ? "Notesplashes On" : "Notesplashes Off") +
-			"\n" + (FlxG.save.data.timebar ? "Timebar On" : "Timebar Off") +
-			"\n" + (FlxG.save.data.botplay ? "Botplay On" : "Botplay Off") +
+			"\n" + (FlxG.save.data.newInput ? "New" : "Old") + ' Input' +
+			"\n" + (FlxG.save.data.downscroll ? 'Down' : 'Up') + 'scroll' +
+			"\n" + "Notesplashes " + onOff(FlxG.save.data.splash) +
+			//"\n" + 'Anti-Aliasing' + onOff(FlxG.save.data.antiAliasing) +
+			"\n" + 'Timebar ' + onOff(FlxG.save.data.timebar) +
+			"\n" + 'Botplay ' + onOff(FlxG.save.data.botplay) +
 			"\n" + (FlxG.save.data.lang ? "English" : "Spanish"));
 
 		trace(controlsStrings);
@@ -74,7 +78,7 @@ class OptionsMenu extends MusicBeatState
 			changeSelection(-1);
 		if (controls.DOWN_P)
 			changeSelection(1);
-		
+
 		if (controls.RIGHT_R)
 		{
 			FlxG.save.data.offset++;
@@ -82,10 +86,10 @@ class OptionsMenu extends MusicBeatState
 		}
 
 		if (controls.LEFT_R)
-			{
-				FlxG.save.data.offset--;
-				versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
-			}
+		{
+			FlxG.save.data.offset--;
+			versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
+		}
 
 
 		if (controls.ACCEPT)
@@ -104,7 +108,7 @@ class OptionsMenu extends MusicBeatState
 						controls.setKeyboardScheme(KeyboardScheme.Solo, true);
 					else
 						controls.setKeyboardScheme(KeyboardScheme.Duo(true), true);
-					
+
 				case 1:
 					FlxG.save.data.newInput = !FlxG.save.data.newInput;
 					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.newInput ? "New input" : "Old Input"), true, false);

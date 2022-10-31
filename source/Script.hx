@@ -72,7 +72,7 @@ class Script //give every script its own interpreter so no variable conflicts!!!
         var output:Dynamic = null;
         try
         {
-            output = hscriptInterp.variables.get(funcName)(args);
+            output = Reflect.callMethod(null,hscriptInterp.variables.get(funcName),args);//hscriptInterp.variables.get(funcName)(args);
         }
         catch(e)
         {

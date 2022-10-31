@@ -118,6 +118,7 @@ function updateTrainPos()
 	{
 		startedMoving = true;
 		CurState.gf.playAnim('hairBlow');
+		camera.shake(0.002, 0.1, null, true, X);
 	}
 
 	if (startedMoving)

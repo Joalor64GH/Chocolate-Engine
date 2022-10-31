@@ -1,5 +1,6 @@
 Joalor64 YT:Main Programmer and Director
 MemeHoovy:Assistant Coder and MemeHoovy Engine Code
+Wither362:Assistant Coder and Fixer
 ShadowMario:Psych Input
 PolybiusProxy:MP4 Video Support
 Smokey:Adobe Animate Texture Atlas Support
@@ -9,6 +10,5 @@ stephensrt:Lots of Polymod Code and Mag Engine Code
 KadeDev:Extension WebM and Kade Engine Code
 Manux123:Cool Engine Code
 MissingTextureMan101:Funkin Strawberry Code
-Wither362:Cool Pull Requests
 Lars Doucet:Polymod
 Ninjamuffin99:Base Game

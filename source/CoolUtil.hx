@@ -102,4 +102,8 @@ class CoolUtil
 		}
 		return dumbArray;
 	}
+
+	public static function createBG() {
+
+	}
 }

@@ -53,7 +53,7 @@ class CreditsState extends MusicBeatState
 			initCreditlist = 
 			"Joalor64 YT:Main Programmer and Director\n
 			MemeHoovy:Assistant Coder and MemeHoovy Engine Code\n
-			Wither362:Assistant Coder".trim().split('\n');
+			Wither362:Assistant Coder and Fixer".trim().split('\n');
 
 			for (i in 0...initCreditlist.length)
 			{
