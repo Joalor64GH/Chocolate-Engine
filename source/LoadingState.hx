@@ -166,6 +166,11 @@ class LoadingState extends MusicBeatState
 		return target;
 	}
 	
+	static function isSoundLoaded(path:String):Bool
+	{
+		return Assets.cache.hasSound(path);
+	}
+	
 	override function destroy()
 	{
 		super.destroy();
