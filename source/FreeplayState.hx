@@ -59,23 +59,27 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
-                #if MODS_ALLOWED
-		var modSonglist = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/freeplaySonglist'));
+		#if MODS_ALLOWED
+		try {
+			var modSonglist = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/freeplaySonglist'));
 
-		if (Assets.exists(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')))
-		{
-			modSonglist = Assets.getText(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')).trim().split('\n');
+			if (Assets.exists(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')))
+			{
+				modSonglist = Assets.getText(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')).trim().split('\n');
+
+				for (i in 0...modSonglist.length)
+				{
+					modSonglist[i] = modSonglist[i].trim();
+				}
+			}
 
 			for (i in 0...modSonglist.length)
 			{
-				modSonglist[i] = modSonglist[i].trim();
+				var data:Array<String> = modSonglist[i].split(':');
+				songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 			}
-		}
-
-		for (i in 0...modSonglist.length)
-		{
-			var data:Array<String> = modSonglist[i].split(':');
-			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
+		} catch (e:Dynamic){
+			throw e;
 		}
 		#end
 
