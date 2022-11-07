@@ -10,6 +10,7 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import flixel.tweens.FlxTween;
 import lime.app.Application;
+import flixel.util.FlxTimer;
 
 //crash handler stuff
 #if CRASH_HANDLER
