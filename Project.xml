@@ -49,6 +49,7 @@
 	<define name="WEBM_EXTENSION" if="windows || mac"/>
 	<define name="MODS_ALLOWED" if="desktop" />
 	<define name="LUA_EXTENSION" if="desktop" />
+	<define name="CRASH_HANDLER" if="desktop release" />
 
 	<define name="PRELOAD_ALL" unless="web" />
 
