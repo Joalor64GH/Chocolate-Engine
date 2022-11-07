@@ -293,8 +293,6 @@ class PlayState extends MusicBeatState
 				trainSound = new FlxSound().loadEmbedded(Paths.sound('train_passes'));
 				FlxG.sound.list.add(trainSound);
 
-				// var cityLights:FlxSprite = new FlxSprite().loadGraphic(AssetPaths.win0.png);
-
 				var street:FlxSprite = new FlxSprite(-40, streetBehind.y).loadGraphic(Paths.image('backgrounds/philly/street'));
 				add(street);
 			}
@@ -972,7 +970,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('introGo'), 0.6);
 			}
 
-			swagCounter += 1;
+			swagCounter++;
 		}, 5);
 	}
 
@@ -2334,7 +2332,6 @@ class PlayState extends MusicBeatState
 					curLight = FlxG.random.int(0, phillyCityLights.length - 1);
 
 					phillyCityLights.members[curLight].visible = true;
-					// phillyCityLights.members[curLight].alpha = 1;
 				}
 
 				if (curBeat % 8 == 4 && FlxG.random.bool(30) && !trainMoving && trainCooldown > 8)

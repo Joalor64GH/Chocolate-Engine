@@ -63,6 +63,18 @@ class CoolUtil
 		return daList;
 	}
 
+	public static function coolerTextFile(path:String):String
+	{
+		var daString:String = '';
+		#if sys
+		if(FileSystem.exists(path)) daString = File.getContent(path).trim();
+		#else
+		if(Assets.exists(path)) daString = Assets.getText(path).trim();
+		#end
+
+		return daString;
+	}
+
 	public static function evenCoolerTextFile(path:String):Array<String>
 	{
 		#if MODS_ALLOWED
