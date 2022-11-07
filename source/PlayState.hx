@@ -54,6 +54,7 @@ import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
 import modding.llua.*;
+import modding.LuaScript;
 
 using StringTools;
 
