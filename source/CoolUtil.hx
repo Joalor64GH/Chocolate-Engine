@@ -6,6 +6,7 @@ import lime.utils.Assets;
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
 import sys.FileSystem;
+import sys.io.File;
 #end
 
 using StringTools;
