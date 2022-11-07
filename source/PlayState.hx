@@ -721,6 +721,11 @@ class PlayState extends MusicBeatState
 
 		startingSong = true;
 
+		if (FlxG.random.bool(50) == true)
+			missesTxt.text = "Upset Disney: " + misses; // funni
+		else
+			missesTxt.text = "Combo Breaks: " + misses;
+
 		if (isStoryMode)
 		{
 			switch (curSong.toLowerCase())
@@ -1329,10 +1334,6 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = "Score: " + songScore;
-		if (FlxG.random.bool(50) == true)
-			missesTxt.text = "Upset Disney: " + misses; // funni
-		else
-			missesTxt.text = "Combo Breaks: " + misses;
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{

@@ -59,7 +59,7 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
-		#if MODS_ALLOWED
+		/*#if MODS_ALLOWED
 		try {
 			var modSonglist = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/freeplaySonglist'));
 
@@ -81,7 +81,7 @@ class FreeplayState extends MusicBeatState
 		} catch (e:Dynamic){
 			throw e;
 		}
-		#end
+		#end*/
 
 		#if desktop
 		// Updating Discord Rich Presence
