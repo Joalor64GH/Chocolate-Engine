@@ -129,18 +129,12 @@ class Paths
 
 	inline static public function script(key:String, ?library:String)
 	{
-		return getPath('scripts/$key.hx', TEXT, library);
+		return getPath('scripts/$key.lua', TEXT, library);
 	}
 
 	inline static public function songScript(key:String, ?library:String)
 	{
-		return getPath('data/$key.hx', TEXT, library);
-	}
-
-	inline static public function stageScript(key:String, ?library:String)
-	{
-		return getPath('stages/$key.hx', TEXT, library);
-	}
+		return getPath('data/$key.lua', TEXT, library);
 
 	inline static public function charJson(key:String, ?library:String)
 	{

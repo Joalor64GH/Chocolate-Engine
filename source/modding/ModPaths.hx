@@ -93,15 +93,11 @@ class ModPaths {
 	}
 
     inline static public function getModScripts(key:String, mod:String){
-        return getPath('scripts/$key.hx', TEXT,mod);
+        return getPath('scripts/$key.lua', TEXT,mod);
     }
 
     inline static public function getModSongScripts(key:String, mod:String){
-        return getPath('data/$key.hx', TEXT,mod);
-    }
-
-    inline static public function getModStageScripts(key:String, mod:String){
-        return getPath('stages/$key.hx', TEXT,mod);
+        return getPath('data/$key.lua', TEXT,mod);
     }
 
     inline static public function getModCharjson(key:String, mod:String){

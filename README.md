@@ -21,10 +21,10 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 ## Things to get done
 * [X] Notesplashes **[Completed]**
 * [X] Reorganize all of the assets **[Completed]**
-* [X] Attempt to softcode stages **[Completed]**
-* [ ] Support for Hscript, HXS, and Lua Scripts
+* [ ] Support for Lua Scripts
 * [ ] Attempt to softcode characters
 * [ ] Freeplay Colors
+* [ ] Attempt to softcode stages **[Scrapped]**
 
 ## Credits
 
