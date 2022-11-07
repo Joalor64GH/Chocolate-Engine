@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import lime.utils.Assets;
 import flixel.FlxSprite;
+import flixel.FlxState;
 
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
