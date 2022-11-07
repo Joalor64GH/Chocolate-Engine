@@ -102,7 +102,7 @@ class Main extends Sprite
 			focusMusicTween = FlxTween.tween(FlxG.sound, {volume: newVol}, 0.5);
 
 			// Conserve power by lowering draw framerate when unfocuced
-			FlxG.drawFramerate = 60;
+			FlxG.drawFramerate = 30;
 		}
 	}
 
@@ -125,7 +125,7 @@ class Main extends Sprite
 			focusMusicTween = FlxTween.tween(FlxG.sound, {volume: oldVol}, 0.5);
 
 			// Bring framerate back when focused
-			FlxG.drawFramerate = 120;
+			FlxG.drawFramerate = framerate;
 		}
 	}
 
