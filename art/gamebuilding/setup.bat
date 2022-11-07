@@ -32,7 +32,7 @@ cls
 echo Press any key to install HXVM LuaJIT.
 pause >nul
 title Chocolate Engine Setup - Installing libraries
-haxelib git hxvm_luajit https://github.com/nebulazorua/hxvm_luajit
+haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit
 cls
 echo Press any key to install Discord RPC.
 pause >nul
