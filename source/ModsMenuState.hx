@@ -56,8 +56,6 @@ class ModsMenuState extends MusicBeatState
 
 	override function create()
 	{
-		instance = this;
-
 		var menuBG:FlxSprite;
 
 		if (FlxG.save.data.mousescroll)
@@ -108,18 +106,17 @@ class ModsMenuState extends MusicBeatState
 			option.destroy();
 		});
 
-		var mods:Int = 0;
+		var optionLoopNum:Int = 0;
 
-		for (i in 0...PolymodHandler.metadataArrays.length)
+		for (modId in PolymodHandler.metadataArrays)
 		{
-			var modId = PolymodHandler.metadataArrays[i];
-			var modOption = new ModsMenuStateOption(ModList.modMetadatas.get(modId).title, modId, i);
+			var modOption = new ModsMenuStateOption(ModList.modMetadatas.get(modId).title, modId, optionLoopNum);
 			page.add(modOption);
+			optionLoopNum++;
 			coolId = modId;
-			mods = i;
 		}
 
-		if (mods > 0)
+		if (optionLoopNum > 0)
 		{
 			buildUI();
 		}
@@ -185,41 +182,45 @@ class ModsMenuState extends MusicBeatState
 			infoTextcool.text = ModList.modMetadatas.get(PolymodHandler.metadataArrays[curSelected]).description;
 			infoTextcool.visible = true;
 			infoTextcool.antialiasing = true;
+		}
 
+		if (page.length > 0)
+		{
 			if (controls.UP_P)
 			{
-				changeMod(-1);
+				curSelected--;
+				FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 			}
 
 			if (controls.DOWN_P)
 			{
-				changeMod(1);
+				curSelected++;
+				FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 			}
 		}
 
 		if (controls.BACK)
 		{
-			FlxG.mouse.visible = false; // just in case
 			FlxG.switchState(new MainMenuState());
 		}
-	}
 
-	function changeMod(bah:Int = 0) {
-		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
-		curSelected += bah;
 		if (curSelected < 0)
 			curSelected = page.length - 1;
 
 		if (curSelected >= page.length)
 			curSelected = 0;
 
-		for (i in 0...page.members.length)
+		var bruh = 0;
+
+		for (x in page.members)
 		{
-			page.members[i].Alphabet_Text.targetY = i - curSelected;
+			x.Alphabet_Text.targetY = bruh - curSelected;
+			bruh++;
 		}
 	}
+
 	// haxeflixel bro why
-	function setLabelOffset(button:FlxButton, x:Float = 0, y:Float = 0)
+	function setLabelOffset(button:FlxButton, x:Float, y:Float)
 	{
 		for (point in button.labelOffsets)
 		{

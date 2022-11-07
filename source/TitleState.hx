@@ -54,9 +54,6 @@ class Fixer {
 		if (FlxG.save.data.dfjk == null)
 			FlxG.save.data.dfjk = false;
 
-		if (FlxG.save.data.splash == null)
-			FlxG.save.data.splash = true;
-
 		if (FlxG.save.data.timebar == null)
 			FlxG.save.data.timebar = true;
 

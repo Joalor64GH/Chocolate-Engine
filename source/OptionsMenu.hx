@@ -32,7 +32,6 @@ class OptionsMenu extends MusicBeatState
 			(FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + 
 			"\n" + (FlxG.save.data.newInput ? "New" : "Old") + ' Input' +
 			"\n" + (FlxG.save.data.downscroll ? 'Down' : 'Up') + 'scroll' +
-			"\n" + "Notesplashes " + onOff(FlxG.save.data.splash) +
 			//"\n" + 'Anti-Aliasing' + onOff(FlxG.save.data.antiAliasing) +
 			"\n" + 'Timebar ' + onOff(FlxG.save.data.timebar) +
 			"\n" + 'Botplay ' + onOff(FlxG.save.data.botplay) +
@@ -122,28 +121,22 @@ class OptionsMenu extends MusicBeatState
 					ctrl.targetY = curSelected - 2;
 					grpControls.add(ctrl);
 				case 3:
-					FlxG.save.data.splash = !FlxG.save.data.splash;
-					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.splash ? 'Notesplashes On' : 'Notesplashes Off'), true, false);
+					FlxG.save.data.timebar = !FlxG.save.data.timebar;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.timebar ? 'Timebar On' : 'Timebar Off'), true, false);
 					ctrl.isMenuItem = true;
 					ctrl.targetY = curSelected - 3;
 					grpControls.add(ctrl);
 				case 4:
-					FlxG.save.data.timebar = !FlxG.save.data.timebar;
-					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.timebar ? 'Timebar On' : 'Timebar Off'), true, false);
+					FlxG.save.data.botplay = !FlxG.save.data.botplay;
+					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.botplay ? 'Botplay On' : 'Botplay Off'), true, false);
 					ctrl.isMenuItem = true;
 					ctrl.targetY = curSelected - 4;
 					grpControls.add(ctrl);
 				case 5:
-					FlxG.save.data.botplay = !FlxG.save.data.botplay;
-					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.botplay ? 'Botplay On' : 'Botplay Off'), true, false);
-					ctrl.isMenuItem = true;
-					ctrl.targetY = curSelected - 5;
-					grpControls.add(ctrl);
-				case 6:
 					FlxG.save.data.lang = !FlxG.save.data.lang;
 					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.lang ? 'English' : 'Spanish'), true, false);
 					ctrl.isMenuItem = true;
-					ctrl.targetY = curSelected - 6;
+					ctrl.targetY = curSelected - 5;
 					grpControls.add(ctrl);
 			}
 		}
