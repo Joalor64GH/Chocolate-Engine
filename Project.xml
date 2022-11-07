@@ -7,6 +7,9 @@
 	<app file="ChocoAPP" if="linux" />
 	<app file="ChocoMAC" if="mac" />
 
+        <!-- NOTE TO SELF: DISABLE THIS IF ISSUES ARE FOUND -->
+	<haxedef name="LINC_LUA_RELATIVE_DYNAMIC_LIB"/> <!-- stable luas PUT AFTER FIRST LINE WITH APP NAME AND ETC -->
+
 	<!--The flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf into a html file
 		or you can set the actual size of your file manually at "FlxPreloaderBase-onUpdate-bytesTotal"-->
 	<!-- <app preloader="Preloader" resizable="true" /> -->
@@ -86,6 +89,7 @@
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
 	<haxelib name="linc_luajit" if="LUA_EXTENSION"/>
+	<haxelib name="hxvm-luajit" if="LUA_EXTENSION"/>
 	<haxelib name="hxCodec" if="VIDEO_PLUGIN"/>
 	<haxelib name="polymod" if="MODS_ALLOWED"/>
 	<!--<haxelib name="firetounge" />-->
@@ -109,8 +113,8 @@
 	<haxedef name="mods"/>
 	
 	<!-- Use defines to configure the behavior of Polymod. -->
-	<haxedef name="POLYMOD_SCRIPT_EXT" value=".hx" />
-	<haxedef name="POLYMOD_SCRIPT_CLASS_EXT" value=".hx" />
+	<haxedef name="POLYMOD_SCRIPT_EXT" value=".lua" />
+	<haxedef name="POLYMOD_SCRIPT_CLASS_EXT" value=".lua" />
 	<haxedef name="POLYMOD_SCRIPT_LIBRARY" value="scripts" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="modsList.txt" />
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="_polymod_meta.json" />
