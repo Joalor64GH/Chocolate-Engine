@@ -1,6 +1,6 @@
 @echo off
 title Chocolate Engine Setup - Start
-echo Make sure Haxe 4.1.5 and HaxeFlixel is installed (4.1.5 is important)!
+echo Make sure Haxe 4.2.5 and HaxeFlixel is installed (4.2.5 is important)!
 echo Press any key to install required libraries.
 pause >nul
 title Chocolate Engine Setup - Installing libraries
@@ -28,6 +28,11 @@ echo Press any key to install LUA JIT.
 pause >nul
 title Chocolate Engine Setup - Installing libraries
 haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
+cls
+echo Press any key to install HXVM LuaJIT.
+pause >nul
+title Chocolate Engine Setup - Installing libraries
+haxelib git hxvm_luajit https://github.com/nebulazorua/hxvm_luajit
 cls
 echo Press any key to install Discord RPC.
 pause >nul

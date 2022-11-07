@@ -86,6 +86,7 @@
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
 	<haxelib name="linc_luajit" if="LUA_EXTENSION"/>
+	<haxelib name="hxvm_luajit" if="LUA_EXTENSION"/>
 	<haxelib name="hxCodec" if="VIDEO_PLUGIN"/>
 	<haxelib name="polymod" if="MODS_ALLOWED"/>
 	<!--<haxelib name="firetounge" />-->
