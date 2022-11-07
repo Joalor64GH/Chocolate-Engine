@@ -118,7 +118,15 @@ class CoolUtil
 		return dumbArray;
 	}
 
-	public static function createBG() {
-
+	public static function createBG(x:Float, y:Float, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false):FlxSprite {
+		var bg:FlxSprite = new FlxSprite(x,y).loadGraphic(Paths.image(path));
+		bg.scrollFactor.set(scrollFactor, scrollFactor);
+		bg.active = false;
+		bg.antialiasing = antialiasing;
+		add(bg);
+		if (bg != null)
+			return bg;
+		else 
+			return null;
 	}
 }
