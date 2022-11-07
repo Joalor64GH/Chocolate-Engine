@@ -111,8 +111,6 @@ class PlayState extends MusicBeatState
 	private var camHUD:FlxCamera;
 	private var camGame:FlxCamera;
 
-	var grpNoteSplashes = new FlxTypedGroup<NoteSplash>();
-
 	var dialogue:Array<String> = ['strange code', '>:]'];
 
 	var halloweenBG:FlxSprite;
@@ -179,12 +177,6 @@ class PlayState extends MusicBeatState
 
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
-
-		if (FlxG.save.data.splash) {
-			var tempNoteSplash = new NoteSplash(0, 0, 0);
-			grpNoteSplashes.add(tempNoteSplash);
-			tempNoteSplash.alpha = 0.1;
-		}
 
 		FlxCamera.defaultCameras = [camGame];
 
@@ -644,9 +636,6 @@ class PlayState extends MusicBeatState
 		strumLineNotes = new FlxTypedGroup<FlxSprite>();
 		add(strumLineNotes);
 
-		if (FlxG.save.data.splash)
-			add(grpNoteSplashes);
-
 		playerStrums = new FlxTypedGroup<FlxSprite>();
 
 		generateSong(SONG.song);
@@ -716,14 +705,13 @@ class PlayState extends MusicBeatState
 		scoreTxt.cameras = [camHUD];
 		missesTxt.cameras = [camHUD];
 		chocoTxt.cameras = [camHUD];
-		if (FlxG.save.data.splash) grpNoteSplashes.cameras = [camHUD];
 		doof.cameras = [camHUD];
 
 		startingSong = true;
 
-		if (FlxG.random.bool(50) == true)
-			missesTxt.text = "Upset Disney: " + misses; // funni
-		else
+		/*if (FlxG.random.bool(50) == true)
+			missesTxt.text = "Upset Disney: " + misses; // this keeps rapidly switching
+		else*/
 			missesTxt.text = "Combo Breaks: " + misses;
 
 		if (isStoryMode)
@@ -883,7 +871,7 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-			introAssets.set('default', ['prepare', 'ready', "set", "go"]);
+			introAssets.set('default', ['UI/default/prepare', 'UI/default/ready', "UI/default/set", "UI/default/go"]);
 			introAssets.set('school', ['UI/pixelUI/prepare-pixel', 'UI/pixelUI/ready-pixel', 'UI/pixelUI/set-pixel', 'UI/pixelUI/date-pixel']);
 			introAssets.set('schoolEvil', ['UI/pixelUI/prepare-pixel', 'UI/pixelUI/ready-pixel', 'UI/pixelUI/set-pixel', 'UI/pixelUI/date-pixel']);
 
@@ -1736,7 +1724,6 @@ class PlayState extends MusicBeatState
 		var score:Int = 350;
 
 		var daRating:String = 'sick';
-		var shouldSplash:Bool = false;
 
 		if (noteDiff > Conductor.safeZoneOffset * 0.9)
 		{
@@ -1752,14 +1739,6 @@ class PlayState extends MusicBeatState
 		{
 			daRating = 'good';
 			score = 200;
-		} else { // sick
-			shouldSplash = true;
-		}
-		if (shouldSplash && FlxG.save.data.splash) {
-			// notesplashes
-			var daNoteSplash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-			daNoteSplash.setupNoteSplash(daNote.x, strumLine.y, daNote.noteData);
-			grpNoteSplashes.add(daNoteSplash);
 		}
 
 		songScore += score;
