@@ -35,7 +35,7 @@ class Main extends Sprite
 	var framerate:Int = 150; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
-	public static var letterOffset:Bool = false; // alphabet offset workaround idk;
+	@:keep public static var letterOffset:Bool = false; // alphabet offset workaround idk;
 	// final lowFps:Int = 30;
 	var focusMusicTween:FlxTween;
 
