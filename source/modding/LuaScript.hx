@@ -1,7 +1,7 @@
 package modding;
 
 import openfl.display.BlendMode;
-import states.PlayState;
+import PlayState;
 import flixel.FlxCamera;
 
 using StringTools;
@@ -42,7 +42,10 @@ class LuaScript extends Script
         @param cam String representation of the camera being returned.
     **/
     public static function camera(cam:String):FlxCamera
+    {
+        @:privateAccess
         return cam.toLowerCase().endsWith("hud") ? PlayState.instance.camHUD : PlayState.instance.camGame;
+    }
 
     /**
         Returns the correct blend mode based on the string `blend`.    
