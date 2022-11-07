@@ -5,6 +5,7 @@ import lime.utils.Assets;
 
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
+import sys.FileSystem;
 #end
 
 using StringTools;
@@ -67,7 +68,7 @@ class CoolUtil
 	public static function coolerTextFile(path:String):String
 	{
 		var daString:String = '';
-		#if sys
+		#if MODS_ALLOWED
 		if(FileSystem.exists(path)) daString = File.getContent(path).trim();
 		#else
 		if(Assets.exists(path)) daString = Assets.getText(path).trim();
