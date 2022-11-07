@@ -112,8 +112,8 @@
 	<haxedef name="mods"/>
 	
 	<!-- Use defines to configure the behavior of Polymod. -->
-	<haxedef name="POLYMOD_SCRIPT_EXT" value=".hx" />
-	<haxedef name="POLYMOD_SCRIPT_CLASS_EXT" value=".hx" />
+	<haxedef name="POLYMOD_SCRIPT_EXT" value=".lua" />
+	<haxedef name="POLYMOD_SCRIPT_CLASS_EXT" value=".lua" />
 	<haxedef name="POLYMOD_SCRIPT_LIBRARY" value="scripts" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="modsList.txt" />
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="_polymod_meta.json" />
