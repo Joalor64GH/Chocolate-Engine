@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import lime.utils.Assets;
+import flixel.FlxSprite;
 
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
@@ -118,12 +119,12 @@ class CoolUtil
 		return dumbArray;
 	}
 
-	public static function createBG(x:Float, y:Float, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false):FlxSprite {
+	public static function createBG(x:Float, y:Float, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false, state:FlxState):FlxSprite {
 		var bg:FlxSprite = new FlxSprite(x,y).loadGraphic(Paths.image(path));
 		bg.scrollFactor.set(scrollFactor, scrollFactor);
 		bg.active = false;
 		bg.antialiasing = antialiasing;
-		add(bg);
+		state.add(bg);
 		if (bg != null)
 			return bg;
 		else 
