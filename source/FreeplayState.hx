@@ -59,6 +59,7 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
+		// I'm gonna temporarily comment this out since it's causing freeplay to crash
 		/*#if MODS_ALLOWED
 		try {
 			var modSonglist = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/freeplaySonglist'));
