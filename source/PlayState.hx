@@ -70,8 +70,6 @@ class PlayState extends MusicBeatState
 
 	public static var instance:PlayState;
 
-	public var Scripts:Array<Script> = [];
-
 	private var vocals:FlxSound;
 
 	private var dad:Character;
@@ -98,8 +96,6 @@ class PlayState extends MusicBeatState
 	private var health:Float = 1;
 	private var combo:Int = 0;
 	private var misses:Float = 0;
-
-	public var hasScript:Bool = false;
 
 	private var healthBarBG:FlxSprite;
 	private var healthBar:FlxBar;
@@ -242,8 +238,8 @@ class PlayState extends MusicBeatState
 		#end
 
 		switch (SONG.song.toLowerCase())
-        {
-		case 'spookeez' | 'south' | 'monster': 
+		{
+			case 'spookeez' | 'south' | 'monster': 
 			{
 				curStage = 'spooky';
 
@@ -501,7 +497,8 @@ class PlayState extends MusicBeatState
 				add(bg);
 			}
 			default:
-					defaultCamZoom = 0.9;
+			{
+				defaultCamZoom = 0.9;
 				curStage = 'stage';
 				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('backgrounds/stage/stageback'));
 				bg.antialiasing = true;
@@ -629,7 +626,6 @@ class PlayState extends MusicBeatState
 
 		add(dad);
 		add(boyfriend);
-
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;

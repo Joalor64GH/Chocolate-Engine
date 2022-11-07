@@ -11,12 +11,6 @@ import openfl.events.Event;
 import flixel.tweens.FlxTween;
 import lime.app.Application;
 
-#if hscript
-import hscript.Parser;
-import hscript.Interp;
-import hscript.Expr;
-#end
-
 class Main extends Sprite
 {
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
@@ -29,8 +23,6 @@ class Main extends Sprite
 	public static var letterOffset:Bool = false; // alphabet offset workaround idk;
 	// final lowFps:Int = 30;
 	var focusMusicTween:FlxTween;
-
-	public static var hscriptParser:Parser;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
@@ -115,11 +107,6 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
-
-		hscriptParser = new Parser();
-
-		hscriptParser.allowTypes = true;
-		hscriptParser.allowJSON = true;
 
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
