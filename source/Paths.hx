@@ -135,6 +135,7 @@ class Paths
 	inline static public function songScript(key:String, ?library:String)
 	{
 		return getPath('data/$key.lua', TEXT, library);
+		}
 
 	inline static public function charJson(key:String, ?library:String)
 	{
