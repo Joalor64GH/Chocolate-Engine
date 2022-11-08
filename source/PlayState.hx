@@ -549,7 +549,6 @@ class PlayState extends MusicBeatState
 					camPos.x += 600;
 					tweenCamIn();
 				}
-
 			case "spooky":
 				dad.y += 200;
 			case "monster":
@@ -595,11 +594,13 @@ class PlayState extends MusicBeatState
 			case 'mallEvil':
 				boyfriend.x += 320;
 				dad.y -= 80;
+
 			case 'school':
 				boyfriend.x += 200;
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
+
 			case 'schoolEvil':
 				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
 				add(evilTrail);
@@ -677,11 +678,13 @@ class PlayState extends MusicBeatState
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
+
 		// Misses Counter
 		missesTxt = new FlxText(895, healthBarBG.y + 30, 0, "", 20);
 		missesTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		missesTxt.scrollFactor.set();
 		add(missesTxt);
+
 		// Watermark
 		chocoTxt = new FlxText(360, healthBarBG.y + 30, 0, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
 		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -709,10 +712,7 @@ class PlayState extends MusicBeatState
 
 		startingSong = true;
 
-		/*if (FlxG.random.bool(50) == true)
-			missesTxt.text = "Upset Disney: " + misses; // this keeps rapidly switching
-		else*/
-			missesTxt.text = "Combo Breaks: " + misses;
+		missesTxt.text = "Combo Breaks: " + misses;
 
 		if (isStoryMode)
 		{
