@@ -146,12 +146,12 @@ class ModPaths
 		return 'mods';
 	}
 
-	static public function checkMod(mod:String)
+	inline static public function checkMod(mod:String)
 	{
 		return openfl.utils.Assets.exists('mods/$mod/_polymod_meta.json');
 	}
 
-	static public function checkPack(mod:String)
+	inline static public function checkPack(mod:String)
 	{
 		return openfl.utils.Assets.exists('mods/$mod/_polymod_pack.txt');
 	}
