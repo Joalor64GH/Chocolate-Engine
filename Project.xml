@@ -116,7 +116,7 @@
 	<haxedef name="POLYMOD_SCRIPT_EXT" value=".lua" />
 	<haxedef name="POLYMOD_SCRIPT_CLASS_EXT" value=".lua" />
 	<haxedef name="POLYMOD_SCRIPT_LIBRARY" value="scripts" />
-	<haxedef name="POLYMOD_MOD_PACK_FILE" value="modsList.txt" />
+	<haxedef name="POLYMOD_MOD_PACK_FILE" value="_polymod_pack.txt" />
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="_polymod_meta.json" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE"  value="_polymod_icon.png" />
 	<haxedef name="POLYMOD_DEBUG" if="debug" />
