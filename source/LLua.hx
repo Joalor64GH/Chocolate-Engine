@@ -66,7 +66,7 @@ class LLua
 		return 0;
 	}
 
-	public function get(variable:String):Void
+	/*public function get(variable:String):Void
 	{
 		if (isNull())
 			return;
@@ -91,7 +91,7 @@ class LLua
 			return null;
 
 		return resultStr;
-	}
+	}*/
 
 	public function set(variable:String, data:Dynamic):Void
 	{
