@@ -23,8 +23,6 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * [ ] Support for Lua Scripts
 * [ ] Attempt to softcode characters
 * [ ] Freeplay Colors
-* [ ] Attempt to softcode stages **[Scrapped]**
-* [ ] Notesplashes **[Scrapped]**
 
 ## Credits
 
