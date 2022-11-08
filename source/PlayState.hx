@@ -95,7 +95,7 @@ class PlayState extends MusicBeatState
 	private var gfSpeed:Int = 1;
 	private var health:Float = 1;
 	private var combo:Int = 0;
-	private var misses:Float = 0;
+	private var misses:Int = 0;
 
 	private var healthBarBG:FlxSprite;
 	private var healthBar:FlxBar;
@@ -1089,7 +1089,7 @@ class PlayState extends MusicBeatState
 				{
 				}
 			}
-			daBeats += 1;
+			daBeats++;
 		}
 
 		unspawnNotes.sort(sortByShit);
@@ -1867,8 +1867,6 @@ class PlayState extends MusicBeatState
 			},
 			startDelay: Conductor.crochet * 0.001
 		});
-
-		curSection += 1;
 	}
 
 	var upHold:Bool = false;
@@ -1995,7 +1993,7 @@ class PlayState extends MusicBeatState
 	{
 		if (!boyfriend.stunned)
 		{
-			misses += 1;
+			misses++;
 			health -= 0.04;
 			if (combo > 5 && gf.animOffsets.exists('sad'))
 			{
@@ -2242,7 +2240,7 @@ class PlayState extends MusicBeatState
 					fastCarDrive();
 			case "philly":
 				if (!trainMoving)
-					trainCooldown += 1;
+					trainCooldown++;
 
 				if (curBeat % 4 == 0)
 				{
