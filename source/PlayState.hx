@@ -54,6 +54,7 @@ import lime.app.Application;
 import openfl.events.KeyboardEvent;
 import Character;
 import LLua;
+import flixel.animation.FlxAnimationController;
 
 using StringTools;
 
@@ -163,6 +164,27 @@ class PlayState extends MusicBeatState
 		'singUP',
 		'singRIGHT' // im starting to frikin' like this idea
 	];
+
+	public var playbackRate(default, set):Float = 1;
+
+	private function set_playbackRate(v:Float):Float
+	{
+		if (generatedMusic){
+			if (vocals != null)
+				vocals.pitch = v;
+			FlxG.sound.music.pitch = v;
+		}
+
+		FlxAnimationController.globalSpeed = v;
+		trace('Animation speed: ' + FlxAnimationController.globalSpeed);
+		Conductor.safeZoneOffset = (Conductor.safeFrames / 60) * 1000 * v;
+		if (v < 1)
+			return 1;
+		else if (v > 3)
+			return v / 3;
+		else
+			return v;
+	}	
 
 	override public function create()
 	{
@@ -865,7 +887,7 @@ class PlayState extends MusicBeatState
 
 		var swagCounter:Int = 0;
 
-		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
+		startTimer = new FlxTimer().start(Conductor.crochet / 1000 / playbackRate, function(tmr:FlxTimer)
 		{
 			dad.dance();
 			gf.dance();
@@ -1290,7 +1312,9 @@ class PlayState extends MusicBeatState
 
 		FlxG.sound.music.play();
 		Conductor.songPosition = FlxG.sound.music.time;
+		FlxG.sound.music.pitch = playbackRate;
 		vocals.time = Conductor.songPosition;
+		vocals.pitch = playbackRate;
 		vocals.play();
 	}
 
@@ -1401,7 +1425,7 @@ class PlayState extends MusicBeatState
 		{
 			if (startedCountdown)
 			{
-				Conductor.songPosition += FlxG.elapsed * 1000;
+				Conductor.songPosition += FlxG.elapsed * 1000 * playbackRate;
 				if (Conductor.songPosition >= 0)
 					startSong();
 			}
@@ -1409,7 +1433,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			// Conductor.songPosition = FlxG.sound.music.time;
-			Conductor.songPosition += FlxG.elapsed * 1000;
+			Conductor.songPosition += FlxG.elapsed * 1000 * playbackRate;
 
 			if (!paused)
 			{
@@ -1419,8 +1443,8 @@ class PlayState extends MusicBeatState
 				// Interpolation type beat
 				if (Conductor.lastSongPos != Conductor.songPosition)
 				{
-					songTime = (songTime + Conductor.songPosition) / 2;
-					Conductor.lastSongPos = Conductor.songPosition;
+					songTime = (songTime + Conductor.songPosition) / 2 * playbackRate;
+					Conductor.lastSongPos = Conductor.songPosition * playbackRate;
 				}
 			}
 		}
@@ -1536,7 +1560,7 @@ class PlayState extends MusicBeatState
 
 		if (unspawnNotes[0] != null)
 		{
-			if (unspawnNotes[0].strumTime - Conductor.songPosition < 1500)
+			if (unspawnNotes[0].strumTime - Conductor.songPosition < 1500 / playbackRate)
 			{
 				var dunceNote:Note = unspawnNotes[0];
 				notes.add(dunceNote);
@@ -1561,7 +1585,7 @@ class PlayState extends MusicBeatState
 					daNote.active = true;
 				}
 
-				daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
+				daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime / playbackRate) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
 
 				// i am so fucking sorry for this if condition
 				if (daNote.isSustainNote
@@ -1610,9 +1634,9 @@ class PlayState extends MusicBeatState
 					daNote.destroy();
 				}
 				if (FlxG.save.data.downscroll)
-					daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (-0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
+					daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime / playbackRate) * (-0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
 				else
-					daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
+					daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime / playbackRate) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
 
 				if (daNote.y < -daNote.height && !FlxG.save.data.downscroll || daNote.y >= strumLine.y + 106 && FlxG.save.data.downscroll)
 				{
@@ -1728,7 +1752,7 @@ class PlayState extends MusicBeatState
 
 	private function popUpScore(strumtime:Float, daNote:Note):Void
 	{
-		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition);
+		var noteDiff:Float = Math.abs(strumtime - Conductor.songPosition / playbackRate);
 		vocals.volume = 1;
 
 		var placement:String = Std.string(combo);
@@ -2146,8 +2170,8 @@ class PlayState extends MusicBeatState
 	{
 		super.stepHit();
 
-		if ((Math.abs(FlxG.sound.music.time - (Conductor.songPosition - Conductor.offset)) > 20)
-			|| (SONG.needsVoices && Math.abs(vocals.time - (Conductor.songPosition - Conductor.offset)) > 20))
+		if ((Math.abs(FlxG.sound.music.time - (Conductor.songPosition - Conductor.offset / playbackRate)) > 20)
+			|| (SONG.needsVoices && Math.abs(vocals.time - (Conductor.songPosition - Conductor.offset / playbackRate)) > 20))
 		{
 			resyncVocals();
 		}
