@@ -1,1 +1,1 @@
-Your HX Scripts go here!
+Your LUA Scripts go here!

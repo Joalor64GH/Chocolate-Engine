@@ -31,6 +31,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
+import flixel.input.keyboard.FlxKey;
 #if MODS_ALLOWED
 import ModsMenuState;
 import modding.PolymodHandler;
@@ -129,6 +130,8 @@ class TitleState extends MusicBeatState
 		Fixer.initPlayerSettings();
 
 		Highscore.load();
+
+		FlxG.sound.muteKeys = [FlxKey.ZERO];
 
 		if (FlxG.save.data.weekUnlocked != null)
 		{
