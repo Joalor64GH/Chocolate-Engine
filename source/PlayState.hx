@@ -409,8 +409,6 @@ class PlayState extends MusicBeatState
 				{
 					curStage = 'school';
 
-					// defaultCamZoom = 0.9;
-
 					var bgSky = new FlxSprite().loadGraphic(Paths.image('backgrounds/school/weebSky'));
 					bgSky.scrollFactor.set(0.1, 0.1);
 					add(bgSky);
