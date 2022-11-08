@@ -135,7 +135,7 @@ class CoolUtil
 			return null;
 	}
 
-	inline public static function sortNotes(theOrder:Int, obj1:Note, obj2:Note)
+	inline public static function sortNotes(theOrder:Int, obj1:Note, obj2:Note):Int
 	{
 		return FlxSort.byValues(theOrder, obj1.strumTime, obj2.strumTime);
 	}
