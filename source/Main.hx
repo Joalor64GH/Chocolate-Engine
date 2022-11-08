@@ -186,6 +186,11 @@ class Main extends Sprite
 		#end
 	}
 
+	inline public static function framerateAdjust(input:Float)
+	{
+		return input * (60 / FlxG.drawFramerate);
+	}
+
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work
 	#if CRASH_HANDLER
