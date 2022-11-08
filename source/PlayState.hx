@@ -181,7 +181,7 @@ class PlayState extends MusicBeatState
 		if (v < 1)
 			return 1;
 		else if (v > 3)
-			return v / 3;
+			return 3;
 		else
 			return v;
 	}	

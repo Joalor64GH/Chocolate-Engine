@@ -15,6 +15,9 @@ import lime.utils.Assets;
 #if sys
 import sys.io.File;
 import sys.FileSystem;
+#end
+
+#if polymod
 import polymod.backends.PolymodAssets;
 #end
 
@@ -33,9 +36,25 @@ class FreeplayState extends MusicBeatState
 	var intendedScore:Int = 0;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
-	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
+
+	private var playbackRate(default, set):Float = 1;
+
+	function set_playbackRate(v:Float):Float
+	{
+		if (FlxG.sound.music.playing){
+			FlxG.sound.music.pitch = v;
+		}
+		if (v < 1)
+			return 1;
+		else if (v > 3)
+			return 3;
+		else
+			return v;
+	}
+
+	private var playbackRateText:FlxText;
 
 	override function create()
 	{
@@ -130,6 +149,10 @@ class FreeplayState extends MusicBeatState
 		diffText.font = scoreText.font;
 		add(diffText);
 
+		playbackRateText = new FlxText(scoreText.x, scoreText.y + 56, 0, "", 24);
+		playbackRateText.font = scoreText.font;
+		add(playbackRateText);
+
 		add(scoreText);
 
 		changeSelection();
@@ -194,10 +217,17 @@ class FreeplayState extends MusicBeatState
 		if (controls.RIGHT_P)
 			changeDiff(1);
 
+		if (controls.LEFT_P && FlxG.keys.pressed.CONTROL)
+			changePlaybackRate(-1);
+		if (controls.RIGHT_P && FlxG.keys.pressed.CONTROL)
+			changePlaybackRate(1);
+
 		if (controls.BACK)
 		{
 			FlxG.switchState(new MainMenuState());
 		}
+
+		playbackRateText.text = 'Playback Rate: ' + playbackRate;
 
 		if (accepted)
 		{
@@ -244,6 +274,7 @@ class FreeplayState extends MusicBeatState
 
 		#if PRELOAD_ALL
 		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
+		FlxG.sound.music.pitch = playbackRate;
 		#end
 
 		var bullShit:Int = 0;
@@ -267,6 +298,17 @@ class FreeplayState extends MusicBeatState
 				item.alpha = 1;
 			}
 		}
+	}
+
+	function changePlaybackRate(value:Float) {
+		if (value < 1) 
+			return playbackRate = 1;
+		else if (value > 3)
+			return playbackRate = 3;
+		else if (Math.isNaN(value))
+			return playbackRate = 1;
+		else
+			return playbackRate = value;
 	}
 }
 
