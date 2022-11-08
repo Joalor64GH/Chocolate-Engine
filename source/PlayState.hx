@@ -53,6 +53,7 @@ import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
 import Character;
+import LLua;
 
 using StringTools;
 
