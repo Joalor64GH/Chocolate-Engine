@@ -11,7 +11,7 @@ using StringTools;
 
 	@author Leather128
 **/
-class LuaScript extends Script
+class LuaScript extends LLua
 {
 	override public function call(func:String, ?arguments:Array<Dynamic>):Null<Bool>
 	{
