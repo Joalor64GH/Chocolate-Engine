@@ -1,4 +1,4 @@
-package;
+package modding;
 
 import flixel.FlxG;
 import polymod.*;
@@ -29,7 +29,7 @@ class ModCore
 	static final MOD_DIRECTORY:String = "mods";
 
 	private static final modExtensions:Map<String, PolymodAssetType> = [
-		'ogg' => SOUND, 'png' => IMAGE, 
+	'ogg' => SOUND, 'png' => IMAGE, 
         'xml' => TEXT, 'json' => TEXT, 'txt' => TEXT, 'lua' => TEXT, 
         'ttf' => FONT, 'otf' => FONT, 
         'webm' => VIDEO, 'mp4' => VIDEO
@@ -217,8 +217,8 @@ class ModCore
 		return {
 			assetLibraryPaths: [
 				"songs" => "songs", "data" => "data", "fonts" => "fonts", "characters" => "characters", "scripts" => "scripts",
-					"cutscenes" => "cutscenes", "locales" => "locales", "music" => "music", "sounds" => "sounds", "images" => "images",
-					"videos" => "videos"
+				"cutscenes" => "cutscenes", "locales" => "locales", "music" => "music", "sounds" => "sounds", "images" => "images",
+				"videos" => "videos"
 			]
 		}
 	}
