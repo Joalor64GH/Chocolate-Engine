@@ -1305,6 +1305,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
+		// my bad, I was upset
 		if (daSongName == 'test' && curBeat % 2 == 0)
 		{
 			trace('FUCK YOU:' + cunt);
