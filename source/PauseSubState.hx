@@ -134,10 +134,10 @@ class PauseSubState extends MusicBeatSubstate
 					close();
 				case "Restart Song":
 					FlxG.resetState();
-				case "Exit to freeplay":
-					FlxG.switchState(new FreeplayState());
 				case "Options":
 					FlxG.switchState(new OptionsMenu());
+				case "Exit to freeplay":
+					FlxG.switchState(new FreeplayState());
 				case "Exit to main menu":
 					if (PlayState.isStoryMode)
 						FlxG.switchState(new StoryMenuState());
@@ -171,12 +171,10 @@ class PauseSubState extends MusicBeatSubstate
 			bullShit++;
 
 			item.alpha = 0.6;
-			// item.setGraphicSize(Std.int(item.width * 0.8));
 
 			if (item.targetY == 0)
 			{
 				item.alpha = 1;
-				// item.setGraphicSize(Std.int(item.width));
 			}
 		}
 	}
