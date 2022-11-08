@@ -4,7 +4,7 @@ Wither362:Assistant Coder and Fixer
 ShadowMario:Psych Input
 PolybiusProxy:MP4 Video Support
 Smokey:Adobe Animate Texture Atlas Support
-Sqirra-RNG:Window Focus and Unfocus Code
+Sqirra-RNG:Window Focus and Unfocus Code and Crash Handler
 Leather128:Some Polymod Code
 stephensrt:Lots of Polymod Code and Mag Engine Code
 KadeDev:Extension WebM and Kade Engine Code

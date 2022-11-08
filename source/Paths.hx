@@ -8,6 +8,8 @@ import openfl.utils.Assets as OpenFlAssets;
 class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
+	inline public static var VIDEO_EXT = "mp4";
+	inline public static var WEBM_EXT = "webm";
 
 	public static var currentLevel:String;
 
@@ -82,14 +84,14 @@ class Paths
 
 	inline static public function video(key:String, ?library:String)
 	{
-		trace('assets/videos/$key.mp4');
-		return getPath('videos/$key.mp4', BINARY, library);
+		trace('assets/videos/$key.VIDEO_EXT');
+		return getPath('videos/$key.VIDEO_EXT', BINARY, library);
 	}
 
 	inline static public function webm(key:String, ?library:String)
 	{
-		trace('assets/videos/$key.webm');
-		return getPath('videos/$key.webm', BINARY, library);
+		trace('assets/videos/$key.WEBM_EXT');
+		return getPath('videos/$key.WEBM_EXT', BINARY, library);
 	}
 
 	inline static public function music(key:String, ?library:String, type:AssetType = MUSIC)

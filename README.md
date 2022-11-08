@@ -34,7 +34,7 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * [ShadowMario](https://github.com/ShadowMario) - Psych Input
 * [PolybiusProxy](https://github.com/polybiusproxy) - MP4 Video Support
 * [Smokey](https://twitter.com/Smokey_5_) - Adobe Animate Texture Atlas Support
-* [Sqirra-RNG](https://gedehari.github.io/) - Window Focus and Unfocus Code
+* [Sqirra-RNG](https://gedehari.github.io/) - Window Focus and Unfocus Code and Crash Handler
 * [Leather128](https://github.com/Leather128) - Some Polymod Code
 * [stephensrt](https://github.com/stephensrt) - Lots of Polymod Code and Mag Engine Code
 * [KadeDev](https://twitter.com/kade0921) - Extension WebM and Kade Engine Code

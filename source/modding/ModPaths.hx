@@ -10,6 +10,8 @@ class ModPaths {
     static final currentLevel:String = Paths.currentLevel;
 
     private static final SOUND_EXT = Paths.SOUND_EXT;
+    private static final VIDEO_EXT = Paths.VIDEO_EXT;
+    private static final WEBM_EXT = Paths.WEBM_EXT;
 
     inline static public function modIconImage(key:String, mod:String){
 		return getPath('$mod/_polymod_icon.png', IMAGE, mod);
@@ -44,14 +46,14 @@ class ModPaths {
 
         inline static public function getModVideo(key:String, mod:String)
 	{
-		trace('mods/$mod/videos/$key.mp4');
-		return getPath('videos/$key.mp4', BINARY, mod);
+		trace('mods/$mod/videos/$key.VIDEO_EXT');
+		return getPath('videos/$key.VIDEO_EXT', BINARY, mod);
 	}
 
     inline static public function getModWebm(key:String, mod:String)
 	{
-		trace('mods/$mod/videos/$key.webm');
-		return getPath('videos/$key.webm', BINARY, mod);
+		trace('mods/$mod/videos/$key.WEBM_EXT');
+		return getPath('videos/$key.WEBM_EXT', BINARY, mod);
 	}
 
         inline static public function getModMusic(key:String, mod:String)
