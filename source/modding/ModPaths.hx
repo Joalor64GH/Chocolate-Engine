@@ -151,6 +151,11 @@ class ModPaths
 		return openfl.utils.Assets.exists('mods/$mod/_polymod_meta.json');
 	}
 
+	static public function checkPack(mod:String)
+	{
+		return openfl.utils.Assets.exists('mods/$mod/_polymod_pack.txt');
+	}
+
 	inline static public function getSparrowAtlas(key:String, ?mod:String)
 	{
 		return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), getPath('images/$key.xml', TEXT, mod));
