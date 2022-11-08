@@ -66,6 +66,33 @@ class LLua
 		return 0;
 	}
 
+	public function get(variable:String):Void
+	{
+		if (isNull())
+			return;
+
+		// it looks like I stole this from psych
+		var value:Dynamic = null;
+		Lua.getglobal(lua, variable);
+		value = Convert.fromLua(lua, value);
+		Lua.pop(lua, 1);
+		return value;
+	}
+
+	public function getString(variable:String):Void {
+		if (isNull())
+			return;
+		var resultStr:String = null;
+		Lua.getglobal(lua, variable);
+		resultStr = Convert.fromLua(lua, resultStr);
+		Lua.pop(lua, 1);
+
+		if (resultStr == null)
+			return null;
+
+		return resultStr;
+	}
+
 	public function set(variable:String, data:Dynamic):Void
 	{
 		if (isNull())
