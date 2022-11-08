@@ -8,7 +8,8 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import openfl.Assets;
 
-class DonateScreenState extends MusicBeatState {
+class DonateScreenState extends MusicBeatState
+{
 	var blurb:Array<String> = [
 		"your contributions help us",
 		"develop the funkiest engine",

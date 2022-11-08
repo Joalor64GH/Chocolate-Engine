@@ -7,31 +7,32 @@ import polymod.backends.PolymodAssets;
 
 using StringTools;
 
-typedef Cutscene = {
-    var type:String;
+typedef Cutscene =
+{
+	var type:String;
 
-    var videoPath:String;
+	var videoPath:String;
 }
 
 class CutsceneUtil
 {
 	public static function loadFromJson(jsonPath:String):Cutscene
-    {
-        var rawJson:String = "";
+	{
+		var rawJson:String = "";
 
-        #if MODS_ALLOWED
-        rawJson = PolymodAssets.getText(Paths.json("cutscenes/" + jsonPath)).trim();
-        #else
-        rawJson = Assets.getText(Paths.json("cutscenes/" + jsonPath)).trim();
-        #end
+		#if MODS_ALLOWED
+		rawJson = PolymodAssets.getText(Paths.json("cutscenes/" + jsonPath)).trim();
+		#else
+		rawJson = Assets.getText(Paths.json("cutscenes/" + jsonPath)).trim();
+		#end
 
-        return parseJSONshit(rawJson);
-    }
+		return parseJSONshit(rawJson);
+	}
 
-    public static function parseJSONshit(rawJson:String):Cutscene
-    {
-        var swagShit:Cutscene = cast Json.parse(rawJson);
+	public static function parseJSONshit(rawJson:String):Cutscene
+	{
+		var swagShit:Cutscene = cast Json.parse(rawJson);
 
-        return swagShit;
-    }
+		return swagShit;
+	}
 }

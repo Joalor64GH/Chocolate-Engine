@@ -4,7 +4,6 @@ import flixel.FlxG;
 import lime.utils.Assets;
 import flixel.FlxSprite;
 import flixel.FlxState;
-
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
 import sys.FileSystem;
@@ -41,7 +40,7 @@ class CoolUtil
 	public static inline function blueBalls():Int
 	{
 		return PlayState.instance.deaths;
-	}	
+	}
 
 	public static function coolTextFile(path:String):Array<String>
 	{
@@ -72,9 +71,11 @@ class CoolUtil
 	{
 		var daString:String = '';
 		#if MODS_ALLOWED
-		if(FileSystem.exists(path)) daString = File.getContent(path).trim();
+		if (FileSystem.exists(path))
+			daString = File.getContent(path).trim();
 		#else
-		if(Assets.exists(path)) daString = Assets.getText(path).trim();
+		if (Assets.exists(path))
+			daString = Assets.getText(path).trim();
 		#end
 
 		return daString;
@@ -120,15 +121,16 @@ class CoolUtil
 		return dumbArray;
 	}
 
-	public static function createBG(x:Float, y:Float, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false, state:FlxState):FlxSprite {
-		var bg:FlxSprite = new FlxSprite(x,y).loadGraphic(Paths.image(path));
+	public static function createBG(x:Float, y:Float, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false, state:FlxState):FlxSprite
+	{
+		var bg:FlxSprite = new FlxSprite(x, y).loadGraphic(Paths.image(path));
 		bg.scrollFactor.set(scrollFactor, scrollFactor);
 		bg.active = false;
 		bg.antialiasing = antialiasing;
 		state.add(bg);
 		if (bg != null)
 			return bg;
-		else 
+		else
 			return null;
 	}
 }

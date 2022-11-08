@@ -6,10 +6,10 @@ import llua.Lua.Lua_helper;
 
 class LLua
 {
-    public var lua:State = LuaL.newstate();
+	public var lua:State = LuaL.newstate();
 
-    public function new(script:String)
-    {
+	public function new(script:String)
+	{
 		LuaL.openlibs(lua);
 		Lua.init_callbacks(lua);
 		// just for security reasons
@@ -30,11 +30,10 @@ class LLua
 		if (resultStr != null && result != 0)
 			return;
 
-        Lua_helper.add_callback(lua, 'trace', function(v:Dynamic)
-            trace(v));
+		Lua_helper.add_callback(lua, 'trace', function(v:Dynamic) trace(v));
 
-        call('onCreate', []);
-    }
+		call('onCreate', []);
+	}
 
 	public function call(evt:String, args:Array<Dynamic>):Null<Int>
 	{
@@ -87,18 +86,18 @@ class LLua
 		return false;
 	}
 
-    public function destroy():Void
-    {
-        if (isNull())
-            return;
+	public function destroy():Void
+	{
+		if (isNull())
+			return;
 
-        Lua.close(lua);
-        lua = null;
-    }
+		Lua.close(lua);
+		lua = null;
+	}
 
-    public function isNull():Bool
-    {
-        return lua == null;
-    }
+	public function isNull():Bool
+	{
+		return lua == null;
+	}
 }
 #end

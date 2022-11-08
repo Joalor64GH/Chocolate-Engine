@@ -7,61 +7,61 @@ import flixel.FlxCamera;
 using StringTools;
 
 /**
-    Any Script in the game that uses the `Lua` programming language.
+	Any Script in the game that uses the `Lua` programming language.
 
-    @author Leather128
+	@author Leather128
 **/
 class LuaScript extends Script
 {
-    override public function call(func:String, ?arguments:Array<Dynamic>):Null<Bool>
-    {
-        // idfk
+	override public function call(func:String, ?arguments:Array<Dynamic>):Null<Bool>
+	{
+		// idfk
 
-        return true;
-    }
+		return true;
+	}
 
-    override public function set(variable:String, value:Dynamic):Null<Bool>
-    {
-        // idfk
+	override public function set(variable:String, value:Dynamic):Null<Bool>
+	{
+		// idfk
 
-        return true;
-    }
+		return true;
+	}
 
-    override public function setup_enviroment():Null<Bool>
-    {
-        // idfk
+	override public function setup_enviroment():Null<Bool>
+	{
+		// idfk
 
-        return true;
-    }
+		return true;
+	}
 
-    /**
-        Returns the correct camera from PlayState based on the string `cam`.
+	/**
+		Returns the correct camera from PlayState based on the string `cam`.
 
-        @author Leather128
+		@author Leather128
 
-        @param cam String representation of the camera being returned.
-    **/
-    public static function camera(cam:String):FlxCamera
-    {
-        @:privateAccess
-        return cam.toLowerCase().endsWith("hud") ? PlayState.instance.camHUD : PlayState.instance.camGame;
-    }
+		@param cam String representation of the camera being returned.
+	**/
+	public static function camera(cam:String):FlxCamera
+	{
+		@:privateAccess
+		return cam.toLowerCase().endsWith("hud") ? PlayState.instance.camHUD : PlayState.instance.camGame;
+	}
 
-    /**
-        Returns the correct blend mode based on the string `blend`.    
+	/**
+		Returns the correct blend mode based on the string `blend`.    
 
-        @author Leather128
+		@author Leather128
 
-        @param blend String representation of the blend mode being returned.
-    **/
-    public static function blend_mode(blend:String):BlendMode
-    {
-        @:privateAccess
-        var mode:BlendMode = BlendMode.fromString(blend.toLowerCase().trim());
+		@param blend String representation of the blend mode being returned.
+	**/
+	public static function blend_mode(blend:String):BlendMode
+	{
+		@:privateAccess
+		var mode:BlendMode = BlendMode.fromString(blend.toLowerCase().trim());
 
-        if (mode != null)
-            return mode;
-        else
-            return NORMAL;
-    }
+		if (mode != null)
+			return mode;
+		else
+			return NORMAL;
+	}
 }

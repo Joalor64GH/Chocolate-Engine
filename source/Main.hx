@@ -11,8 +11,7 @@ import openfl.events.Event;
 import flixel.tweens.FlxTween;
 import lime.app.Application;
 import flixel.util.FlxTimer;
-
-//crash handler stuff
+// crash handler stuff
 #if CRASH_HANDLER
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
@@ -35,7 +34,9 @@ class Main extends Sprite
 	var framerate:Int = 150; // How many frames per second the game should run at.
 	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
+
 	@:keep public static var letterOffset:Bool = false; // alphabet offset workaround idk;
+
 	var focusMusicTween:FlxTween;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
@@ -140,7 +141,7 @@ class Main extends Sprite
 
 		setupGame();
 	}
-	
+
 	private function setupGame():Void
 	{
 		var stageWidth:Int = Lib.current.stage.stageWidth;
@@ -158,7 +159,7 @@ class Main extends Sprite
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
 
 		addChild(new FPS(10, 3, 0xFFFFFF));
-		
+
 		var ourSource:String = "assets/videos/DO NOT DELETE OR GAME WILL CRASH/dontDelete.webm";
 
 		#if web
@@ -171,7 +172,7 @@ class Main extends Sprite
 		GlobalVideo.setVid(vHandler);
 		vHandler.source(ourSource);
 		#elseif WEBM_EXTENSION
-		var str1:String = "WEBM SHIT"; 
+		var str1:String = "WEBM SHIT";
 		var webmHandle = new WebmHandler();
 		webmHandle.source(ourSource);
 		webmHandle.makePlayer();
@@ -211,7 +212,9 @@ class Main extends Sprite
 			}
 		}
 
-		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/Joalor64GH/Chocolate-Engine\n\n> Crash Handler written by: sqirra-rng";
+		errMsg += "\nUncaught Error: "
+			+ e.error
+			+ "\nPlease report this error to the GitHub page: https://github.com/Joalor64GH/Chocolate-Engine\n\n> Crash Handler written by: sqirra-rng";
 
 		if (!FileSystem.exists("./crash/"))
 			FileSystem.createDirectory("./crash/");

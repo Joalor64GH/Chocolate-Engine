@@ -28,12 +28,12 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	var optionShit:Array<String> = [
-		'story mode', 
+		'story mode',
 		'freeplay',
 		#if MODS_ALLOWED
 		'mods',
 		#end
-		'donate', 
+		'donate',
 		'credits',
 		'options'
 	];
@@ -107,7 +107,8 @@ class MainMenuState extends MusicBeatState
 		FlxG.camera.follow(camFollow, null, 1);
 
 		// Chocolate Engine
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco')) #if debug + " DEBUG BUILD" #end, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'))
+			#if debug + " DEBUG BUILD" #end, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -125,7 +126,7 @@ class MainMenuState extends MusicBeatState
 	var selectedSomethin:Bool = false;
 
 	override function update(elapsed:Float)
-	{	
+	{
 		MMScript.onUpdate();
 
 		if (FlxG.sound.music.volume < 0.8)
@@ -157,10 +158,10 @@ class MainMenuState extends MusicBeatState
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 
-					FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+				FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
-					menuItems.forEach(function(spr:FlxSprite)
-				    {
+				menuItems.forEach(function(spr:FlxSprite)
+				{
 					if (curSelected != spr.ID)
 					{
 						FlxTween.tween(spr, {alpha: 0}, 0.4, {
@@ -180,25 +181,25 @@ class MainMenuState extends MusicBeatState
 							switch (daChoice)
 							{
 								case 'story mode':
-										FlxG.switchState(new StoryMenuState());
-										trace("Story Menu Selected");
-									case 'freeplay':
-										FlxG.switchState(new FreeplayState());
-										trace("Freeplay Menu Selected");
-									#if MODS_ALLOWED
-									case 'mods':
-										FlxG.switchState(new ModsMenuState());
-										trace("Mods Menu Selected");
-									#end
+									FlxG.switchState(new StoryMenuState());
+									trace("Story Menu Selected");
+								case 'freeplay':
+									FlxG.switchState(new FreeplayState());
+									trace("Freeplay Menu Selected");
+								#if MODS_ALLOWED
+								case 'mods':
+									FlxG.switchState(new ModsMenuState());
+									trace("Mods Menu Selected");
+								#end
 								case 'donate':
 									FlxG.switchState(new DonateScreenState());
 									trace("Donate Screen Selected");
-									case 'credits':
-										FlxG.switchState(new CreditsState());
-										trace("Credits Selected");
-									case 'options':
-										FlxG.switchState(new OptionsMenu());
-										trace("Options Selected");
+								case 'credits':
+									FlxG.switchState(new CreditsState());
+									trace("Credits Selected");
+								case 'options':
+									FlxG.switchState(new OptionsMenu());
+									trace("Options Selected");
 							}
 						});
 					}

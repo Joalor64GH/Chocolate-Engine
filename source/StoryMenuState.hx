@@ -16,7 +16,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.net.curl.CURLCode;
 import openfl.Assets;
-
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
 #end
@@ -109,7 +108,7 @@ class StoryMenuState extends MusicBeatState
 		add(grpLocks);
 
 		trace("Line 70");
-		
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -183,7 +182,7 @@ class StoryMenuState extends MusicBeatState
 
 		sprDifficulty = new FlxSprite(leftArrow.x + 130, leftArrow.y);
 		sprDifficulty.frames = ui_tex;
-		for(dif in CoolUtil.difficultyArray)
+		for (dif in CoolUtil.difficultyArray)
 			sprDifficulty.animation.addByPrefix(dif.toLowerCase(), dif.toUpperCase());
 		sprDifficulty.animation.play(CoolUtil.defaultDifficulty.toLowerCase());
 		changeDifficulty();
@@ -306,7 +305,7 @@ class StoryMenuState extends MusicBeatState
 
 			var diffic = "";
 
-			if(CoolUtil.difficultyArray[curDifficulty].toLowerCase() != CoolUtil.defaultDifficulty.toLowerCase())
+			if (CoolUtil.difficultyArray[curDifficulty].toLowerCase() != CoolUtil.defaultDifficulty.toLowerCase())
 				diffic = '-' + CoolUtil.difficultyArray[curDifficulty].toLowerCase();
 
 			PlayState.storyDifficulty = curDifficulty;
@@ -326,8 +325,8 @@ class StoryMenuState extends MusicBeatState
 		curDifficulty += change;
 
 		if (curDifficulty < 0)
-			curDifficulty = CoolUtil.difficultyArray.length-1;
-		if (curDifficulty > CoolUtil.difficultyArray.length-1)
+			curDifficulty = CoolUtil.difficultyArray.length - 1;
+		if (curDifficulty > CoolUtil.difficultyArray.length - 1)
 			curDifficulty = 0;
 
 		sprDifficulty.offset.x = 0;

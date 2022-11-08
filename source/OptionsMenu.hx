@@ -22,20 +22,31 @@ class OptionsMenu extends MusicBeatState
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
 	var versionShit:FlxText;
-	private function onOff(thing:Bool):String {
+
+	private function onOff(thing:Bool):String
+	{
 		return thing ? 'On' : 'Off';
 	}
+
 	override function create()
 	{
 		var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuDesat'));
-		controlsStrings = CoolUtil.coolStringFile(
-			(FlxG.save.data.dfjk ? 'DFJK' : 'WASD') + 
-			"\n" + (FlxG.save.data.newInput ? "New" : "Old") + ' Input' +
-			"\n" + (FlxG.save.data.downscroll ? 'Down' : 'Up') + 'scroll' +
-			//"\n" + 'Anti-Aliasing' + onOff(FlxG.save.data.antiAliasing) +
-			"\n" + 'Timebar ' + onOff(FlxG.save.data.timebar) +
-			"\n" + 'Botplay ' + onOff(FlxG.save.data.botplay) +
-			"\n" + (FlxG.save.data.lang ? "English" : "Spanish"));
+		controlsStrings = CoolUtil.coolStringFile((FlxG.save.data.dfjk ? 'DFJK' : 'WASD')
+			+ "\n"
+			+ (FlxG.save.data.newInput ? "New" : "Old")
+			+ ' Input'
+			+ "\n"
+			+ (FlxG.save.data.downscroll ? 'Down' : 'Up')
+			+ 'scroll'
+			+ // "\n" + 'Anti-Aliasing' + onOff(FlxG.save.data.antiAliasing) +
+			"\n"
+			+ 'Timebar '
+			+ onOff(FlxG.save.data.timebar)
+			+ "\n"
+			+ 'Botplay '
+			+ onOff(FlxG.save.data.botplay)
+			+ "\n"
+			+ (FlxG.save.data.lang ? "English" : "Spanish"));
 
 		trace(controlsStrings);
 
@@ -57,7 +68,6 @@ class OptionsMenu extends MusicBeatState
 			grpControls.add(controlLabel);
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 		}
-
 
 		versionShit = new FlxText(5, FlxG.height - 18, 0, "Offset (Left, Right): " + FlxG.save.data.offset, 12);
 		versionShit.scrollFactor.set();
@@ -90,12 +100,11 @@ class OptionsMenu extends MusicBeatState
 			versionShit.text = "Offset (Left, Right): " + FlxG.save.data.offset;
 		}
 
-
 		if (controls.ACCEPT)
 		{
 			if (curSelected != 4)
 				grpControls.remove(grpControls.members[curSelected]);
-			switch(curSelected)
+			switch (curSelected)
 			{
 				case 0:
 					FlxG.save.data.dfjk = !FlxG.save.data.dfjk;

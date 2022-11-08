@@ -34,18 +34,23 @@ import haxe.Constraints.IMap;
 
 using StringTools;
 
-private enum Stop {
+private enum Stop
+{
 	SBreak;
 	SContinue;
 	SReturn;
 }
 
-class Interp {
+class Interp
+{
 	public var scriptObject(default, set):Dynamic;
-	public function set_scriptObject(v:Dynamic) {
+
+	public function set_scriptObject(v:Dynamic)
+	{
 		__instanceFields = Type.getInstanceFields(Type.getClass(v));
 		return scriptObject = v;
 	}
+
 	public var errorHandler:Error->Void;
 	#if haxe3
 	public var variables:Map<String, Dynamic>;
@@ -74,7 +79,8 @@ class Interp {
 	var curExpr:Expr;
 	#end
 
-	public function new() {
+	public function new()
+	{
 		#if haxe3
 		locals = new Map();
 		#else
@@ -85,7 +91,8 @@ class Interp {
 		initOps();
 	}
 
-	private function resetVariables() {
+	private function resetVariables()
+	{
 		#if haxe3
 		variables = new Map<String, Dynamic>();
 		#else
@@ -95,7 +102,8 @@ class Interp {
 		variables.set("null", null);
 		variables.set("true", true);
 		variables.set("false", false);
-		variables.set("trace", Reflect.makeVarArgs(function(el) {
+		variables.set("trace", Reflect.makeVarArgs(function(el)
+		{
 			var inf = posInfos();
 			var v = el.shift();
 			if (el.length > 0)
@@ -104,7 +112,8 @@ class Interp {
 		}));
 	}
 
-	public function posInfos():PosInfos {
+	public function posInfos():PosInfos
+	{
 		#if hscriptPos
 		if (curExpr != null)
 			return cast {fileName: curExpr.origin, lineNumber: curExpr.line};
@@ -112,7 +121,8 @@ class Interp {
 		return cast {fileName: "hscript", lineNumber: 0};
 	}
 
-	function initOps() {
+	function initOps()
+	{
 		var me = this;
 		#if haxe3
 		binops = new Map();
@@ -158,46 +168,67 @@ class Interp {
 		assignOp(">>>=", function(v1, v2) return v1 >>> v2);
 	}
 
-	function setVar(name:String, v:Dynamic) {
+	function setVar(name:String, v:Dynamic)
+	{
 		variables.set(name, v);
 	}
 
-	function assign(e1:Expr, e2:Expr):Dynamic {
+	function assign(e1:Expr, e2:Expr):Dynamic
+	{
 		var v = expr(e2);
-		switch (Tools.expr(e1)) {
+		switch (Tools.expr(e1))
+		{
 			case EIdent(id):
 				var l = locals.get(id);
-				if (l == null) {
-					if (!variables.exists(id) && scriptObject != null) {
-						if (Type.typeof(scriptObject) == TObject) {
+				if (l == null)
+				{
+					if (!variables.exists(id) && scriptObject != null)
+					{
+						if (Type.typeof(scriptObject) == TObject)
+						{
 							Reflect.setField(scriptObject, id, v);
-						} else {
-							if (__instanceFields.contains(id)) {
+						}
+						else
+						{
+							if (__instanceFields.contains(id))
+							{
 								Reflect.setProperty(scriptObject, id, v);
-							} else if (__instanceFields.contains('set_$id')) { // setter
+							}
+							else if (__instanceFields.contains('set_$id'))
+							{ // setter
 								Reflect.getProperty(scriptObject, 'set_$id')(v);
-							} else {
+							}
+							else
+							{
 								setVar(id, v);
 							}
 						}
-					} else {
-						setVar(id, v);
 					}
-				} else {
-					l.r = v;
-					if (l.depth == 0) {
+					else
+					{
 						setVar(id, v);
 					}
 				}
-				// TODO
+				else
+				{
+					l.r = v;
+					if (l.depth == 0)
+					{
+						setVar(id, v);
+					}
+				}
+			// TODO
 			case EField(e, f):
 				v = set(expr(e), f, v);
 			case EArray(e, index):
 				var arr:Dynamic = expr(e);
 				var index:Dynamic = expr(index);
-				if (isMap(arr)) {
+				if (isMap(arr))
+				{
 					setMapValue(arr, index, v);
-				} else {
+				}
+				else
+				{
 					arr[index] = v;
 				}
 
@@ -207,23 +238,32 @@ class Interp {
 		return v;
 	}
 
-	function assignOp(op, fop:Dynamic->Dynamic->Dynamic) {
+	function assignOp(op, fop:Dynamic->Dynamic->Dynamic)
+	{
 		var me = this;
 		binops.set(op, function(e1, e2) return me.evalAssignOp(op, fop, e1, e2));
 	}
 
-	function evalAssignOp(op, fop, e1, e2):Dynamic {
+	function evalAssignOp(op, fop, e1, e2):Dynamic
+	{
 		var v;
-		switch (Tools.expr(e1)) {
+		switch (Tools.expr(e1))
+		{
 			case EIdent(id):
 				var l = locals.get(id);
 				v = fop(expr(e1), expr(e2));
-				if (l == null) {
-					if (__instanceFields.contains(id)) {
+				if (l == null)
+				{
+					if (__instanceFields.contains(id))
+					{
 						Reflect.setProperty(scriptObject, id, v);
-					} else if (__instanceFields.contains('set_$id')) { // setter
+					}
+					else if (__instanceFields.contains('set_$id'))
+					{ // setter
 						Reflect.getProperty(scriptObject, 'set_$id')(v);
-					} else {
+					}
+					else
+					{
 						setVar(id, v);
 					}
 				}
@@ -236,10 +276,13 @@ class Interp {
 			case EArray(e, index):
 				var arr:Dynamic = expr(e);
 				var index:Dynamic = expr(index);
-				if (isMap(arr)) {
+				if (isMap(arr))
+				{
 					v = fop(getMapValue(arr, index), expr(e2));
 					setMapValue(arr, index, v);
-				} else {
+				}
+				else
+				{
 					v = fop(arr[index], expr(e2));
 					arr[index] = v;
 				}
@@ -249,22 +292,26 @@ class Interp {
 		return v;
 	}
 
-	function increment(e:Expr, prefix:Bool, delta:Int):Dynamic {
+	function increment(e:Expr, prefix:Bool, delta:Int):Dynamic
+	{
 		#if hscriptPos
 		curExpr = e;
 		var e = e.e;
 		#end
-		switch (e) {
+		switch (e)
+		{
 			case EIdent(id):
 				var l = locals.get(id);
 				var v:Dynamic = (l == null) ? resolve(id) : l.r;
-				if (prefix) {
+				if (prefix)
+				{
 					v += delta;
 					if (l == null)
 						setVar(id, v)
 					else
 						l.r = v;
-				} else if (l == null)
+				}
+				else if (l == null)
 					setVar(id, v + delta)
 				else
 					l.r = v + delta;
@@ -272,30 +319,40 @@ class Interp {
 			case EField(e, f):
 				var obj = expr(e);
 				var v:Dynamic = get(obj, f);
-				if (prefix) {
+				if (prefix)
+				{
 					v += delta;
 					set(obj, f, v);
-				} else
+				}
+				else
 					set(obj, f, v + delta);
 				return v;
 			case EArray(e, index):
 				var arr:Dynamic = expr(e);
 				var index:Dynamic = expr(index);
-				if (isMap(arr)) {
+				if (isMap(arr))
+				{
 					var v = getMapValue(arr, index);
-					if (prefix) {
+					if (prefix)
+					{
 						v += delta;
 						setMapValue(arr, index, v);
-					} else {
+					}
+					else
+					{
 						setMapValue(arr, index, v + delta);
 					}
 					return v;
-				} else {
+				}
+				else
+				{
 					var v = arr[index];
-					if (prefix) {
+					if (prefix)
+					{
 						v += delta;
 						arr[index] = v;
-					} else
+					}
+					else
 						arr[index] = v + delta;
 					return v;
 				}
@@ -304,7 +361,8 @@ class Interp {
 		}
 	}
 
-	public function execute(expr:Expr):Dynamic {
+	public function execute(expr:Expr):Dynamic
+	{
 		depth = 0;
 		#if haxe3
 		locals = new Map();
@@ -315,11 +373,16 @@ class Interp {
 		return exprReturn(expr);
 	}
 
-	function exprReturn(e):Dynamic {
-		try {
+	function exprReturn(e):Dynamic
+	{
+		try
+		{
 			return expr(e);
-		} catch (e:Stop) {
-			switch (e) {
+		}
+		catch (e:Stop)
+		{
+			switch (e)
+			{
 				case SBreak:
 					throw "Invalid break";
 				case SContinue:
@@ -329,13 +392,16 @@ class Interp {
 					returnValue = null;
 					return v;
 			}
-		} catch(e) {
+		}
+		catch (e)
+		{
 			error(ECustom('${e.toString()}'));
 		}
 		return null;
 	}
 
-	function duplicate<T>(h:#if haxe3 Map<String, T> #else Hash<T> #end) {
+	function duplicate<T>(h:#if haxe3 Map<String, T> #else Hash<T> #end)
+	{
 		#if haxe3
 		var h2 = new Map();
 		#else
@@ -346,27 +412,34 @@ class Interp {
 		return h2;
 	}
 
-	function restore(old:Int) {
-		while (declared.length > old) {
+	function restore(old:Int)
+	{
+		while (declared.length > old)
+		{
 			var d = declared.pop();
 			locals.set(d.n, d.old);
 		}
 	}
 
-	inline function error(e:#if hscriptPos ErrorDef #else Error #end, rethrow = false):Dynamic {
+	inline function error(e:#if hscriptPos ErrorDef #else Error #end, rethrow = false):Dynamic
+	{
 		#if hscriptPos var e = new Error(e, curExpr.pmin, curExpr.pmax, curExpr.origin, curExpr.line); #end
 
 		if (errorHandler != null)
 			errorHandler(e);
-		else if (rethrow) {
+		else if (rethrow)
+		{
 			this.rethrow(e);
-		} else {
+		}
+		else
+		{
 			throw e;
 		}
 		return null;
 	}
 
-	inline function rethrow(e:Dynamic) {
+	inline function rethrow(e:Dynamic)
+	{
 		#if hl
 		hl.Api.rethrow(e);
 		#else
@@ -374,40 +447,51 @@ class Interp {
 		#end
 	}
 
-	function resolve(id:String, doException:Bool = true):Dynamic {
+	function resolve(id:String, doException:Bool = true):Dynamic
+	{
 		var l = locals.get(id);
 		if (l != null)
 			return l.r;
 		var v = variables.get(id);
-		if (v == null && !variables.exists(id)) {
-
-			if (scriptObject != null) {
+		if (v == null && !variables.exists(id))
+		{
+			if (scriptObject != null)
+			{
 				// search in object
-				if (id == "this") {
+				if (id == "this")
+				{
 					return scriptObject;
-				} else if ((Type.typeof(scriptObject) == TObject) && Reflect.hasField(scriptObject, id)) {
+				}
+				else if ((Type.typeof(scriptObject) == TObject) && Reflect.hasField(scriptObject, id))
+				{
 					return Reflect.field(scriptObject, id);
-				} else {
-					if (__instanceFields.contains(id)) {
+				}
+				else
+				{
+					if (__instanceFields.contains(id))
+					{
 						return Reflect.getProperty(scriptObject, id);
-					} else if (__instanceFields.contains('get_$id')) { // getter
+					}
+					else if (__instanceFields.contains('get_$id'))
+					{ // getter
 						return Reflect.getProperty(scriptObject, 'get_$id')();
 					}
 				}
 			}
 			if (doException)
 				error(EUnknownVariable(id));
-			
 		}
 		return v;
 	}
 
-	public function expr(e:Expr):Dynamic {
+	public function expr(e:Expr):Dynamic
+	{
 		#if hscriptPos
 		curExpr = e;
 		var e = e.e;
 		#end
-		switch (e) {
+		switch (e)
+		{
 			case EImport(c):
 				if (!importEnabled)
 					return null;
@@ -415,22 +499,29 @@ class Interp {
 				var realClassName = splitClassName.join(".");
 
 				if (importBlocklist.contains(realClassName))
-					return null; 
+					return null;
 				var cl = Type.resolveClass(realClassName);
 				var en = Type.resolveEnum(realClassName);
 
-				if (cl == null && en == null) {
+				if (cl == null && en == null)
+				{
 					// LogsOverlay.trace('Class / Enum at $realClassName does not exist.');
 					error(EInvalidClass(realClassName));
-				} else {
-					if (en != null) {
+				}
+				else
+				{
+					if (en != null)
+					{
 						// ENUM!!!!
 						var enumThingy = {};
-						for (c in en.getConstructors()) {
+						for (c in en.getConstructors())
+						{
 							Reflect.setField(enumThingy, c, en.createByName(c));
 						}
 						variables.set(splitClassName[splitClassName.length - 1], enumThingy);
-					} else {
+					}
+					else
+					{
 						variables.set(splitClassName[splitClassName.length - 1], cl);
 					}
 				}
@@ -438,7 +529,8 @@ class Interp {
 				return null;
 
 			case EConst(c):
-				switch (c) {
+				switch (c)
+				{
 					case CInt(v): return v;
 					case CFloat(f): return f;
 					case CString(s): return s;
@@ -451,7 +543,8 @@ class Interp {
 			case EVar(n, _, e):
 				declared.push({n: n, old: locals.get(n), depth: depth});
 				locals.set(n, {r: (e == null) ? null : expr(e), depth: depth});
-				if (depth == 0) variables.set(n, locals[n].r);
+				if (depth == 0)
+					variables.set(n, locals[n].r);
 				return null;
 			case EParent(e):
 				return expr(e);
@@ -470,7 +563,8 @@ class Interp {
 					error(EInvalidOp(op));
 				return fop(e1, e2);
 			case EUnop(op, prefix, e):
-				switch (op) {
+				switch (op)
+				{
 					case "!":
 						return expr(e) != true;
 					case "-":
@@ -493,7 +587,8 @@ class Interp {
 				for (p in params)
 					args.push(expr(p));
 
-				switch (Tools.expr(e)) {
+				switch (Tools.expr(e))
+				{
 					case EField(e, f):
 						var obj = expr(e);
 						if (obj == null)
@@ -523,7 +618,7 @@ class Interp {
 			case EFunction(params, fexpr, name, _):
 				var __capturedLocals = duplicate(locals);
 				var capturedLocals:Map<String, {r:Dynamic, depth:Int}> = [];
-				for(k=>e in __capturedLocals)
+				for (k => e in __capturedLocals)
 					if (e != null && e.depth > 0)
 						capturedLocals.set(k, e);
 
@@ -534,9 +629,12 @@ class Interp {
 						hasOpt = true;
 					else
 						minParams++;
-				var f = function(args:Array<Dynamic>) {
-					if (((args == null) ? 0 : args.length) != params.length) {
-						if (args.length < minParams) {
+				var f = function(args:Array<Dynamic>)
+				{
+					if (((args == null) ? 0 : args.length) != params.length)
+					{
+						if (args.length < minParams)
+						{
 							var str = "Invalid number of parameters. Got " + args.length + ", required " + minParams;
 							if (name != null)
 								str += " for function '" + name + "'";
@@ -547,13 +645,17 @@ class Interp {
 						var extraParams = args.length - minParams;
 						var pos = 0;
 						for (p in params)
-							if (p.opt) {
-								if (extraParams > 0) {
+							if (p.opt)
+							{
+								if (extraParams > 0)
+								{
 									args2.push(args[pos++]);
 									extraParams--;
-								} else
+								}
+								else
 									args2.push(null);
-							} else
+							}
+							else
 								args2.push(args[pos++]);
 						args = args2;
 					}
@@ -565,9 +667,12 @@ class Interp {
 					var r = null;
 					var oldDecl = declared.length;
 					if (inTry)
-						try {
+						try
+						{
 							r = me.exprReturn(fexpr);
-						} catch (e:Dynamic) {
+						}
+						catch (e:Dynamic)
+						{
 							me.locals = old;
 							me.depth = depth;
 							#if neko
@@ -584,11 +689,15 @@ class Interp {
 					return r;
 				};
 				var f = Reflect.makeVarArgs(f);
-				if (name != null) {
-					if (depth == 0) {
+				if (name != null)
+				{
+					if (depth == 0)
+					{
 						// global function
 						variables.set(name, f);
-					} else {
+					}
+					else
+					{
 						// function-in-function is a local function
 						declared.push({n: name, old: locals.get(name), depth: depth});
 						var ref = {r: f, depth: depth};
@@ -598,15 +707,18 @@ class Interp {
 				}
 				return f;
 			case EArrayDecl(arr):
-				if (arr.length > 0 && Tools.expr(arr[0]).match(EBinop("=>", _))) {
+				if (arr.length > 0 && Tools.expr(arr[0]).match(EBinop("=>", _)))
+				{
 					var isAllString:Bool = true;
 					var isAllInt:Bool = true;
 					var isAllObject:Bool = true;
 					var isAllEnum:Bool = true;
 					var keys:Array<Dynamic> = [];
 					var values:Array<Dynamic> = [];
-					for (e in arr) {
-						switch (Tools.expr(e)) {
+					for (e in arr)
+					{
+						switch (Tools.expr(e))
+						{
 							case EBinop("=>", eKey, eValue): {
 									var key:Dynamic = expr(eKey);
 									var value:Dynamic = expr(eValue);
@@ -620,25 +732,30 @@ class Interp {
 							default: throw("=> expected");
 						}
 					}
-					var map:Dynamic = {
-						if (isAllInt)
-							new haxe.ds.IntMap<Dynamic>();
-						else if (isAllString)
-							new haxe.ds.StringMap<Dynamic>();
-						else if (isAllEnum)
-							new haxe.ds.EnumValueMap<Dynamic, Dynamic>();
-						else if (isAllObject)
-							new haxe.ds.ObjectMap<Dynamic, Dynamic>();
-						else
-							throw 'Inconsistent key types';
-					}
-					for (n in 0...keys.length) {
+					var map:Dynamic =
+						{
+							if (isAllInt)
+								new haxe.ds.IntMap<Dynamic>();
+							else if (isAllString)
+								new haxe.ds.StringMap<Dynamic>();
+							else if (isAllEnum)
+								new haxe.ds.EnumValueMap<Dynamic, Dynamic>();
+							else if (isAllObject)
+								new haxe.ds.ObjectMap<Dynamic, Dynamic>();
+							else
+								throw 'Inconsistent key types';
+						}
+					for (n in 0...keys.length)
+					{
 						setMapValue(map, keys[n], values[n]);
 					}
 					return map;
-				} else {
+				}
+				else
+				{
 					var a = new Array();
-					for (e in arr) {
+					for (e in arr)
+					{
 						a.push(expr(e));
 					}
 					return a;
@@ -646,9 +763,12 @@ class Interp {
 			case EArray(e, index):
 				var arr:Dynamic = expr(e);
 				var index:Dynamic = expr(index);
-				if (isMap(arr)) {
+				if (isMap(arr))
+				{
 					return getMapValue(arr, index);
-				} else {
+				}
+				else
+				{
 					return arr[index];
 				}
 			case ENew(cl, params):
@@ -661,16 +781,21 @@ class Interp {
 			case ETry(e, n, _, ecatch):
 				var old = declared.length;
 				var oldTry = inTry;
-				try {
+				try
+				{
 					inTry = true;
 					var v:Dynamic = expr(e);
 					restore(old);
 					inTry = oldTry;
 					return v;
-				} catch (err:Stop) {
+				}
+				catch (err:Stop)
+				{
 					inTry = oldTry;
 					throw err;
-				} catch (err:Dynamic) {
+				}
+				catch (err:Dynamic)
+				{
 					// restore vars
 					restore(old);
 					inTry = oldTry;
@@ -691,13 +816,16 @@ class Interp {
 			case ESwitch(e, cases, def):
 				var val:Dynamic = expr(e);
 				var match = false;
-				for (c in cases) {
+				for (c in cases)
+				{
 					for (v in c.values)
-						if (expr(v) == val) {
+						if (expr(v) == val)
+						{
 							match = true;
 							break;
 						}
-					if (match) {
+					if (match)
+					{
 						val = expr(c.expr);
 						break;
 					}
@@ -713,13 +841,19 @@ class Interp {
 		return null;
 	}
 
-	function doWhileLoop(econd, e) {
+	function doWhileLoop(econd, e)
+	{
 		var old = declared.length;
-		do {
-			try {
+		do
+		{
+			try
+			{
 				expr(e);
-			} catch (err:Stop) {
-				switch (err) {
+			}
+			catch (err:Stop)
+			{
+				switch (err)
+				{
 					case SContinue:
 					case SBreak:
 						break;
@@ -727,17 +861,24 @@ class Interp {
 						throw err;
 				}
 			}
-		} while (expr(econd) == true);
+		}
+		while (expr(econd) == true);
 		restore(old);
 	}
 
-	function whileLoop(econd, e) {
+	function whileLoop(econd, e)
+	{
 		var old = declared.length;
-		while (expr(econd) == true) {
-			try {
+		while (expr(econd) == true)
+		{
+			try
+			{
 				expr(e);
-			} catch (err:Stop) {
-				switch (err) {
+			}
+			catch (err:Stop)
+			{
+				switch (err)
+				{
 					case SContinue:
 					case SBreak:
 						break;
@@ -749,30 +890,39 @@ class Interp {
 		restore(old);
 	}
 
-	function makeIterator(v:Dynamic):Iterator<Dynamic> {
+	function makeIterator(v:Dynamic):Iterator<Dynamic>
+	{
 		#if ((flash && !flash9) || (php && !php7 && haxe_ver < '4.0.0'))
 		if (v.iterator != null)
 			v = v.iterator();
 		#else
 		try
 			v = v.iterator()
-		catch (e:Dynamic) {};
+		catch (e:Dynamic)
+		{
+		};
 		#end
 		if (v.hasNext == null || v.next == null)
 			error(EInvalidIterator(v));
 		return v;
 	}
 
-	function forLoop(n, it, e) {
+	function forLoop(n, it, e)
+	{
 		var old = declared.length;
 		declared.push({n: n, old: locals.get(n), depth: depth});
 		var it = makeIterator(expr(it));
-		while (it.hasNext()) {
+		while (it.hasNext())
+		{
 			locals.set(n, {r: it.next(), depth: depth});
-			try {
+			try
+			{
 				expr(e);
-			} catch (err:Stop) {
-				switch (err) {
+			}
+			catch (err:Stop)
+			{
+				switch (err)
+				{
 					case SContinue:
 					case SBreak:
 						break;
@@ -784,27 +934,33 @@ class Interp {
 		restore(old);
 	}
 
-	inline function isMap(o:Dynamic):Bool {
+	inline function isMap(o:Dynamic):Bool
+	{
 		return (o is IMap);
 	}
 
-	inline function getMapValue(map:Dynamic, key:Dynamic):Dynamic {
+	inline function getMapValue(map:Dynamic, key:Dynamic):Dynamic
+	{
 		return cast(map, haxe.Constraints.IMap<Dynamic, Dynamic>).get(key);
 	}
 
-	inline function setMapValue(map:Dynamic, key:Dynamic, value:Dynamic):Void {
+	inline function setMapValue(map:Dynamic, key:Dynamic, value:Dynamic):Void
+	{
 		cast(map, haxe.Constraints.IMap<Dynamic, Dynamic>).set(key, value);
 	}
 
 	public static var getRedirects:Map<String, Dynamic->String->Dynamic> = [];
 	public static var setRedirects:Map<String, Dynamic->String->Dynamic->Dynamic> = [];
 
-	function get(o:Dynamic, f:String):Dynamic {
+	function get(o:Dynamic, f:String):Dynamic
+	{
 		if (o == null)
 			error(EInvalidAccess(f));
-		return {
+		return
+		{
 			var redirect:Dynamic->String->Dynamic = null;
-			var cl:String = switch (Type.typeof(o)) {
+			var cl:String = switch (Type.typeof(o))
+			{
 				case TNull:
 					"Null";
 				case TInt:
@@ -816,9 +972,12 @@ class Interp {
 				case _:
 					null;
 			};
-			if (getRedirects.exists(cl = Type.getClassName(Type.getClass(o))) && (redirect = getRedirects[cl]) != null) {
+			if (getRedirects.exists(cl = Type.getClassName(Type.getClass(o))) && (redirect = getRedirects[cl]) != null)
+			{
 				return redirect(o, f);
-			} else {
+			}
+			else
+			{
 				var v = null;
 				if ((v = Reflect.getProperty(o, f)) == null)
 					v = Reflect.getProperty(Type.getClass(o), f);
@@ -827,12 +986,14 @@ class Interp {
 		}
 	}
 
-	function set(o:Dynamic, f:String, v:Dynamic):Dynamic {
+	function set(o:Dynamic, f:String, v:Dynamic):Dynamic
+	{
 		if (o == null)
 			error(EInvalidAccess(f));
 
 		var redirect:Dynamic->String->Dynamic->Dynamic = null;
-		var cl:String = switch (Type.typeof(o)) {
+		var cl:String = switch (Type.typeof(o))
+		{
 			case TNull:
 				"Null";
 			case TInt:
@@ -851,15 +1012,18 @@ class Interp {
 		return v;
 	}
 
-	function fcall(o:Dynamic, f:String, args:Array<Dynamic>):Dynamic {
+	function fcall(o:Dynamic, f:String, args:Array<Dynamic>):Dynamic
+	{
 		return call(o, get(o, f), args);
 	}
 
-	function call(o:Dynamic, f:Dynamic, args:Array<Dynamic>):Dynamic {
+	function call(o:Dynamic, f:Dynamic, args:Array<Dynamic>):Dynamic
+	{
 		return Reflect.callMethod(o, f, args);
 	}
 
-	function cnew(cl:String, args:Array<Dynamic>):Dynamic {
+	function cnew(cl:String, args:Array<Dynamic>):Dynamic
+	{
 		var c = Type.resolveClass(cl);
 		if (c == null)
 			c = resolve(cl);

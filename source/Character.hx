@@ -5,7 +5,6 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;
 import flixel.graphics.frames.FlxAtlasFrames;
-
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
 #end
@@ -194,7 +193,7 @@ class Character extends FlxSprite
 
 				playAnim('idle');
 
-                hpcolor = 0xFFD8558E;
+				hpcolor = 0xFFD8558E;
 			case 'mom-car':
 				tex = Paths.getSparrowAtlas('characters/momCar');
 				frames = tex;
@@ -289,7 +288,7 @@ class Character extends FlxSprite
 
 				flipX = true;
 
-                hpcolor = 0xFFB7D855;
+				hpcolor = 0xFFB7D855;
 			case 'bf':
 				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND');
 				frames = tex;
@@ -329,7 +328,7 @@ class Character extends FlxSprite
 
 				flipX = true;
 
-                hpcolor = 0xFF31B0D1;
+				hpcolor = 0xFF31B0D1;
 			case 'bf-christmas':
 				var tex = Paths.getSparrowAtlas('characters/bfChristmas');
 				frames = tex;
@@ -482,7 +481,7 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
-                hpcolor = 0xFFFFAA6F;
+				hpcolor = 0xFFFFAA6F;
 			case 'spirit':
 				frames = Paths.getPackerAtlas('characters/spirit');
 				animation.addByPrefix('idle', "idle spirit_", 24, false);
@@ -504,7 +503,7 @@ class Character extends FlxSprite
 
 				antialiasing = false;
 
-                hpcolor = 0xFFFFAA6F;
+				hpcolor = 0xFFFFAA6F;
 			case 'parents-christmas':
 				frames = Paths.getSparrowAtlas('characters/mom_dad_christmas_assets');
 				animation.addByPrefix('idle', 'Parent Christmas Idle', 24, false);

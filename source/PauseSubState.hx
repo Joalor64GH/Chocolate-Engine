@@ -70,7 +70,7 @@ class PauseSubState extends MusicBeatSubstate
 		deaths.scrollFactor.set();
 		deaths.setFormat(Paths.font('vcr.ttf'), 32);
 		deaths.updateHitbox();
-		add(deaths);		
+		add(deaths);
 
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;

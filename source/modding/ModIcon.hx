@@ -23,7 +23,7 @@ class ModIcon extends FlxSprite
 
 		setGraphicSize(150, 150);
 		updateHitbox();
-		
+
 		scrollFactor.set();
 		antialiasing = true;
 	}

@@ -5,7 +5,6 @@ import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
 // import openfl.utils.Assets as OpenFLAssets;
-
 #if MODS_ALLOWED
 import sys.io.File;
 import sys.FileSystem;
@@ -47,7 +46,8 @@ class Song
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
 		// TODO: make this work with polymod
-		if (!Assets.exists(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase()))) {
+		if (!Assets.exists(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())))
+		{
 			return null;
 		}
 		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();

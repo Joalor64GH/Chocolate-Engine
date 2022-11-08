@@ -188,7 +188,7 @@ class ColorSwapShader extends FlxGraphicsShader
 				openfl_ColorOffsetv = colorOffset / 255.0;
 				openfl_ColorMultiplierv = colorMultiplier;
 			}
-		}')	
+		}')
 	public function new()
 	{
 		super();

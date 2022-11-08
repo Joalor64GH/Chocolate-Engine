@@ -1,9 +1,8 @@
 package;
 
 /**
-    @author BeastlyGhost
+	@author BeastlyGhost
 **/
-
 typedef LangDataDef =
 {
 	// MENUS

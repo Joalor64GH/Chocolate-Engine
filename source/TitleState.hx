@@ -31,7 +31,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
-
 #if MODS_ALLOWED
 import ModsMenuState;
 import modding.PolymodHandler;
@@ -43,8 +42,10 @@ import polymod.Polymod.PolymodError;
 
 using StringTools;
 
-class Fixer {
-	public static function initPlayerSettings() {
+class Fixer
+{
+	public static function initPlayerSettings()
+	{
 		if (FlxG.save.data.newInput == null)
 			FlxG.save.data.newInput = true;
 
@@ -78,7 +79,7 @@ class TitleState extends MusicBeatState
 	var ngSpr:FlxSprite;
 
 	var curWacky:Array<String> = []; // lmao
-        var gameName:Array<String> = [];
+	var gameName:Array<String> = [];
 	var wackyImage:FlxSprite;
 
 	var swagShader:ColorSwap;
@@ -150,10 +151,11 @@ class TitleState extends MusicBeatState
 
 		#if desktop
 		DiscordClient.initialize();
-		
-		Application.current.onExit.add (function (exitCode) {
+
+		Application.current.onExit.add(function(exitCode)
+		{
 			DiscordClient.shutdown();
-		 });
+		});
 		#end
 	}
 
@@ -265,7 +267,7 @@ class TitleState extends MusicBeatState
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.quadInOut, type: PINGPONG});
 
-                FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
+		FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 		FlxG.sound.music.fadeIn(4, 0, 0.7);
 
 		FlxG.mouse.visible = false;
@@ -296,7 +298,7 @@ class TitleState extends MusicBeatState
 	var transitioning:Bool = false;
 
 	var isRainbow:Bool = false;
-	
+
 	function getName():Array<String>
 	{
 		var fullText:String = Assets.getText(Paths.txt('gameName'));
@@ -351,7 +353,8 @@ class TitleState extends MusicBeatState
 			transitioning = true;
 			// FlxG.sound.music.stop();
 
-			new FlxTimer().start(2, function(tmr:FlxTimer) {
+			new FlxTimer().start(2, function(tmr:FlxTimer)
+			{
 				FlxG.switchState(new MainMenuState());
 			});
 		}
@@ -422,49 +425,49 @@ class TitleState extends MusicBeatState
 			case 1:
 				var teamStuff = Assets.getText(Paths.txt('team')).split('--');
 				createCoolText(teamStuff);
-				// credTextShit.visible = true;
+			// credTextShit.visible = true;
 			case 3:
 				addMoreText('present');
-				// credTextShit.text += '\npresent...';
-				// credTextShit.addText();
+			// credTextShit.text += '\npresent...';
+			// credTextShit.addText();
 			case 4:
 				deleteCoolText();
-				// credTextShit.visible = false;
-				// credTextShit.text = 'In association \nwith';
-				// credTextShit.screenCenter();
+			// credTextShit.visible = false;
+			// credTextShit.text = 'In association \nwith';
+			// credTextShit.screenCenter();
 			case 5:
 				createCoolText(['Not in association', 'with']);
 			case 7:
 				addMoreText('newgrounds');
 				ngSpr.visible = true;
-				// credTextShit.text += '\nNewgrounds';
+			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
 				ngSpr.visible = false;
-				// credTextShit.visible = false;
+			// credTextShit.visible = false;
 
-				// credTextShit.text = 'Shoutouts Tom Fulp';
-				// credTextShit.screenCenter();
+			// credTextShit.text = 'Shoutouts Tom Fulp';
+			// credTextShit.screenCenter();
 			case 9:
 				createCoolText([curWacky[0]]);
-				// credTextShit.visible = true;
+			// credTextShit.visible = true;
 			case 11:
 				addMoreText(curWacky[1]);
-				// credTextShit.text += '\nlmao';
+			// credTextShit.text += '\nlmao';
 			case 12:
 				deleteCoolText();
-				// credTextShit.visible = false;
-				// credTextShit.text = "Friday";
-				// credTextShit.screenCenter();
+			// credTextShit.visible = false;
+			// credTextShit.text = "Friday";
+			// credTextShit.screenCenter();
 			case 13:
 				addMoreText(gameName[0]);
-				// credTextShit.visible = true;
+			// credTextShit.visible = true;
 			case 14:
 				addMoreText(gameName[1]);
-				// credTextShit.text += '\nNight';
+			// credTextShit.text += '\nNight';
 			case 15:
 				addMoreText(gameName[2]);
-				// credTextShit.text += '\nFunkin';
+			// credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();

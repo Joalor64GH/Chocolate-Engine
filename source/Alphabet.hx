@@ -373,7 +373,7 @@ class AlphaCharacter extends FlxSprite
 		frames = tex;
 
 		// antialiasing = !Init.getSetting('Disable Antialiasing');
-		antialiasing = true;		
+		antialiasing = true;
 	}
 
 	public function createBoldSymbol(letter:String)

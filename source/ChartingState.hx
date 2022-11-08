@@ -31,7 +31,6 @@ import openfl.events.IOErrorEvent;
 import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.ByteArray;
-
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
 #end
