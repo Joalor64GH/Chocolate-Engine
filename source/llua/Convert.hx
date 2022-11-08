@@ -1,4 +1,4 @@
-package modding.llua;
+package llua;
 
 import llua.State;
 import llua.Lua;
