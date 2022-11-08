@@ -53,7 +53,7 @@ import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
-import modding.llua.*;
+import llua.*;
 import modding.LuaScript;
 import Character;
 
