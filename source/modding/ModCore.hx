@@ -26,13 +26,12 @@ class ModCore
 	 * Remember to increment the major version if you make breaking changes to mods!
 	 */
 	static final API_VERSION:String = "1.6.0";
+
 	static final MOD_DIRECTORY:String = "mods";
 
 	private static final modExtensions:Map<String, PolymodAssetType> = [
-	'ogg' => SOUND, 'png' => IMAGE, 
-        'xml' => TEXT, 'json' => TEXT, 'txt' => TEXT, 'lua' => TEXT, 
-        'ttf' => FONT, 'otf' => FONT, 
-        'webm' => VIDEO, 'mp4' => VIDEO
+		'ogg' => SOUND, 'png' => IMAGE, 'xml' => TEXT, 'json' => TEXT, 'txt' => TEXT, 'lua' => TEXT, 'ttf' => FONT, 'otf' => FONT, 'webm' => VIDEO,
+		'mp4' => VIDEO
 	];
 
 	public static function loadAllMods()
@@ -216,9 +215,8 @@ class ModCore
 	{
 		return {
 			assetLibraryPaths: [
-				"songs" => "songs", "data" => "data", "fonts" => "fonts", "characters" => "characters", "scripts" => "scripts",
-				"cutscenes" => "cutscenes", "locales" => "locales", "music" => "music", "sounds" => "sounds", "images" => "images",
-				"videos" => "videos"
+				"songs" => "songs", "data" => "data", "fonts" => "fonts", "characters" => "characters", "scripts" => "scripts", "cutscenes" => "cutscenes",
+				"locales" => "locales", "music" => "music", "sounds" => "sounds", "images" => "images", "videos" => "videos"
 			]
 		}
 	}
