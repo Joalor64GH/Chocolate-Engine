@@ -2008,7 +2008,7 @@ class PlayState extends MusicBeatState
 			if (!note.isSustainNote)
 			{
 				popUpScore(note.strumTime, note);
-				combo += 1;
+				combo++;
 			}
 
 			if (note.noteData >= 0)
