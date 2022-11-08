@@ -1096,7 +1096,7 @@ class PlayState extends MusicBeatState
 
 	function sortByShit(Obj1:Note, Obj2:Note):Int
 	{
-		return FlxSort.byValues(FlxSort.ASCENDING, Obj1.strumTime, Obj2.strumTime);
+		return CoolUtil.sortNotes(FlxSort.ASCENDING, Obj1.strumTime, Obj2.strumTime);
 	}
 
 	private function generateStaticArrows(player:Int):Void

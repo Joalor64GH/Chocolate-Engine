@@ -9,6 +9,7 @@ import polymod.backends.PolymodAssets;
 import sys.FileSystem;
 import sys.io.File;
 #end
+import flixel.util.FlxSort;
 
 using StringTools;
 
@@ -132,5 +133,10 @@ class CoolUtil
 			return bg;
 		else
 			return null;
+	}
+
+	inline public static function sortNotes(theOrder:Int, obj1:Note, obj2:Note)
+	{
+		return FlxSort.byValues(theOrder, obj1.strumTime, obj2.strumTime);
 	}
 }
