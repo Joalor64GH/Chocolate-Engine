@@ -52,13 +52,13 @@ class ModPaths
 	{
 		for (i in VIDEO_EXTS)
 		{
-            var path = 'mods/$mod/videos/$key.$i';
+			var path = 'mods/$mod/videos/$key.$i';
 
 			trace(path);
-            if (OpenflAssets.exists(path))
-			    return path;
+			if (OpenflAssets.exists(path))
+				return path;
 		}
-        return 'mods/$mod/videos/$key.mp4';
+		return 'mods/$mod/videos/$key.mp4';
 	}
 
 	inline static public function getModMusic(key:String, mod:String)

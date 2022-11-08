@@ -8,7 +8,7 @@ import openfl.utils.Assets as OpenFlAssets;
 class Paths
 {
 	inline public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
- 	public static final VIDEO_EXTS = ['mp4', 'webm'];
+	public static final VIDEO_EXTS = ['mp4', 'webm'];
 
 	public static var currentLevel:String;
 
@@ -83,7 +83,8 @@ class Paths
 
 	inline static public function video(key:String, ?library:String)
 	{
-		for (i in VIDEO_EXTS){
+		for (i in VIDEO_EXTS)
+		{
 			var path = 'assets/videos/$key.$i';
 
 			trace(path);
