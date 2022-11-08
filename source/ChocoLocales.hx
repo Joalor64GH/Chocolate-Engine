@@ -20,7 +20,7 @@ typedef LangDataDef =
 	var deathsText:String;
 	// HUD INFO BAR
 	var scoreTxt:String;
-	var missTxt:String;
+	var missesTxt:String;
 	var chocoTxt:String;
 	// OTHER STUFF
 	var useCustomFont:Bool;

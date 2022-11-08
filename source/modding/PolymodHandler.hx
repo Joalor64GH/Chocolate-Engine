@@ -23,7 +23,7 @@ class PolymodHandler
 			frameworkParams: {
 				assetLibraryPaths: [
 					"songs" => "songs", "data" => "data", "fonts" => "fonts", "characters" => "characters", "scripts" => "scripts",
-					"cutscenes" => "cutscenes", "locales" => "locales", "music" => "music", "sounds" => "sounds", "stages" => "stages", "images" => "images",
+					"cutscenes" => "cutscenes", "locales" => "locales", "music" => "music", "sounds" => "sounds", "images" => "images",
 					"videos" => "videos"
 				]
 			}
