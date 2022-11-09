@@ -36,7 +36,12 @@ class Conductor
 
 	static inline function set_playbackRate(v:Float):Float
 	{
-		return CoolUtil.setPlaybackRate(playbackRate);
+		if (v < 1 || v > 3) 
+			return;
+		else if (v == null)
+			return CoolUtil.setPlaybackRate(playbackRate);
+		else
+			return CoolUtil.setPlaybackRate(v);
 	}	
 
 	public static function mapBPMChanges(song:SwagSong)
