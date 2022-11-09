@@ -38,7 +38,7 @@ class Conductor
 	{
 		if (v < 1 || v > 3) 
 			return 1;
-		else if (v == null)
+		else if (Math.isNaN(v))
 			return CoolUtil.setPlaybackRate(playbackRate);
 		else
 			return CoolUtil.setPlaybackRate(v);
