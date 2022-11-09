@@ -112,7 +112,7 @@ class Note extends FlxSprite
 				antialiasing = true;
 		}
 
-		switch (noteData)
+		switch (strumID)
 		{
 			case 0:
 				x += swagWidth * 0;
@@ -135,7 +135,7 @@ class Note extends FlxSprite
 
 			x += width / 2;
 
-			switch (noteData)
+			switch (strumID)
 			{
 				case 2:
 					animation.play('greenholdend');
@@ -156,7 +156,7 @@ class Note extends FlxSprite
 
 			if (prevNote.isSustainNote)
 			{
-				switch (prevNote.noteData)
+				switch (prevNote.strumID)
 				{
 					case 0:
 						prevNote.animation.play('purplehold');
