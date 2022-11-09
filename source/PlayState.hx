@@ -992,8 +992,7 @@ class PlayState extends MusicBeatState
 		if (!paused)
 			FlxG.sound.playMusic(Paths.inst(PlayState.SONG.song), 1, false);
 		FlxG.sound.music.onComplete = endSong;
-		if (vocals != null)
-			vocals.play();
+		vocals.play();
 
 		#if desktop
 		// Song duration in a float, useful for the time left feature
