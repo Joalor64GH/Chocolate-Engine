@@ -29,6 +29,9 @@ class Note extends FlxSprite
 	public static inline final BLUE_NOTE:Int = 1;
 	public static inline final RED_NOTE:Int = 3;
 
+	/**
+	 * Easier way of getting noteData from the note(?)
+	 */
 	public var strumID(get, never):Int;
 
 	function get_strumID():Int
@@ -124,8 +127,6 @@ class Note extends FlxSprite
 				x += swagWidth * 3;
 				animation.play('redScroll');
 		}
-
-		// trace(prevNote);
 
 		if (isSustainNote && prevNote != null)
 		{
