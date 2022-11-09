@@ -2032,7 +2032,7 @@ class PlayState extends MusicBeatState
 			else
 				health += 0.004;
 
-			var animToPlay:String = singAnimations[Std.int(Math.abs(note.strumID % 4))];
+			var animToPlay:String = singAnimations[Std.int(Math.abs(note.strumID))];
 
 			boyfriend.playAnim(animToPlay, true);
 
