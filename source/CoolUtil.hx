@@ -43,6 +43,17 @@ class CoolUtil
 		return PlayState.instance.deaths;
 	}
 
+	// a really tacky way to get & set the playback rate, but if it works, it works
+	public static inline function setPlaybackRate(rate:Float):Float
+	{
+		return Conductor.playbackRate = rate;
+	}
+
+	public static inline function getPlaybackRate():Float
+	{
+		return Conductor.playbackRate;
+	}	
+
 	public static function coolTextFile(path:String):Array<String>
 	{
 		var daList:Array<String> = Assets.getText(path).trim().split('\n');

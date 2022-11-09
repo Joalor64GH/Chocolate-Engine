@@ -39,20 +39,21 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
-	private var playbackRate(default, set):Float = 1;
+	/*private var playbackRate(default, set):Float = 1;
 
 	function set_playbackRate(v:Float):Float
 	{
 		if (FlxG.sound.music.playing){
 			FlxG.sound.music.pitch = v;
 		}
+
 		if (v < 1)
 			return 1;
 		else if (v > 3)
 			return 3;
 		else
 			return v;
-	}
+	}*/
 
 	private var playbackRateText:FlxText;
 
@@ -274,7 +275,7 @@ class FreeplayState extends MusicBeatState
 
 		#if PRELOAD_ALL
 		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
-		FlxG.sound.music.pitch = playbackRate;
+		FlxG.sound.music.pitch = Conductor.playbackRate;
 		#end
 
 		var bullShit:Int = 0;
@@ -302,13 +303,13 @@ class FreeplayState extends MusicBeatState
 
 	function changePlaybackRate(value:Float) {
 		if (value < 1) 
-			return playbackRate = 1;
+			return CoolUtil.setPlaybackRate(1);
 		else if (value > 3)
-			return playbackRate = 3;
+			return CoolUtil.setPlaybackRate(3);
 		else if (Math.isNaN(value))
-			return playbackRate = 1;
+			return CoolUtil.setPlaybackRate(1);
 		else
-			return playbackRate = value;
+			return CoolUtil.setPlaybackRate(value);
 	}
 }
 

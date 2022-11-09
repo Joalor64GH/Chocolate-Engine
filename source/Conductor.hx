@@ -21,11 +21,23 @@ class Conductor
 	public static var safeFrames:Int = 10;
 	public static var safeZoneOffset:Float = (safeFrames / 60) * 1000; // is calculated in create(), is safeFrames in milliseconds
 
+	@:isVar	public var playbackRate(get, set):Float = 1;
+
 	public static var bpmChangeMap:Array<BPMChangeEvent> = [];
 
 	public function new()
 	{
 	}
+
+	function get_playbackRate():Float
+	{
+		return CoolUtil.getPlaybackRate();
+	}
+
+	function set_playbackRate(v:Float):Float
+	{
+		return CoolUtil.setPlaybackRate(playbackRate);
+	}	
 
 	public static function mapBPMChanges(song:SwagSong)
 	{
