@@ -30,6 +30,8 @@ class Note extends FlxSprite
 
 	/**
 	 * Easier way of getting noteData from the note(?)
+	 * @author YoshiCrafter29
+	 * @co-author MemeHoovy
 	 */
 	public var strumID(get, never):Int;
 
@@ -43,6 +45,7 @@ class Note extends FlxSprite
 
 	public var canBeHit(get, never):Bool;
 
+	// Ily Stilic (platonically)
 	inline public function get_canBeHit():Bool
 	{
 		return strumTime > Conductor.songPosition - Conductor.safeZoneOffset
