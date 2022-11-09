@@ -37,7 +37,7 @@ class Conductor
 	static inline function set_playbackRate(v:Float):Float
 	{
 		if (v < 1 || v > 3) 
-			return;
+			return 1;
 		else if (v == null)
 			return CoolUtil.setPlaybackRate(playbackRate);
 		else
