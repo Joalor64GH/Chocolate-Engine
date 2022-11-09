@@ -95,22 +95,22 @@ class ModCore
 		#if MODCORE_ALLOWED
 		var modsToLoad:Array<String> = [];
 
-        if (ids.length == 0)
-        {
-	            Debug.logWarn('You attempted to load zero mods.');
-        }
-        else
-        {
-	            if (ids[0] != '' && ids != null)
-	            {
+                if (ids.length == 0)
+                {
+	                Debug.logWarn('You attempted to load zero mods.');
+                }
+                else
+                {
+	                if (ids[0] != '' && ids != null)
+	                {
 		                Debug.logInfo('Attempting to load ${ids.length} mods...');
 		                modsToLoad = ids;
-	            }
-	            else
-	            {
+	                }
+	                else
+	                {
 		                modsToLoad = [];
-	            }
-        }
+	                }
+                }
 
 		var loadedModList = polymod.Polymod.init({
 			modRoot: MOD_DIRECTORY,
