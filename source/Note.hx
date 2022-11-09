@@ -33,7 +33,7 @@ class Note extends FlxSprite
 	 */
 	public var strumID(get, never):Int;
 
-	inline function get_strumID():Int
+	inline public function get_strumID():Int
 	{
 		var id = noteData % 4;
 		if (id < 0) id = 0;
@@ -43,7 +43,7 @@ class Note extends FlxSprite
 
 	public var canBeHit(get, never):Bool;
 
-	function get_canBeHit():Bool
+	inline public function get_canBeHit():Bool
 	{
 		return strumTime > Conductor.songPosition - Conductor.safeZoneOffset
 		&& strumTime < Conductor.songPosition + Conductor.safeZoneOffset * 0.5;
