@@ -72,7 +72,7 @@ class FlxSplash extends FlxState
 		var dtf = new TextFormat(FlxAssets.FONT_DEFAULT, 16, 0xffffff);
 		dtf.align = TextFormatAlign.CENTER;
 		_text.defaultTextFormat = dtf;
-		_text.text = "MemeHoovy Engine";
+		_text.text = "Made with HaxeFlixel";
 		FlxG.stage.addChild(_text);
 
 		onResize(stageWidth, stageHeight);
@@ -80,7 +80,7 @@ class FlxSplash extends FlxState
 		#if FLX_SOUND_SYSTEM
 		if (!muted)
 		{
-			FlxG.sound.load(Paths.sound("flixel", 'preload')).play();
+			FlxG.sound.load(Paths.sound("flixel")).play();
 		}
 		#end
 	}
