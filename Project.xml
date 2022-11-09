@@ -121,7 +121,10 @@
 	<haxedef name="POLYMOD_ROOT_PATH" value="assets/scripts/" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="_polymod_pack.txt" />
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="_polymod_meta.json" />
-	<haxedef name="POLYMOD_MOD_ICON_FILE"  value="_polymod_icon.png" />
+	<haxedef name="POLYMOD_MOD_ICON_FILE" value="_polymod_icon.png" />
+	<haxedef name="POLYMOD_MOD_SOFTWARE_LICENSE" value="LICENSE.txt" />
+	<haxedef name="POLYMOD_MOD_ASSET_LICENSE" value="ASSET_LICENSE.txt" />
+	<haxedef name="POLYMOD_MOD_CODE_LICENSE" value="CODE_LICENSE" />
 	<haxedef name="POLYMOD_DEBUG" if="debug" />
 
 	<!-- HTML5 hasn't been tested. Also I took this from MemeHoovy Engine.-->

@@ -148,12 +148,27 @@ class ModPaths
 
 	inline static public function checkMod(mod:String)
 	{
-		return openfl.utils.Assets.exists('mods/$mod/_polymod_meta.json');
+		return openfl.utils.Assets.exists('mods/$mod/_polymod_meta.json'); // THIS IS MANDATORY
 	}
 
 	inline static public function checkPack(mod:String)
 	{
 		return openfl.utils.Assets.exists('mods/$mod/_polymod_pack.txt');
+	}
+
+	inline static public function checkSoftwareLicense(mod:String)
+	{
+		return openfl.utils.Assets.exists('mods/$mod/LICENSE.txt');
+	}
+
+	inline static public function checkAssetLicense(mod:String)
+	{
+		return openfl.utils.Assets.exists('mods/$mod/ASSET_LICENSE.txt');
+	}
+
+	inline static public function checkCodeLicense(mod:String)
+	{
+		return openfl.utils.Assets.exists('mods/$mod/CODE_LICENSE.txt');
 	}
 
 	inline static public function getSparrowAtlas(key:String, ?mod:String)
