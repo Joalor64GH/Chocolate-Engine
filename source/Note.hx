@@ -24,10 +24,20 @@ class Note extends FlxSprite
 	public var noteScore:Float = 1;
 
 	public static var swagWidth:Float = 160 * 0.7;
-	public static var PURP_NOTE:Int = 0;
-	public static var GREEN_NOTE:Int = 2;
-	public static var BLUE_NOTE:Int = 1;
-	public static var RED_NOTE:Int = 3;
+	public static inline final PURP_NOTE:Int = 0;
+	public static inline final GREEN_NOTE:Int = 2;
+	public static inline final BLUE_NOTE:Int = 1;
+	public static inline final RED_NOTE:Int = 3;
+
+	public var strumID(get, never):Int;
+
+	function get_strumID():Int
+	{
+		var id = noteData % 4;
+		if (id < 0) id = 0;
+		// if (id > noteData % 4) id = noteData % 4;
+		return id;
+	}	
 
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, sustainNote:Bool = false)
 	{
