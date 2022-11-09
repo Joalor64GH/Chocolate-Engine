@@ -123,6 +123,9 @@
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="_polymod_meta.json" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE"  value="_polymod_icon.png" />
 	<haxedef name="POLYMOD_DEBUG" if="debug" />
+
+	<!-- HTML5 hasn't been tested. Also I took this from MemeHoovy Engine.-->
+	<warn value="HTML5 builds haven't been tested and might not work, so beware of that." if="web" />
 	
 	<!-- ______________________________ Haxe Flags _____________________________ -->
 
