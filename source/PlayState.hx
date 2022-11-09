@@ -1588,7 +1588,7 @@ class PlayState extends MusicBeatState
 							altAnim = '-alt';
 					}
 
-					switch (Math.abs(daNote.noteData))
+					switch (Math.abs(daNote.strumID))
 					{
 						case 0:
 							dad.playAnim('singLEFT' + altAnim, true);
@@ -1627,7 +1627,7 @@ class PlayState extends MusicBeatState
 						health -= 0.0475;
 						vocals.volume = 0;
 						if (theFunne)
-							noteMiss(daNote.noteData);
+							noteMiss(daNote.strumID);
 					}
 
 					daNote.active = false;
@@ -1888,7 +1888,7 @@ class PlayState extends MusicBeatState
 		{
 			notes.forEachAlive(function(daNote:Note)
 			{
-				if (daNote.isSustainNote && daNote.canBeHit && daNote.mustPress && holdArray[daNote.noteData])
+				if (daNote.isSustainNote && daNote.canBeHit && daNote.mustPress && holdArray[daNote.strumID])
 					goodNoteHit(daNote);
 			});
 		}
@@ -1906,17 +1906,17 @@ class PlayState extends MusicBeatState
 			{
 				if (daNote.canBeHit && daNote.mustPress && !daNote.tooLate && !daNote.wasGoodHit)
 				{
-					if (directionList.contains(daNote.noteData))
+					if (directionList.contains(daNote.strumID))
 					{
 						for (coolNote in possibleNotes)
 						{
-							if (coolNote.noteData == daNote.noteData && Math.abs(daNote.strumTime - coolNote.strumTime) < 10)
+							if (coolNote.strumID == daNote.strumID && Math.abs(daNote.strumTime - coolNote.strumTime) < 10)
 							{ // if it's the same note twice at < 10ms distance, just delete it
 								// EXCEPT u cant delete it in this loop cuz it fucks with the collection lol
 								dumbNotes.push(daNote);
 								break;
 							}
-							else if (coolNote.noteData == daNote.noteData && daNote.strumTime < coolNote.strumTime)
+							else if (coolNote.strumID == daNote.strumID && daNote.strumTime < coolNote.strumTime)
 							{ // if daNote is earlier than existing note (coolNote), replace
 								possibleNotes.remove(coolNote);
 								possibleNotes.push(daNote);
@@ -1927,7 +1927,7 @@ class PlayState extends MusicBeatState
 					else
 					{
 						possibleNotes.push(daNote);
-						directionList.push(daNote.noteData);
+						directionList.push(daNote.strumID);
 					}
 				}
 			});
@@ -1951,7 +1951,7 @@ class PlayState extends MusicBeatState
 				}
 				for (coolNote in possibleNotes)
 				{
-					if (pressArray[coolNote.noteData])
+					if (pressArray[coolNote.strumID])
 						goodNoteHit(coolNote);
 				}
 			}
@@ -2027,18 +2027,18 @@ class PlayState extends MusicBeatState
 				combo++;
 			}
 
-			if (note.noteData >= 0)
+			if (note.strumID >= 0)
 				health += 0.023;
 			else
 				health += 0.004;
 
-			var animToPlay:String = singAnimations[Std.int(Math.abs(note.noteData % 4))];
+			var animToPlay:String = singAnimations[Std.int(Math.abs(note.strumID % 4))];
 
 			boyfriend.playAnim(animToPlay, true);
 
 			playerStrums.forEach(function(spr:FlxSprite)
 			{
-				if (Math.abs(note.noteData) == spr.ID)
+				if (Math.abs(note.strumID) == spr.ID)
 				{
 					spr.animation.play('confirm', true);
 				}
