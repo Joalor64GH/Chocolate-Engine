@@ -29,7 +29,7 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * [Joalor64 YT](https://www.youtube.com/channel/UC4tRMRL_iAHX5n1qQpHibfg) - Main Programmer and Director
 * [MemeHoovy](https://linktr.ee/memehoovy) - Assistant Coder and MemeHoovy Engine Code
 * [Wither362](https://github.com/Wither362) - Assistant Coder and Fixer
-* [LeviXDD](https://github.com/LEVIXDDLMAO) - HTML5 handler 
+* [LeviXDD](https://github.com/LEVIXDDLMAO) - HTML5 Handler 
 * [ShadowMario](https://github.com/ShadowMario) - Psych Input
 * [PolybiusProxy](https://github.com/polybiusproxy) - MP4 Video Support
 * [Smokey](https://twitter.com/Smokey_5_) - Adobe Animate Texture Atlas Support
