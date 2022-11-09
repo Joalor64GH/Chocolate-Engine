@@ -13,7 +13,6 @@ class Note extends FlxSprite
 
 	public var mustPress:Bool = false;
 	public var noteData:Int = 0;
-	public var canBeHit:Bool = false;
 	public var tooLate:Bool = false;
 	public var wasGoodHit:Bool = false;
 	public var prevNote:Note;
@@ -34,12 +33,20 @@ class Note extends FlxSprite
 	 */
 	public var strumID(get, never):Int;
 
-	function get_strumID():Int
+	inline function get_strumID():Int
 	{
 		var id = noteData % 4;
 		if (id < 0) id = 0;
 		// if (id > noteData % 4) id = noteData % 4;
 		return id;
+	}
+
+	public var canBeHit(get, never):Bool;
+
+	function get_canBeHit():Bool
+	{
+		return strumTime > Conductor.songPosition - Conductor.safeZoneOffset
+		&& strumTime < Conductor.songPosition + Conductor.safeZoneOffset * 0.5;
 	}	
 
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, sustainNote:Bool = false)
@@ -179,25 +186,8 @@ class Note extends FlxSprite
 	{
 		super.update(elapsed);
 
-		if (mustPress)
-		{
-			// The * 0.5 is so that it's easier to hit them too late, instead of too early
-			if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset
-				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
-				canBeHit = true;
-			else
-				canBeHit = false;
-
-			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset && !wasGoodHit)
-				tooLate = true;
-		}
-		else
-		{
-			canBeHit = false;
-
-			if (strumTime <= Conductor.songPosition)
-				wasGoodHit = true;
-		}
+		if (mustPress && !tooLate && !wasGoodHit && strumTime < Conductor.songPosition - Conductor.safeZoneOffset && canBeHit)
+			tooLate = true;
 
 		if (tooLate)
 		{
