@@ -228,7 +228,7 @@ class FreeplayState extends MusicBeatState
 			FlxG.switchState(new MainMenuState());
 		}
 
-		playbackRateText.text = 'Playback Rate: ' + playbackRate;
+		playbackRateText.text = 'Playback Rate: ' + Conductor.playbackRate;
 
 		if (accepted)
 		{
