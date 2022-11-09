@@ -93,17 +93,28 @@ class ModCore
 	public static function loadModsById(ids:Array<String>)
 	{
 		#if MODCORE_ALLOWED
-		if (ids.length == 0)
-		{
-			Debug.logWarn('You attempted to load zero mods.');
-		}
-		else
-		{
-			Debug.logInfo('Attempting to load ${ids.length} mods...');
-		}
+		var modsToLoad:Array<String> = [];
+
+        if (ids.length == 0)
+        {
+	            Debug.logWarn('You attempted to load zero mods.');
+        }
+        else
+        {
+	            if (ids[0] != '' && ids != null)
+	            {
+		                Debug.logInfo('Attempting to load ${ids.length} mods...');
+		                modsToLoad = ids;
+	            }
+	            else
+	            {
+		                modsToLoad = [];
+	            }
+        }
+
 		var loadedModList = polymod.Polymod.init({
 			modRoot: MOD_DIRECTORY,
-			dirs: ids,
+			dirs: modsToLoad,
 			framework: CUSTOM,
 			apiVersion: API_VERSION,
 			errorCallback: onPolymodError,
