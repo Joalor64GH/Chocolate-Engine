@@ -7,6 +7,8 @@ Not everything is perfect, so contributions and/or [pull requests](https://githu
 
 If you need a tutorial on modding, go check out [the wiki](https://github.com/Joalor64GH/Chocolate-Engine/wiki)!
 
+## This engine is in a major WIP state, report bugs in issues.
+
 ## Downloads
 * [itch.io](https://joalor64.itch.io/chocolate-engine)
 * [GitHub](https://github.com/Joalor64GH/Chocolate-Engine/releases/latest)
