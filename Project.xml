@@ -47,7 +47,7 @@
 	<!--CUSTOM DEFINES-->
 	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
 	<define name="WEBM_EXTENSION" if="windows || mac"/>
-	<define name="MODS_ALLOWED" if="desktop" />
+	<define name="MODS_ALLOWED" if="desktop" unless="mac" />
 	<define name="LUA_EXTENSION" if="desktop" />
 	<define name="CRASH_HANDLER" if="desktop release" />
 	<define name="MODCORE_ALLOWED" if="MODS_ALLOWED" />
