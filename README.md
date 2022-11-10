@@ -1,3 +1,5 @@
+# This engine is in a major WIP state, report bugs in issues.
+
 ![](https://github.com/Joalor64GH/Chocolate-Engine/blob/master/art/Chocolate-Engine-Logo.png?raw=true)
 
 # FNF - Chocolate Engine
@@ -6,8 +8,6 @@ This is the repository for Chocolate Engine, which is basically a fork of the [o
 Not everything is perfect, so contributions and/or [pull requests](https://github.com/Joalor64GH/Chocolate-Engine/pulls) would be nice!
 
 If you need a tutorial on modding, go check out [the wiki](https://github.com/Joalor64GH/Chocolate-Engine/wiki)!
-
-## This engine is in a major WIP state, report bugs in issues.
 
 ## Downloads
 * [itch.io](https://joalor64.itch.io/chocolate-engine)
