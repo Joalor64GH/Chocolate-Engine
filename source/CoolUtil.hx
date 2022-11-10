@@ -43,21 +43,34 @@ class CoolUtil
 		return PlayState.instance.deaths;
 	}
 
-	public static inline function coolTextFile(path:String):Array<String>
+	public static function coolTextFile(path:String):Array<String>
 	{
-		return [for (i in Assets.getText(path).trim().split('\n')) i.trim()];
-		return [];
+		var daList:Array<String> = Assets.getText(path).trim().split('\n');
+
+		for (i in 0...daList.length)
+		{
+			daList[i] = daList[i].trim();
+		}
+
+		return daList;
 	}
 
 	public static inline function coolStringFile(path:String):Array<String>
 	{
-		return [for (i in Assets.getText(path).trim().split('\n')) i.trim()];
-		return [];
+		var daList:Array<String> = path.trim().split('\n');
+
+		for (i in 0...daList.length)
+		{
+			daList[i] = daList[i].trim();
+		}
+
+		return daList;
 	}
 
 	// this is actual source code from VS Null https://gamebanana.com/wips/70592
-	public static inline function coolerTextFile(path:String, daString:String = ''):String
+	public static function coolerTextFile(path:String):String
 	{
+		var daString:String = '';
 		#if MODS_ALLOWED
 		if (FileSystem.exists(path))
 			daString = File.getContent(path).trim();
