@@ -49,7 +49,7 @@ class CoolUtil
 		return [];
 	}
 
-	public static function coolStringFile(path:String):Array<String>
+	public static inline function coolStringFile(path:String):Array<String>
 	{
 		return [for (i in Assets.getText(path).trim().split('\n')) i.trim()];
 		return [];
