@@ -88,7 +88,7 @@ class FPS extends TextField
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
-			text = "FPS: " + currentFPS + 'Memory Leak: ' + currentMemory + "\nVersion: v" + Application.current.meta.get("version");
+			text = "FPS: " + currentFPS + '\nMemory Leak: ' + currentMemory + "\nVersion: v" + Application.current.meta.get("version");
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
