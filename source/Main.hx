@@ -164,12 +164,12 @@ class Main extends Sprite
 
 		#if web
 		var str1:String = "HTML CRAP";
-		var vHandler = new VideoHandler();
+		var vHandler = new video.VideoHandler();
 		vHandler.init1();
 		vHandler.video.name = str1;
 		addChild(vHandler.video);
 		vHandler.init2();
-		GlobalVideo.setVid(vHandler);
+		video.GlobalVideo.setVid(vHandler);
 		vHandler.source(ourSource);
 		#elseif WEBM_EXTENSION
 		var str1:String = "WEBM SHIT";
@@ -178,7 +178,7 @@ class Main extends Sprite
 		webmHandle.makePlayer();
 		webmHandle.webm.name = str1;
 		addChild(webmHandle.webm);
-		GlobalVideo.setWebm(webmHandle);
+		video.GlobalVideo.setWebm(webmHandle);
 		#end
 
 		#if CRASH_HANDLER
