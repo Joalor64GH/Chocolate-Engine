@@ -42,7 +42,8 @@ class FPS extends TextField
 	private function get_currentMemory():Float
 	{
 		// return System.totalMemory/1024;
-		return FlxMath.roundDecimal(System.totalMemory / 1024 / 1024 * 100 / 100, 1);
+		// return FlxMath.roundDecimal(System.totalMemory / 1024 / 1024 * 100 / 100, 1);
+		return Math.round(System.totalMemory / 1024 / 1024 * 100) / 100;
 	}
 
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
