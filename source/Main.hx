@@ -130,7 +130,7 @@ class Main extends Sprite
 		}
 	}
 
-	public static var webmHandler:WebmHandler;
+	public static var webmHandler:video.WebmHandler;
 
 	private function init(?E:Event):Void
 	{
@@ -173,7 +173,7 @@ class Main extends Sprite
 		vHandler.source(ourSource);
 		#elseif WEBM_EXTENSION
 		var str1:String = "WEBM SHIT";
-		var webmHandle = new WebmHandler();
+		var webmHandle = new video.WebmHandler();
 		webmHandle.source(ourSource);
 		webmHandle.makePlayer();
 		webmHandle.webm.name = str1;
