@@ -40,6 +40,7 @@ import polymod.Polymod;
 import polymod.Polymod.Framework;
 import polymod.Polymod.PolymodError;
 #end
+import states.*;
 
 using StringTools;
 
