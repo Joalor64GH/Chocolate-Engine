@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project xmlns="http://lime.software/project/1.0.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lime.software/project/1.0.3 http://lime.software/xsd/project-1.0.3.xsd">
+<project>
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="FNF: Chocolate Engine" packageName="com.joalor64gh.choco" package="com.joalor64gh.choco" main="Main" version="1.2.0" company="Joalor64GH" />
@@ -47,7 +47,7 @@
 	<!--CUSTOM DEFINES-->
 	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
 	<define name="WEBM_EXTENSION" if="windows || mac"/>
-	<define name="MODS_ALLOWED" if="desktop" />
+	<define name="MODS_ALLOWED" if="desktop" unless="mac" />
 	<define name="LUA_EXTENSION" if="desktop" />
 	<define name="CRASH_HANDLER" if="desktop release" />
 	<define name="MODCORE_ALLOWED" if="MODS_ALLOWED" />
@@ -121,8 +121,14 @@
 	<haxedef name="POLYMOD_ROOT_PATH" value="assets/scripts/" />
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="_polymod_pack.txt" />
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="_polymod_meta.json" />
-	<haxedef name="POLYMOD_MOD_ICON_FILE"  value="_polymod_icon.png" />
+	<haxedef name="POLYMOD_MOD_ICON_FILE" value="_polymod_icon.png" />
+	<haxedef name="POLYMOD_MOD_SOFTWARE_LICENSE" value="LICENSE.txt" />
+	<haxedef name="POLYMOD_MOD_ASSET_LICENSE" value="ASSET_LICENSE.txt" />
+	<haxedef name="POLYMOD_MOD_CODE_LICENSE" value="CODE_LICENSE" />
 	<haxedef name="POLYMOD_DEBUG" if="debug" />
+
+	<!-- HTML5 hasn't been tested. Also I took this from MemeHoovy Engine.-->
+	<warn value="HTML5 builds haven't been tested and might not work, so beware of that." if="html5" />
 	
 	<!-- ______________________________ Haxe Flags _____________________________ -->
 

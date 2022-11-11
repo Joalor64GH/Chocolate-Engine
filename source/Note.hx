@@ -13,7 +13,6 @@ class Note extends FlxSprite
 
 	public var mustPress:Bool = false;
 	public var noteData:Int = 0;
-	public var canBeHit:Bool = false;
 	public var tooLate:Bool = false;
 	public var wasGoodHit:Bool = false;
 	public var prevNote:Note;
@@ -24,10 +23,34 @@ class Note extends FlxSprite
 	public var noteScore:Float = 1;
 
 	public static var swagWidth:Float = 160 * 0.7;
-	public static var PURP_NOTE:Int = 0;
-	public static var GREEN_NOTE:Int = 2;
-	public static var BLUE_NOTE:Int = 1;
-	public static var RED_NOTE:Int = 3;
+	public static inline final PURP_NOTE:Int = 0;
+	public static inline final GREEN_NOTE:Int = 2;
+	public static inline final BLUE_NOTE:Int = 1;
+	public static inline final RED_NOTE:Int = 3;
+
+	/**
+	 * Easier way of getting noteData from the note(?)
+	 * @author YoshiCrafter29
+	 * @co-author MemeHoovy
+	 */
+	public var strumID(get, never):Int;
+
+	inline public function get_strumID():Int
+	{
+		var id = noteData % 4;
+		if (id < 0) id = 0;
+		// if (id > noteData % 4) id = noteData % 4;
+		return id;
+	}
+
+	public var canBeHit(get, never):Bool;
+
+	// Ily Stilic (platonically)
+	inline public function get_canBeHit():Bool
+	{
+		return strumTime > Conductor.songPosition - Conductor.safeZoneOffset
+		&& strumTime < Conductor.songPosition + Conductor.safeZoneOffset * 0.5;
+	}	
 
 	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, sustainNote:Bool = false)
 	{
@@ -99,7 +122,7 @@ class Note extends FlxSprite
 				antialiasing = true;
 		}
 
-		switch (noteData)
+		switch (strumID)
 		{
 			case 0:
 				x += swagWidth * 0;
@@ -115,8 +138,6 @@ class Note extends FlxSprite
 				animation.play('redScroll');
 		}
 
-		// trace(prevNote);
-
 		if (isSustainNote && prevNote != null)
 		{
 			noteScore * 0.2;
@@ -124,7 +145,7 @@ class Note extends FlxSprite
 
 			x += width / 2;
 
-			switch (noteData)
+			switch (strumID)
 			{
 				case 2:
 					animation.play('greenholdend');
@@ -145,7 +166,7 @@ class Note extends FlxSprite
 
 			if (prevNote.isSustainNote)
 			{
-				switch (prevNote.noteData)
+				switch (prevNote.strumID)
 				{
 					case 0:
 						prevNote.animation.play('purplehold');
@@ -159,7 +180,6 @@ class Note extends FlxSprite
 
 				prevNote.scale.y *= Conductor.stepCrochet / 100 * 1.5 * PlayState.SONG.speed;
 				prevNote.updateHitbox();
-				// prevNote.setGraphicSize();
 			}
 		}
 	}
@@ -168,22 +188,21 @@ class Note extends FlxSprite
 	{
 		super.update(elapsed);
 
+		// removes Psych events
+		if (noteData == -1)
+		{
+			this.kill();
+		}
+
 		if (mustPress)
 		{
-			// The * 0.5 is so that it's easier to hit them too late, instead of too early
-			if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset
-				&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
-				canBeHit = true;
-			else
-				canBeHit = false;
-
-			if (strumTime < Conductor.songPosition - Conductor.safeZoneOffset && !wasGoodHit)
+			if (!tooLate && !wasGoodHit && strumTime < Conductor.songPosition - Conductor.safeZoneOffset && canBeHit)
+			{
 				tooLate = true;
+			}
 		}
 		else
 		{
-			canBeHit = false;
-
 			if (strumTime <= Conductor.songPosition)
 				wasGoodHit = true;
 		}

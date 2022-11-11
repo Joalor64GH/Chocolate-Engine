@@ -32,7 +32,7 @@ class Main extends Sprite
 	var initialState:Class<FlxState> = TitleState; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions.
 	var framerate:Int = 150; // How many frames per second the game should run at.
-	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
+	var skipSplash:Bool = false; // Whether to skip the flixel splash screen that appears in release mode.
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
 	@:keep public static var letterOffset:Bool = false; // alphabet offset workaround idk;
@@ -219,7 +219,7 @@ class Main extends Sprite
 
 		errMsg += "\nUncaught Error: "
 			+ e.error
-			+ "\nPlease report this error to the GitHub page: https://github.com/Joalor64GH/Chocolate-Engine\n\n> Crash Handler written by: sqirra-rng";
+			+ "\nPlease report this error to the GitHub page: https://github.com/Joalor64GH/Chocolate-Engine/issues\n\n> Crash Handler written by: sqirra-rng";
 
 		if (!FileSystem.exists("./crash/"))
 			FileSystem.createDirectory("./crash/");

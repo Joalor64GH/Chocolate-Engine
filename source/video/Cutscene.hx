@@ -4,6 +4,7 @@ import haxe.Json;
 #if polymod
 import polymod.backends.PolymodAssets;
 #end
+import openfl.utils.Assets;
 
 using StringTools;
 

@@ -79,9 +79,8 @@ class CoolUtil
 	}
 
 	// this is actual source code from VS Null https://gamebanana.com/wips/70592
-	public static function coolerTextFile(path:String):String
+	public static inline function coolerTextFile(path:String, daString:String = ''):String
 	{
-		var daString:String = '';
 		#if MODS_ALLOWED
 		if (FileSystem.exists(path))
 			daString = File.getContent(path).trim();

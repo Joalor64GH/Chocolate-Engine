@@ -31,6 +31,7 @@ import openfl.events.IOErrorEvent;
 import openfl.media.Sound;
 import openfl.net.FileReference;
 import openfl.utils.ByteArray;
+import flixel.util.FlxTimer;
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
 #end
@@ -81,6 +82,8 @@ class ChartingState extends MusicBeatState
 
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
+
+	var autosaveTimer:FlxTimer;
 
 	override function create()
 	{
@@ -166,6 +169,11 @@ class ChartingState extends MusicBeatState
 		add(curRenderedNotes);
 		add(curRenderedSustains);
 
+		autosaveTimer = new FlxTimer().start(60, function(tmr:FlxTimer) {
+			trace('60 seconds passed, autosaving');
+			autosaveSong();
+		}, 0);
+
 		super.create();
 	}
 
@@ -221,10 +229,6 @@ class ChartingState extends MusicBeatState
 		stepperBPM.name = 'song_bpm';
 
 		var characters:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
-
-		#if MODS_ALLOWED
-		var modcharacters:Array<String> = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/characterList'));
-		#end
 
 		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
 		{
@@ -523,6 +527,7 @@ class ChartingState extends MusicBeatState
 
 		if (FlxG.keys.justPressed.ENTER)
 		{
+			autosaveSong();
 			lastSection = curSection;
 
 			PlayState.SONG = _song;
@@ -916,8 +921,6 @@ class ChartingState extends MusicBeatState
 
 		updateGrid();
 		updateNoteUI();
-
-		autosaveSong();
 	}
 
 	function getStrumTime(yPos:Float):Float
@@ -951,8 +954,16 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
-		PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
-		FlxG.resetState();
+		try {
+			PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+			FlxG.resetState();
+		}
+		catch (e){
+			trace('Chart doesnt exist!');
+			FlxG.log.add('Chart doesnt exist!');
+			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
+			// return null;
+		}
 	}
 
 	function loadAutosave():Void
@@ -967,6 +978,7 @@ class ChartingState extends MusicBeatState
 			"song": _song
 		});
 		FlxG.save.flush();
+		autosaveTimer.reset(60);
 	}
 
 	private function saveLevel()
