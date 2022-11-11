@@ -242,6 +242,8 @@ class PlayState extends MusicBeatState
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC);
 		#end
 
+		curModchart = '';
+
 		switch (SONG.song.toLowerCase())
 		{
 			case 'spookeez' | 'south' | 'monster':
@@ -1332,10 +1334,11 @@ class PlayState extends MusicBeatState
 			switch (curModchart){
 				case 'tutorial' | 'example':
 					// math is not my best subject tbh
-					for (note in 0...strumLineNotes.length){
+					/*for (note in 0...strumLineNotes.length){
 						// note.x = (note.ID * note.width * 1.025 + 300) - 50 * Math.sin(elapsed * 1 * Conductor.bpm/500 + note.ID * note.width) - 100;
 						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
-					}
+					}*/
+				throw new haxe.exceptions.NotImplementedException;	
 			}
 		}
 
@@ -2185,9 +2188,9 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		}
 
-		if (curStep == 400 && SONG.song.toLowerCase() == 'tutorial'){
+		/*if (curStep == 400 && SONG.song.toLowerCase() == 'tutorial'){
 			curModchart = 'tutorial';
-		}
+		}*/
 	}
 
 	var lightningStrikeBeat:Int = 0;
