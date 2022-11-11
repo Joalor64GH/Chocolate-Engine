@@ -1774,7 +1774,7 @@ class PlayState extends MusicBeatState
 		if (doSplash)
 		{
 			var splash:NoteSplash = grpNoteSplashes.recycle(NoteSplash);
-			splash.setupNoteSplash(daNote.x, daNote.y, daNote.noteData);
+			splash.setupNoteSplash(daNote.x, daNote.y, daNote.strumID);
 			grpNoteSplashes.add(splash);
 		}
 
