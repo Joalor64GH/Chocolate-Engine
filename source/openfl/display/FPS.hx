@@ -39,9 +39,15 @@ class FPS extends TextField
 	@:noCompletion private var currentTime:Float;
 	@:noCompletion private var times:Array<Float>;
 
-	private function get_currentMemory():Float
+	private inline function get_currentMemory():Float
 	{
-		return Math.abs(FlxMath.roundDecimal(System.totalMemory / 1000000, 1));
+		// return System.totalMemory/1024;
+		// return Math.round(System.totalMemory / 1024 / 1024 * 100) / 100;
+		#if openfl
+		return FlxMath.roundDecimal(System.totalMemory / 1024 / 1024 * 100 / 100, 1);
+		#else
+		return 0;
+		#end
 	}
 
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
@@ -87,7 +93,10 @@ class FPS extends TextField
 
 		if (currentCount != cacheCount /*&& visible*/)
 		{
-			text = "FPS: " + currentFPS + '\nMemory Leak: ' + currentMemory + "\nVersion: v" + Application.current.meta.get("version");
+			text = "FPS: " + currentFPS + "\nVersion: v" + Application.current.meta.get("version");
+			#if openfl
+			text += '\nMemory Peak: ' + currentMemory;
+			#end
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
