@@ -94,9 +94,9 @@ class FPS extends TextField
 		if (currentCount != cacheCount /*&& visible*/)
 		{
 			text = "FPS: " + currentFPS + "\nVersion: v" + Application.current.meta.get("version");
-			#if openfl
-			text += '\nMemory Peak: ' + currentMemory;
-			#end
+			// #if openfl
+			// text += '\nMemory Peak: ' + currentMemory;
+			// #end
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();
