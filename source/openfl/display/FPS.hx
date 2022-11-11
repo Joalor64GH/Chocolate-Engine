@@ -58,7 +58,7 @@ class FPS extends TextField
 		this.y = y;
 
 		currentFPS = 0;
-		currentMemory = 0;
+		// currentMemory = 0; // cannot access field or identifier currentMemory for writing
 		selectable = false;
 		mouseEnabled = false;
 		defaultTextFormat = new TextFormat("_sans", 14, color);
