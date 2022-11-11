@@ -126,10 +126,10 @@ class ModsMenuState extends MusicBeatState
 
 	function buildUI()
 	{
-		bg = new FlxSprite(0, 0).loadGraphic(Paths.image("mainmenu/menuDesat"));
+		bg = new FlxSprite(0, 0).loadGraphic(Paths.image("UI/default/modbg"));
 		// bg.screenCenter(Y);
 
-		bgtwo = new FlxSprite(720, 0).loadGraphic(Paths.image("mainmenu/menuDesat"));
+		bgtwo = new FlxSprite(720, 0).loadGraphic(Paths.image("UI/default/modbg"));
 		bgtwo.screenCenter(Y);
 
 		ModsMenuState.enableButton = new FlxButton(bg.x + 1120, 309, "Enable Mod", function()
