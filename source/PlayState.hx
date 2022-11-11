@@ -1640,7 +1640,7 @@ class PlayState extends MusicBeatState
 				else
 					daNote.y = (strumLine.y - (Conductor.songPosition - daNote.strumTime) * (0.45 * FlxMath.roundDecimal(SONG.speed, 2)));
 
-				if (daNote.y < -daNote.height && !FlxG.save.data.downscroll || daNote.y >= strumLine.y + 106 && FlxG.save.data.downscroll)
+				if (daNote.y < -daNote.height && !FlxG.save.data.downscroll || daNote.y >= strumLine.y + 106 && FlxG.save.data.downscroll && daNote.mustPress)
 				{
 					if (daNote.isSustainNote && daNote.wasGoodHit)
 					{
@@ -1983,8 +1983,13 @@ class PlayState extends MusicBeatState
 			{
 				for (shit in 0...pressArray.length)
 				{ // if a direction is hit that shouldn't be
-					if (pressArray[shit] && !directionList.contains(shit) && !theFunne)
+					if (pressArray[shit] && !directionList.contains(shit) && !theFunne){
+						/*notes.forEachAlive(function(daNote:Note){
+							if (daNote.prevNote.mustPress)
+								noteMiss(shit);
+						});*/
 						noteMiss(shit);
+					}
 				}
 				for (coolNote in possibleNotes)
 				{
@@ -1995,8 +2000,13 @@ class PlayState extends MusicBeatState
 			else
 			{
 				for (shit in 0...pressArray.length)
-					if (pressArray[shit] && !theFunne)
+					if (pressArray[shit] && !theFunne){
+						/*notes.forEachAlive(function(daNote:Note){
+							if (daNote.prevNote.mustPress)
+								noteMiss(shit);
+						});*/
 						noteMiss(shit);
+					}
 			}
 		}
 
