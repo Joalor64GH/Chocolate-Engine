@@ -104,10 +104,10 @@ class PlayState extends MusicBeatState
 	private var startingSong:Bool = false;
 	private var updateTime:Bool = true;
 
-	private var iconP1:HealthIcon;
-	private var iconP2:HealthIcon;
-	private var camHUD:FlxCamera;
-	private var camGame:FlxCamera;
+	public var iconP1:HealthIcon;
+	public var iconP2:HealthIcon;
+	public var camHUD:FlxCamera;
+	public var camGame:FlxCamera;
 
 	var dialogue:Array<String> = ['strange code', '>:]'];
 
@@ -156,6 +156,8 @@ class PlayState extends MusicBeatState
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	#end
+
+	public var curModchart:String = '';
 
 	private var singAnimations:Array<String> = [
 		'singLEFT',
@@ -721,8 +723,6 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 
 		startingSong = true;
-
-		missesTxt.text = "Combo Breaks: " + misses;
 
 		if (isStoryMode)
 		{
@@ -1328,6 +1328,17 @@ class PlayState extends MusicBeatState
 				iconP1.animation.play('bf-old');
 		}
 
+		if (curModchart != null){
+			switch (curModchart){
+				case 'tutorial' | 'example':
+					// math is not my best subject tbh
+					for (note in 0...strumLineNotes.length){
+						// note.x = (note.ID * note.width * 1.025 + 300) - 50 * Math.sin(elapsed * 1 * Conductor.bpm/500 + note.ID * note.width) - 100;
+						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
+					}
+			}
+		}
+
 		switch (curStage)
 		{
 			case 'philly':
@@ -1346,6 +1357,8 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		scoreTxt.text = "Score: " + songScore;
+
+		missesTxt.text = "Combo Breaks: " + misses;
 
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
@@ -2171,6 +2184,10 @@ class PlayState extends MusicBeatState
 		{
 			resyncVocals();
 		}
+
+		if (curStep == 400 && SONG.song.toLowerCase() == 'tutorial'){
+			curModchart = 'tutorial';
+		}
 	}
 
 	var lightningStrikeBeat:Int = 0;
@@ -2287,6 +2304,13 @@ class PlayState extends MusicBeatState
 			lightningStrikeShit();
 		}
 	}
+
+	override public function destroy()
+	{
+		curModchart = null;
+
+		super.destroy();
+	}	
 
 	var curLight:Int = 0;
 }
