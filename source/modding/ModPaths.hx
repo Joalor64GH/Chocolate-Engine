@@ -133,16 +133,6 @@ class ModPaths
 		return getPath('cutscenes/$key.json', TEXT, mod);
 	}
 
-	inline static public function getModFla(key:String, mod:String)
-	{
-		return getPath('art/$key.fla', BINARY, mod);
-	}
-
-	inline static public function getModFlp(key:String, mod:String)
-	{
-		return getPath('art/$key.flp', BINARY, mod);
-	}
-
 	static public function getPath(file:String, type:AssetType, ?mod:String)
 	{
 		var path = "";
