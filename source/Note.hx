@@ -23,10 +23,6 @@ class Note extends FlxSprite
 	public var noteScore:Float = 1;
 
 	public static var swagWidth:Float = 160 * 0.7;
-	public static inline final PURP_NOTE:Int = 0;
-	public static inline final GREEN_NOTE:Int = 2;
-	public static inline final BLUE_NOTE:Int = 1;
-	public static inline final RED_NOTE:Int = 3;
 
 	/**
 	 * Easier way of getting noteData from the note(?)
@@ -90,10 +86,10 @@ class Note extends FlxSprite
 					animation.add('redholdend', [7]);
 					animation.add('blueholdend', [5]);
 
-					animation.add('purplehold', [PURP_NOTE]);
-					animation.add('greenhold', [GREEN_NOTE]);
-					animation.add('redhold', [RED_NOTE]);
-					animation.add('bluehold', [BLUE_NOTE]);
+					animation.add('purplehold', [0]);
+					animation.add('greenhold', [2]);
+					animation.add('redhold', [3]);
+					animation.add('bluehold', [1]);
 				}
 
 				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
