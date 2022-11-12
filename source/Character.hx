@@ -1,5 +1,6 @@
 package;
 
+import Section.SwagSection;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -302,13 +303,17 @@ class Character extends FlxSprite
 
 			case 'pico-speaker':
 				frames = Paths.getSparrowAtlas('characters/picoSpeaker');
-				animation.addByPrefix('shoot1', 'Pico shoot 1');
-				animation.addByPrefix('shoot2', 'Pico shoot 2');
-				animation.addByPrefix('shoot3', 'Pico shoot 3');
-				animation.addByPrefix('shoot4', 'Pico shoot 4');
+				animation.addByIndices('idle', 'Pico shoot 1', [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24], "", 24, true);
+				animation.addByPrefix('shoot1', 'Pico shoot 1', 24, false);
+				animation.addByPrefix('shoot2', 'Pico shoot 2', 24, false);
+				animation.addByPrefix('shoot3', 'Pico shoot 3', 24, false);
+				animation.addByPrefix('shoot4', 'Pico shoot 4', 24, false);
 
-				loadOffsetFile(curCharacter);
-
+				addOffset('shoot1', 0, 0);
+				addOffset('shoot2', -1, -128);
+				addOffset('shoot3', 412, -64);
+				addOffset('shoot4', 439, -19);
+	
 				playAnim('shoot1');
 
 				loadMappedAnims();
@@ -465,15 +470,15 @@ class Character extends FlxSprite
 
 			case 'bf-holding-gf':
 				frames = Paths.getSparrowAtlas('characters/bfAndGF');
-				animation.addByPrefix('idle', 'BF idle dance w gf' 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0' 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0' 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0' 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0' 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS' 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS' 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS' 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS' 24, false);
+				animation.addByPrefix('idle', 'BF idle dance w gf', 24, false);
+				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
+				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
+				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
+				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
 
 				animation.addByPrefix('bfCatch', 'BF catches GF');
 
@@ -667,6 +672,11 @@ class Character extends FlxSprite
 		TankmenBG.animationNotes = animationNotes;
 		trace(animationNotes);
 		animationNotes.sort(sortAnims);
+	}
+
+	function sortAnims(x, y)
+	{
+		return x[0] < y[0] ? -1 : x[0] > y[0] ? 1 : 0;
 	}
 
 	override function update(elapsed:Float)
