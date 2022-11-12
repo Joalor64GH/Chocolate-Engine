@@ -169,6 +169,16 @@ class PlayState extends MusicBeatState
 
 	private var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
+	// week 7 shit
+	var tankWatchtower:BGSprite;
+	var tankGround:BGSprite;
+	var tankmanRun:FlxTypedGroup<TankmenBG>;
+
+	var gfCutsceneLayer:FlxTypedGroup<FlxAnimate>;
+	var bfTankCutsceneLayer:FlxTypedGroup<FlxAnimate>;
+
+	var foregroundSprites:FlxTypedGroup<BGSprite>;
+
 	override public function create()
 	{
 		theFunne = FlxG.save.data.newInput;
@@ -202,6 +212,8 @@ class PlayState extends MusicBeatState
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
+
+		foregroundSprites = new FlxTypedGroup<BGSprite>();
 
 		switch (daSongName)
 		{
@@ -500,6 +512,64 @@ class PlayState extends MusicBeatState
 					bg.scale.set(6, 6);
 					add(bg);
 				}
+			case 'tank':
+				{
+					defaultCamZoom = 0.9;
+
+					curStage = 'tank';
+
+					var sky:BGSprite = new BGSprite('tank/tankSky', -400, -400, 0, 0);
+					add(sky);
+
+					var clouds:BGSprite = new BGSprite('tank/tankClouds', FlxG.random.int(-700, -100), FlxG.random.int(-20, 20), 0.1, 0.1);
+					clouds.active = true;
+					clouds.velocity.x = FlxG.random.float(5, 15);
+					add(clouds);
+
+					var mountains:BGSprite = new BGSprite('tank/tankMountains', -300, -20, 0.2, 0.2);
+					mountains.setGraphicSize(Std.int(mountains.width * 1.2));
+					mountains.updateHitbox();
+					add(mountains);
+
+					var buildings:BGSprite = new BGSprite('tank/tankBuildings', -200, 0, 0.3, 0.3);
+					buildings.setGraphicSize(Std.int(buildings.width * 1.1));
+					buildings.updateHitbox();
+					add(buildings);
+
+					var ruins:BGSprite = new BGSprite('tank/tankRuins', -200, 0, 0.35, 0.35);
+					ruins.setGraphicSize(Std.int(ruins.width * 1.1));
+					ruins.updateHitbox();
+					add(ruins);
+
+					var smokeL:BGSprite = new BGSprite('tank/smokeLeft', -200, -100, 0.4, 0.4, ['SmokeBlurLeft'], true);
+					add(smokeL);
+
+					var smokeR:BGSprite = new BGSprite('tank/smokeRight', 1100, -100, 0.4, 0.4, ['SmokeRight'], true);
+					add(smokeR);
+
+					tankWatchtower = new BGSprite('tank/tankWatchtower', 100, 50, 0.5, 0.5, ['watchtower gradient color']);
+					add(tankWatchtower);
+
+					tankGround = new BGSprite('tank/tankRolling', 300, 300, 0.5, 0.5, ['BG tank w lighting'], true);
+					add(tankGround);
+
+					tankmanRun = new FlxTypedGroup<TankmenBG>();
+					add(tankmanRun);
+
+					var ground:BGSprite = new BGSprite('tank/tankGround', -420, -150);
+					ground.setGraphicSize(Std.int(ground.width * 1.15));
+					ground.updateHitbox();
+					add(ground);
+					moveTank();
+
+					foregroundSprites = new FlxTypedGroup<BGSprite>();
+					foregroundSprites.add(new BGSprite('tank/tank0', -500, 650, 1.7, 1.5, ['fg']));
+					foregroundSprites.add(new BGSprite('tank/tank1', -300, 750, 2, 0.2, ['fg']));
+					foregroundSprites.add(new BGSprite('tank/tank2', 450, 940, 1.5, 1.5, ['foreground']));
+					foregroundSprites.add(new BGSprite('tank/tank4', 1300, 900, 1.5, 1.5, ['fg']));
+					foregroundSprites.add(new BGSprite('tank/tank5', 1620, 700, 1.5, 1.5, ['fg']));
+					foregroundSprites.add(new BGSprite('tank/tank3', 1300, 1200, 3.5, 2.5, ['fg']));
+				}				
 			default:
 				{
 					defaultCamZoom = 0.9;
@@ -631,6 +701,10 @@ class PlayState extends MusicBeatState
 
 		add(dad);
 		add(boyfriend);
+
+		// Week 7 shit
+		if (curStage == 'tank')
+			add(foregroundSprites);
 
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
@@ -2269,6 +2343,28 @@ class PlayState extends MusicBeatState
 		{
 			boyfriend.playAnim('hey', true);
 			dad.playAnim('cheer', true);
+		}
+
+		foregroundSprites.forEach(function(spr:BGSprite)
+		{
+			spr.dance();
+		});
+
+		// Week 7 Mid-Song Events
+		// hard coding because im just like that
+		if (dad.curCharacter == 'tankman' && SONG.song == 'Ugh')
+		{
+			if (curBeat == 14 || curBeat == 110 || curBeat == 131 || curBeat == 206)
+			{
+				dad.addOffset("singUP", -14, -8);
+				dad.animation.getByName('singUP').frames = dad.animation.getByName('singUP-alt').frames;
+			}
+
+			if (curBeat == 16 || curBeat == 112 || curBeat == 132 || curBeat == 208)
+			{
+				dad.addOffset("singUP", 54, 49);
+				dad.animation.getByName('singUP').frames = dad.animation.getByName('singLEFT-alt').frames;
+			}
 		}
 
 		switch (curStage)
