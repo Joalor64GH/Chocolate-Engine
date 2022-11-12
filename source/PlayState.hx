@@ -55,6 +55,7 @@ import openfl.events.KeyboardEvent;
 import Character;
 import LLua;
 import states.*;
+import animate.FlxAnimate;
 
 using StringTools;
 
