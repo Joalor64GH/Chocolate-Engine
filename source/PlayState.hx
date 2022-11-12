@@ -513,7 +513,7 @@ class PlayState extends MusicBeatState
 					bg.scale.set(6, 6);
 					add(bg);
 				}
-			case 'tank':
+			case 'ugh' | 'guns' | 'stress':
 				{
 					defaultCamZoom = 0.9;
 
