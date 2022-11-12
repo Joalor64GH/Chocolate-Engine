@@ -2322,6 +2322,7 @@ class PlayState extends MusicBeatState
 	override public function destroy()
 	{
 		curModchart = null;
+		instance = null;
 
 		super.destroy();
 	}	
