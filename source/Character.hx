@@ -604,8 +604,7 @@ class Character extends FlxSprite
 
 			case 'tankman':
 				frames = Paths.getSparrowAtlas('characters/tankmanCaptain');
-				animation.addByPrefix('idle', 'Tankman Idle Dance');
-				if (isPlayer)
+				/*if (isPlayer) // we'll just make the playable version of tankman a seperate character, since it's easier
 				{
 					animation.addByPrefix('singLEFT', 'Tankman Note Left ');
 					animation.addByPrefix('singRIGHT', 'Tankman Right Note ');
@@ -618,15 +617,30 @@ class Character extends FlxSprite
 					animation.addByPrefix('singRIGHT', 'Tankman Note Left ');
 					animation.addByPrefix('singLEFTmiss', 'Tankman Right Note MISS');
 					animation.addByPrefix('singRIGHTmiss', 'Tankman Note Left MISS');
-				}
-				animation.addByPrefix('singUP', 'Tankman UP note ');
-				animation.addByPrefix('singDOWN', 'Tankman DOWN note ');
-				animation.addByPrefix('singUPmiss', 'Tankman UP note MISS');
-				animation.addByPrefix('singDOWNmiss', 'Tankman DOWN note MISS');
+				}*/
+				animation.addByPrefix('idle', "Tankman Idle Dance", 24);
+				animation.addByPrefix('singUP', 'Tankman UP note', 24, false);
+				animation.addByPrefix('singDOWN', 'Tankman DOWN note', 24, false);
+				animation.addByPrefix('singLEFT', 'Tankman Right Note', 24, false);
+				animation.addByPrefix('singRIGHT', 'Tankman Note Left', 24, false);
+	
+				animation.addByPrefix('singUP-alt', 'TANKMAN UGH', 24, false);
+				animation.addByPrefix('singDOWN-alt', 'PRETTY GOOD', 24, false);
 
-				animation.addByPrefix('singDOWN-alt', 'PRETTY GOOD');
-				animation.addByPrefix('singUP-alt', 'TANKMAN UGH');
+				// Dont Mind this
+				animation.addByPrefix('singLEFT-alt', 'Tankman UP note', 24, false);
 
+				addOffset('idle');
+				addOffset("singUP", 54, 49);
+				addOffset("singRIGHT", -23, -31);
+				addOffset("singLEFT", 89, -12);
+				addOffset("singDOWN", 88, -100);
+
+				addOffset("singUP-alt", -14, -8);
+				addOffset("singDOWN-alt", 2, 16);
+
+				addOffset("singLEFT-alt", 54, 49);
+				
 				playAnim('idle');
 
 				flipX = true;
