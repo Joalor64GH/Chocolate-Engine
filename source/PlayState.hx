@@ -519,57 +519,57 @@ class PlayState extends MusicBeatState
 
 					curStage = 'tank';
 
-					var sky:BGSprite = new BGSprite('tank/tankSky', -400, -400, 0, 0);
+					var sky:BGSprite = new BGSprite('week7/tank/tankSky', -400, -400, 0, 0);
 					add(sky);
 
-					var clouds:BGSprite = new BGSprite('tank/tankClouds', FlxG.random.int(-700, -100), FlxG.random.int(-20, 20), 0.1, 0.1);
+					var clouds:BGSprite = new BGSprite('week7/tank/tankClouds', FlxG.random.int(-700, -100), FlxG.random.int(-20, 20), 0.1, 0.1);
 					clouds.active = true;
 					clouds.velocity.x = FlxG.random.float(5, 15);
 					add(clouds);
 
-					var mountains:BGSprite = new BGSprite('tank/tankMountains', -300, -20, 0.2, 0.2);
+					var mountains:BGSprite = new BGSprite('week7/tank/tankMountains', -300, -20, 0.2, 0.2);
 					mountains.setGraphicSize(Std.int(mountains.width * 1.2));
 					mountains.updateHitbox();
 					add(mountains);
 
-					var buildings:BGSprite = new BGSprite('tank/tankBuildings', -200, 0, 0.3, 0.3);
+					var buildings:BGSprite = new BGSprite('week7/tank/tankBuildings', -200, 0, 0.3, 0.3);
 					buildings.setGraphicSize(Std.int(buildings.width * 1.1));
 					buildings.updateHitbox();
 					add(buildings);
 
-					var ruins:BGSprite = new BGSprite('tank/tankRuins', -200, 0, 0.35, 0.35);
+					var ruins:BGSprite = new BGSprite('week7/tank/tankRuins', -200, 0, 0.35, 0.35);
 					ruins.setGraphicSize(Std.int(ruins.width * 1.1));
 					ruins.updateHitbox();
 					add(ruins);
 
-					var smokeL:BGSprite = new BGSprite('tank/smokeLeft', -200, -100, 0.4, 0.4, ['SmokeBlurLeft'], true);
+					var smokeL:BGSprite = new BGSprite('week7/tank/smokeLeft', -200, -100, 0.4, 0.4, ['SmokeBlurLeft'], true);
 					add(smokeL);
 
-					var smokeR:BGSprite = new BGSprite('tank/smokeRight', 1100, -100, 0.4, 0.4, ['SmokeRight'], true);
+					var smokeR:BGSprite = new BGSprite('week7/tank/smokeRight', 1100, -100, 0.4, 0.4, ['SmokeRight'], true);
 					add(smokeR);
 
-					tankWatchtower = new BGSprite('tank/tankWatchtower', 100, 50, 0.5, 0.5, ['watchtower gradient color']);
+					tankWatchtower = new BGSprite('week7/tank/tankWatchtower', 100, 50, 0.5, 0.5, ['watchtower gradient color']);
 					add(tankWatchtower);
 
-					tankGround = new BGSprite('tank/tankRolling', 300, 300, 0.5, 0.5, ['BG tank w lighting'], true);
+					tankGround = new BGSprite('week7/tank/tankRolling', 300, 300, 0.5, 0.5, ['BG tank w lighting'], true);
 					add(tankGround);
 
 					tankmanRun = new FlxTypedGroup<TankmenBG>();
 					add(tankmanRun);
 
-					var ground:BGSprite = new BGSprite('tank/tankGround', -420, -150);
+					var ground:BGSprite = new BGSprite('week7/tank/tankGround', -420, -150);
 					ground.setGraphicSize(Std.int(ground.width * 1.15));
 					ground.updateHitbox();
 					add(ground);
 					moveTank();
 
 					foregroundSprites = new FlxTypedGroup<BGSprite>();
-					foregroundSprites.add(new BGSprite('tank/tank0', -500, 650, 1.7, 1.5, ['fg']));
-					foregroundSprites.add(new BGSprite('tank/tank1', -300, 750, 2, 0.2, ['fg']));
-					foregroundSprites.add(new BGSprite('tank/tank2', 450, 940, 1.5, 1.5, ['foreground']));
-					foregroundSprites.add(new BGSprite('tank/tank4', 1300, 900, 1.5, 1.5, ['fg']));
-					foregroundSprites.add(new BGSprite('tank/tank5', 1620, 700, 1.5, 1.5, ['fg']));
-					foregroundSprites.add(new BGSprite('tank/tank3', 1300, 1200, 3.5, 2.5, ['fg']));
+					foregroundSprites.add(new BGSprite('week7/tank/tank0', -500, 650, 1.7, 1.5, ['fg']));
+					foregroundSprites.add(new BGSprite('week7/tank/tank1', -300, 750, 2, 0.2, ['fg']));
+					foregroundSprites.add(new BGSprite('week7/tank/tank2', 450, 940, 1.5, 1.5, ['fg']));
+					foregroundSprites.add(new BGSprite('week7/tank/tank4', 1300, 900, 1.5, 1.5, ['fg']));
+					foregroundSprites.add(new BGSprite('week7/tank/tank5', 1620, 700, 1.5, 1.5, ['fg']));
+					foregroundSprites.add(new BGSprite('week7/tank/tank3', 1300, 1200, 3.5, 2.5, ['fg']));
 				}				
 			default:
 				{
