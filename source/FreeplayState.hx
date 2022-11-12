@@ -60,31 +60,6 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
-		// I'm gonna temporarily comment this out since it's causing freeplay to crash
-		/*#if MODS_ALLOWED
-			try {
-				var modSonglist = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/freeplaySonglist'));
-
-				if (Assets.exists(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')))
-				{
-					modSonglist = Assets.getText(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')).trim().split('\n');
-
-					for (i in 0...modSonglist.length)
-					{
-						modSonglist[i] = modSonglist[i].trim();
-					}
-				}
-
-				for (i in 0...modSonglist.length)
-				{
-					var data:Array<String> = modSonglist[i].split(':');
-					songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
-				}
-			} catch (e:Dynamic){
-				throw e;
-			}
-			#end */
-
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
