@@ -22,6 +22,8 @@ class Character extends FlxSprite
 	public var holdTimer:Float = 0;
 	public var hpcolor:FlxColor;
 
+	public var animationNotes:Array<Dynamic> = [];
+
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		super(x, y);
@@ -133,7 +135,7 @@ class Character extends FlxSprite
 				updateHitbox();
 				antialiasing = false;
 
-				case 'gf-tankmen':
+			case 'gf-tankmen':
 				frames = Paths.getSparrowAtlas('characters/gfTankmen');
 				animation.addByIndices('sad', 'GF Crying at Gunpoint', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, true);
 				animation.addByIndices('danceLeft', 'GF Dancing at Gunpoint', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
@@ -298,13 +300,13 @@ class Character extends FlxSprite
 
 				hpcolor = 0xFFB7D855;
 
-				case 'pico-speaker':
+			case 'pico-speaker':
 				frames = Paths.getSparrowAtlas('characters/picoSpeaker');
 				animation.addByPrefix('shoot1', 'Pico shoot 1');
 				animation.addByPrefix('shoot2', 'Pico shoot 2');
 				animation.addByPrefix('shoot3', 'Pico shoot 3');
 				animation.addByPrefix('shoot4', 'Pico shoot 4');
-				
+
 				loadOffsetFile(curCharacter);
 
 				playAnim('shoot1');
@@ -442,6 +444,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 				hpcolor = 0xFF7BD6F6;
+
 			case 'bf-pixel-dead':
 				frames = Paths.getSparrowAtlas('characters/bfPixelsDEAD');
 				animation.addByPrefix('singUP', "BF Dies pixel", 24, false);
@@ -459,7 +462,8 @@ class Character extends FlxSprite
 				updateHitbox();
 				antialiasing = false;
 				flipX = true;
-            case 'bf-holding-gf':
+
+			case 'bf-holding-gf':
 				frames = Paths.getSparrowAtlas('characters/bfAndGF');
 				animation.addByPrefix('idle', 'BF idle dance w gf' 24, false);
 				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0' 24, false);
@@ -593,7 +597,7 @@ class Character extends FlxSprite
 
 				hpcolor = 0xFFAF66CE;
 
-				case 'tankman':
+			case 'tankman':
 				frames = Paths.getSparrowAtlas('characters/tankmanCaptain');
 				animation.addByPrefix('idle', 'Tankman Idle Dance');
 				if (isPlayer)
@@ -700,7 +704,7 @@ class Character extends FlxSprite
 						shotDirection = 3;
 					}
 					shotDirection += FlxG.random.int(0, 1);
-					
+
 					playAnim('shoot' + shotDirection, true);
 					animationNotes.shift();
 				}
@@ -735,7 +739,7 @@ class Character extends FlxSprite
 							playAnim('danceLeft');
 					}
 				case 'pico-speaker':
-					// do nothing LOL
+				// do nothing LOL
 				case 'spooky':
 					danced = !danced;
 
