@@ -121,6 +121,11 @@ class CoolUtil
 		return dumbArray;
 	}
 
+	public static function camLerpShit(ratio:Float)
+	{
+		return FlxG.elapsed / (1 / 60) * ratio;
+	}
+
 	public static function createBG(x:Float, y:Float, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false, state:FlxState):FlxSprite
 	{
 		var bg:FlxSprite = new FlxSprite(x, y).loadGraphic(Paths.image(path));
