@@ -56,6 +56,7 @@ import Character;
 import LLua;
 import states.*;
 import animate.FlxAnimate;
+import video.FlxVideo;
 
 using StringTools;
 
@@ -179,8 +180,6 @@ class PlayState extends MusicBeatState
 
 	var gfCutsceneLayer:FlxTypedGroup<FlxAnimate>;
 	var bfTankCutsceneLayer:FlxTypedGroup<FlxAnimate>;
-
-	var foregroundSprites:FlxTypedGroup<BGSprite>;
 
 	override public function create()
 	{
