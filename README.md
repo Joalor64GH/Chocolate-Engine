@@ -21,6 +21,7 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * MP4 and WebM Video Support
 
 ## Things to get done
+* [ ] Week 7 **[Is working but Stress is broken lmao]**
 * [X] Reorganize all of the assets **[Completed]**
 * [ ] Support for Lua Scripts
 * [ ] Attempt to softcode characters
