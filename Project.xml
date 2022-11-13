@@ -52,19 +52,23 @@
 	<define name="CRASH_HANDLER" if="desktop release" />
 	<define name="MODCORE_ALLOWED" if="MODS_ALLOWED" />
 
+	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
+	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
 
 	<!-- Do you really wanna try that?-->
 	<error value="Nintendo Switch is not supported." if="switch" />
 	
         <library name="videos"           preload="true" />
 	<section if="PRELOAD_ALL">
-		<library name="songs"    preload="true" />
+		<library name="assets"    preload="true" />
+	</section>
+
+	<section if="NO_PRELOAD_ALL">
+		<library name="assets"    preload="false" />
 	</section>
 	
 	<assets path="assets/videos"   library="videos"   if="VIDEO_PLUGIN"/>
-	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
-	<assets path="assets/songs"    library="songs"    exclude="*.mp3" unless="web"/>
 
 	<section if="MODS_ALLOWED">
 	        <assets path='art/mod.url' rename='How to make a mod.url' if="windows"/>
