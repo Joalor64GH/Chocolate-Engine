@@ -27,7 +27,8 @@ class ModIcon extends FlxSprite
 		scrollFactor.set();
 		antialiasing = true;
 	}
-	else
+	
+	if (!File.exists(Sys.getCwd() + "mods/" + modId + "/_polymod_icon.png"))
 	{
 	    var imageDataRaw = loadGraphic(Paths.image("UI/default/unknownMod"));
 	}
