@@ -61,11 +61,11 @@
 	
         <library name="videos"           preload="true" />
 	<section if="PRELOAD_ALL">
-		<library name="assets"    preload="true" />
+		<library name="assets"   preload="true" />
 	</section>
 
 	<section if="NO_PRELOAD_ALL">
-		<library name="assets"    preload="false" />
+		<library name="assets"   preload="false" />
 	</section>
 	
 	<assets path="assets/videos"   library="videos"   if="VIDEO_PLUGIN"/>
