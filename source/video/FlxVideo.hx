@@ -1,4 +1,4 @@
-package;
+package video;
 
 import openfl.net.NetStream;
 import openfl.net.NetConnection;
@@ -29,6 +29,7 @@ class FlxVideo extends FlxBasic
 		netStream = new NetStream(netConnection);
 		netStream.client = {onMetaData: client_onMetaData};
 		netConnection.addEventListener('netStatus', netConnection_onNetStatus);
+		@:privateAccess
 		netStream.play(Paths.getPath(VideoAsset, TEXT, null));
 	}
 

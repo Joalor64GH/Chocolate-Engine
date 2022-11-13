@@ -926,7 +926,7 @@ class PlayState extends MusicBeatState
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
 			startCountdown();
-			cameraMovement();
+			// cameraMovement();
 		};
 		FlxG.camera.zoom = defaultCamZoom * 1.2;
 		camFollow.x += 100;
@@ -944,7 +944,7 @@ class PlayState extends MusicBeatState
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
 			startCountdown();
-			cameraMovement();
+			// cameraMovement();
 		};
 	}
 
@@ -959,7 +959,7 @@ class PlayState extends MusicBeatState
 			remove(black);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 5, {ease: FlxEase.quadInOut});
 			startCountdown();
-			cameraMovement();
+			// cameraMovement();
 		};
 	}
 
