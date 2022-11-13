@@ -625,7 +625,7 @@ class PlayState extends MusicBeatState
 				gfVersion = 'gf-tankmen';
 		}
 
-		if (daSongName == 'stress')
+		if (SONG.song.toLowerCase() == 'stress')
 			gfVersion = 'pico-speaker';
 
 		if (curStage == 'limo')

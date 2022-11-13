@@ -27,6 +27,10 @@ class ModIcon extends FlxSprite
 		scrollFactor.set();
 		antialiasing = true;
 	}
+	else
+	{
+	    var imageDataRaw = loadGraphic(Paths.image("UI/default/unknownMod"));
+	}
 
 	override function update(elapsed:Float)
 	{
