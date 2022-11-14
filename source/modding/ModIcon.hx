@@ -2,6 +2,7 @@ package modding;
 
 #if MODS_ALLOWED
 import sys.io.File;
+import sys.FileSystem;
 import openfl.display.BitmapData;
 import flixel.FlxSprite;
 
@@ -28,10 +29,10 @@ class ModIcon extends FlxSprite
 		antialiasing = true;
 	}
 	
-	/*if (!File.exists(Sys.getCwd() + "mods/" + modId + "/_polymod_icon.png"))
+	if (!FileSystem.exists(Sys.getCwd() + "mods/" + modId + "/_polymod_icon.png"))
 	{
 	    var imageDataRaw = loadGraphic(Paths.image("UI/default/unknownMod"));
-	}*/
+	}
 
 	override function update(elapsed:Float)
 	{
