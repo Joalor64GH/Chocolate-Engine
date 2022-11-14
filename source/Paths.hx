@@ -9,6 +9,7 @@ class Paths
 {
 	inline public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	public static final VIDEO_EXTS = ['mp4', 'webm'];
+	inline public static final SCRIPT_EXT = "lua";
 
 	public static var currentLevel:String;
 
@@ -129,14 +130,9 @@ class Paths
 		return getPath('cutscenes/$key.json', type, library);
 	}
 
-	inline static public function script(key:String, ?library:String)
+	inline static public function lua(key:String, ?library:String)
 	{
-		return getPath('scripts/$key.lua', TEXT, library);
-	}
-
-	inline static public function songScript(key:String, ?library:String)
-	{
-		return getPath('data/$key.lua', TEXT, library);
+		return getPath('$key.SCRIPT_EXT', TEXT, library);
 	}
 
 	inline static public function charJson(key:String, ?library:String)

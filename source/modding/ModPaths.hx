@@ -12,6 +12,7 @@ class ModPaths
 
 	private static final SOUND_EXT = Paths.SOUND_EXT;
 	private static final VIDEO_EXTS = Paths.VIDEO_EXTS;
+	private static final SCRIPT_EXT = Paths.SCRIPT_EXT;
 
 	inline static public function modIconImage(key:String, mod:String)
 	{
@@ -108,14 +109,9 @@ class ModPaths
 		return getPath('fonts/$key', BINARY, mod);
 	}
 
-	inline static public function getModScripts(key:String, mod:String)
+	inline static public function getModLua(key:String, mod:String)
 	{
-		return getPath('scripts/$key.lua', TEXT, mod);
-	}
-
-	inline static public function getModSongScripts(key:String, mod:String)
-	{
-		return getPath('data/$key.lua', TEXT, mod);
+		return getPath('$key.SCRIPT_EXT', TEXT, mod);
 	}
 
 	inline static public function getModCharjson(key:String, mod:String)
