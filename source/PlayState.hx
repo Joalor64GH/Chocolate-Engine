@@ -921,6 +921,7 @@ class PlayState extends MusicBeatState
 		var black:FlxSprite = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		black.scrollFactor.set();
 		add(black);
+		// these don't work :()
 		new FlxVideo('videos/ughCutscene.mp4').finishCallback = function()
 		{
 			remove(black);
