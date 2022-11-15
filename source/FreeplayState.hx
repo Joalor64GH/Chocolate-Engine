@@ -12,7 +12,7 @@ import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
-#if MODS_ALLOWED
+#if sys
 import sys.io.File;
 import sys.FileSystem;
 import polymod.backends.PolymodAssets;
@@ -53,18 +53,6 @@ class FreeplayState extends MusicBeatState
 				initSonglist[i] = initSonglist[i].trim();
 			}
 		}
-
-		#if MODS_ALLOWED
-		if (FileSystem.exists(Sys.getCwd() + 'mods/' + modId + 'freeplaySonglist'))
-		{
-			initSonglist = File.getContent(Sys.getCwd() + 'mods/' + modId + 'freeplaySonglist').trim().split('\n');
-
-			for (i in 0...initSonglist.length)
-			{
-				initSonglist[i] = initSonglist[i].trim();
-			}
-		}
-		#end
 
 		for (i in 0...initSonglist.length)
 		{
