@@ -17,7 +17,7 @@ import flixel.util.FlxColor;
 import lime.app.Application;
 import openfl.Assets;
 import scripting.MMScript;
-// import states.ModsMenuState;
+import ModsMenuState;
 import states.*;
 
 using StringTools;
