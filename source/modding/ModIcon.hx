@@ -20,7 +20,14 @@ class ModIcon extends FlxSprite
 		var imageDataRaw = File.getBytes(Sys.getCwd() + "mods/" + modId + "/_polymod_icon.png");
 		var graphicData = BitmapData.fromBytes(imageDataRaw);
 
-		loadGraphic(graphicData, false, 0, 0, false, modId);
+		if (FileSystem.exists(Sys.getCwd() + "mods/" + modId + "/_polymod_icon.png"))
+		{
+			loadGraphic(graphicData, false, 0, 0, false, modId);
+		}
+		else
+		{
+			loadGraphic(Paths.image("UI/default/unknownMod"));
+		}
 
 		setGraphicSize(150, 150);
 		updateHitbox();
@@ -28,11 +35,6 @@ class ModIcon extends FlxSprite
 		scrollFactor.set();
 		antialiasing = true;
 	}
-	
-	/*if (!FileSystem.exists(Sys.getCwd() + "mods/" + modId + "/_polymod_icon.png"))
-	{
-	    var imageDataRaw = loadGraphic(Paths.image("UI/default/unknownMod"));
-	}*/
 
 	override function update(elapsed:Float)
 	{
