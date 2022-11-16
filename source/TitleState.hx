@@ -30,7 +30,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
-import openfl.utils.Assets;
+import openfl.Assets;
 import flixel.input.keyboard.FlxKey;
 #if MODS_ALLOWED
 import ModsMenuState;
@@ -90,25 +90,25 @@ class TitleState extends MusicBeatState
 	override public function create():Void
 	{
 		#if MODS_ALLOWED
-		if (Assets.exists('mods/'))
+		if (sys.FileSystem.exists('mods/'))
 		{
 			var folders:Array<String> = [];
-			for (file in Assets.list.filter(text -> text.contains('mods/')))
+			for (file in sys.FileSystem.readDirectory('mods/'))
 			{
 				var path = haxe.io.Path.join(['mods/', file]);
-				if (Assets.list.filter(text -> text.contains(path)))
+				if (sys.FileSystem.isDirectory(path))
 				{
 					folders.push(file);
 				}
 			}
 		}
-		if (Assets.exists('mods/' + ModsMenuState.coolId + '/'))
+		if (sys.FileSystem.exists('mods/' + ModsMenuState.coolId + '/'))
 		{
 			var folders:Array<String> = [];
-			for (file in Assets.list.filter(text -> text.contains('mods/' + ModsMenuState.coolId + '/')))
+			for (file in sys.FileSystem.readDirectory('mods/' + ModsMenuState.coolId + '/'))
 			{
 				var path = haxe.io.Path.join(['mods/' + ModsMenuState.coolId + '/', file]);
-				if (Assets.list.filter(text -> text.contains(path)))
+				if (sys.FileSystem.isDirectory(path))
 				{
 					folders.push(file);
 				}
