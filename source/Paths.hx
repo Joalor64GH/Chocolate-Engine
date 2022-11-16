@@ -152,6 +152,7 @@ class Paths
 	}
 }
 
+#if MODS_ALLOWED
 class ModPaths
 {
 	static final currentLevel:String = Paths.currentLevel;
@@ -313,13 +314,14 @@ class ModPaths
 		return openfl.utils.Assets.exists('mods/$mod/CODE_LICENSE.txt');
 	}
 
-	inline static public function getSparrowAtlas(key:String, ?mod:String)
+	inline static public function getModSparrowAtlas(key:String, ?mod:String)
 	{
 		return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), getPath('images/$key.xml', TEXT, mod));
 	}
 
-	inline static public function getPackerAtlas(key:String, ?mod:String)
+	inline static public function getModPackerAtlas(key:String, ?mod:String)
 	{
 		return FlxAtlasFrames.fromSpriteSheetPacker(getModImage(key, mod), getPath('images/$key.txt', TEXT, mod));
 	}
 }
+#end

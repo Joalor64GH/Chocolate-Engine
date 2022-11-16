@@ -57,6 +57,7 @@ import LLua;
 import states.*;
 import animate.FlxAnimate;
 import video.FlxVideo;
+import ModsMenuState;
 
 using StringTools;
 
