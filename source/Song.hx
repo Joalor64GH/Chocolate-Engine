@@ -3,7 +3,8 @@ package;
 import Section.SwagSection;
 import haxe.Json;
 import haxe.format.JsonParser;
-import openfl.utils.Assets;
+import lime.utils.Assets;
+// import openfl.utils.Assets as OpenFLAssets;
 #if MODS_ALLOWED
 import sys.io.File;
 import sys.FileSystem;
@@ -21,7 +22,6 @@ typedef SwagSong =
 
 	var player1:String;
 	var player2:String;
-	var gfVersion:String;
 	var validScore:Bool;
 }
 
@@ -45,17 +45,12 @@ class Song
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SwagSong
 	{
-		var formattedFolder:String = Paths.formatToSongPath(folder);
-		var formattedSong:String = Paths.formatToSongPath(jsonInput);
-
-		var daSong:String = Paths.formatToSongPath(formattedFolder + '/' + formattedSong);
-
 		// TODO: make this work with polymod
-		if (!Assets.exists(daSong))
+		if (!Assets.exists(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())))
 		{
 			return null;
 		}
-		var rawJson = Assets.getText(Paths.json(formattedFolder.toLowerCase() + '/' + formattedSong.toLowerCase())).trim();
+		var rawJson = Assets.getText(Paths.json(folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
 
 		while (!rawJson.endsWith("}"))
 		{
@@ -67,24 +62,7 @@ class Song
 	public static function parseJSONshit(rawJson:String):SwagSong
 	{
 		var swagShit:SwagSong = cast Json.parse(rawJson).song;
-		var tempSong = cast swagShit.song; // unsafe cast
-
 		swagShit.validScore = true;
-
-		if (swagShit.gfVersion == null) {
-			// old Psych engine charts support
-			if (tempSong.player3 != null) {
-				swagShit.gfVersion = tempSong.player3;
-			}
-			// Leather engine charts support
-			if (tempSong.gf != null) {
-				swagShit.gfVersion = tempSong.gf;
-			}
-		}
-
-		if (swagShit != null)
-			return swagShit;
-		else
-			return null;
+		return swagShit;
 	}
 }

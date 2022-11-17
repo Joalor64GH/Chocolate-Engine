@@ -79,7 +79,7 @@ class DonateScreenState extends MusicBeatState
 
 		if (controls.ACCEPT)
 		{
-			CoolUtil.browserLoad(Assets.getText(Paths.txt('data/donate_button_link')));
+			CoolUtil.browserLoad(Assets.getText(Paths.txt('donate_button_link')));
 		}
 
 		super.update(elapsed);
