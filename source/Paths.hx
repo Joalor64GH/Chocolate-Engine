@@ -19,86 +19,56 @@ class Paths
 		currentLevel = name.toLowerCase();
 	}
 
-	static function getPath(file:String, ?type:AssetType, library:Null<String>)
+	static public function file(file:String)
 	{
-		if (library != null)
-			return getLibraryPath(file, library);
+		var path = 'assets/$file';
+		if (currentLevel != null && OpenFlAssets.exists('$currentLevel:$path'))
+			return '$currentLevel:$path';
 
-		if (currentLevel != null)
-		{
-			var levelPath = getLibraryPathForce(file, currentLevel);
-			if (OpenFlAssets.exists(levelPath, type))
-				return levelPath;
-
-			levelPath = getLibraryPathForce(file, "shared");
-			if (OpenFlAssets.exists(levelPath, type))
-				return levelPath;
-		}
-
-		return getPreloadPath(file);
+		return path;
 	}
 
-	static public function getLibraryPath(file:String, library = "preload")
+	inline static public function txt(key:String)
 	{
-		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
+		return file('data/$key.txt');
 	}
 
-	inline static function getLibraryPathForce(file:String, library:String)
+	inline static public function xml(key:String)
 	{
-		return '$library:assets/$library/$file';
+		return file('data/$key.xml');
 	}
 
-	inline static function getPreloadPath(file:String)
+	inline static public function txtGlobal(key:String)
 	{
-		return 'assets/$file';
+		return file('$key.txt');
 	}
 
-	inline static public function file(file:String, ?type:AssetType, ?library:String)
+	inline static public function xmlGlobal(key:String)
 	{
-		return getPath(file, type, library);
+		return file('$key.xml');
 	}
 
-	inline static public function txt(key:String, ?library:String)
+	inline static public function json(key:String)
 	{
-		return getPath('data/$key.txt', TEXT, library);
+		return file('data/$key.json');
 	}
 
-	inline static public function xml(key:String, ?library:String)
+	inline static public function jsonGlobal(key:String)
 	{
-		return getPath('data/$key.xml', TEXT, library);
+		return file('$key.json');
 	}
 
-	inline static public function txtGlobal(key:String, ?library:String)
+	static public function sound(key:String)
 	{
-		return getPath('$key.txt', TEXT, library);
+		return file('sounds/$key.$SOUND_EXT');
 	}
 
-	inline static public function xmlGlobal(key:String, ?library:String)
+	inline static public function soundRandom(key:String, min:Int, max:Int)
 	{
-		return getPath('$key.xml', TEXT, library);
+		return sound(key + FlxG.random.int(min, max));
 	}
 
-	inline static public function json(key:String, ?library:String)
-	{
-		return getPath('data/$key.json', TEXT, library);
-	}
-
-	inline static public function jsonGlobal(key:String, ?library:String)
-	{
-		return getPath('$key.json', TEXT, library);
-	}
-
-	static public function sound(key:String, ?library:String)
-	{
-		return getPath('sounds/$key.$SOUND_EXT', SOUND, library);
-	}
-
-	inline static public function soundRandom(key:String, min:Int, max:Int, ?library:String)
-	{
-		return sound(key + FlxG.random.int(min, max), library);
-	}
-
-	inline static public function video(key:String, ?library:String)
+	inline static public function video(key:String)
 	{
 		for (i in VIDEO_EXTS)
 		{
@@ -111,9 +81,9 @@ class Paths
 		return 'assets/videos/$key.mp4';
 	}
 
-	inline static public function music(key:String, ?library:String, type:AssetType = MUSIC)
+	inline static public function music(key:String)
 	{
-		return getPath('music/$key.$SOUND_EXT', type, library);
+		return file('music/$key.$SOUND_EXT');
 	}
 
 	inline static public function voices(song:String)
@@ -126,9 +96,9 @@ class Paths
 		return 'songs:assets/songs/${song.toLowerCase()}/Inst.$SOUND_EXT';
 	}
 
-	inline static public function image(key:String, ?library:String)
+	inline static public function image(key:String)
 	{
-		return getPath('images/$key.png', IMAGE, library);
+		return file('images/$key.png');
 	}
 
 	inline static public function font(key:String)
@@ -136,41 +106,54 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-	inline static public function locales(key:String, ?library:String)
+	inline static public function locales(key:String)
 	{
-		return getPath('locales/$key/languageData.json', TEXT, library);
+		return file('locales/$key/languageData.json');
 	}
 
-	inline static public function cutscene(key:String, ?library:String, type:AssetType = TEXT)
+	inline static public function cutscene(key:String)
 	{
-		return getPath('cutscenes/$key.json', type, library);
+		return file('cutscenes/$key.json');
 	}
 
-	inline static public function lua(key:String, ?library:String)
+	inline static public function lua(key:String)
 	{
-		return getPath('$key.SCRIPT_EXT', TEXT, library);
+		return file('$key.SCRIPT_EXT');
 	}
 
-	inline static public function charJson(key:String, ?library:String)
+	inline static public function charJson(key:String)
 	{
-		return getPath('characters/$key.json', TEXT, library);
+		return file('characters/$key.json');
 	}
 
-	inline static public function getSparrowAtlas(key:String, ?library:String)
+	inline static public function getSparrowAtlas(key:String)
 	{
-		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
+		return FlxAtlasFrames.fromSparrow(image(key), file('images/$key.xml'));
 	}
 
-	inline static public function getPackerAtlas(key:String, ?library:String)
+	inline static public function getPackerAtlas(key:String)
 	{
-		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
+		return FlxAtlasFrames.fromSpriteSheetPacker(image(key), file('images/$key.txt'));
 	}
 }
 
 #if MODS_ALLOWED
 class ModPaths
 {
-	static final currentLevel:String = Paths.currentLevel;
+        static final currentLevel:String = Paths.currentLevel;
+
+	static public function file(file:String, ?mod:String)
+	{
+		var path = "";
+		if (mod != null)
+			path = 'mods/$mod/$file';
+		else
+			path = 'mods/$file';
+		if (OpenFlAssets.exists(path))
+			return path;
+
+		return 'mods';
+	}
 
 	private static final SOUND_EXT = Paths.SOUND_EXT;
 	private static final VIDEO_EXTS = Paths.VIDEO_EXTS;
@@ -178,27 +161,27 @@ class ModPaths
 
 	inline static public function modIconImage(key:String, mod:String)
 	{
-		return getPath('$mod/_polymod_icon.png', IMAGE, mod);
+		return file('$mod/_polymod_icon.png', mod);
 	}
 
 	inline static public function getModTxt(key:String, ?mod:String)
 	{
-		return getPath('data/$key.txt', TEXT, mod);
+		return file('data/$key.txt', mod);
 	}
 
 	inline static public function getModXml(key:String, mod:String)
 	{
-		return getPath('data/$key.xml', TEXT, mod);
+		return file('data/$key.xml', mod);
 	}
 
 	inline static public function getModJson(key:String, mod:String)
 	{
-		return getPath('data/$key.json', TEXT, mod);
+		return file('data/$key.json', mod);
 	}
 
 	static public function getModSound(key:String, mod:String)
 	{
-		return getPath('sounds/$key.$SOUND_EXT', SOUND, mod);
+		return file('sounds/$key.$SOUND_EXT', mod);
 	}
 
 	inline static public function soundRandom(key:String, min:Int, max:Int, ?mod:String)
@@ -221,82 +204,47 @@ class ModPaths
 
 	inline static public function getModMusic(key:String, mod:String)
 	{
-		return getPath('music/$key.$SOUND_EXT', MUSIC, mod);
+		return file('music/$key.$SOUND_EXT', mod);
 	}
 
 	inline static public function getModVoices(song:String, mod:String)
 	{
-		trace('Loading VOICES');
-		var loadingSong:Bool = true;
-		if (loadingSong)
-		{
-			trace('Done Loading VOICES!');
-			return 'mods/$mod/songs/${song.toLowerCase()}/Voices.$SOUND_EXT';
-		}
-		else
-		{
-			trace('ERROR Loading INST :c');
-			return 'songs:assets/songs/bopeebo/Voices.$SOUND_EXT';
-		}
+		return file('songs/${song.toLowerCase()}/Voices.$SOUND_EXT', mod);
 	}
 
 	inline static public function getModInst(song:String, mod:String)
 	{
-		trace('Loading INST');
-		var loadingSong:Bool = true;
-		if (loadingSong)
-		{
-			trace('Done Loading INST!');
-			return 'mods/$mod/songs/${song.toLowerCase()}/Inst.$SOUND_EXT';
-		}
-		else
-		{
-			trace('ERROR Loading INST :c');
-			return 'songs:assets/songs/bopeebo/Inst.$SOUND_EXT';
-		}
+		return file('songs/${song.toLowerCase()}/Inst.$SOUND_EXT', mod);
 	}
 
 	inline static public function getModImage(key:String, mod:String)
 	{
-		return getPath('images/$key.png', IMAGE, mod);
+		return file('images/$key.png', mod);
 	}
 
 	inline static public function getModFont(key:String, mod:String)
 	{
-		return getPath('fonts/$key', BINARY, mod);
+		return file('fonts/$key', mod);
 	}
 
 	inline static public function getModLua(key:String, mod:String)
 	{
-		return getPath('$key.SCRIPT_EXT', TEXT, mod);
+		return file('$key.SCRIPT_EXT', mod);
 	}
 
 	inline static public function getModCharjson(key:String, mod:String)
 	{
-		return getPath('characters/$key.json', TEXT, mod);
+		return file('characters/$key.json', mod);
 	}
 
 	inline static public function getModLocales(key:String, mod:String)
 	{
-		return getPath('locales/$key/languageData.json', TEXT, mod);
+		return file('locales/$key/languageData.json', mod);
 	}
 
 	inline static public function getModCutscenes(key:String, mod:String)
 	{
-		return getPath('cutscenes/$key.json', TEXT, mod);
-	}
-
-	static public function getPath(file:String, type:AssetType, ?mod:String)
-	{
-		var path = "";
-		if (mod != null)
-			path = 'mods/$mod/$file';
-		else
-			path = 'mods/$file';
-		if (OpenFlAssets.exists(path, type))
-			return path;
-
-		return 'mods';
+		return file('cutscenes/$key.json', mod);
 	}
 
 	inline static public function checkMod(mod:String)
@@ -311,12 +259,12 @@ class ModPaths
 
 	inline static public function getModSparrowAtlas(key:String, ?mod:String)
 	{
-		return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), getPath('images/$key.xml', TEXT, mod));
+		return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), file('images/$key.xml', mod));
 	}
 
 	inline static public function getModPackerAtlas(key:String, ?mod:String)
 	{
-		return FlxAtlasFrames.fromSpriteSheetPacker(getModImage(key, mod), getPath('images/$key.txt', TEXT, mod));
+		return FlxAtlasFrames.fromSpriteSheetPacker(getModImage(key, mod), file('images/$key.txt', mod));
 	}
 }
 #end
