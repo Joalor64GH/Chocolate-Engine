@@ -140,7 +140,7 @@ class Paths
 #if MODS_ALLOWED
 class ModPaths
 {
-    static final currentLevel:String = Paths.currentLevel;
+        static final currentLevel:String = Paths.currentLevel;
 
 	static public function file(file:String, ?mod:String)
 	{
