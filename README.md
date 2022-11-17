@@ -22,10 +22,10 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 
 ## Things to get done
 * [ ] Week 7 **[Is working but Stress is broken lmao]**
+* [X] Freeplay Colors **[Completed]**
 * [X] Reorganize all of the assets **[Completed]**
 * [ ] Support for Lua Scripts
 * [ ] Attempt to softcode characters
-* [ ] Freeplay Colors
 
 ## Credits
 
