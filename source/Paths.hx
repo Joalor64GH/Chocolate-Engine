@@ -299,21 +299,6 @@ class ModPaths
 		return openfl.utils.Assets.exists('mods/$mod/_polymod_pack.txt');
 	}
 
-	inline static public function checkSoftwareLicense(mod:String)
-	{
-		return openfl.utils.Assets.exists('mods/$mod/LICENSE.txt');
-	}
-
-	inline static public function checkAssetLicense(mod:String)
-	{
-		return openfl.utils.Assets.exists('mods/$mod/ASSET_LICENSE.txt');
-	}
-
-	inline static public function checkCodeLicense(mod:String)
-	{
-		return openfl.utils.Assets.exists('mods/$mod/CODE_LICENSE.txt');
-	}
-
 	inline static public function getModSparrowAtlas(key:String, ?mod:String)
 	{
 		return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), getPath('images/$key.xml', TEXT, mod));
