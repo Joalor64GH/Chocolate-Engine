@@ -68,9 +68,24 @@ class Paths
 		return getPath('data/$key.xml', TEXT, library);
 	}
 
+	inline static public function txtGlobal(key:String, ?library:String)
+	{
+		return getPath('$key.txt', TEXT, library);
+	}
+
+	inline static public function xmlGlobal(key:String, ?library:String)
+	{
+		return getPath('$key.xml', TEXT, library);
+	}
+
 	inline static public function json(key:String, ?library:String)
 	{
 		return getPath('data/$key.json', TEXT, library);
+	}
+
+	inline static public function jsonGlobal(key:String, ?library:String)
+	{
+		return getPath('$key.json', TEXT, library);
 	}
 
 	static public function sound(key:String, ?library:String)
