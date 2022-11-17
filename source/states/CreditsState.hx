@@ -36,11 +36,11 @@ class CreditsState extends MusicBeatState
 
 	override function create()
 	{
-		var initCreditlist = CoolUtil.coolTextFile(Paths.txt('creditsList'));
+		var initCreditlist = CoolUtil.coolTextFile(Paths.txt('data/creditsList'));
 
-		if (Assets.exists(Paths.txt('creditsList')))
+		if (Assets.exists(Paths.txt('data/creditsList')))
 		{
-			initCreditlist = Assets.getText(Paths.txt('creditsList')).trim().split('\n');
+			initCreditlist = Assets.getText(Paths.txt('data/creditsList')).trim().split('\n');
 
 			for (i in 0...initCreditlist.length)
 			{
@@ -101,10 +101,7 @@ class CreditsState extends MusicBeatState
 			// DONT PUT X IN THE FIRST PARAMETER OF new ALPHABET() !!
 			// creditText.screenCenter(X);
 		}
-
 		changeSelection();
-		// FlxG.sound.playMusic(Paths.music('title'), 0);
-		// FlxG.sound.music.fadeIn(2, 0, 0.8);
 
 		var descText:FlxText = new FlxText(50, 600, 1180, "", 32);
 		descText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

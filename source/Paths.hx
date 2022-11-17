@@ -6,6 +6,8 @@ import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
 import haxe.Json;
 
+using StringTools;
+
 class Paths
 {
 	inline public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
@@ -60,17 +62,17 @@ class Paths
 
 	inline static public function txt(key:String, ?library:String)
 	{
-		return getPath('data/$key.txt', TEXT, library);
+		return getPath('$key.txt', TEXT, library);
 	}
 
 	inline static public function xml(key:String, ?library:String)
 	{
-		return getPath('data/$key.xml', TEXT, library);
+		return getPath('$key.xml', TEXT, library);
 	}
 
 	inline static public function json(key:String, ?library:String)
 	{
-		return getPath('data/$key.json', TEXT, library);
+		return getPath('$key.json', TEXT, library);
 	}
 
 	static public function sound(key:String, ?library:String)
@@ -140,6 +142,14 @@ class Paths
 	{
 		return getPath('characters/$key.json', TEXT, library);
 	}
+	
+	inline static public function formatToSongPath(path:String) {
+		var invalidChars = ~/[~&\\;:<>#]/;
+		var hideChars = ~/[.,'"%?!]/;
+
+		var path = invalidChars.split(path.replace(' ', '-')).join("-");
+		return hideChars.split(path).join("").toLowerCase();
+	}
 
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
@@ -166,14 +176,9 @@ class ModPaths
 		return getPath('$mod/_polymod_icon.png', IMAGE, mod);
 	}
 
-	inline static public function appendTxt(key:String, ?mod:String)
-	{
-		return getPath('_append/data/$key.txt', TEXT, mod);
-	}
-
 	inline static public function getModTxt(key:String, ?mod:String)
 	{
-		return getPath('data/$key.txt', TEXT, mod);
+		return getPath('$key.txt', TEXT, mod);
 	}
 
 	inline static public function getModXml(key:String, mod:String)

@@ -22,9 +22,9 @@ class CutsceneUtil
 		var rawJson:String = "";
 
 		#if MODS_ALLOWED
-		rawJson = PolymodAssets.getText(Paths.json("cutscenes/" + jsonPath)).trim();
+		rawJson = PolymodAssets.getText(Paths.json("data/cutscenes/" + jsonPath)).trim();
 		#else
-		rawJson = Assets.getText(Paths.json("cutscenes/" + jsonPath)).trim();
+		rawJson = Assets.getText(Paths.json("data/cutscenes/" + jsonPath)).trim();
 		#end
 
 		return parseJSONshit(rawJson);
