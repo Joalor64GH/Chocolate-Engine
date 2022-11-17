@@ -4,6 +4,8 @@ import haxe.Timer;
 import openfl.events.Event;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
+import openfl.system.System;
+import flixel.math.FlxMath;
 #if gl_stats
 import openfl.display._internal.stats.Context3DStats;
 import openfl.display._internal.stats.DrawCallContext;
@@ -28,9 +30,25 @@ class FPS extends TextField
 	**/
 	public var currentFPS(default, null):Int;
 
+	/**
+	 * The current memory usage, expressed in bytes.
+	 */
+	@:isVar public var currentMemory(get, never):Float;
+
 	@:noCompletion private var cacheCount:Int;
 	@:noCompletion private var currentTime:Float;
 	@:noCompletion private var times:Array<Float>;
+
+	private inline function get_currentMemory():Float
+	{
+		// return System.totalMemory/1024;
+		// return Math.round(System.totalMemory / 1024 / 1024 * 100) / 100;
+		#if openfl
+		return FlxMath.roundDecimal(System.totalMemory / 1024 / 1024 * 100 / 100, 1);
+		#else
+		return 0;
+		#end
+	}
 
 	public function new(x:Float = 10, y:Float = 10, color:Int = 0x000000)
 	{
@@ -40,6 +58,7 @@ class FPS extends TextField
 		this.y = y;
 
 		currentFPS = 0;
+		// currentMemory = 0; // cannot access field or identifier currentMemory for writing
 		selectable = false;
 		mouseEnabled = false;
 		defaultTextFormat = new TextFormat("_sans", 14, color);
@@ -76,6 +95,9 @@ class FPS extends TextField
 		if (currentCount != cacheCount /*&& visible*/)
 		{
 			text = "FPS: " + currentFPS + "\nVersion: v" + Application.current.meta.get("version");
+			// #if openfl
+			// text += '\nMemory Peak: ' + currentMemory;
+			// #end
 
 			#if (gl_stats && !disable_cffi && (!html5 || !canvas))
 			text += "\ntotalDC: " + Context3DStats.totalDrawCalls();

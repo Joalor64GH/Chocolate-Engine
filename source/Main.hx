@@ -130,7 +130,7 @@ class Main extends Sprite
 		}
 	}
 
-	public static var webmHandler:WebmHandler;
+	public static var webmHandler:video.WebmHandler;
 
 	private function init(?E:Event):Void
 	{
@@ -164,21 +164,21 @@ class Main extends Sprite
 
 		#if web
 		var str1:String = "HTML CRAP";
-		var vHandler = new VideoHandler();
+		var vHandler = new video.VideoHandler();
 		vHandler.init1();
 		vHandler.video.name = str1;
 		addChild(vHandler.video);
 		vHandler.init2();
-		GlobalVideo.setVid(vHandler);
+		video.GlobalVideo.setVid(vHandler);
 		vHandler.source(ourSource);
 		#elseif WEBM_EXTENSION
 		var str1:String = "WEBM SHIT";
-		var webmHandle = new WebmHandler();
+		var webmHandle = new video.WebmHandler();
 		webmHandle.source(ourSource);
 		webmHandle.makePlayer();
 		webmHandle.webm.name = str1;
 		addChild(webmHandle.webm);
-		GlobalVideo.setWebm(webmHandle);
+		video.GlobalVideo.setWebm(webmHandle);
 		#end
 
 		#if CRASH_HANDLER

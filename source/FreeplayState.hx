@@ -37,8 +37,6 @@ class FreeplayState extends MusicBeatState
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
 
-	private var iconArray:Array<HealthIcon> = [];
-
 	/*private var playbackRate(default, set):Float = 1;
 
 	function set_playbackRate(v:Float):Float
@@ -56,6 +54,12 @@ class FreeplayState extends MusicBeatState
 	}*/
 
 	private var playbackRateText:FlxText;
+	private var coolColors = [0xFF9271FD, 0xFF9271FD, 0xFF223344, 0xFF941653, 0xFFFC96D7, 0xFFA0D1FF, 0xFFFF78BF, 0xFFF6B604];
+	private var curPlaying:Bool = false;
+
+	private var iconArray:Array<HealthIcon> = [];
+
+	private var bg:FlxSprite;
 
 	override function create()
 	{
@@ -77,31 +81,6 @@ class FreeplayState extends MusicBeatState
 			songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
 		}
 
-		// I'm gonna temporarily comment this out since it's causing freeplay to crash
-		/*#if MODS_ALLOWED
-			try {
-				var modSonglist = CoolUtil.coolTextFile(modding.ModPaths.appendTxt('_append/data/freeplaySonglist'));
-
-				if (Assets.exists(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')))
-				{
-					modSonglist = Assets.getText(modding.ModPaths.appendTxt('_append/data/freeplaySonglist')).trim().split('\n');
-
-					for (i in 0...modSonglist.length)
-					{
-						modSonglist[i] = modSonglist[i].trim();
-					}
-				}
-
-				for (i in 0...modSonglist.length)
-				{
-					var data:Array<String> = modSonglist[i].split(':');
-					songs.push(new SongMetadata(data[0], Std.parseInt(data[2]), data[1]));
-				}
-			} catch (e:Dynamic){
-				throw e;
-			}
-			#end */
-
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -117,7 +96,7 @@ class FreeplayState extends MusicBeatState
 
 		// LOAD CHARACTERS
 
-		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuBGBlue'));
+		bg = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuDesat'));
 		add(bg);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
@@ -194,6 +173,7 @@ class FreeplayState extends MusicBeatState
 		}
 
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, 0.4));
+		bg.color = FlxColor.interpolate(bg.color, coolColors[songs[curSelected].week % coolColors.length], CoolUtil.camLerpShit(0.045));
 
 		if (Math.abs(lerpScore - intendedScore) <= 10)
 			lerpScore = intendedScore;

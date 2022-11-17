@@ -2,6 +2,7 @@ package modding;
 
 #if MODS_ALLOWED
 import sys.io.File;
+import sys.FileSystem;
 import openfl.display.BitmapData;
 import flixel.FlxSprite;
 
@@ -19,7 +20,14 @@ class ModIcon extends FlxSprite
 		var imageDataRaw = File.getBytes(Sys.getCwd() + "mods/" + modId + "/_polymod_icon.png");
 		var graphicData = BitmapData.fromBytes(imageDataRaw);
 
-		loadGraphic(graphicData, false, 0, 0, false, modId);
+		if (FileSystem.exists(Sys.getCwd() + "mods/" + modId + "/_polymod_icon.png"))
+		{
+			loadGraphic(graphicData, false, 0, 0, false, modId);
+		}
+		else
+		{
+			loadGraphic(Paths.image("UI/default/unknownMod"));
+		}
 
 		setGraphicSize(150, 150);
 		updateHitbox();

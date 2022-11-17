@@ -9,7 +9,7 @@ import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import CreditsState;
+import states.CreditsState;
 
 using StringTools;
 
