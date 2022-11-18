@@ -111,11 +111,6 @@ class Paths
 		return file('locales/$key/languageData.json');
 	}
 
-	inline static public function cutscene(key:String)
-	{
-		return file('cutscenes/$key.json');
-	}
-
 	inline static public function lua(key:String)
 	{
 		return file('$key.SCRIPT_EXT');
@@ -240,11 +235,6 @@ class ModPaths
 	inline static public function getModLocales(key:String, mod:String)
 	{
 		return file('locales/$key/languageData.json', mod);
-	}
-
-	inline static public function getModCutscenes(key:String, mod:String)
-	{
-		return file('cutscenes/$key.json', mod);
 	}
 
 	inline static public function checkMod(mod:String)
