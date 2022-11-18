@@ -32,4 +32,10 @@ class HornyScript extends PlayState
 	{
 		super.onPlayerDeath();
 	}
+
+	// testing dynamic functions
+	public dynamic function anything()
+	{
+		super.anything();
+	}	
 }

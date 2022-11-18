@@ -24,12 +24,15 @@ class DonateScreenState extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		// TODO play "Give a Lil' Bit Back" here
+		if (FlxG.sound.music != null){
+			FlxG.sound.music.stop();
+			FlxG.sound.playMusic(Paths.music('givealittlebitback'), 1, false);
+		}
 
 		persistentUpdate = persistentDraw = true;
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('mainmenu/menuBG'));
-		bg.color = 0xFF8F8F; // this was supposed to be red but it came out orange. oh well
+		bg.color = 0xFF4E4E; // this was supposed to be red but it came out orange. oh well
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
 		bg.updateHitbox();
 		bg.screenCenter();
@@ -74,6 +77,7 @@ class DonateScreenState extends MusicBeatState
 	{
 		if (controls.BACK)
 		{
+			FlxG.sound.music.stop();
 			FlxG.switchState(new MainMenuState());
 		}
 
