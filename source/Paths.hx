@@ -224,12 +224,12 @@ class ModPaths
 
 	inline static public function getModVoices(song:String, mod:String)
 	{
-		return file('songs/${song.toLowerCase()}/Voices.$SOUND_EXT', mod);
+		return file('mods/$mod/songs/${song.toLowerCase()}/Voices.$SOUND_EXT', mod);
 	}
 
 	inline static public function getModInst(song:String, mod:String)
 	{
-		return file('songs/${song.toLowerCase()}/Inst.$SOUND_EXT', mod);
+		return file('mods/$mod/songs/${song.toLowerCase()}/Inst.$SOUND_EXT', mod);
 	}
 
 	inline static public function getModImage(key:String, mod:String)
