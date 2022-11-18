@@ -297,7 +297,9 @@ class StoryMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 
 				grpWeekText.members[curWeek].startFlashing();
-				grpWeekCharacters.members[1].animation.play('bfConfirm');
+				if (grpWeekCharacters.members[1].animation.exists('bfConfirm')) {
+					grpWeekCharacters.members[1].animation.play('bfConfirm');					
+				}
 				stopspamming = true;
 			}
 
@@ -386,9 +388,21 @@ class StoryMenuState extends MusicBeatState
 
 	function updateText()
 	{
-		grpWeekCharacters.members[0].animation.play(weekCharacters[curWeek][0]);
-		grpWeekCharacters.members[1].animation.play(weekCharacters[curWeek][1]);
-		grpWeekCharacters.members[2].animation.play(weekCharacters[curWeek][2]);
+		/*for (i in 0...grpWeekText.members.length) {
+			// grpWeekCharacters.members[0].animation.play(weekCharacters[curWeek][0]);
+			// grpWeekCharacters.members[1].animation.play(weekCharacters[curWeek][1]);
+			// grpWeekCharacters.members[2].animation.play(weekCharacters[curWeek][2]);
+			for (j in 0...2) {
+				if (grpWeekCharacters.members[i] != null && grpWeekCharacters.members[i].animation.exists(weekCharacters[curWeek][j]))
+					grpWeekCharacters.members[i].animation.play(weekCharacters[curWeek][j]);
+			}
+		}*/
+		if (grpWeekCharacters.members[0] != null)
+			grpWeekCharacters.members[0].animation.play(weekCharacters[curWeek][0]);
+		if (grpWeekCharacters.members[1] != null)
+			grpWeekCharacters.members[1].animation.play(weekCharacters[curWeek][1]);
+		if (grpWeekCharacters.members[2] != null)
+			grpWeekCharacters.members[2].animation.play(weekCharacters[curWeek][2]);
 		txtTracklist.text = "Tracks\n";
 
 		switch (grpWeekCharacters.members[0].animation.curAnim.name)
