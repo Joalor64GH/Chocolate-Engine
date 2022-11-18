@@ -226,7 +226,7 @@ class ModCore
 	{
 		return {
 			assetLibraryPaths: [
-				"songs" => "songs", "data" => "data", "fonts" => "fonts", "characters" => "characters", "scripts" => "scripts", "cutscenes" => "cutscenes",
+				"songs" => "songs", "data" => "data", "fonts" => "fonts", "characters" => "characters", "scripts" => "scripts",
 				"locales" => "locales", "music" => "music", "sounds" => "sounds", "images" => "images", "videos" => "videos"
 			]
 		}
