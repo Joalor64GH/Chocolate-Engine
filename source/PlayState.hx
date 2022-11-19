@@ -1522,7 +1522,7 @@ class PlayState extends MusicBeatState
 						// note.x = (note.ID * note.width * 1.025 + 300) - 50 * Math.sin(elapsed * 1 * Conductor.bpm/500 + note.ID * note.width) - 100;
 						ModCharts.circleLoop(strumLineNotes.members[note], 100, 3);
 					}*/
-				throw new haxe.exceptions.NotImplementedException();
+				throw new haxe.exceptions.NotImplementedException(); // bro idk whats going on but only linux debug is compiling
 			}
 		}
 
