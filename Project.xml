@@ -98,7 +98,7 @@
 	<haxelib name="linc_luajit" if="LUA_EXTENSION"/>
 	<haxelib name="hxvm-luajit" if="LUA_EXTENSION"/>
 	<haxelib name="hxCodec" if="VIDEO_PLUGIN"/>
-	<haxelib name="polymod" if="MODS_ALLOWED"/>
+	<haxelib name="polymod-mastereric" rename="polymod" if="MODS_ALLOWED"/>
 	<!--<haxelib name="firetounge" />-->
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="hxcpp-debug-server" if="desktop"/>
