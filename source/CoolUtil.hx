@@ -81,6 +81,7 @@ class CoolUtil
 		return daString;
 	}
 
+	@:deprecated('this is just stupid & unescessary')
 	public static function evenCoolerTextFile(path:String):Array<String>
 	{
 		#if MODS_ALLOWED
