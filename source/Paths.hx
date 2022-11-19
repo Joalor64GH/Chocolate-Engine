@@ -113,6 +113,11 @@ class Paths
 
 	inline static public function lua(key:String)
 	{
+		return file('scripts/$key.SCRIPT_EXT');
+	}
+
+	inline static public function luaGlobal(key:String)
+	{
 		return file('$key.SCRIPT_EXT');
 	}
 
@@ -169,9 +174,24 @@ class ModPaths
 		return file('data/$key.xml', mod);
 	}
 
+	inline static public function getModGlobalTxt(key:String, ?mod:String)
+	{
+		return file('$key.txt', mod);
+	}
+
+	inline static public function getModGlobalXml(key:String, mod:String)
+	{
+		return file('$key.xml', mod);
+	}
+
 	inline static public function getModJson(key:String, mod:String)
 	{
 		return file('data/$key.json', mod);
+	}
+
+	inline static public function getModGlobalJson(key:String, mod:String)
+	{
+		return file('$key.json', mod);
 	}
 
 	static public function getModSound(key:String, mod:String)
@@ -204,12 +224,12 @@ class ModPaths
 
 	inline static public function getModVoices(song:String, mod:String)
 	{
-		return file('songs/${song.toLowerCase()}/Voices.$SOUND_EXT', mod);
+		return file('mods/$mod/songs/${song.toLowerCase()}/Voices.$SOUND_EXT', mod);
 	}
 
 	inline static public function getModInst(song:String, mod:String)
 	{
-		return file('songs/${song.toLowerCase()}/Inst.$SOUND_EXT', mod);
+		return file('mods/$mod/songs/${song.toLowerCase()}/Inst.$SOUND_EXT', mod);
 	}
 
 	inline static public function getModImage(key:String, mod:String)
@@ -223,6 +243,11 @@ class ModPaths
 	}
 
 	inline static public function getModLua(key:String, mod:String)
+	{
+		return file('scripts/$key.SCRIPT_EXT', mod);
+	}
+
+	inline static public function getModGlobalLua(key:String, mod:String)
 	{
 		return file('$key.SCRIPT_EXT', mod);
 	}
