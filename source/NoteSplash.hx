@@ -30,7 +30,7 @@ class NoteSplash extends FlxSprite
 	{
 		setPosition(x, y);
 		alpha = 0.6;
-		var da:Int = int == null ? FlxG.random.int(0, 1) : int;
+		var da:Null<Int> = int == null ? FlxG.random.int(0, 1) : int;
 		animation.play('note' + Notedata + '-' + da, true);
 		// animation.curAnim.frameRate += FlxG.random.int(-2, 2);
 		updateHitbox();
