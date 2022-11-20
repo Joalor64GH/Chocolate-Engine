@@ -1097,7 +1097,6 @@ class PlayState extends MusicBeatState
 					}
 					new FlxTimer().start(2.085, function(tmr:FlxTimer) 
 					{
-						sky.x += 20;
 						FlxG.camera.zoom = 0.78;
 					});
 				});
