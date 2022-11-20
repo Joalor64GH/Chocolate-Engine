@@ -83,7 +83,7 @@ class GameOverSubstate extends MusicBeatSubstate
 			if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished && !playingDeathSound)
 			{
 				playingDeathSound = true;
-				bf.startedDeath = true;
+				// bf.startedDeath = true;
 				coolStartDeath(0.2);
 				FlxG.sound.play(Paths.sound('week7/jeffGameover/jeffGameover-' + randomGameover), 1, false, null, true, function()
 				{
@@ -91,8 +91,10 @@ class GameOverSubstate extends MusicBeatSubstate
 				});
 			}
 		}
-		else if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
+		else if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished && !playingDeathSound)
 		{
+			playingDeathSound = true;
+			// bf.startedDeath = true;
 			coolStartDeath();
 		}
 
@@ -138,6 +140,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	inline function coolStartDeath(?volume:Float = 1):Void
 	{
 		FlxG.sound.playMusic(Paths.music(loopSoundName), volume);
+		bf.startedDeath = true;
 	}
 
 	override function destroy(){
