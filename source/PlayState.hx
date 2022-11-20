@@ -54,7 +54,7 @@ import openfl.events.KeyboardEvent;
 import Character;
 import LLua;
 import states.*;
-import animateatlas.*;
+import animateatlas.AtlasFrameMaker;
 import animate.FlxAnimate;
 import video.FlxVideo;
 import ModsMenuState;
@@ -1137,7 +1137,6 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(FlxG.camera, {zoom: 1.4}, 0.4, {ease: FlxEase.elasticOut});
 					});
 					boyfriend.playAnim('singUPmiss');
-					sky.x -= 20;
 					foregroundSprites.visible = false;
 					new FlxTimer().start(1.2, function(tmr:FlxTimer)
 					{
