@@ -19,10 +19,10 @@ class FlxAnimate extends FlxSymbol
 	override public function new(x:Float, y:Float)
 	{
 		@:privateAccess {
-			coolParse = Json.parse(Assets.getText(Paths.file('images/tightBars/Animation.json')));
+			coolParse = Json.parse(Assets.getText(Paths.file('images/week7/tightBars/Animation.json')));
 			coolParse.AN.TL.L.reverse();
 			super(x, y, coolParse);
-			frames = fromAnimate(Paths.file('images/tightBars/spritemap1.png'), Paths.file('images/tightBars/spritemap1.json'));
+			frames = fromAnimate(Paths.file('images/week7/tightBars/spritemap1.png'), Paths.file('images/week7/tightBars/spritemap1.json'));
 		}
 	}
 
