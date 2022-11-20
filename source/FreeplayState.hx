@@ -15,7 +15,7 @@ import lime.utils.Assets;
 #if sys
 import sys.io.File;
 import sys.FileSystem;
-import polymod.backends.PolymodAssets;
+import polymod.backends.PolymodAssets; // mac is having a stroke rn
 #end
 
 using StringTools;

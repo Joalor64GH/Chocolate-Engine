@@ -15,6 +15,9 @@ class GameOverSubstate extends MusicBeatSubstate
 
 	var stageSuffix:String = "";
 
+	var randomGameover:Int = 1;
+	var playingDeathSound:Bool = false;
+
 	public function new(x:Float, y:Float)
 	{
 		var daStage = PlayState.curStage;
