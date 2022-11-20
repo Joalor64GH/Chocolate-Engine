@@ -54,6 +54,7 @@ import openfl.events.KeyboardEvent;
 import Character;
 import LLua;
 import states.*;
+import animateatlas.*;
 import animate.FlxAnimate;
 import video.FlxVideo;
 import ModsMenuState;
@@ -181,6 +182,8 @@ class PlayState extends MusicBeatState
 
 	var gfCutsceneLayer:FlxTypedGroup<FlxAnimate>;
 	var bfTankCutsceneLayer:FlxTypedGroup<FlxAnimate>;
+	var gfCutsceneLayerFlxSprite:FlxTypedGroup<FlxSprite>;
+	var bfTankCutsceneLayerFlxSprite:FlxTypedGroup<FlxSprite>;
 
 	override public function create()
 	{
@@ -752,6 +755,12 @@ class PlayState extends MusicBeatState
 		bfTankCutsceneLayer = new FlxTypedGroup<FlxAnimate>();
 		add(bfTankCutsceneLayer);
 
+		gfCutsceneLayerFlxSprite = new FlxTypedGroup<FlxSprite>();
+		add(gfCutsceneLayerFlxSprite);
+
+		bfTankCutsceneLayerFlxSprite = new FlxTypedGroup<FlxSprite>();
+		add(bfTankCutsceneLayerFlxSprite);
+
 		// Shitty layering but whatev it works LOL
 		if (curStage == 'limo')
 			add(limo);
@@ -963,7 +972,6 @@ class PlayState extends MusicBeatState
 								dad.visible = true;
 								tankTalk1.destroy();
 							});
-							cameraMovement();
 							startCountdown();
 							camHUD.visible = true;
 						});
@@ -1089,7 +1097,7 @@ class PlayState extends MusicBeatState
 					}
 					new FlxTimer().start(2.085, function(tmr:FlxTimer) 
 					{
-						tankSky.x += 20;
+						sky.x += 20;
 						FlxG.camera.zoom = 0.78;
 					});
 				});
@@ -1129,7 +1137,7 @@ class PlayState extends MusicBeatState
 						FlxTween.tween(FlxG.camera, {zoom: 1.4}, 0.4, {ease: FlxEase.elasticOut});
 					});
 					boyfriend.playAnim('singUPmiss');
-					tankSky.x -= 20;
+					sky.x -= 20;
 					foregroundSprites.visible = false;
 					new FlxTimer().start(1.2, function(tmr:FlxTimer)
 					{
@@ -1154,7 +1162,6 @@ class PlayState extends MusicBeatState
 							dad.visible = true;
 							tankTalk2.destroy();
 						});
-						cameraMovement();
 						startCountdown();
 						camHUD.visible = true;
 					});
