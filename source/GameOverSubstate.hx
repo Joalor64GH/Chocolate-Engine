@@ -18,10 +18,15 @@ class GameOverSubstate extends MusicBeatSubstate
 	var randomGameover:Int = 1;
 	var playingDeathSound:Bool = false;
 
+	public static var loopSoundName:String = 'gameOver';
+
+	public static var instance:GameOverSubstate;
+
 	public function new(x:Float, y:Float)
 	{
 		var daStage = PlayState.curStage;
 		var daBf:String = '';
+		instance = this;
 		switch (daStage)
 		{
 			case 'school | schoolEvil':
@@ -86,14 +91,14 @@ class GameOverSubstate extends MusicBeatSubstate
 				});
 			}
 		}
-		else if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
+		else if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 		{
-			FlxG.camera.follow(camFollow, LOCKON, 0.01);
+			coolStartDeath();
 		}
 
-		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
+		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
 		{
-			FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
+			FlxG.camera.follow(camFollow, LOCKON, 0.01);
 		}
 
 		if (FlxG.sound.music.playing)
@@ -117,6 +122,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			isEnding = true;
 			bf.playAnim('deathConfirm', true);
+			bf.startedDeath = false;
 			FlxG.sound.music.stop();
 			FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
@@ -127,5 +133,15 @@ class GameOverSubstate extends MusicBeatSubstate
 				});
 			});
 		}
+	}
+
+	inline function coolStartDeath(?volume:Float = 1):Void
+	{
+		FlxG.sound.playMusic(Paths.music(loopSoundName), volume);
+	}
+
+	override function destroy(){
+		instance = null;
+		super.destroy();
 	}
 }
