@@ -62,3 +62,5 @@ desktop.ini
 !.vscode/launch.json
 !.vscode/extensions.json
 .vs/*
+username.json
+follower.json
