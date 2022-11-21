@@ -10,7 +10,6 @@ class Paths
 {
 	inline public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	public static final VIDEO_EXTS = ['mp4', 'webm'];
-	inline public static final SCRIPT_EXT = "lua";
 
 	public static var currentLevel:String;
 
@@ -113,12 +112,12 @@ class Paths
 
 	inline static public function lua(key:String)
 	{
-		return file('scripts/$key.SCRIPT_EXT');
+		return file('scripts/$key.lua');
 	}
 
 	inline static public function luaGlobal(key:String)
 	{
-		return file('$key.SCRIPT_EXT');
+		return file('$key.lua');
 	}
 
 	inline static public function charJson(key:String)
@@ -157,7 +156,6 @@ class ModPaths
 
 	private static final SOUND_EXT = Paths.SOUND_EXT;
 	private static final VIDEO_EXTS = Paths.VIDEO_EXTS;
-	private static final SCRIPT_EXT = Paths.SCRIPT_EXT;
 
 	inline static public function modIconImage(key:String, mod:String)
 	{
@@ -244,12 +242,12 @@ class ModPaths
 
 	inline static public function getModLua(key:String, mod:String)
 	{
-		return file('scripts/$key.SCRIPT_EXT', mod);
+		return file('scripts/$key.lua', mod);
 	}
 
 	inline static public function getModGlobalLua(key:String, mod:String)
 	{
-		return file('$key.SCRIPT_EXT', mod);
+		return file('$key.lua', mod);
 	}
 
 	inline static public function getModCharjson(key:String, mod:String)
