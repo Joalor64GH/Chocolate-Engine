@@ -5,10 +5,9 @@
     "pauseScoreTxt": "Score:",
     "resumeSong": "Reanudar",
 	"restartSong": "Reiniciar Canción",
-	"exitFreeplay": "Salir al juego libre",
     "gotoOptions": "Opciones",
-	"exitMenu": "Salir al menú principal",
-	"exitGame": "Cerrar Juego",
+    "exitFreeplay": "Salir al juego libre",
+	"exitMenu": "Salir al menú",
 	"deathsText": "Bola azul:",
 
     "scoreTxt": "Puntaje:",

@@ -13,10 +13,9 @@ typedef LangDataDef =
 	var pauseScoreTxt:String;
 	var resumeSong:String;
 	var restartSong:String;
-	var exitFreeplay:String;
 	var gotoOptions:String;
+	var exitFreeplay:String;
 	var exitMenu:String;
-	var exitGame:String;
 	var deathsText:String;
 	// HUD INFO BAR
 	var scoreTxt:String;
@@ -38,6 +37,6 @@ class ChocoLocales
 
 	public static function getLocale(language:String = 'english')
 	{
-		curLang = haxe.Json.parse(Paths.getTextFromFile('locales/$language/languageData.json'));
+		curLang = haxe.Json.parse(Paths.locales('locales/$language/languageData.json'));
 	}
 }
