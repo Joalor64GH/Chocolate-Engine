@@ -483,14 +483,14 @@ class Character extends FlxSprite
 				animation.addByPrefix('bfCatch', 'BF catches GF');
 
 				addOffset('idle');
-				addOffset("singUP");
-				addOffset("singRIGHT");
-				addOffset("singLEFT");
-				addOffset("singDOWN");
-				addOffset("singUPmiss");
-				addOffset("singRIGHTmiss");
-				addOffset("singLEFTmiss");
-				addOffset("singDOWNmiss");
+				addOffset("singUP", -29, 10);
+				addOffset("singRIGHT", -41, 23);
+				addOffset("singLEFT", 12, 7);
+				addOffset("singDOWN", -10, -10);
+				addOffset("singUPmiss", -29, 10);
+				addOffset("singRIGHTmiss", -41, 23);
+				addOffset("singLEFTmiss", 12, 7);
+				addOffset("singDOWNmiss", -10, -10);
 				addOffset("bfCatch");
 
 				playAnim('idle');
