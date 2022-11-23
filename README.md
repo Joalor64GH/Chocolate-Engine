@@ -43,6 +43,8 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 * [Manux123](https://github.com/Manux123) - Cool Engine Code
 * [MissingTextureMan101](https://twitter.com/OfficialMTM101) - Funkin Strawberry Code
 * [Lars Doucet](https://github.com/larsiusprime) - Polymod
+* [Angel Bot](https://github.com/AngelDTF) - Reverse engineered Week 7 code
+* [AnimatingLegend](https://github.com/AnimatingLegend) - Some Week 7 code
 * [Ninjamuffin99](https://github.com/ninjamuffin99) - The Base Game (WOULD NOT BE POSSIBLE WITHOUT HIM)
 
 ## Building
