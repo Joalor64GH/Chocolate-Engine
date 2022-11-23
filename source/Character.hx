@@ -491,7 +491,7 @@ class Character extends FlxSprite
 				addOffset("singRIGHTmiss", -41, 23);
 				addOffset("singLEFTmiss", 12, 7);
 				addOffset("singDOWNmiss", -10, -10);
-				addOffset("bfCatch");
+				addOffset("bfCatch", 0, 91);
 
 				playAnim('idle');
 
