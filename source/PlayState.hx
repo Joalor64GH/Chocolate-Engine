@@ -1381,6 +1381,10 @@ class PlayState extends MusicBeatState
 						}
 					});
 					FlxG.sound.play(Paths.sound('introGo'), 0.6);
+					// testing
+					strumLineNotes.forEachAlive(function(strum:FlxSprite){
+						FlxTween.tween(strum, {angle: 360}, Conductor.crochet / 1000 * 2, {ease: FlxEase.cubeInOut});
+					});	
 			}
 
 			swagCounter++;
