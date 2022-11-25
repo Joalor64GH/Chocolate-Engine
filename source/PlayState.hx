@@ -1384,7 +1384,7 @@ class PlayState extends MusicBeatState
 					// testing
 					strumLineNotes.forEachAlive(function(strum:FlxSprite){
 						FlxTween.tween(strum, {angle: 360}, Conductor.crochet / 1000 * 2, {ease: FlxEase.cubeInOut});
-					});	
+					});
 			}
 
 			swagCounter++;
