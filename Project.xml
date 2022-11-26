@@ -42,7 +42,7 @@
 
 	<assets path="assets/fonts" embed='true'/>
 	<assets path="assets/" rename="assets" exclude="*.ogg" if="web"/>
-	<assets path="assets/" rename="assets" exclude="*.mp3" unless="web"/>
+	<assets path="assets/" rename="assets" exclude="*.mp3|*.mp4" unless="web"/>
 
 	<!--CUSTOM DEFINES-->
 	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
@@ -51,6 +51,8 @@
 	<define name="LUA_EXTENSION" if="desktop" />
 	<define name="CRASH_HANDLER" if="desktop release" />
 	<define name="MODCORE_ALLOWED" if="MODS_ALLOWED" />
+	<define name="CHOCO_WATERMARKS"/> <!-- DELETE THIS TO REMOVE WATERMARKS/DEV NAMES ON TITLE SCREEN -->
+	<define name="VANILLA_WATERMARKS" unless="CHOCO_WATERMARKS"/> <!-- DELETE THIS TO REMOVE WATERMARKS/DEV NAMES ON TITLE SCREEN -->
 
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
@@ -68,9 +70,9 @@
 		<library name="songs"    preload="false" />
 	</section>
 	
-	<assets path="assets/videos"   library="videos"   if="VIDEO_PLUGIN"/>
+	<assets path="assets/videos"   library="videos"   if="VIDEO_PLUGIN || WEBM_EXTENSION"/>
 	<assets path="assets/songs"    library="songs"    exclude="*.ogg" if="web"/>
-	<assets path="assets/songs"    library="songs"    exclude="*.mp3" unless="web"/>
+	<assets path="assets/songs"    library="songs"    exclude="*.mp3|*.mp4" unless="web"/>
 
 	<section if="MODS_ALLOWED">
 	        <assets path='art/mod.url' rename='How to make a mod.url' if="windows"/>
@@ -128,9 +130,6 @@
 	<haxedef name="POLYMOD_MOD_PACK_FILE" value="_polymod_pack.txt" />
 	<haxedef name="POLYMOD_MOD_METADATA_FILE" value="_polymod_meta.json" />
 	<haxedef name="POLYMOD_MOD_ICON_FILE" value="_polymod_icon.png" />
-	<haxedef name="POLYMOD_MOD_SOFTWARE_LICENSE" value="LICENSE.txt" />
-	<haxedef name="POLYMOD_MOD_ASSET_LICENSE" value="ASSET_LICENSE.txt" />
-	<haxedef name="POLYMOD_MOD_CODE_LICENSE" value="CODE_LICENSE" />
 	<haxedef name="POLYMOD_DEBUG" if="debug" />
 
 	<!-- HTML5 hasn't been tested. Also I took this from MemeHoovy Engine.-->

@@ -264,7 +264,7 @@ class TitleState extends MusicBeatState
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = true;
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Chocolate Engine v1.2.0 (FNF 0.2.7.1)" #if debug + " DEBUG BUILD" #end, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Chocolate Engine v1.2.0 (FNF 0.2.8)" #if debug + " DEBUG BUILD" #end, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -427,8 +427,12 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
+			    #if CHOCO_WATERMARKS
 				var teamStuff = Assets.getText(Paths.txt('team')).split('--');
 				createCoolText(teamStuff);
+				#elseif VANILLA_WATERMARKS
+				createCoolText(['ninjamuffin99', 'PhantomArcade', 'KawaiSprite', 'Evilsk8er']);
+				#end
 			// credTextShit.visible = true;
 			case 3:
 				addMoreText('present');
@@ -440,7 +444,11 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
+			    #if CHOCO_WATERMARKS
 				createCoolText(['Not in association', 'with']);
+				#elseif VANILLA_WATERMARKS
+				createCoolText(['In association', 'with']);
+				#end
 			case 7:
 				addMoreText('newgrounds');
 				ngSpr.visible = true;
@@ -464,13 +472,24 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
 			case 13:
+			    #if CHOCO_WATERMARKS
 				addMoreText(gameName[0]);
+				#elseif VANILLA_WATERMARKS
+				addMoreText('Friday');
+				#end
 			// credTextShit.visible = true;
 			case 14:
+			    #if CHOCO_WATERMARKS
 				addMoreText(gameName[1]);
+				#elseif VANILLA_WATERMARKS
+				addMoreText('Night');
 			// credTextShit.text += '\nNight';
 			case 15:
+			    #if CHOCO_WATERMARKS
 				addMoreText(gameName[2]);
+				#elseif VANILLA_WATERMARKS
+				addMoreText('Funkin');
+				#end
 			// credTextShit.text += '\nFunkin';
 
 			case 16:
