@@ -2,6 +2,7 @@ package;
 
 /**
 	@author BeastlyGhost
+	@see: https://github.com/BeastlyGhost/Forever-Engine-Feather
 **/
 typedef LangDataDef =
 {
