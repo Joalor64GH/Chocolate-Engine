@@ -6,6 +6,7 @@ package cpp;
 #include <windows.h>
 #include <winuser.h>
 #include <iostream>
+#include <cstdlib>
 ')
 
 class CPPWindows
@@ -24,6 +25,15 @@ class CPPWindows
     ')
     public static function getRAM():UInt64 {
         return 0;
+    }
+
+    @:functionCode('
+    srand((unsigned) time(NULL));
+    int random = rand();
+    return 1;
+    ')
+    public static function randomNumber():UInt64 {
+        return 1;
     }
 }
 #end
