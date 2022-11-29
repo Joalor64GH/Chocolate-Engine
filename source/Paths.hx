@@ -67,6 +67,7 @@ class Paths
 		return sound(key + FlxG.random.int(min, max));
 	}
 
+    #if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	inline static public function video(key:String)
 	{
 		for (i in VIDEO_EXTS)
@@ -79,6 +80,7 @@ class Paths
 		}
 		return 'assets/videos/$key.mp4';
 	}
+	#end
 
 	inline static public function music(key:String)
 	{
@@ -202,6 +204,7 @@ class ModPaths
 		return getModSound(key + FlxG.random.int(min, max), mod);
 	}
 
+    #if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	inline static public function getModVideo(key:String, mod:String)
 	{
 		for (i in VIDEO_EXTS)
@@ -214,6 +217,7 @@ class ModPaths
 		}
 		return 'mods/$mod/videos/$key.mp4';
 	}
+	#end
 
 	inline static public function getModMusic(key:String, mod:String)
 	{
