@@ -127,6 +127,16 @@ class Paths
 		return file('characters/$key.json');
 	}
 
+	inline static public function frag(key:String)
+	{
+		return file('shaders/$key.frag');
+	}
+
+	inline static public function vert(key:String)
+	{
+		return file('shaders/$key.vert');
+	}
+
 	inline static public function getSparrowAtlas(key:String)
 	{
 		return FlxAtlasFrames.fromSparrow(image(key), file('images/$key.xml'));
@@ -262,6 +272,16 @@ class ModPaths
 	inline static public function getModLocales(key:String, mod:String)
 	{
 		return file('locales/$key/languageData.json', mod);
+	}
+
+	inline static public function getModFrag(key:String, mod:String)
+	{
+		return file('shaders/$key.frag', mod);
+	}
+
+	inline static public function getModVert(key:String, mod:String)
+	{
+		return file('shaders/$key.vert', mod);
 	}
 
 	inline static public function checkMod(mod:String)

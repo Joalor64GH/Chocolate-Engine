@@ -60,6 +60,11 @@ import video.FlxVideo;
 import ModsMenuState;
 import FunkinLua;
 
+#if !flash 
+import flixel.addons.display.FlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+#end
+
 using StringTools;
 
 class PlayState extends MusicBeatState

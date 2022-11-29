@@ -44,7 +44,7 @@
 	<assets path="assets/" rename="assets" exclude="*.ogg" if="web"/>
 	<assets path="assets/" rename="assets" exclude="*.mp3|*.mp4" unless="web"/>
 
-	<!--CUSTOM DEFINES-->
+	<!-- CUSTOM DEFINES -->
 	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
 	<define name="WEBM_EXTENSION" if="windows || mac"/>
 	<define name="MODS_ALLOWED" if="desktop" unless="mac" />
