@@ -1,7 +1,7 @@
 package;
 
-import shaders.BuildingShaders;
-import shaders.ColorSwap;
+import shaders.BuildingShader;
+import shaders.ColorSwapShader;
 #if desktop
 import Discord.DiscordClient;
 import sys.thread.Thread;
