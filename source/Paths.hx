@@ -120,7 +120,7 @@ class Paths
 		return file('$key.lua');
 	}
 
-	inline static public function charJson(key:String)
+	inline static public function char(key:String)
 	{
 		return file('characters/$key.json');
 	}
@@ -250,7 +250,7 @@ class ModPaths
 		return file('$key.lua', mod);
 	}
 
-	inline static public function getModCharjson(key:String, mod:String)
+	inline static public function getModChar(key:String, mod:String)
 	{
 		return file('characters/$key.json', mod);
 	}

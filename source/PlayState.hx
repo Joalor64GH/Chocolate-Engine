@@ -58,6 +58,7 @@ import animateatlas.AtlasFrameMaker;
 import animate.FlxAnimate;
 import video.FlxVideo;
 import ModsMenuState;
+import FunkinLua;
 
 using StringTools;
 
