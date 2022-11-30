@@ -2,10 +2,18 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="FNF: Chocolate Engine" packageName="com.joalor64gh.choco" package="com.joalor64gh.choco" main="Main" version="1.2.0" company="Joalor64GH" />
+    <!-- Application Window Title and Executable File Name -->
+	<app title="FNF: Chocolate Engine" />
+
         <app file="ChocoWIN" if="windows" />
 	<app file="ChocoAPP" if="linux" />
 	<app file="ChocoMAC" if="mac" />
+
+	<!-- Package Name (Android, Mac) -->
+	<app packageName="com.joalor64gh.choco" package="com.joalor64gh.choco" />
+
+	<!-- Main Class State, Game Version, Company (save data) Name -->
+	<app main="Main" version="1.2.0" company="Joalor64GH" />
 
         <!-- NOTE TO SELF: DISABLE THIS IF ISSUES ARE FOUND -->
 	<haxedef name="LINC_LUA_RELATIVE_DYNAMIC_LIB"/> <!-- stable luas PUT AFTER FIRST LINE WITH APP NAME AND ETC -->
