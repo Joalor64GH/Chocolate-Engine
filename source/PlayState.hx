@@ -8,6 +8,7 @@ import polymod.fs.SysFileSystem;
 import Discord.DiscordClient;
 #end
 #if sys
+import Sys;
 import sys.io.File;
 import sys.FileSystem;
 #end
