@@ -139,6 +139,11 @@ class Paths
 		return file('shaders/$key.vert');
 	}
 
+	inline static public function module(key:String)
+	{
+		return file('libs/$key.lua');
+	}
+
 	inline static public function getSparrowAtlas(key:String)
 	{
 		return FlxAtlasFrames.fromSparrow(image(key), file('images/$key.xml'));
@@ -284,6 +289,11 @@ class ModPaths
 	inline static public function getModVert(key:String, mod:String)
 	{
 		return file('shaders/$key.vert', mod);
+	}
+
+	inline static public function getModule(key:String, mod:String)
+	{
+		return file('libs/$key.lua', mod);
 	}
 
 	inline static public function checkMod(mod:String)

@@ -77,7 +77,7 @@ class FunkinLua
 	public static var Function_Continue:Dynamic = 0;
 	public static var Function_StopLua:Dynamic = 2;
 
-	#if LUA_ALLOWED
+	#if LUA_EXTENSION
 	public var lua:State = null;
 	#end
 	public var camTarget:FlxCamera;
@@ -90,7 +90,7 @@ class FunkinLua
 
 	public var accessedProps:Map<String, Dynamic> = null;
 	public function new(script:String) {
-		#if LUA_ALLOWED
+		#if LUA_EXTENSION
 		lua = LuaL.newstate();
 		LuaL.openlibs(lua);
 		Lua.init_callbacks(lua);
@@ -1253,21 +1253,6 @@ class FunkinLua
 			}
 			PlayState.instance.addCharacterToList(name, charType);
 		});
-		Lua_helper.add_callback(lua, "precacheImage", function(name:String) {
-			Paths.addCustomGraphic(name);
-		});
-		Lua_helper.add_callback(lua, "precacheSound", function(name:String) {
-			CoolUtil.precacheSound(name);
-		});
-		Lua_helper.add_callback(lua, "precacheMusic", function(name:String) {
-			CoolUtil.precacheMusic(name);
-		});
-		Lua_helper.add_callback(lua, "triggerEvent", function(name:String, arg1:Dynamic, arg2:Dynamic) {
-			var value1:String = arg1;
-			var value2:String = arg2;
-			PlayState.instance.triggerEventNote(name, value1, value2);
-			//trace('Triggered event: ' + name + ', ' + value1 + ', ' + value2);
-		});
 
 		Lua_helper.add_callback(lua, "startCountdown", function(variable:String) {
 			PlayState.instance.startCountdown();
@@ -1299,47 +1284,6 @@ class FunkinLua
 		});
 		Lua_helper.add_callback(lua, "getSongPosition", function() {
 			return Conductor.songPosition;
-		});
-
-		Lua_helper.add_callback(lua, "getCharacterX", function(type:String) {
-			switch(type.toLowerCase()) {
-				case 'dad' | 'opponent':
-					return PlayState.instance.dadGroup.x;
-				case 'gf' | 'girlfriend':
-					return PlayState.instance.gfGroup.x;
-				default:
-					return PlayState.instance.bfGroup.x;
-			}
-		});
-		Lua_helper.add_callback(lua, "setCharacterX", function(type:String, value:Float) {
-			switch(type.toLowerCase()) {
-				case 'dad' | 'opponent':
-					PlayState.instance.dadGroup.x = value;
-				case 'gf' | 'girlfriend':
-					PlayState.instance.gfGroup.x = value;
-				default:
-					PlayState.instance.bfGroup.x = value;
-			}
-		});
-		Lua_helper.add_callback(lua, "getCharacterY", function(type:String) {
-			switch(type.toLowerCase()) {
-				case 'dad' | 'opponent':
-					return PlayState.instance.dadGroup.y;
-				case 'gf' | 'girlfriend':
-					return PlayState.instance.gfGroup.y;
-				default:
-					return PlayState.instance.bfGroup.y;
-			}
-		});
-		Lua_helper.add_callback(lua, "setCharacterY", function(type:String, value:Float) {
-			switch(type.toLowerCase()) {
-				case 'dad' | 'opponent':
-					PlayState.instance.dadGroup.y = value;
-				case 'gf' | 'girlfriend':
-					PlayState.instance.gfGroup.y = value;
-				default:
-					PlayState.instance.bfGroup.y = value;
-			}
 		});
 		Lua_helper.add_callback(lua, "cameraShake", function(camera:String, intensity:Float, duration:Float) {
 			cameraFromString(camera).shake(intensity, duration);
@@ -1860,7 +1804,7 @@ class FunkinLua
 			return FlxG.random.bool(chance);
 		});
 		Lua_helper.add_callback(lua, "startVideo", function(videoFile:String) {
-			#if VIDEOS_ALLOWED
+			#if VIDEO_PLUGIN
 			if(FileSystem.exists(Paths.video(videoFile))) {
 				PlayState.instance.startVideo(videoFile);
 				return true;
@@ -1877,8 +1821,8 @@ class FunkinLua
 			#end
 		});
 		Lua_helper.add_callback(lua, "startMP4orOtherFormatVideo", function(videoFile:String) {
-			#if VIDEOS_ALLOWED
-			if(FileSystem.exists(Paths.nonMP4video(videoFile))) {
+			#if VIDEO_PLUGIN
+			if(FileSystem.exists(ModPaths.getModVideo(videoFile))) {
 				PlayState.instance.startNonMP4Video(videoFile);
 				return true;
 			}
@@ -2452,8 +2396,8 @@ class FunkinLua
 			return true;
 		}
 
-		var foldersToCheck:Array<String> = [ModPaths.getModLua('shaders/')];
-		foldersToCheck.insert(0, ModPaths.getModLua('shaders/'));
+		var foldersToCheck:Array<String> = [ModPaths.getModFrag('shaders/')];
+		foldersToCheck.insert(0, ModPaths.getModFrag('shaders/'));
 		
 		for (folder in foldersToCheck)
 		{
@@ -2659,7 +2603,7 @@ class FunkinLua
 	}
 
 	public function luaTrace(text:String, ignoreCheck:Bool = false, deprecated:Bool = false) {
-		#if LUA_ALLOWED
+		#if LUA_EXTENSION
 		if(ignoreCheck || getBool('luaDebugMode')) {
 			if(deprecated && !getBool('luaDeprecatedWarnings')) {
 				return;
@@ -2672,7 +2616,7 @@ class FunkinLua
 
 	var lastCalledFunction:String = '';
 	public function call(func:String, args:Array<Dynamic>):Dynamic {
-		#if LUA_ALLOWED
+		#if LUA_EXTENSION
 		if(closed) return Function_Continue;
 
 		lastCalledFunction = func;
@@ -2728,7 +2672,7 @@ class FunkinLua
 		return coverMeInPiss;
 	}
 
-	#if LUA_ALLOWED
+	#if LUA_EXTENSION
 	function resultIsAllowed(leLua:State, leResult:Null<Int>) { //Makes it ignore warnings
 		switch(Lua.type(leLua, leResult)) {
 			case Lua.LUA_TNIL | Lua.LUA_TBOOLEAN | Lua.LUA_TNUMBER | Lua.LUA_TSTRING | Lua.LUA_TTABLE:
@@ -2739,7 +2683,7 @@ class FunkinLua
 	#end
 
 	public function set(variable:String, data:Dynamic) {
-		#if LUA_ALLOWED
+		#if LUA_EXTENSION
 		if(lua == null) {
 			return;
 		}
@@ -2749,7 +2693,7 @@ class FunkinLua
 		#end
 	}
 
-	#if LUA_ALLOWED
+	#if LUA_EXTENSION
 	public function getBool(variable:String) {
 		var result:String = null;
 		Lua.getglobal(lua, variable);
@@ -2767,7 +2711,7 @@ class FunkinLua
 	#end
 
 	public function stop() {
-		#if LUA_ALLOWED
+		#if LUA_EXTENSION
 		if(lua == null) {
 			return;
 		}
@@ -2899,7 +2843,6 @@ class HScript
 		interp.variables.set('game', PlayState.instance);
 		interp.variables.set('Paths', Paths);
 		interp.variables.set('Conductor', Conductor);
-		interp.variables.set('Prefs', Prefs);
 		interp.variables.set('Character', Character);
 		interp.variables.set('Alphabet', Alphabet);
 		interp.variables.set('CustomSubstate', CustomSubstate);
