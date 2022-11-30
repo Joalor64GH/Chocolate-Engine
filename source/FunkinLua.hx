@@ -14,9 +14,6 @@
  * limitations under the License.
  */
 
- // very wip
-    /*https://github.com/Gidk-g/extra-engine/blob/main/source/FunkinLua.hx*/
-
 package;
 
 #if LUA_EXTENSION
@@ -437,9 +434,9 @@ class FunkinLua
 			if(luaFile.endsWith(".lua"))cervix=luaFile;
 			var doPush = false;
 			#if MODS_ALLOWED
-			if(FileSystem.exists(ModPaths.getModLua(cervix)))
+			if(FileSystem.exists(ModPaths.file(cervix)))
 			{
-				cervix = ModPaths.getModLua(cervix);
+				cervix = ModPaths.file(cervix);
 				doPush = true;
 			}
 			else if(FileSystem.exists(cervix))
@@ -492,9 +489,9 @@ class FunkinLua
 			if(luaFile.endsWith(".lua"))cervix=luaFile;
 			var doPush = false;
 			#if MODS_ALLOWED
-			if(FileSystem.exists(ModPaths.getModLua(cervix)))
+			if(FileSystem.exists(ModPaths.file(cervix)))
 			{
-				cervix = ModPaths.getModLua(cervix);
+				cervix = ModPaths.file(cervix);
 				doPush = true;
 			}
 			else if(FileSystem.exists(cervix))
@@ -545,9 +542,9 @@ class FunkinLua
 			if(luaFile.endsWith(".lua"))cervix=luaFile;
 			var doPush = false;
 			#if MODS_ALLOWED
-			if(FileSystem.exists(ModPaths.getModLua(cervix)))
+			if(FileSystem.exists(ModPaths.file(cervix)))
 			{
-				cervix = ModPaths.getModLua(cervix);
+				cervix = ModPaths.file(cervix);
 				doPush = true;
 			}
 			else if(FileSystem.exists(cervix))
@@ -584,9 +581,9 @@ class FunkinLua
 			if(luaFile.endsWith(".lua"))cervix=luaFile;
 			var doPush = false;
 			#if MODS_ALLOWED
-			if(FileSystem.exists(ModPaths.getModLua(cervix)))
+			if(FileSystem.exists(ModPaths.file(cervix)))
 			{
-				cervix = ModPaths.getModLua(cervix);
+				cervix = ModPaths.file(cervix);
 				doPush = true;
 			}
 			else if(FileSystem.exists(cervix))
@@ -668,9 +665,9 @@ class FunkinLua
 			if(luaFile.endsWith(".lua"))cervix=luaFile;
 			var doPush = false;
 			#if MODS_ALLOWED
-			if(FileSystem.exists(ModPaths.getModLua(cervix)))
+			if(FileSystem.exists(ModPaths.file(cervix)))
 			{
-				cervix = ModPaths.getModLua(cervix);
+				cervix = ModPaths.file(cervix);
 				doPush = true;
 			}
 			else if(FileSystem.exists(cervix))
@@ -708,9 +705,9 @@ class FunkinLua
 			if(luaFile.endsWith(".lua"))cervix=luaFile;
 			var doPush = false;
 			#if MODS_ALLOWED
-			if(FileSystem.exists(ModPaths.getModLua(cervix)))
+			if(FileSystem.exists(ModPaths.file(cervix)))
 			{
-				cervix = ModPaths.getModLua(cervix);
+				cervix = ModPaths.file(cervix);
 				doPush = true;
 			}
 			else if(FileSystem.exists(cervix))
@@ -752,9 +749,9 @@ class FunkinLua
 			if(luaFile.endsWith(".lua"))cervix=luaFile;
 			var doPush = false;
 			#if MODS_ALLOWED
-			if(FileSystem.exists(ModPaths.getModLua(cervix)))
+			if(FileSystem.exists(ModPaths.file(cervix)))
 			{
-				cervix = ModPaths.getModLua(cervix);
+				cervix = ModPaths.file(cervix);
 				doPush = true;
 			}
 			else if(FileSystem.exists(cervix))
@@ -2134,10 +2131,6 @@ class FunkinLua
 			}
 			luaTrace('Save file not initialized: ' + name);
 		});
-		
-		Lua_helper.add_callback(lua, "getTextFromFile", function(path:String, ?ignoreModFolders:Bool = false) {
-			return Paths.getTextFromFile(path, ignoreModFolders);
-		});
 
 		// DEPRECATED, DONT MESS WITH THESE SHITS, ITS JUST THERE FOR BACKWARD COMPATIBILITY
 		Lua_helper.add_callback(lua, "luaSpriteMakeGraphic", function(tag:String, width:Int, height:Int, color:String) {
@@ -2396,8 +2389,8 @@ class FunkinLua
 			return true;
 		}
 
-		var foldersToCheck:Array<String> = [ModPaths.getModFrag('shaders/')];
-		foldersToCheck.insert(0, ModPaths.getModFrag('shaders/'));
+		var foldersToCheck:Array<String> = [Paths.file('shaders/')];
+		foldersToCheck.insert(0, ModPaths.file('shaders/'));
 		
 		for (folder in foldersToCheck)
 		{

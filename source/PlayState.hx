@@ -60,6 +60,7 @@ import animate.FlxAnimate;
 import video.FlxVideo;
 import ModsMenuState;
 import FunkinLua;
+import Paths;
 
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
@@ -84,25 +85,48 @@ class PlayState extends MusicBeatState
 
 	private var vocals:FlxSound;
 
-	private var dad:Character;
-	private var gf:Character;
-	private var boyfriend:Boyfriend;
+	public var dad:Character;
+	public var gf:Character;
+	public var boyfriend:Boyfriend;
 
-	private var notes:FlxTypedGroup<Note>;
-	private var unspawnNotes:Array<Note> = [];
+	public var notes:FlxTypedGroup<Note>;
+	public var unspawnNotes:Array<Note> = [];
 
-	private var strumLine:FlxSprite;
-	private var curSection:Int = 0;
+	public var strumLine:FlxSprite;
+	public var curSection:Int = 0;
 
-	private var camFollow:FlxObject;
+	public var camFollow:FlxObject;
+	public static var prevCamFollow:FlxObject;
 
-	private static var prevCamFollow:FlxObject;
+	#if (haxe >= "4.0.0")
+	public var boyfriendMap:Map<String, Boyfriend> = new Map();
+	public var dadMap:Map<String, Character> = new Map();
+	public var gfMap:Map<String, Character> = new Map();
+	public var variables:Map<String, Dynamic> = new Map();
+	public var modchartTweens:Map<String, FlxTween> = new Map<String, FlxTween>();
+	public var modchartSprites:Map<String, ModchartSprite> = new Map<String, ModchartSprite>();
+	public var modchartTimers:Map<String, FlxTimer> = new Map<String, FlxTimer>();
+	public var modchartSounds:Map<String, FlxSound> = new Map<String, FlxSound>();
+	public var modchartTexts:Map<String, ModchartText> = new Map<String, ModchartText>();
+	public var modchartSaves:Map<String, FlxSave> = new Map<String, FlxSave>();
+	#else
+	public var boyfriendMap:Map<String, Boyfriend> = new Map<String, Boyfriend>();
+	public var dadMap:Map<String, Character> = new Map<String, Character>();
+	public var gfMap:Map<String, Character> = new Map<String, Character>();
+	public var variables:Map<String, Dynamic> = new Map<String, Dynamic>();
+	public var modchartTweens:Map<String, FlxTween> = new Map();
+	public var modchartSprites:Map<String, ModchartSprite> = new Map();
+	public var modchartTimers:Map<String, FlxTimer> = new Map();
+	public var modchartSounds:Map<String, FlxSound> = new Map();
+	public var modchartTexts:Map<String, ModchartText> = new Map();
+	public var modchartSaves:Map<String, FlxSave> = new Map();
+	#end
 
-	private var strumLineNotes:FlxTypedGroup<FlxSprite>;
-	private var playerStrums:FlxTypedGroup<FlxSprite>;
+	public var strumLineNotes:FlxTypedGroup<FlxSprite>;
+	public var playerStrums:FlxTypedGroup<FlxSprite>;
 
-	private var camZooming:Bool = false;
-	private var curSong:String = "";
+	public var camZooming:Bool = false;
+	public var curSong:String = "";
 
 	private var gfSpeed:Int = 1;
 	private var health:Float = 1;
@@ -122,6 +146,8 @@ class PlayState extends MusicBeatState
 	public var camGame:FlxCamera;
 
 	var dialogue:Array<String> = ['strange code', '>:]'];
+
+	public var isDead:Bool = false; //Don't mess with this on Lua!!!
 
 	var halloweenBG:FlxSprite;
 	var isHalloween:Bool = false;
@@ -145,8 +171,8 @@ class PlayState extends MusicBeatState
 
 	public var songScore:Int = 0;
 
-	var scoreTxt:FlxText;
-	var missesTxt:FlxText;
+	public var scoreTxt:FlxText;
+	public var missesTxt:FlxText;
 	var chocoTxt:FlxText;
 
 	public var deaths:Int = 0;
@@ -173,14 +199,14 @@ class PlayState extends MusicBeatState
 
 	public var curModchart:String = '';
 
-	private var singAnimations:Array<String> = [
+	public var singAnimations:Array<String> = [
 		'singLEFT',
 		'singDOWN',
 		'singUP',
 		'singRIGHT' // im starting to frikin' like this idea
 	];
 
-	private var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
+	public var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
 	// week 7 shit
 	var tankWatchtower:BGSprite;
@@ -708,6 +734,40 @@ class PlayState extends MusicBeatState
 		}
 
 		boyfriend = new Boyfriend(770, 450, SONG.player1);
+
+		#if LUA_EXTENSION
+		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();
+		luaDebugGroup.cameras = [camOther];
+		add(luaDebugGroup);
+		#end
+
+		if(doPush)
+			luaArray.push(new FunkinLua(luaFile));
+		#end
+
+		#if LUA_EXTENSION
+		var filesPushed:Array<String> = [];
+		var foldersToCheck:Array<String> = [Paths.file('scripts/')];
+
+		#if MODS_ALLOWED
+		foldersToCheck.insert(0, ModPaths.file('scripts/'));
+        #end
+
+		for (folder in foldersToCheck)
+		{
+			if(FileSystem.exists(folder))
+			{
+				for (file in FileSystem.readDirectory(folder))
+				{
+					if(file.endsWith('.lua') && !filesPushed.contains(file))
+					{
+						luaArray.push(new FunkinLua(folder + file));
+						filesPushed.push(file);
+					}
+				}
+			}
+		}
+		#end
 
 		// REPOSITIONING PER STAGE
 		switch (curStage)
