@@ -9,7 +9,9 @@ import haxe.Json;
 class Paths
 {
 	inline public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
+	#if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	public static final VIDEO_EXTS = ['mp4', 'webm'];
+	#end
 
 	public static var currentLevel:String;
 

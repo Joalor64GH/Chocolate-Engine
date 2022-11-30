@@ -44,6 +44,7 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
+		// TODO: why won't polymod work dammit
 		var initSonglist = CoolUtil.coolTextFile(Paths.txt('freeplaySonglist'));
 
 		if (Assets.exists(Paths.txt('freeplaySonglist')))

@@ -12,4 +12,6 @@ KadeDev:Extension WebM and Kade Engine Code
 Manux123:Cool Engine Code
 MissingTextureMan101:Funkin Strawberry Code
 Lars Doucet:Polymod
+Angel Bot:Reversed Engineered Week 7 Code
+AnimatingLegend:Some Week 7 Code
 Ninjamuffin99:Base Game
