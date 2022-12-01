@@ -2882,4 +2882,3 @@ class HScript
 	}
 }
 #end
-}
