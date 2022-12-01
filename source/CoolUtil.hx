@@ -30,6 +30,11 @@ class CoolUtil
 
 		return difficultyArray[PlayState.storyDifficulty];
 	}
+	public static function difficultyFromInt(i:Int, songName:String = '') {
+		if(difficultyMap.exists(Paths.formatToSongPath(songName)) && songName != '')
+			return difficultyMap.get(Paths.formatToSongPath(songName))[i];
+		return difficultyArray[i];
+	}
 
 	public static inline function browserLoad(url:String)
 	{
