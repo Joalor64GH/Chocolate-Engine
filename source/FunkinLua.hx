@@ -72,7 +72,7 @@ using StringTools;
 
 class FunkinLua
 {
-    public static var Function_Stop:Dynamic = 1;
+        public static var Function_Stop:Dynamic = 1;
 	public static var Function_Continue:Dynamic = 0;
 	public static var Function_StopLua:Dynamic = 2;
 
@@ -89,7 +89,7 @@ class FunkinLua
 
 	public var accessedProps:Map<String, Dynamic> = null;
 	public function new(script:String) {
-		#if LUA_ALLOWED
+		#if LUA_EXTENSION
 		lua = LuaL.newstate();
 		LuaL.openlibs(lua);
 		Lua.init_callbacks(lua);
@@ -167,7 +167,7 @@ class FunkinLua
 			set('defaultOpponentStrumY' + i, 0);
 		}
 
-        // Character shit
+                // Character shit
 		set('boyfriendName', PlayState.SONG.player1);
 		set('dadName', PlayState.SONG.player2);
 		set('gfName', PlayState.SONG.gfVersion);
@@ -186,3 +186,4 @@ class FunkinLua
 		set('buildTarget', 'unknown');
 		#end
 }
+#end
