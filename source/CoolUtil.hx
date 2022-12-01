@@ -23,17 +23,35 @@ class CoolUtil
 
 	public static var defaultDifficulty:String = 'NORMAL';
 
+	static inline function tosong(s:String):String
+		return Paths.formatToSongPath(s);
+
 	public static function difficultyString():String
 	{
-		if(difficultyMap.exists(Paths.formatToSongPath(PlayState.SONG.song)))
-			return difficultyMap.get(Paths.formatToSongPath(PlayState.SONG.song))[PlayState.storyDifficulty];
+		if(difficultyExists(PlayState.storyDifficulty, PlayState.SONG.song, false))
+			return difficultyMap.get(tosong(PlayState.SONG.song))[PlayState.storyDifficulty].toUpperCase();
 
-		return difficultyArray[PlayState.storyDifficulty];
+		if(difficultyArray[PlayState.storyDifficulty] != null)
+			return difficultyArray[PlayState.storyDifficulty].toUpperCase();
+
+		return defaultDifficulty.toUpperCase();
 	}
-	public static function difficultyFromInt(i:Int, songName:String = '') {
-		if(difficultyMap.exists(Paths.formatToSongPath(songName)) && songName != '')
-			return difficultyMap.get(Paths.formatToSongPath(songName))[i];
-		return difficultyArray[i];
+	public static function difficultyFromInt(i:Int, songName:String = ''):String // USE THIS!!
+	{
+		if(difficultyMap.exists(tosong(songName)) && tosong(songName) != '')
+			return difficultyMap.get(tosong(songName))[i].toUpperCase();
+
+		if(difficultyExists(i, songName))
+			return difficultyArray[i].toUpperCase();
+
+		return defaultDifficulty.toUpperCase();
+	}
+	public static function difficultyExists(i:Int, songName:String = '', tryArray:Bool = true):Bool
+	{
+		if(difficultyMap.exists(tosong(songName))) return (difficultyMap.get(tosong(songName))[i] != null);
+		if(tryArray) return (difficultyArray[i] != null);
+
+		return false;
 	}
 
 	public static inline function browserLoad(url:String)
