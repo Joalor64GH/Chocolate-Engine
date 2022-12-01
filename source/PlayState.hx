@@ -2170,7 +2170,7 @@ class PlayState extends MusicBeatState
 
 			storyPlaylist.remove(storyPlaylist[0]);
 
-			if (storyPlaylist.length <= 0)
+			if (storyPlaylist.length <= 0) // bye!
 			{
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 
@@ -2189,13 +2189,13 @@ class PlayState extends MusicBeatState
 				FlxG.save.data.weekUnlocked = StoryMenuState.weekUnlocked;
 				FlxG.save.flush();
 			}
-			else
+			else // NEXT SONG
 			{
 				var difficulty:String = "";
 
-				if (CoolUtil.defaultDifficulty.toLowerCase() != CoolUtil.difficultyArray[storyDifficulty].toLowerCase())
+				if (CoolUtil.defaultDifficulty.toLowerCase() != CoolUtil.difficultyFromInt(storyDifficulty, SONG.song).toLowerCase())
 				{
-					difficulty = '-' + CoolUtil.difficultyArray[storyDifficulty].toLowerCase();
+					difficulty = '-' + CoolUtil.difficultyFromInt(storyDifficulty, SONG.song).toLowerCase();
 				}
 
 				trace('LOADING NEXT SONG');
@@ -2222,7 +2222,7 @@ class PlayState extends MusicBeatState
 				LoadingState.loadAndSwitchState(new PlayState());
 			}
 		}
-		else
+		else // freeplay????
 		{
 			trace('WENT BACK TO FREEPLAY??');
 			FlxG.switchState(new FreeplayState());
