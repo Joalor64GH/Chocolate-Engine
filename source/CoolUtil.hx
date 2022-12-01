@@ -16,15 +16,22 @@ using StringTools;
 class CoolUtil
 {
 	public static var difficultyArray:Array<String> = ['EASY', 'NORMAL', 'HARD'];
+	public static var difficultyMap:Map<String, Array<String>> = [ // custom songs difficulties, (WIP!!)
+		//'lol' => ['FINALE', 'EXTREME', 'HELL'], // idk man, just fell like doing it
+		'default' => ['EASY', 'NORMAL', 'HARD']
+	];
 
 	public static var defaultDifficulty:String = 'NORMAL';
 
 	public static function difficultyString():String
 	{
+		if(difficultyMap.exists(Paths.formatToSongPath(PlayState.SONG.song)))
+			return difficultyMap.get(Paths.formatToSongPath(PlayState.SONG.song))[PlayState.storyDifficulty];
+
 		return difficultyArray[PlayState.storyDifficulty];
 	}
 
-	public static function browserLoad(url:String)
+	public static inline function browserLoad(url:String)
 	{
 		#if linux
 		Sys.command('/usr/bin/xdg-open', [url]);
@@ -35,7 +42,9 @@ class CoolUtil
 
 	public static inline function getScore():Int
 	{
-		return PlayState.instance.songScore;
+		if(PlayState.instance != null)
+			return PlayState.instance.songScore;
+		return -1;
 	}
 
 	public static inline function blueBalls():Int
@@ -43,7 +52,7 @@ class CoolUtil
 		return PlayState.instance.deaths;
 	}
 
-	public static function coolTextFile(path:String):Array<String>
+	public static inline function coolTextFile(path:String):Array<String>
 	{
 		var daList:Array<String> = Assets.getText(path).trim().split('\n');
 
@@ -55,7 +64,7 @@ class CoolUtil
 		return daList;
 	}
 
-	public static function coolStringFile(path:String):Array<String>
+	public static inline function coolStringFile(path:String):Array<String>
 	{
 		var daList:Array<String> = path.trim().split('\n');
 
@@ -81,7 +90,7 @@ class CoolUtil
 		return daString;
 	}
 
-	public static function numberArray(max:Int, min = 0):Array<Int>
+	public static inline function numberArray(max:Int, min = 0):Array<Int>
 	{
 		var dumbArray:Array<Int> = [];
 		for (i in min...max)
@@ -96,7 +105,7 @@ class CoolUtil
 		return FlxG.elapsed / (1 / 60) * ratio;
 	}
 
-	public static function createBG(x:Float, y:Float, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false, state:FlxState):FlxSprite
+	public static function createBG(x:Float = 0, y:Float = 0, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false, state:FlxState):FlxSprite
 	{
 		var bg:FlxSprite = new FlxSprite(x, y).loadGraphic(Paths.image(path));
 		bg.scrollFactor.set(scrollFactor, scrollFactor);
