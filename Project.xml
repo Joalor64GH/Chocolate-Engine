@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-    <!-- Application Window Title and Executable File Name -->
+        <!-- Application Window Title and Executable File Name -->
 	<app title="FNF: Chocolate Engine" />
 
         <app file="ChocoWIN" if="windows" />
