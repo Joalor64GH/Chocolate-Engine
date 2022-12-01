@@ -95,8 +95,8 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var separation:Float = 70;
-			var offset:Float = 30;
+			final separation:Float = 70;
+			final offset:Float = 30;
 			var songText:Alphabet = new Alphabet(0, (separation * i) + offset, songs[i].songName, true, false);
 			songText.isMenuItem = true;
 			songText.targetY = i;
@@ -169,9 +169,9 @@ class FreeplayState extends MusicBeatState
 
 		scoreText.text = "PERSONAL BEST:" + lerpScore;
 
-		var upP = controls.UP_P;
-		var downP = controls.DOWN_P;
-		var accepted = controls.ACCEPT;
+		final upP = controls.UP_P;
+		final downP = controls.DOWN_P;
+		final accepted = controls.ACCEPT;
 
 		var shifff:Int = 1;
 		if(FlxG.keys.pressed.SHIFT)
@@ -198,7 +198,7 @@ class FreeplayState extends MusicBeatState
 
 		if (accepted)
 		{
-			var poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
+			final poop:String = Highscore.formatSong(songs[curSelected].songName.toLowerCase(), curDifficulty);
 
 			trace(poop);
 
@@ -221,7 +221,7 @@ class FreeplayState extends MusicBeatState
 		if (curDifficulty >= CoolUtil.difficultyArray.length)
 			curDifficulty = 0;
 
-		var song = songs[curSelected].songName;
+		final song = songs[curSelected].songName;
 		intendedScore = Highscore.getScore(song, curDifficulty);
 
 		diffText.text = CoolUtil.difficultyFromInt(curDifficulty, song).toUpperCase();
@@ -238,7 +238,7 @@ class FreeplayState extends MusicBeatState
 		if (curSelected >= songs.length)
 			curSelected = 0;
 
-		var song = songs[curSelected].songName;
+		final song = songs[curSelected].songName;
 		intendedScore = Highscore.getScore(song, curDifficulty);
 
 		#if PRELOAD_ALL
