@@ -712,10 +712,10 @@ class PlayState extends MusicBeatState
 
 		#if LUA_EXTENSION
 		var filesPushed:Array<String> = [];
-		var foldersToCheck:Array<String> = [Paths.lua('scripts/')];
+		var foldersToCheck:Array<String> = [Paths.file('scripts/')];
 
 		#if MODS_ALLOWED
-		foldersToCheck.insert(0, ModPaths.getModLua('scripts/'));
+		foldersToCheck.insert(0, ModPaths.file('scripts/'));
 		#end
 
 		for (folder in foldersToCheck)
@@ -902,10 +902,10 @@ class PlayState extends MusicBeatState
 
 		#if LUA_EXTENSION
 		var filesPushed:Array<String> = [];
-		var foldersToCheck:Array<String> = [Paths.file('data/' + Paths.luaGlobal(SONG.song) + '/')];
+		var foldersToCheck:Array<String> = [Paths.file('data/' + Paths.formatToSongPath(SONG.song) + '/')];
 
 		#if MODS_ALLOWED
-		foldersToCheck.insert(0, ModPaths.file('data/' + ModPaths.getModGlobalLua(SONG.song) + '/'));
+		foldersToCheck.insert(0, ModPaths.file('data/' + Paths.formatToSongPath(SONG.song) + '/'));
 		#end
 
 		for (folder in foldersToCheck)
