@@ -2109,6 +2109,14 @@ class PlayState extends MusicBeatState
 					if (SONG.needsVoices)
 						vocals.volume = 1;
 
+					strumLineNotes.forEach(function(spr:FlxSprite)
+					{
+						if (Math.abs(daNote.strumID) == spr.ID)
+						{
+							spr.animation.play('confirm', true);
+						}
+					});
+
 					daNote.kill();
 					notes.remove(daNote, true);
 					daNote.destroy();
