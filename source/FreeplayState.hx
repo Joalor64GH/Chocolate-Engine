@@ -35,7 +35,16 @@ class FreeplayState extends MusicBeatState
 	var intendedScore:Int = 0;
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
-	private var coolColors = [0xFF9271FD, 0xFF9271FD, 0xFF223344, 0xFF941653, 0xFFFC96D7, 0xFFA0D1FF, 0xFFFF78BF, 0xFFF6B604];
+	private var coolColors = [
+		0xFF9271FD, // week 0 (tutorial)
+		0xFF9271FD, // week 1
+		0xFF223344, // week 2
+		0xFF941653, // week 3
+		0xFFFC96D7, // week 4
+		0xFFA0D1FF, // week 5
+		0xFFFF78BF, // week 6
+		0xFFF6B604 // week 7
+	];
 	private var curPlaying:Bool = false;
 
 	private var iconArray:Array<HealthIcon> = [];
@@ -86,7 +95,9 @@ class FreeplayState extends MusicBeatState
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
+			var separation:Float = 70;
+			var offset:Float = 30;
+			var songText:Alphabet = new Alphabet(0, (separation * i) + offset, songs[i].songName, true, false);
 			songText.isMenuItem = true;
 			songText.targetY = i;
 			grpSongs.add(songText);
@@ -162,13 +173,17 @@ class FreeplayState extends MusicBeatState
 		var downP = controls.DOWN_P;
 		var accepted = controls.ACCEPT;
 
+		var shifff:Int = 1;
+		if(FlxG.keys.pressed.SHIFT)
+			shifff = 3;
+
 		if (upP)
 		{
-			changeSelection(-1);
+			changeSelection(-shifff);
 		}
 		if (downP)
 		{
-			changeSelection(1);
+			changeSelection(shifff);
 		}
 
 		if (controls.LEFT_P)
