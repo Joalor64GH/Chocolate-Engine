@@ -1,7 +1,7 @@
 package;
 
 #if MODS_ALLOWED
-import modding.PolymodHandler.loadModMetadata;
+import modding.PolymodHandler;
 import polymod.fs.SysFileSystem;
 #end
 #if desktop
@@ -523,75 +523,76 @@ class PlayState extends MusicBeatState
 					bg.animation.play('idle');
 					bg.scrollFactor.set(0.8, 0.9);
 					bg.scale.set(6, 6);
+          //bg.shader = waveEffectBG;
 					add(bg);
 				}
 			case 'ugh' | 'guns' | 'stress':
 				{
 					defaultCamZoom = 0.9;
 
-						curStage = 'tank';
-						
-						var sky:BGSprite = new BGSprite('week7/tank/tankSky', -400, -400, 0, 0);
-						add(sky);
-						
-						var clouds:BGSprite = new BGSprite('week7/tank/tankClouds', FlxG.random.int(-700, -100), FlxG.random.int(-20, 20), 0.1, 0.1);
-						clouds.active = true;
-						clouds.velocity.x = FlxG.random.float(5, 15);
-						add(clouds);
-						
-						var mountains:BGSprite = new BGSprite('week7/tank/tankMountains', -300, -20, 0.2, 0.2);
-						mountains.setGraphicSize(Std.int(mountains.width * 1.2));
-						mountains.updateHitbox();
-						add(mountains);
-						
-						var buildings:BGSprite = new BGSprite('week7/tank/tankBuildings', -200, 0, 0.3, 0.3);
-						buildings.setGraphicSize(Std.int(buildings.width * 1.1));
-						buildings.updateHitbox();
-						add(buildings);
-						
-						var ruins:BGSprite = new BGSprite('week7/tank/tankRuins', -200, 0, 0.35, 0.35);
-						ruins.setGraphicSize(Std.int(ruins.width * 1.1));
-						ruins.updateHitbox();
-						add(ruins);
-						
-						var smokeL:BGSprite = new BGSprite('week7/tank/smokeLeft', -200, -100, 0.4, 0.4, ['SmokeBlurLeft'], true);
-						add(smokeL);
-						
-						var smokeR:BGSprite = new BGSprite('week7/tank/smokeRight', 1100, -100, 0.4, 0.4, ['SmokeRight'], true);
-						add(smokeR);
-						
-						tankWatchtower = new BGSprite('week7/tank/tankWatchtower', 100, 50, 0.5, 0.5, ['watchtower gradient color']);
-						add(tankWatchtower);
-						
-						tankGround = new BGSprite('week7/tank/tankRolling', 300, 300, 0.5, 0.5, ['BG tank w lighting'], true);
-						add(tankGround);
-						
-						tankmanRun = new FlxTypedGroup<TankmenBG>();
-						add(tankmanRun);
-						
-						var ground:BGSprite = new BGSprite('week7/tank/tankGround', -420, -150);
-						ground.setGraphicSize(Std.int(ground.width * 1.15));
-						ground.updateHitbox();
-						add(ground);
-						moveTank();
+					curStage = 'tank';
 
-						var tankdude0:BGSprite = new BGSprite('week7/tank/tank0', -500, 650, 1.7, 1.5, ['fg']);
-						foregroundSprites.add(tankdude0);
+					var sky:BGSprite = new BGSprite('week7/tank/tankSky', -400, -400, 0, 0);
+					add(sky);
 						
-						var tankdude1:BGSprite = new BGSprite('week7/tank/tank1', -300, 750, 2, 0.2, ['fg']);
-						foregroundSprites.add(tankdude1);
+					var clouds:BGSprite = new BGSprite('week7/tank/tankClouds', FlxG.random.int(-700, -100), FlxG.random.int(-20, 20), 0.1, 0.1);
+					clouds.active = true;
+					clouds.velocity.x = FlxG.random.float(5, 15);
+					add(clouds);
 						
-						var tankdude2:BGSprite = new BGSprite('week7/tank/tank2', 450, 940, 1.5, 1.5, ['fg']);
-						foregroundSprites.add(tankdude2);
+					var mountains:BGSprite = new BGSprite('week7/tank/tankMountains', -300, -20, 0.2, 0.2);
+					mountains.setGraphicSize(Std.int(mountains.width * 1.2));
+					mountains.updateHitbox();
+					add(mountains);
 						
-						var tankdude4:BGSprite = new BGSprite('week7/tank/tank4', 1300, 900, 1.5, 1.5, ['fg']);
-						foregroundSprites.add(tankdude4);
+					var buildings:BGSprite = new BGSprite('week7/tank/tankBuildings', -200, 0, 0.3, 0.3);
+					buildings.setGraphicSize(Std.int(buildings.width * 1.1));
+					buildings.updateHitbox();
+					add(buildings);
+
+					var ruins:BGSprite = new BGSprite('week7/tank/tankRuins', -200, 0, 0.35, 0.35);
+					ruins.setGraphicSize(Std.int(ruins.width * 1.1));
+					ruins.updateHitbox();
+					add(ruins);
 						
-						var tankdude5:BGSprite = new BGSprite('week7/tank/tank5', 1620, 700, 1.5, 1.5, ['fg']);
-						foregroundSprites.add(tankdude5);
+					var smokeL:BGSprite = new BGSprite('week7/tank/smokeLeft', -200, -100, 0.4, 0.4, ['SmokeBlurLeft'], true);
+					add(smokeL);
 						
-						var tankdude3:BGSprite = new BGSprite('week7/tank/tank3', 1300, 1200, 3.5, 2.5, ['fg']);
-						foregroundSprites.add(tankdude3);
+					var smokeR:BGSprite = new BGSprite('week7/tank/smokeRight', 1100, -100, 0.4, 0.4, ['SmokeRight'], true);
+					add(smokeR);
+						
+					tankWatchtower = new BGSprite('week7/tank/tankWatchtower', 100, 50, 0.5, 0.5, ['watchtower gradient color']);
+					add(tankWatchtower);
+	
+					tankGround = new BGSprite('week7/tank/tankRolling', 300, 300, 0.5, 0.5, ['BG tank w lighting'], true);
+					add(tankGround);
+	
+					tankmanRun = new FlxTypedGroup<TankmenBG>();
+					add(tankmanRun);
+						
+					var ground:BGSprite = new BGSprite('week7/tank/tankGround', -420, -150);
+					ground.setGraphicSize(Std.int(ground.width * 1.15));
+					ground.updateHitbox();
+					add(ground);
+					moveTank();
+
+					var tankdude0:BGSprite = new BGSprite('week7/tank/tank0', -500, 650, 1.7, 1.5, ['fg']);
+					foregroundSprites.add(tankdude0);
+
+					var tankdude1:BGSprite = new BGSprite('week7/tank/tank1', -300, 750, 2, 0.2, ['fg']);
+					foregroundSprites.add(tankdude1);
+	
+					var tankdude2:BGSprite = new BGSprite('week7/tank/tank2', 450, 940, 1.5, 1.5, ['fg']);
+					foregroundSprites.add(tankdude2);
+
+					var tankdude4:BGSprite = new BGSprite('week7/tank/tank4', 1300, 900, 1.5, 1.5, ['fg']);
+					foregroundSprites.add(tankdude4);
+						
+					var tankdude5:BGSprite = new BGSprite('week7/tank/tank5', 1620, 700, 1.5, 1.5, ['fg']);
+					foregroundSprites.add(tankdude5);
+						
+					var tankdude3:BGSprite = new BGSprite('week7/tank/tank3', 1300, 1200, 3.5, 2.5, ['fg']);
+					foregroundSprites.add(tankdude3);
 				}				
 			default:
 				{
@@ -715,7 +716,7 @@ class PlayState extends MusicBeatState
 
 		#if MODS_ALLOWED
 		foldersToCheck.insert(0, ModPaths.getModLua('scripts/'));
-                #end
+		#end
 
 		for (folder in foldersToCheck)
 		{
@@ -783,7 +784,7 @@ class PlayState extends MusicBeatState
 
 		gfCutsceneLayer = new FlxTypedGroup<FlxAnimate>();
 		add(gfCutsceneLayer);
-		
+
 		bfTankCutsceneLayer = new FlxTypedGroup<FlxAnimate>();
 		add(bfTankCutsceneLayer);
 
@@ -926,7 +927,6 @@ class PlayState extends MusicBeatState
 
 		if (isStoryMode && !seenCutscene)
 		{
-			seenCutscene = true;
 			switch (curSong.toLowerCase())
 			{
 				case "winter-horrorland":
@@ -970,6 +970,7 @@ class PlayState extends MusicBeatState
 				default:
 					startCountdown();
 			}
+			seenCutscene = true;
 		}
 		else
 		{
@@ -1318,6 +1319,14 @@ class PlayState extends MusicBeatState
 
 	var startTimer:FlxTimer;
 
+	// mods customization
+	var prepareTexture:String = 'prepare';
+	var readyTexture:String = 'ready';
+	var setThingTexture:String = 'set';
+	var goTexture:String = 'go';
+	var dateTexture = 'date';
+
+
 	function startCountdown():Void
 	{
 		inCutscene = false;
@@ -1338,18 +1347,23 @@ class PlayState extends MusicBeatState
 			boyfriend.playAnim('idle');
 
 			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-			introAssets.set('default', ['UI/default/prepare', 'UI/default/ready', "UI/default/set", "UI/default/go"]);
+			introAssets.set('default', [
+				'UI/default/' + prepareTexture,
+				'UI/default/' + readyTexture,
+				'UI/default/' + setThingTexture,
+				'UI/default/' + goTexture
+			]);
 			introAssets.set('school', [
-				'UI/pixelUI/prepare-pixel',
-				'UI/pixelUI/ready-pixel',
-				'UI/pixelUI/set-pixel',
-				'UI/pixelUI/date-pixel'
+				'UI/pixelUI/' + prepareTexture + '-pixel',
+				'UI/pixelUI/' + readyTexture + '-pixel',
+				'UI/pixelUI/' + setThingTexture + '-pixel',
+				'UI/pixelUI/' + dateTexture + '-pixel'
 			]);
 			introAssets.set('schoolEvil', [
-				'UI/pixelUI/prepare-pixel',
-				'UI/pixelUI/ready-pixel',
-				'UI/pixelUI/set-pixel',
-				'UI/pixelUI/date-pixel'
+				'UI/pixelUI/' + prepareTexture + '-pixel',
+				'UI/pixelUI/' + readyTexture + '-pixel',
+				'UI/pixelUI/' + setThingTexture + '-pixel',
+				'UI/pixelUI/' + dateTexture + '-pixel'
 			]);
 
 			var introAlts:Array<String> = introAssets.get('default');
@@ -1360,13 +1374,14 @@ class PlayState extends MusicBeatState
 				if (value == curStage)
 				{
 					introAlts = introAssets.get(value);
-					altSuffix = '-pixel';
+					//if(isPixelStage)
+						altSuffix = '-pixel';
 				}
 			}
 
 			switch (swagCounter)
 			{
-				case 0:
+				case 0: // prepare!
 					var prepare:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[0]));
 					prepare.scrollFactor.set();
 					prepare.updateHitbox();
@@ -1384,7 +1399,8 @@ class PlayState extends MusicBeatState
 						}
 					});
 					FlxG.sound.play(Paths.sound('intro3'), 0.6);
-				case 1:
+
+				case 1: // ready...
 					var ready:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[1]));
 					ready.scrollFactor.set();
 					ready.updateHitbox();
@@ -1402,7 +1418,8 @@ class PlayState extends MusicBeatState
 						}
 					});
 					FlxG.sound.play(Paths.sound('intro2'), 0.6);
-				case 2:
+
+				case 2: // set...
 					var set:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[2]));
 					set.scrollFactor.set();
 
@@ -1419,7 +1436,8 @@ class PlayState extends MusicBeatState
 						}
 					});
 					FlxG.sound.play(Paths.sound('intro1'), 0.6);
-				case 3:
+
+				case 3: // go!
 					var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[3]));
 					go.scrollFactor.set();
 
@@ -1442,6 +1460,7 @@ class PlayState extends MusicBeatState
 					strumLineNotes.forEachAlive(function(strum:FlxSprite){
 						FlxTween.tween(strum, {angle: 360}, Conductor.crochet / 1000 * 2, {ease: FlxEase.cubeInOut});
 					});
+				// case 4: // troll!
 			}
 
 			swagCounter++;
@@ -1553,6 +1572,7 @@ class PlayState extends MusicBeatState
 				}
 				else
 				{
+					// hmmm, what should be here?
 				}
 			}
 			daBeats++;
