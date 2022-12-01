@@ -221,9 +221,10 @@ class FreeplayState extends MusicBeatState
 		if (curDifficulty >= CoolUtil.difficultyArray.length)
 			curDifficulty = 0;
 
-		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
+		var song = songs[curSelected].songName;
+		intendedScore = Highscore.getScore(song, curDifficulty);
 
-		diffText.text = CoolUtil.difficultyArray[curDifficulty].toUpperCase();
+		diffText.text = CoolUtil.difficultyFromInt(curDifficulty, song).toUpperCase();
 	}
 
 	function changeSelection(change:Int = 0)
@@ -237,10 +238,11 @@ class FreeplayState extends MusicBeatState
 		if (curSelected >= songs.length)
 			curSelected = 0;
 
-		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
+		var song = songs[curSelected].songName;
+		intendedScore = Highscore.getScore(song, curDifficulty);
 
 		#if PRELOAD_ALL
-		FlxG.sound.playMusic(Paths.inst(songs[curSelected].songName), 0);
+		FlxG.sound.playMusic(Paths.inst(song), 0);
 		#end
 
 		var bullShit:Int = 0;
