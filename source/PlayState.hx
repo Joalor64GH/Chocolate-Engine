@@ -2793,6 +2793,7 @@ class PlayState extends MusicBeatState
 			luaArray[i].set(variable, arg);
 		}
 		#end
+	}
 
 	override public function destroy()
 	{
