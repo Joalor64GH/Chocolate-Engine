@@ -640,7 +640,7 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", 2, 16);
 
 				addOffset("singLEFT-alt", 54, 49);
-				
+
 				playAnim('idle');
 
 				flipX = true;
@@ -695,6 +695,7 @@ class Character extends FlxSprite
 
 	override function update(elapsed:Float)
 	{
+		//if(animation.curAnim != null) {
 		if (!curCharacter.startsWith('bf'))
 		{
 			if (animation.curAnim.name.startsWith('sing'))
@@ -737,6 +738,7 @@ class Character extends FlxSprite
 					playAnim(animation.curAnim.name, false, false, animation.curAnim.frames.length - 3);
 				}
 		}
+		//}
 
 		super.update(elapsed);
 	}
@@ -750,6 +752,7 @@ class Character extends FlxSprite
 	{
 		if (!debugMode)
 		{
+			//if(animation.curAnim != null) {
 			switch (curCharacter)
 			{
 				case 'gf' | 'gf-car' | 'gf-christmas' | 'gf-pixel' | 'gf-tankmen':
@@ -777,16 +780,20 @@ class Character extends FlxSprite
 				default:
 					playAnim('idle');
 			}
+			//}
 		}
 	}
 
 	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void
 	{
-		animation.play(AnimName, Force, Reversed, Frame);
+		if(animOffsets.exists(AnimName))
+			animation.play(AnimName, Force, Reversed, Frame);
+		else
+			return; // bro
 
-		var daOffset = animOffsets.get(AnimName);
 		if (animOffsets.exists(AnimName))
 		{
+			var daOffset = animOffsets.get(AnimName);
 			offset.set(daOffset[0], daOffset[1]);
 		}
 		else
@@ -822,7 +829,7 @@ class Boyfriend extends Character
 
 	public var startedDeath:Bool = false;
 
-	public function new(x:Float, y:Float, ?char:String = 'bf')
+	public function new(x:Float = 0, y:Float = 0, char:String = 'bf')
 	{
 		super(x, y, char, true);
 	}
@@ -831,22 +838,24 @@ class Boyfriend extends Character
 	{
 		if (!debugMode)
 		{
-			if (animation.curAnim.name.startsWith('sing'))
-			{
-				holdTimer += elapsed;
-			}
-			else
-				holdTimer = 0;
+			// if(animation.curAnim != null) {
+				if (animation.curAnim.name.startsWith('sing'))
+				{
+					holdTimer += elapsed;
+				}
+				else
+					holdTimer = 0;
 
-			if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished && !debugMode)
-			{
-				playAnim('idle', true, false, 10);
-			}
+				if (animation.curAnim.name.endsWith('miss') && animation.curAnim.finished && !debugMode)
+				{
+					playAnim('idle', true, false, 10);
+				}
 
-			if (animation.curAnim.name == 'firstDeath' && animation.curAnim.finished && startedDeath)
-			{
-				playAnim('deathLoop');
-			}
+				if (animation.curAnim.name == 'firstDeath' && animation.curAnim.finished && startedDeath)
+				{
+					playAnim('deathLoop');
+				}
+			//}
 		}
 
 		super.update(elapsed);
