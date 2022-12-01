@@ -750,7 +750,7 @@ class PlayState extends MusicBeatState
 
 		#if MODS_ALLOWED
 		foldersToCheck.insert(0, ModPaths.getModLua('scripts/'));
-                                #end
+                    #end
 
 		for (folder in foldersToCheck)
 		{
@@ -1310,6 +1310,7 @@ class PlayState extends MusicBeatState
 
 			swagCounter++;
 		}, 5);
+		}
 	}
 
 	var previousFrameTime:Int = 0;
@@ -1335,6 +1336,8 @@ class PlayState extends MusicBeatState
 		// Updating Discord Rich Presence (with Time Left)
 		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconRPC, true, songLength);
 		#end
+		setOnLuas('songLength', songLength);
+		callOnLuas('onSongStart', []);
 	}
 
 	var debugNum:Int = 0;
