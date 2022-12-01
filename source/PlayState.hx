@@ -739,7 +739,6 @@ class PlayState extends MusicBeatState
 		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();
 		luaDebugGroup.cameras = [camOther];
 		add(luaDebugGroup);
-		#end
 
 		if(doPush)
 			luaArray.push(new FunkinLua(luaFile));
