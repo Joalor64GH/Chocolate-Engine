@@ -54,11 +54,14 @@ class LoadingState extends MusicBeatState
 		initSongsManifest().onComplete(function(lib)
 		{
 			callbacks = new MultiCallback(onLoad);
-			var introComplete = callbacks.add("introComplete");
+			var introComplete = callbacks.add('introComplete');
+
 			checkLoadSong(getSongPath());
+
 			if (PlayState.SONG.needsVoices)
 				checkLoadSong(getVocalPath());
 			checkLibrary("shared");
+
 			if (PlayState.storyWeek > 0)
 				checkLibrary("week" + PlayState.storyWeek);
 			else
@@ -95,9 +98,9 @@ class LoadingState extends MusicBeatState
 		{
 			@:privateAccess
 			if (!LimeAssets.libraryPaths.exists(library))
-				throw "Missing library: " + library;
+				throw 'Missing library: ' + library;
 
-			var callback = callbacks.add("library:" + library);
+			var callback = callbacks.add('library:' + library);
 			Assets.loadLibrary(library).onComplete(function(_)
 			{
 				callback();
@@ -123,7 +126,7 @@ class LoadingState extends MusicBeatState
 		super.update(elapsed);
 		#if debug
 		if (FlxG.keys.justPressed.SPACE)
-			trace('fired: ' + callbacks.getFired() + " unfired:" + callbacks.getUnfired());
+			trace('fired: ' + callbacks.getFired() + ' unfired:' + callbacks.getUnfired());
 		#end
 	}
 
@@ -154,9 +157,9 @@ class LoadingState extends MusicBeatState
 	{
 		Paths.setCurrentLevel("week" + PlayState.storyWeek);
 		#if NO_PRELOAD_ALL
-		var loaded = isSoundLoaded(getSongPath())
+		var loaded = (isSoundLoaded(getSongPath())
 			&& (!PlayState.SONG.needsVoices || isSoundLoaded(getVocalPath()))
-			&& isLibraryLoaded("shared");
+			&& isLibraryLoaded("shared"));
 
 		if (!loaded)
 			return new LoadingState(target, stopMusic);
@@ -244,9 +247,10 @@ class LoadingState extends MusicBeatState
 				library.onChange.add(LimeAssets.onChange.dispatch);
 				promise.completeWith(Future.withValue(library));
 			}
+
 		}).onError(function(_)
 		{
-				promise.error("There is no asset library with an ID of \"" + id + "\"");
+			promise.error("There is no asset library with an ID of \"" + id + "\"");
 		});
 
 		return promise.future;
@@ -269,7 +273,7 @@ class MultiCallback
 		this.logId = logId;
 	}
 
-	public function add(id = "untitled")
+	public function add(id = 'untitled')
 	{
 		id = '$length:$id';
 		length++;
