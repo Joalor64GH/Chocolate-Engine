@@ -83,10 +83,6 @@ class FunkinLua
 	public var scriptName:String = '';
 	public var closed:Bool = false;
 
-	#if hscript
-	public static var hscript:HScript = null;
-	#end
-
 	public var accessedProps:Map<String, Dynamic> = null;
 	public function new(script:String) {
 		#if LUA_EXTENSION
