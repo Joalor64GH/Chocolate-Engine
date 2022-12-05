@@ -1954,7 +1954,6 @@ class PlayState extends MusicBeatState
 					vocals.volume = 0;
 			}
 		}
-		// better streaming of shit
 
 		// RESET = Quick Game Over Screen
 		if (controls.RESET)
@@ -2796,6 +2795,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
+	// you should try to make objects null here to help Garbage Collection
 	override public function destroy()
 	{
 		curModchart = null;
