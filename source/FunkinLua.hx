@@ -185,5 +185,6 @@ class FunkinLua
 		#else
 		set('buildTarget', 'unknown');
 		#end
+	}
 }
 #end
