@@ -522,7 +522,6 @@ class PlayState extends MusicBeatState
 					bg.animation.play('idle');
 					bg.scrollFactor.set(0.8, 0.9);
 					bg.scale.set(6, 6);
-          //bg.shader = waveEffectBG;
 					add(bg);
 				}
 			case 'ugh' | 'guns' | 'stress':
