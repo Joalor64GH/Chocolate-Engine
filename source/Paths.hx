@@ -69,7 +69,7 @@ class Paths
 		return sound(key + FlxG.random.int(min, max));
 	}
 
-    #if (VIDEO_PLUGIN || WEBM_EXTENSION)
+        #if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	inline static public function video(key:String)
 	{
 		for (i in VIDEO_EXTS)
@@ -182,7 +182,9 @@ class ModPaths
 	}
 
 	private static final SOUND_EXT = Paths.SOUND_EXT;
+	#if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	private static final VIDEO_EXTS = Paths.VIDEO_EXTS;
+	#end
 
 	inline static public function modIconImage(key:String, mod:String)
 	{
