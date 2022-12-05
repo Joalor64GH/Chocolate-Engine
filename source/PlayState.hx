@@ -726,7 +726,7 @@ class PlayState extends MusicBeatState
 				{
 					if(file.endsWith('.lua') && !filesPushed.contains(file))
 					{
-						luaArray.push(new FunkinLua(folder + file));
+						// luaArray.push(new FunkinLua(folder + file));
 						filesPushed.push(file);
 					}
 				}
@@ -916,7 +916,7 @@ class PlayState extends MusicBeatState
 				{
 					if(file.endsWith('.lua') && !filesPushed.contains(file))
 					{
-						luaArray.push(new FunkinLua(folder + file));
+						// luaArray.push(new FunkinLua(folder + file));
 						filesPushed.push(file);
 					}
 				}

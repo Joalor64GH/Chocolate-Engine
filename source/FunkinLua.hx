@@ -72,7 +72,7 @@ using StringTools;
 
 class FunkinLua
 {
-        public static var Function_Stop:Dynamic = 1;
+	public static var Function_Stop:Dynamic = 1;
 	public static var Function_Continue:Dynamic = 0;
 	public static var Function_StopLua:Dynamic = 2;
 
@@ -84,7 +84,7 @@ class FunkinLua
 	public var closed:Bool = false;
 
 	#if hscript
-	public static var hscript:HScript = null;
+	// public static var hscript:HScript = null;
 	#end
 
 	public var accessedProps:Map<String, Dynamic> = null;
