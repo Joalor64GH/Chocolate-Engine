@@ -53,13 +53,16 @@ import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
 import Character;
+#if LUA_EXTENSION
 import LLua;
+import FunkinLua;
+import ChocoModule;
+#end
 import states.*;
 import animateatlas.AtlasFrameMaker;
 import animate.FlxAnimate;
 import video.*;
 import ModsMenuState;
-import FunkinLua;
 import CutsceneCharacter;
 
 #if !flash 
