@@ -1,6 +1,7 @@
 package;
 
 // STOLEN FROM HAXEFLIXEL DEMO LOL
+// it never really got used lol
 import flixel.system.FlxAssets.FlxShader;
 
 enum WiggleEffectType
