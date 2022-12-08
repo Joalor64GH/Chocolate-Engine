@@ -5,6 +5,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
 import haxe.Json;
+import flixel.graphics.FlxGraphic;
 
 class Paths
 {
