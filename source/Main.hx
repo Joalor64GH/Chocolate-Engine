@@ -234,3 +234,6 @@ class Main extends Sprite
 	}
 	#end
 }
+// I feel useless
+// and I wanna kms
+
