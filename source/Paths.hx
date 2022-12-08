@@ -102,7 +102,7 @@ class Paths
 
 	inline static public function image(key:String)
 	{
-		return getPath('images/$key.png', IMAGE);
+		return file('images/$key.png', IMAGE);
 	}
 
 	inline static public function font(key:String)
@@ -154,7 +154,7 @@ class Paths
 
 	inline static public function getAnimateAtlas(key:String)
 	{
-		return animate.FlxAnimate.fromAnimate(loadImage('$key/spritemap1'), getPath('images/$key/spritemap1.json', TEXT));
+		return animate.FlxAnimate.fromAnimate(loadImage('$key/spritemap1'), file('images/$key/spritemap1.json', TEXT));
 	}
 
 	static public function loadImage(key:String):FlxGraphic
