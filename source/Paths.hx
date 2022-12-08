@@ -134,9 +134,9 @@ class Paths
 		return 'songs:assets/songs/${song.toLowerCase()}/Inst.$SOUND_EXT';
 	}
 
-	inline static public function image(key:String)
+	inline static public function image(key:String, ?library:String)
 	{
-		return file('images/$key.png');
+		return getPath('images/$key.png', IMAGE, library);
 	}
 
 	inline static public function font(key:String)
