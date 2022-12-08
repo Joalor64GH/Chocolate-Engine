@@ -72,7 +72,9 @@ using StringTools;
 // sorry, I was & am pretty grumpy when writing this
 class FunkinLua
 {
+    #if LUA_EXTENSION
     public var lua:State = null;
+    #end
 
     #if hscript
 	public var hscript:HScript;
@@ -82,8 +84,12 @@ class FunkinLua
     public function new(){}
 
     inline public function stop(){
+        #if LUA_EXTENSION
         Lua.close();
         lua = null;
+        #else
+        return;
+        #end
     }
 }
 
