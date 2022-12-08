@@ -69,6 +69,7 @@ using StringTools;
 
 // are we seriously gonna fucking use psych engine code?
 // y'all need to learn how to code smh
+// sorry, I was & am pretty grumpy when writing this
 class FunkinLua
 {
      // very wip
