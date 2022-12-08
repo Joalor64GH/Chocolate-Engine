@@ -4,6 +4,7 @@ package;
 	@author BeastlyGhost
 	@see `https://github.com/BeastlyGhost/FNF-Funkin-Feather`
 **/
+// joalor so help me god, this is why you TEST CHANGES before you push to the repo, otherwise you break everything
 #if MODULE_ALLOWED
 class ChocoModule extends LLua
 {
