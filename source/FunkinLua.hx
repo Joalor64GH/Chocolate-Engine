@@ -118,6 +118,7 @@ class HScript
         return interp.variables.exists(name);
     }
 
+    // IT'S NOT WORKINGGGGGGGGGGGGGGGGGGGGGGGGGGGG
     /*public function call(function:String, ?parameters:Array<Dynamic>):Dynamic {
 		var pissCum:Dynamic = executeFunc(func, parameters, this);
 		if (pissCum == null)
