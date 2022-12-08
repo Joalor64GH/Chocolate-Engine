@@ -1,7 +1,7 @@
 /*
  * Apache License, Version 2.0
  *
- * Copyright (c) 2022 Gidk-g
+ * Copyright (c) 2022 MemeHoovy
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,6 +69,5 @@ using StringTools;
 
 class FunkinLua
 {
-     // very wip
-    /*https://github.com/Gidk-g/extra-engine/blob/main/source/FunkinLua.hx*/
+    public function new(){}
 }
