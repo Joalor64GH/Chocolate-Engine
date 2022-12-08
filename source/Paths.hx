@@ -114,6 +114,7 @@ class Paths
 		return file('locales/$key/languageData.json');
 	}
 
+        #if LUA_EXTENSION
 	inline static public function lua(key:String)
 	{
 		return file('scripts/$key.lua');
@@ -123,6 +124,7 @@ class Paths
 	{
 		return file('$key.lua');
 	}
+	#end
 
 	inline static public function char(key:String)
 	{
@@ -139,10 +141,12 @@ class Paths
 		return file('shaders/$key.vert');
 	}
 
+        #if MODULE_ALLOWED
 	inline static public function module(key:String)
 	{
 		return file('libs/$key.lua');
 	}
+	#end
 
 	inline static public function getSparrowAtlas(key:String)
 	{
@@ -191,7 +195,7 @@ class ModPaths
 		return file('$mod/_polymod_icon.png', mod);
 	}
 
-	inline static public function getModTxt(key:String, ?mod:String)
+	inline static public function getModTxt(key:String, mod:String)
 	{
 		return file('data/$key.txt', mod);
 	}
@@ -201,7 +205,7 @@ class ModPaths
 		return file('data/$key.xml', mod);
 	}
 
-	inline static public function getModGlobalTxt(key:String, ?mod:String)
+	inline static public function getModGlobalTxt(key:String, mod:String)
 	{
 		return file('$key.txt', mod);
 	}
@@ -231,7 +235,7 @@ class ModPaths
 		return getModSound(key + FlxG.random.int(min, max), mod);
 	}
 
-    #if (VIDEO_PLUGIN || WEBM_EXTENSION)
+        #if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	inline static public function getModVideo(key:String, mod:String)
 	{
 		for (i in VIDEO_EXTS)
@@ -271,6 +275,7 @@ class ModPaths
 		return file('fonts/$key', mod);
 	}
 
+        #if LUA_EXTENSION
 	inline static public function getModLua(key:String, mod:String)
 	{
 		return file('scripts/$key.lua', mod);
@@ -280,6 +285,7 @@ class ModPaths
 	{
 		return file('$key.lua', mod);
 	}
+	#end
 
 	inline static public function getModChar(key:String, mod:String)
 	{
@@ -301,10 +307,12 @@ class ModPaths
 		return file('shaders/$key.vert', mod);
 	}
 
+        #if MODULE_ALLOWED
 	inline static public function getModule(key:String, mod:String)
 	{
 		return file('libs/$key.lua', mod);
 	}
+	#end
 
 	inline static public function checkMod(mod:String)
 	{

@@ -53,12 +53,17 @@ import openfl.filters.ShaderFilter;
 import lime.app.Application;
 import openfl.events.KeyboardEvent;
 import Character;
+#if LUA_EXTENSION
 import LLua;
+import FunkinLua;
+import ChocoModule;
+#end
 import states.*;
 import animateatlas.AtlasFrameMaker;
 import animate.FlxAnimate;
-import video.FlxVideo;
+import video.*;
 import ModsMenuState;
+import CutsceneCharacter;
 
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
@@ -909,12 +914,12 @@ class PlayState extends MusicBeatState
 					if (curSong == 'roses')
 						FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-				/*case 'ugh':
+				case 'ugh':
 					ughIntro();
 				case 'guns':
 					gunsIntro();
 				case 'stress':
-					stressIntro();*/
+					stressIntro();
 				default:
 					startCountdown();
 			}
@@ -932,246 +937,103 @@ class PlayState extends MusicBeatState
 		super.create();
 	}
 
-	/*function ughIntro():Void
+	function ughIntro():Void
 	{
 		inCutscene = true;
-			dad.visible = false;
-			var tankTalk1:FlxSprite = new FlxSprite(-20, 320);
-			tankTalk1.frames = Paths.getSparrowAtlas('week7/cutscenes/tankTalkSong1');
-			tankTalk1.animation.addByPrefix('wellWell', 'TANK TALK 1 P1', 24, false);
-			tankTalk1.animation.addByPrefix('killYou', 'TANK TALK 1 P2', 24, false);
-			tankTalk1.antialiasing = true;
-			gfCutsceneLayerFlxSprite.add(tankTalk1);
-			camHUD.visible = false;
-			FlxG.camera.zoom = defaultCamZoom * 1.2;
-			
-			new FlxTimer().start(0.01, function(tmr:FlxTimer)
+
+		// D
+		FlxG.camera.zoom = defaultCamZoom * 1.2;
+
+		FlxG.sound.playMusic(Paths.music('DISTORTO'), 0);
+		FlxG.sound.music.fadeIn(5, 0, 0.5);
+
+		dad.visible = false;
+		var tankCutscene:CutsceneCharacter = new CutsceneCharacter(-20, 320, 'tightBars');
+		tankCutscene.antialiasing = true;
+		tankCutscene.playingAnim = true;
+		gfCutsceneLayer.add(tankCutscene);
+
+		camHUD.visible = false;
+
+		FlxG.camera.zoom *= 1.2;
+		camFollow.y += 100;
+
+		tankCutscene.startSyncAudio = FlxG.sound.load(Paths.sound('week7/wellWellWell')); // eduardo
+
+		new FlxTimer().start(3, function(tmr:FlxTimer)
+		{
+			camFollow.x += 800;
+			camFollow.y += 100;
+			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2}, 0.27, {ease: FlxEase.quadInOut});
+
+			new FlxTimer().start(1.5, function(bep:FlxTimer)
 			{
-				FlxG.sound.playMusic(Paths.music('DISTORTO'), 0.5);
-				tankTalk1.animation.play('wellWell');
-				FlxG.sound.play(Paths.sound('wellWellWell'));
-				camFollow.y += 100;
-				new FlxTimer().start(3, function(tmr:FlxTimer)
+				boyfriend.playAnim('singUP');
+				// Play Sound.
+				FlxG.sound.play(Paths.sound('week7/bfBeep'), function()
 				{
-					camFollow.x += 800;
-					camFollow.y += 100;
-					new FlxTimer().start(1.5, function(tmr:FlxTimer)
-					{
-						boyfriend.playAnim('singUP');
-						FlxG.sound.play(Paths.sound('bfBeep'), 1, false, null, true, function()
-						{
-							boyfriend.playAnim('idle');
-						});
-					});
-					new FlxTimer().start(3, function(tmr:FlxTimer)
-					{
-						camFollow.x -= 800;
-						camFollow.y -= 100;
-						tankTalk1.animation.play('killYou');
-						FlxG.sound.play(Paths.sound('killYou'));
-						new FlxTimer().start(6.1, function(tmr:FlxTimer)
-						{
-							FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 20, {ease: FlxEase.quadInOut});
-							FlxG.sound.music.fadeOut();
-							new FlxTimer().start((Conductor.stepCrochet / 1000) * 20, function(tmr:FlxTimer)
-							{
-								dad.visible = true;
-								tankTalk1.destroy();
-							});
-							startCountdown();
-							camHUD.visible = true;
-						});
-					});
+					boyfriend.playAnim('idle');
 				});
 			});
+
+			new FlxTimer().start(3, function(swaggy:FlxTimer)
+			{
+				camFollow.x -= 800;
+				camFollow.y -= 100;
+				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.2}, 0.5, {ease: FlxEase.quadInOut});
+				FlxG.sound.play(Paths.sound('week7/killYou'));
+				new FlxTimer().start(6.1, function(swagasdga:FlxTimer)
+				{
+					FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
+
+					FlxG.sound.music.fadeOut((Conductor.crochet / 1000) * 5, 0);
+
+					new FlxTimer().start((Conductor.crochet / 1000) * 5, function(money:FlxTimer)
+					{
+						dad.visible = true;
+						gfCutsceneLayer.remove(tankCutscene);
+					});
+
+					startCountdown();
+					camHUD.visible = true;
+				});
+			});
+		});
 	}
 
 	function gunsIntro():Void
 	{
 		inCutscene = true;
-			dad.visible = false;
-			var tankTalk1:FlxSprite = new FlxSprite(-20, 320);
-			tankTalk1.frames = Paths.getSparrowAtlas('week7/cutscenes/tankTalkSong2');
-			tankTalk1.animation.addByPrefix('tightBars', 'TANK TALK 2', 24, false);
-			tankTalk1.antialiasing = true;
-			gfCutsceneLayerFlxSprite.add(tankTalk1);
-			camHUD.visible = false;
 
-			new FlxTimer().start(0.05, function(tmr:FlxTimer)
-			{
-				FlxG.sound.playMusic(Paths.music('DISTORTO'), 0.5);
-				tankTalk1.animation.play('tightBars');
-				camFollow.setPosition(dad.getMidpoint().x + 15, dad.getMidpoint().y - 150);	
-				FlxG.camera.follow(camFollow, LOCKON, 0.04);
-				FlxTween.tween(FlxG.camera, {zoom: 1.2}, 4.01, {ease: FlxEase.quadInOut});
-				FlxG.sound.play(Paths.sound('tankSong2'));
+		var background:FlxSprite = new FlxSprite(-200, -200).makeGraphic(2 * FlxG.width, 2 * FlxG.height, FlxColor.BLACK);
+		background.scrollFactor.set();
+		add(background);
 
-				new FlxTimer().start(4.1, function(ugly:FlxTimer)
-				{
-				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.4}, 0.4, {ease: FlxEase.quadOut});
-				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom * 1.3}, 0.7, {ease: FlxEase.quadInOut, startDelay: 0.45});
-
-				gf.playAnim('sad', true);
-			    });
-
-				new FlxTimer().start(11, function(tmr:FlxTimer)
-				{
-					FlxG.sound.music.fadeOut((Conductor.crochet / 1000) * 5, 0);
-
-				FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet * 5) / 1000, {ease: FlxEase.quartIn});
-				startCountdown();
-				gf.dance();
-				new FlxTimer().start((Conductor.crochet * 25) / 1000, function(daTim:FlxTimer)
-				{
-						dad.visible = true;
-						tankTalk1.destroy();
-					});
-					camHUD.visible = true;
-				});
-			});
+		var vid:FlxVideo = new FlxVideo('gunsCutscene');
+		vid.finishCutscene = function()
+		{
+			remove(background);
+			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
+			startCountdown();
+		}
 	}
 
 	function stressIntro():Void
 	{
 		inCutscene = true;
-			dad.visible = false;
-			gf.visible = false;
-			boyfriend.visible = false;
-			var gfCutscene1:FlxSprite = new FlxSprite(210, 79);
-			gfCutscene1.scrollFactor.set(0.95, 0.95);
-			gfCutscene1.frames = Paths.getSparrowAtlas('week7/cutscenes/gfTankmenCutscene');
-			gfCutscene1.animation.addByPrefix('idleLoop', 'GF Dancing at Gunpoint', 24, true);
-			gfCutscene1.animation.play('idleLoop', true);
-			gfCutscene1.antialiasing = true;
-			gfCutsceneLayerFlxSprite.add(gfCutscene1);
-			var gfCutscene2:FlxSprite = new FlxSprite(-11, -384);
-			gfCutscene2.scrollFactor.set(0.95, 0.95);
-			gfCutscene2.frames = Paths.getSparrowAtlas('week7/cutscenes/gfTankmenCutsceneDemon');
-			gfCutscene2.animation.addByPrefix('gfDemon', 'GF Turnin Demon W Effect', 24, false);
-			gfCutscene2.antialiasing = true;
-			gfCutscene2.visible = false;
-			gfCutsceneLayerFlxSprite.add(gfCutscene2);
-			var gfCutscene3:FlxSprite = new FlxSprite(-529, -325);
-			gfCutscene3.scrollFactor.set(0.95, 0.95);
-			gfCutscene3.frames = AtlasFrameMaker.construct('assets/images/week7/cutscenes/stress/picoArrives');
-			gfCutscene3.antialiasing = true;
-			gfCutscene3.visible = false;
-			gfCutsceneLayerFlxSprite.add(gfCutscene3);
-			var tankTalk1:FlxSprite = new FlxSprite(-20, 320);
-			tankTalk1.frames = Paths.getSparrowAtlas('week7/cutscenes/tankTalkSong3P1');
-			tankTalk1.animation.addByPrefix('godEffingDammit', 'TANK TALK 3 P1', 24, false);
-			tankTalk1.antialiasing = true;
-			gfCutsceneLayerFlxSprite.add(tankTalk1);
-			var tankTalk2:FlxSprite = new FlxSprite(73, 325);
-			tankTalk2.frames = Paths.getSparrowAtlas('week7/cutscenes/tankTalkSong3P2');
-			tankTalk2.animation.addByPrefix('lookWhoItIs', 'TANK TALK 3 P2', 24, false);
-			tankTalk2.antialiasing = true;
-			tankTalk2.visible = false;
-			gfCutsceneLayerFlxSprite.add(tankTalk2);
-			var bfCutscene1:FlxSprite = new FlxSprite(810, 470).loadGraphic(Paths.image('week7/cutscenes/bfIdleStatic'));
-			bfCutscene1.antialiasing = true;
-			bfTankCutsceneLayerFlxSprite.add(bfCutscene1);
-			camHUD.visible = false;
 
-			new FlxTimer().start(0.05, function(tmr:FlxTimer)
-			{
-				tankTalk1.animation.play('godEffingDammit');
-				camFollow.setPosition(dad.getMidpoint().x + 260, dad.getMidpoint().y - 130);	
-				FlxG.camera.follow(camFollow, LOCKON, 0.02);
-				FlxTween.tween(FlxG.camera, {zoom: 1.0}, 1.2, {ease: FlxEase.quadInOut});
-				FlxG.sound.play(Paths.sound('stressCutscene'));
+		var background:FlxSprite = new FlxSprite(-200, -200).makeGraphic(2 * FlxG.width, 2 * FlxG.height, FlxColor.BLACK);
+		background.scrollFactor.set();
+		add(background);
 
-				new FlxTimer().start(15.2, function(tmr:FlxTimer)
-				{
-					FlxTween.tween(FlxG.camera, {zoom: 1.3}, 2.084, {ease: FlxEase.quadInOut});
-					camFollow.x += 150;
-					camFollow.y -= 190;
-					gfCutsceneLayerFlxSprite.remove(gfCutscene1);
-					gfCutscene2.visible = true;
-					gfCutscene2.animation.play('gfDemon', true);
-					gfCutscene2.animation.finishCallback = function(gfDemonAnim:String)
-					{
-						gfCutscene2.destroy();
-						gfCutscene3.visible = true;
-						gfCutscene3.animation.addByPrefix('picoArrives', 'PICO ARRIVES', 24, false);
-						gfCutscene3.animation.play('picoArrives', true);
-						gfCutscene3.animation.finishCallback = function(picoArriveAnim:String)
-						{
-							gfCutscene3.destroy();
-							gf.visible = true;
-						}
-					}
-					new FlxTimer().start(2.085, function(tmr:FlxTimer) 
-					{
-						FlxG.camera.zoom = 0.78;
-					});
-				});
-
-				new FlxTimer().start(17.6, function(tmr:FlxTimer)
-				{
-					bfCutscene1.destroy();
-					boyfriend.visible = true;
-					boyfriend.playAnim('bfCatch');
-					boyfriend.animation.finishCallback = function(boyfriendCatchAnim:String)
-					{
-						boyfriend.animation.addByIndices('idleStatic', "BF idle dance w gf", [13], "", 24, false);
-						boyfriend.playAnim('idleStatic');
-					}
-				});
-
-				new FlxTimer().start(19.311, function(tmr:FlxTimer)
-				{
-					tankTalk1.destroy();
-					tankTalk2.visible = true;
-					tankTalk2.animation.play('lookWhoItIs');
-					new FlxTimer().start(0.9, function(tmr:FlxTimer)
-					{
-						camFollow.x -= 100;
-						camFollow.y += 200;
-					});
-				});
-
-				new FlxTimer().start(31.2, function(tmr:FlxTimer)
-				{
-					camFollow.x += 440;
-					camFollow.y += 130;
-					FlxG.camera.focusOn(camFollow.getPosition());
-					FlxG.camera.zoom = 1.3;
-					new FlxTimer().start(0.01, function(tmr:FlxTimer)
-					{
-						FlxTween.tween(FlxG.camera, {zoom: 1.4}, 0.4, {ease: FlxEase.elasticOut});
-					});
-					boyfriend.playAnim('singUPmiss');
-					foregroundSprites.visible = false;
-					new FlxTimer().start(1.2, function(tmr:FlxTimer)
-					{
-						camFollow.x -= 430;
-						camFollow.y -= 140;
-						FlxG.camera.zoom = 0.95;
-						FlxG.camera.focusOn(camFollow.getPosition());
-						boyfriend.playAnim('idleStatic');
-						foregroundSprites.visible = true;
-					});
-				});
-
-				new FlxTimer().start(34, function(tmr:FlxTimer)
-				{
-					FlxG.sound.music.fadeOut();
-					new FlxTimer().start(1, function(tmr:FlxTimer)
-					{
-						FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.stepCrochet / 1000) * 20, {ease: FlxEase.quadInOut});
-						
-						new FlxTimer().start((Conductor.stepCrochet / 1000) * 20, function(tmr:FlxTimer)
-						{
-							dad.visible = true;
-							tankTalk2.destroy();
-						});
-						startCountdown();
-						camHUD.visible = true;
-					});
-				});
-			});
-	}*/
+		var vid:FlxVideo = new FlxVideo('stressCutscene');
+		vid.finishCutscene = function()
+		{
+			remove(background);
+			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
+			startCountdown();
+		}
+	}
 
 	function initDiscord()
 	{

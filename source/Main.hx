@@ -13,7 +13,6 @@ import lime.app.Application;
 import flixel.util.FlxTimer;
 // crash handler stuff
 #if CRASH_HANDLER
-import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
 import haxe.io.Path;
@@ -235,3 +234,6 @@ class Main extends Sprite
 	}
 	#end
 }
+// I feel useless
+// and I wanna kms
+

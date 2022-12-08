@@ -57,6 +57,7 @@
 	<define name="WEBM_EXTENSION" if="windows || mac"/>
 	<define name="MODS_ALLOWED" if="desktop" unless="mac" />
 	<define name="LUA_EXTENSION" if="desktop" />
+	<define name="MODULE_ALLOWED" if="LUA_EXTENSION" />
 	<define name="CRASH_HANDLER" if="desktop release" />
 	<define name="MODCORE_ALLOWED" if="MODS_ALLOWED" />
 	<define name="CHOCO_WATERMARKS"/> <!-- DELETE THIS TO REMOVE WATERMARKS/DEV NAMES ON TITLE SCREEN -->

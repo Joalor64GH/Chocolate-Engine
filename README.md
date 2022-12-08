@@ -23,7 +23,7 @@ If you need a tutorial on modding, go check out [the wiki](https://github.com/Jo
 ## Things to get done
 * [ ] Week 7 **[Is working but cutscenes are broken lmao]**
 * [ ] Support for Lua Scripts **[Very WIP]**
-* [ ] Attempt to softcode characters
+* [ ] Attempt to softcode characters with JSON
 
 ## Credits
 
