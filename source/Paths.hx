@@ -30,40 +30,6 @@ class Paths
 		return path;
 	}
 
-	static function getPath(file:String, type:AssetType, library:Null<String>)
-	{
-		if (library != null)
-			return getLibraryPath(file, library);
-
-		if (currentLevel != null)
-		{
-			var levelPath = getLibraryPathForce(file, currentLevel);
-			if (OpenFlAssets.exists(levelPath, type))
-				return levelPath;
-
-			levelPath = getLibraryPathForce(file, "shared");
-			if (OpenFlAssets.exists(levelPath, type))
-				return levelPath;
-		}
-
-		return getPreloadPath(file);
-	}
-
-	static public function getLibraryPath(file:String, library = "preload")
-	{
-		return library == "preload" || library == "default" ? getPreloadPath(file) : getLibraryPathForce(file, library);
-	}
-
-	inline static function getLibraryPathForce(file:String, library:String)
-	{
-		return '$library:assets/$library/$file';
-	}
-
-	inline static function getPreloadPath(file:String)
-	{
-		return 'assets/$file';
-	}
-
 	inline static public function txt(key:String)
 	{
 		return file('data/$key.txt');
@@ -134,9 +100,9 @@ class Paths
 		return 'songs:assets/songs/${song.toLowerCase()}/Inst.$SOUND_EXT';
 	}
 
-	inline static public function image(key:String, ?library:String)
+	inline static public function image(key:String)
 	{
-		return getPath('images/$key.png', IMAGE, library);
+		return getPath('images/$key.png', IMAGE);
 	}
 
 	inline static public function font(key:String)
@@ -186,14 +152,14 @@ class Paths
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key), file('images/$key.txt'));
 	}
 
-	inline static public function getAnimateAtlas(key:String, ?library:String)
+	inline static public function getAnimateAtlas(key:String)
 	{
-		return animate.FlxAnimate.fromAnimate(loadImage('$key/spritemap1', library), getPath('images/$key/spritemap1.json', TEXT, library));
+		return animate.FlxAnimate.fromAnimate(loadImage('$key/spritemap1'), getPath('images/$key/spritemap1.json', TEXT));
 	}
 
-	static public function loadImage(key:String, ?library:String):FlxGraphic
+	static public function loadImage(key:String):FlxGraphic
 	{
-		var path = image(key, library);
+		var path = image(key);
 
 		if (OpenFlAssets.exists(path, IMAGE))
 		{
