@@ -56,7 +56,6 @@ import Character;
 #if LUA_EXTENSION
 import LLua;
 import FunkinLua;
-import ChocoModule;
 #end
 import states.*;
 import animateatlas.AtlasFrameMaker;
