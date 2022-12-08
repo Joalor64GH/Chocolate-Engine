@@ -67,6 +67,8 @@ import Discord;
 
 using StringTools;
 
+// are we seriously gonna fucking use psych engine code?
+// y'all need to learn how to code smh
 class FunkinLua
 {
      // very wip
