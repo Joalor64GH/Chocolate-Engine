@@ -30,6 +30,40 @@ class Paths
 		return path;
 	}
 
+	static function getPath(file:String, type:AssetType, library:Null<String>)
+	{
+		if (library != null)
+			return getLibraryPath(file, library);
+
+		if (currentLevel != null)
+		{
+			var levelPath = getLibraryPathForce(file, currentLevel);
+			if (OpenFlAssets.exists(levelPath, type))
+				return levelPath;
+
+			levelPath = getLibraryPathForce(file, "shared");
+			if (OpenFlAssets.exists(levelPath, type))
+				return levelPath;
+		}
+
+		return getPreloadPath(file);
+	}
+
+	static public function getLibraryPath(file:String, library = "preload")
+	{
+		return library == "preload" || library == "default" ? getPreloadPath(file) : getLibraryPathForce(file, library);
+	}
+
+	inline static function getLibraryPathForce(file:String, library:String)
+	{
+		return '$library:assets/$library/$file';
+	}
+
+	inline static function getPreloadPath(file:String)
+	{
+		return 'assets/$file';
+	}
+
 	inline static public function txt(key:String)
 	{
 		return file('data/$key.txt');
