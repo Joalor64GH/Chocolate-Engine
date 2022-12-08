@@ -158,6 +158,11 @@ class Paths
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key), file('images/$key.txt'));
 	}
 
+	inline static public function getAnimateAtlas(key:String, ?library:String)
+	{
+		return animate.FlxAnimate.fromAnimate(loadImage('$key/spritemap1', library), getPath('images/$key/spritemap1.json', TEXT, library));
+	}
+
 	inline static public function formatToSongPath(path:String) {
 		var invalidChars = ~/[~&\\;:<>#]/;
 		var hideChars = ~/[.,'"%?!]/;
