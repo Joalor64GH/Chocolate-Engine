@@ -81,7 +81,9 @@ class FunkinLua
 	#end
 
     // screw it, I'm tired of being useless and doing nothing
-    public function new(){}
+    public function new(){
+        super();
+    }
 
     inline public function stop(){
         #if LUA_EXTENSION

@@ -11,7 +11,6 @@ class ChocoModule extends LLua
 	public function new(file:String, ?preset:Bool = true)
 	{
 		super(file, preset);
-		traces = false;
 	}
 
 	override public function preset():Void
