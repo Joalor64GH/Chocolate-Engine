@@ -72,5 +72,88 @@ using StringTools;
 // sorry, I was & am pretty grumpy when writing this
 class FunkinLua
 {
+    public var lua:State = null;
+
+    #if hscript
+	public var hscript:HScript;
+	#end
+
+    // screw it, I'm tired of being useless and doing nothing
     public function new(){}
+
+    inline public function stop(){
+        Lua.close();
+        lua = null;
+    }
 }
+
+#if hscript
+class HScript 
+{
+    public var parser:Parser;
+    public var interp:Interp;
+
+    public function new(){
+        parser = new Parser();
+        interp = new Interp();
+    }
+
+    inline public function setVar(name:String, value:Dynamic):Void {
+        return interp.variables.set(name, value);
+    }
+
+    inline public function getVar(name:String):Dynamic {
+        return interp.variables.get(name);
+    }
+
+    inline public function exists(name:String){
+        return interp.variables.exists(name);
+    }
+
+    /*public function call(function:String, ?parameters:Array<Dynamic>):Dynamic {
+		var pissCum:Dynamic = executeFunc(func, parameters, this);
+		if (pissCum == null)
+			return 0;
+		return pissCum;
+    }*/
+
+    //Credit: nebulazorua
+    public function executeFunc(func:String, ?parameters:Array<Dynamic>, ?theObject:Any, ?extraVars:Map<String,Dynamic>):Dynamic
+	{
+		if (extraVars == null)
+			extraVars=[];
+		if (exists(func))
+		{
+			var daFunc = get(func);
+			if (Reflect.isFunction(daFunc))
+			{
+				var returnVal:Any = null;
+				var defaultShit:Map<String,Dynamic>=[];
+				for (key in extraVars.keys()){
+					defaultShit.set(key, get(key));
+					set(key, extraVars.get(key));
+				}
+				try
+				{
+					returnVal = Reflect.callMethod(theObject, daFunc, parameters);
+				}
+				catch (e:haxe.Exception)
+				{
+                    #if sys
+					Sys.println(e.message);
+                    #else
+                    // haxe.Log.trace(e.message, e.stack);
+                    lime.utils.Log.println(e.message);
+                    #end
+				}
+				for (key in defaultShit.keys())
+				{
+					set(key, defaultShit.get(key));
+				}
+				return returnVal;
+			}
+		}
+		return null;
+	}
+}
+#end
