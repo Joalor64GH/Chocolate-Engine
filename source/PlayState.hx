@@ -1135,7 +1135,6 @@ class PlayState extends MusicBeatState
 	var goTexture:String = 'go';
 	var dateTexture = 'date';
 
-
 	function startCountdown():Void
 	{
 		inCutscene = false;
@@ -1919,9 +1918,14 @@ class PlayState extends MusicBeatState
 
 					strumLineNotes.forEach(function(spr:FlxSprite)
 					{
-						if (Math.abs(daNote.strumID) == spr.ID)
-						{
-							spr.animation.play('confirm', true);
+						for (i in 0...4) {
+							if (Math.abs(daNote.strumID) == spr.ID && Math.abs(daNote.strumID) == i)
+							{
+								spr.animation.play('confirm', true);
+								spr.animation.finishCallback = function(name:String){
+									spr.animation.play('static');
+								}
+							}
 						}
 					});
 
