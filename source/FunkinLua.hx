@@ -81,11 +81,15 @@ class FunkinLua
 	#end
 
     // screw it, I'm tired of being useless and doing nothing
-    public function new(){}
+    public function new(){
+        lua = LuaL.newstate();
+		LuaL.openlibs(lua);
+		Lua.init_callbacks(lua);
+    }
 
     inline public function stop(){
         #if LUA_EXTENSION
-        Lua.close();
+        Lua.close(lua);
         lua = null;
         #else
         return;
@@ -131,14 +135,14 @@ class HScript
 			extraVars=[];
 		if (exists(func))
 		{
-			var daFunc = get(func);
+			var daFunc = getVar(func);
 			if (Reflect.isFunction(daFunc))
 			{
 				var returnVal:Any = null;
 				var defaultShit:Map<String,Dynamic>=[];
 				for (key in extraVars.keys()){
-					defaultShit.set(key, get(key));
-					set(key, extraVars.get(key));
+					defaultShit.set(key, getVar(key));
+					setVar(key, extraVars.get(key));
 				}
 				try
 				{
@@ -155,7 +159,7 @@ class HScript
 				}
 				for (key in defaultShit.keys())
 				{
-					set(key, defaultShit.get(key));
+					setVar(key, defaultShit.get(key));
 				}
 				return returnVal;
 			}
