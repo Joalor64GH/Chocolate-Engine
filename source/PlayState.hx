@@ -1919,6 +1919,7 @@ class PlayState extends MusicBeatState
 					strumLineNotes.forEach(function(spr:FlxSprite)
 					{
 						for (i in 0...4) {
+							// this was me attempting to fix the playerstrums glowing aswell
 							if (Math.abs(daNote.strumID) == spr.ID && Math.abs(daNote.strumID) == i)
 							{
 								spr.animation.play('confirm', true);
