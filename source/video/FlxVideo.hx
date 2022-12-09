@@ -13,7 +13,7 @@ class FlxVideo extends FlxBasic
 	var video:Video;
 	var netStream:NetStream;
 
-	public var finishCallback:Dynamic;
+	public var finishCallback:Void->Void; // it should be void->void not dynamic so it works as a callback
 
 	override public function new(VideoAsset:String)
 	{

@@ -950,7 +950,7 @@ class PlayState extends MusicBeatState
 		var tankCutscene:CutsceneCharacter = new CutsceneCharacter(-20, 320, 'tightBars');
 		tankCutscene.antialiasing = true;
 		tankCutscene.playingAnim = true;
-		gfCutsceneLayer.add(tankCutscene);
+		// gfCutsceneLayer.add(tankCutscene);
 
 		camHUD.visible = false;
 
@@ -990,7 +990,7 @@ class PlayState extends MusicBeatState
 					new FlxTimer().start((Conductor.crochet / 1000) * 5, function(money:FlxTimer)
 					{
 						dad.visible = true;
-						gfCutsceneLayer.remove(tankCutscene);
+						// gfCutsceneLayer.remove(tankCutscene);
 					});
 
 					startCountdown();
@@ -1009,7 +1009,7 @@ class PlayState extends MusicBeatState
 		add(background);
 
 		var vid:FlxVideo = new FlxVideo('gunsCutscene');
-		vid.finishCutscene = function()
+		vid.finishCallback = function()
 		{
 			remove(background);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
@@ -1026,7 +1026,7 @@ class PlayState extends MusicBeatState
 		add(background);
 
 		var vid:FlxVideo = new FlxVideo('stressCutscene');
-		vid.finishCutscene = function()
+		vid.finishCallback = function()
 		{
 			remove(background);
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
