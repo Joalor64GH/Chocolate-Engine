@@ -10,9 +10,7 @@ import flixel.graphics.FlxGraphic;
 class Paths
 {
 	inline public static final SOUND_EXT = #if web "mp3" #else "ogg" #end;
-	#if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	public static final VIDEO_EXTS = ['mp4', 'webm'];
-	#end
 
 	public static var currentLevel:String;
 
@@ -70,7 +68,6 @@ class Paths
 		return sound(key + FlxG.random.int(min, max));
 	}
 
-	#if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	inline static public function video(key:String)
 	{
 		for (i in VIDEO_EXTS)
@@ -83,7 +80,6 @@ class Paths
 		}
 		return 'assets/videos/$key.mp4';
 	}
-	#end
 
 	inline static public function music(key:String)
 	{
@@ -115,7 +111,6 @@ class Paths
 		return file('locales/$key/languageData.json');
 	}
 
-	#if LUA_EXTENSION
 	inline static public function lua(key:String)
 	{
 		return file('scripts/$key.lua');
@@ -125,7 +120,6 @@ class Paths
 	{
 		return file('$key.lua');
 	}
-	#end
 
 	inline static public function char(key:String)
 	{
@@ -201,9 +195,7 @@ class ModPaths
 	}
 
 	private static final SOUND_EXT = Paths.SOUND_EXT;
-	#if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	private static final VIDEO_EXTS = Paths.VIDEO_EXTS;
-	#end
 
 	inline static public function modIconImage(key:String, mod:String)
 	{
@@ -250,7 +242,6 @@ class ModPaths
 		return getModSound(key + FlxG.random.int(min, max), mod);
 	}
 
-	#if (VIDEO_PLUGIN || WEBM_EXTENSION)
 	inline static public function getModVideo(key:String, mod:String)
 	{
 		for (i in VIDEO_EXTS)
@@ -263,7 +254,6 @@ class ModPaths
 		}
 		return 'mods/$mod/videos/$key.mp4';
 	}
-	#end
 
 	inline static public function getModMusic(key:String, mod:String)
 	{
@@ -290,7 +280,6 @@ class ModPaths
 		return file('fonts/$key', mod);
 	}
 
-	#if LUA_EXTENSION
 	inline static public function getModLua(key:String, mod:String)
 	{
 		return file('scripts/$key.lua', mod);
@@ -300,7 +289,6 @@ class ModPaths
 	{
 		return file('$key.lua', mod);
 	}
-	#end
 
 	inline static public function getModChar(key:String, mod:String)
 	{
