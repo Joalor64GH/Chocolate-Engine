@@ -103,6 +103,7 @@ class PlayState extends MusicBeatState
 
 	private var strumLineNotes:FlxTypedGroup<FlxSprite>;
 	private var playerStrums:FlxTypedGroup<FlxSprite>;
+	private var cpuStrums:FlxTypedGroup<FlxSprite>;
 
 	private var camZooming:Bool = false;
 	private var curSong:String = "";
@@ -802,6 +803,7 @@ class PlayState extends MusicBeatState
 		add(grpNoteSplashes);
 
 		playerStrums = new FlxTypedGroup<FlxSprite>();
+		cpuStrums = new FlxTypedGroup<FlxSprite>();
 
 		generateSong(SONG.song);
 
@@ -1490,6 +1492,9 @@ class PlayState extends MusicBeatState
 			{
 				playerStrums.add(babyArrow);
 			}
+			else {
+				cpuStrums.add(babyArrow);
+			}
 
 			babyArrow.animation.play('static');
 			babyArrow.x += 50;
@@ -1916,18 +1921,27 @@ class PlayState extends MusicBeatState
 					if (SONG.needsVoices)
 						vocals.volume = 1;
 
-					strumLineNotes.forEach(function(spr:FlxSprite)
+					cpuStrums.forEach(function(spr:FlxSprite)
 					{
 						for (i in 0...4) {
 							// this was me attempting to fix the playerstrums glowing aswell
 							if (Math.abs(daNote.strumID) == spr.ID && Math.abs(daNote.strumID) == i)
 							{
-								spr.animation.play('confirm', true);
+								if (spr.animation.curAnim.name != 'confirm')
+									spr.animation.play('confirm', true);
 								spr.animation.finishCallback = function(name:String){
 									spr.animation.play('static');
+									spr.centerOffsets();
 								}
 							}
 						}
+			
+						/*if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
+						{
+							spr.centerOffsets();
+							spr.offset.x -= 13;
+							spr.offset.y -= 13;
+						}*/
 					});
 
 					daNote.kill();
@@ -2333,7 +2347,7 @@ class PlayState extends MusicBeatState
 			}
 			else
 				spr.centerOffsets();
-		});
+		});	
 	}
 
 	function noteMiss(direction:Int = 1):Void
