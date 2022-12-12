@@ -876,6 +876,8 @@ class PlayState extends MusicBeatState
 
 		startingSong = true;
 
+		updateScoreText();
+
 		if (isStoryMode && !seenCutscene)
 		{
 			switch (curSong.toLowerCase())
@@ -1982,8 +1984,10 @@ class PlayState extends MusicBeatState
 	}
 
 	inline public function updateScoreText(){
-		scoreTxt.text = "Score: " + songScore;
-		missesTxt.text = "Combo Breaks: " + misses;
+		if (scoreTxt != null)
+			scoreTxt.text = "Score: " + songScore;
+		if (missesTxt != null)
+			missesTxt.text = "Combo Breaks: " + misses;
 	}
 
 	function endSong():Void
