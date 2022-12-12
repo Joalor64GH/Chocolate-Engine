@@ -474,6 +474,6 @@ class MenuItem extends FlxSpriteGroup
 		if (isFlashing)
 			flashingInt += 1;
 
-		color = (time % 0.1 > 0.05) ? FlxColor.WHITE : 0xFF33ffff;
+		week.color = (time % 0.1 > 0.05) ? FlxColor.WHITE : 0xFF33ffff;
 	}
 }
