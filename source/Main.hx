@@ -45,9 +45,23 @@ class Main extends Sprite
 		Lib.current.addChild(new Main());
 	}
 
+	/**
+	 * Last commit of the game before this build was made.
+	 * @author Leather128
+	 */
+	public static var commit_id:String = "";
+
 	public function new()
 	{
 		super();
+
+		// Simple loading of the commit id on startup.
+		#if sys
+		if (sys.FileSystem.exists(sys.FileSystem.absolutePath('commit.txt')))
+		{
+			commit_id = sys.io.File.getContent(sys.FileSystem.absolutePath('commit.txt'));
+		}
+		#end
 
 		if (stage != null)
 		{

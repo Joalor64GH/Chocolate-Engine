@@ -86,6 +86,7 @@
 	</section>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<assets path='LICENSE' rename='LICENSE.txt' />
+	<assets path="commit.txt" embed="false" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 

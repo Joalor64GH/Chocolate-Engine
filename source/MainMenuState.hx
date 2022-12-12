@@ -19,6 +19,7 @@ import openfl.Assets;
 import scripting.MMScript;
 import ModsMenuState;
 import states.*;
+import Main;
 
 using StringTools;
 
@@ -123,7 +124,7 @@ class MainMenuState extends MusicBeatState
 
 		// Chocolate Engine
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'))
-			#if debug + " DEBUG BUILD" #end, 12);
+			#if debug + (${Main.commit_id}) #end, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
