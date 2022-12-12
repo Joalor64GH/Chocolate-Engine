@@ -43,6 +43,7 @@ example_mods/modList.txt
 !Thumbs.db
 !*.hxml
 !*.hxproj
+!*.hxp
 !*.jsonc
 
 ### VS Code
