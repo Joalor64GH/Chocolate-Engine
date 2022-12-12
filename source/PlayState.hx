@@ -643,9 +643,6 @@ class PlayState extends MusicBeatState
 		if (SONG.song.toLowerCase() == 'stress')
 			gfVersion = 'pico-speaker';
 
-		if (curStage == 'limo')
-			gfVersion = 'gf-car';
-
 		gf = new Character(400, 130, gfVersion);
 		gf.scrollFactor.set(0.95, 0.95);
 		if (gfVersion == 'pico-speaker')
