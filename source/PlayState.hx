@@ -849,7 +849,7 @@ class PlayState extends MusicBeatState
 		add(missesTxt);
 
 		// Watermark
-		chocoTxt = new FlxText(360, healthBarBG.y + 30, 0, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
+		chocoTxt = new FlxText(330, healthBarBG.y + 30, 0, "Chocolate Engine v" + Application.current.meta.get('version'), 25);
 		chocoTxt.setFormat("assets/fonts/vcr.ttf", 20, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		chocoTxt.scrollFactor.set();
 		add(chocoTxt);
@@ -1648,10 +1648,6 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score: " + songScore;
-
-		missesTxt.text = "Combo Breaks: " + misses;
-
 		if (FlxG.keys.justPressed.ENTER && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
@@ -1983,6 +1979,11 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.ONE)
 			endSong();
 		#end
+	}
+
+	public function updateScoreText(){
+		scoreTxt.text = "Score: " + songScore;
+		missesTxt.text = "Combo Breaks: " + misses;
 	}
 
 	function endSong():Void
@@ -2349,6 +2350,7 @@ class PlayState extends MusicBeatState
 
 	function noteMiss(direction:Int = 1):Void
 	{
+		updateScoreText();
 		if (!boyfriend.stunned)
 		{
 			misses++;
@@ -2379,6 +2381,7 @@ class PlayState extends MusicBeatState
 	{
 		if (!note.wasGoodHit)
 		{
+			updateScoreText();
 			if (!note.isSustainNote)
 			{
 				popUpScore(note.strumTime, note);
