@@ -1981,7 +1981,7 @@ class PlayState extends MusicBeatState
 		#end
 	}
 
-	public function updateScoreText(){
+	inline public function updateScoreText(){
 		scoreTxt.text = "Score: " + songScore;
 		missesTxt.text = "Combo Breaks: " + misses;
 	}
