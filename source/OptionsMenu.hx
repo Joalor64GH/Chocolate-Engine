@@ -23,10 +23,10 @@ class OptionsMenu extends MusicBeatState
 	private var grpControls:FlxTypedGroup<Alphabet>;
 	var versionShit:FlxText;
 
-	private function onOff(thing:Bool):String
+	/*private function onOff(thing:Bool):String
 	{
 		return thing ? 'On' : 'Off';
-	}
+	}*/
 
 	override function create()
 	{
@@ -41,10 +41,10 @@ class OptionsMenu extends MusicBeatState
 			+ // "\n" + 'Anti-Aliasing' + onOff(FlxG.save.data.antiAliasing) +
 			"\n"
 			+ 'Timebar '
-			+ onOff(FlxG.save.data.timebar)
+			+ (FlxG.save.data.timebar ? 'Timebar On' : 'Timebar Off')
 			+ "\n"
 			+ 'Botplay '
-			+ onOff(FlxG.save.data.botplay)
+			+ (FlxG.save.data.botplay ? 'Botplay On' : 'Botplay Off')
 			+ "\n"
 			+ (FlxG.save.data.lang ? "English" : "Spanish"));
 
