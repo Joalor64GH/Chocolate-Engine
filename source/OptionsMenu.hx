@@ -40,10 +40,10 @@ class OptionsMenu extends MusicBeatState
 			+ 'scroll'
 			+ // "\n" + 'Anti-Aliasing' + onOff(FlxG.save.data.antiAliasing) +
 			"\n"
-			+ 'Timebar '
+			//+ 'Timebar '
 			+ (FlxG.save.data.timebar ? 'Timebar On' : 'Timebar Off')
 			+ "\n"
-			+ 'Botplay '
+			//+ 'Botplay '
 			+ (FlxG.save.data.botplay ? 'Botplay On' : 'Botplay Off')
 			+ "\n"
 			+ (FlxG.save.data.lang ? "English" : "Spanish"));
