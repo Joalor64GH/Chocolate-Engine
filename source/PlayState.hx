@@ -914,12 +914,12 @@ class PlayState extends MusicBeatState
 					if (curSong == 'roses')
 						FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-				case 'ugh':
+				/*case 'ugh':
 					ughIntro();
 				case 'guns':
 					gunsIntro();
 				case 'stress':
-					stressIntro();
+					stressIntro();*/
 				default:
 					startCountdown();
 			}
@@ -937,7 +937,7 @@ class PlayState extends MusicBeatState
 		super.create();
 	}
 
-	function ughIntro():Void
+	/*function ughIntro():Void
 	{
 		inCutscene = true;
 
@@ -1033,7 +1033,7 @@ class PlayState extends MusicBeatState
 			FlxTween.tween(FlxG.camera, {zoom: defaultCamZoom}, (Conductor.crochet / 1000) * 5, {ease: FlxEase.quadInOut});
 			startCountdown();
 		}
-	}
+	}*/
 
 	function initDiscord()
 	{
