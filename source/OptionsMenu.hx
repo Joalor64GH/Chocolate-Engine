@@ -40,12 +40,12 @@ class OptionsMenu extends MusicBeatState
 			+ 'scroll'
 			+ // "\n" + 'Anti-Aliasing' + onOff(FlxG.save.data.antiAliasing) +
 			"\n"
-			//+ 'Timebar '
+			/*+ 'Timebar '
 			+ (FlxG.save.data.timebar ? 'Timebar On' : 'Timebar Off')
 			+ "\n"
-			//+ 'Botplay '
+			+ 'Botplay '
 			+ (FlxG.save.data.botplay ? 'Botplay On' : 'Botplay Off')
-			+ "\n"
+			+ "\n"*/
 			+ (FlxG.save.data.lang ? "English" : "Spanish"));
 
 		trace(controlsStrings);
@@ -130,7 +130,7 @@ class OptionsMenu extends MusicBeatState
 					ctrl.targetY = curSelected - 2;
 					grpControls.add(ctrl);
 				case 3:
-					FlxG.save.data.timebar = !FlxG.save.data.timebar;
+					/*FlxG.save.data.timebar = !FlxG.save.data.timebar;
 					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.timebar ? 'Timebar On' : 'Timebar Off'), true, false);
 					ctrl.isMenuItem = true;
 					ctrl.targetY = curSelected - 3;
@@ -141,7 +141,7 @@ class OptionsMenu extends MusicBeatState
 					ctrl.isMenuItem = true;
 					ctrl.targetY = curSelected - 4;
 					grpControls.add(ctrl);
-				case 5:
+				case 5:*/
 					FlxG.save.data.lang = !FlxG.save.data.lang;
 					var ctrl:Alphabet = new Alphabet(0, (70 * curSelected) + 30, (FlxG.save.data.lang ? 'English' : 'Spanish'), true, false);
 					ctrl.isMenuItem = true;
