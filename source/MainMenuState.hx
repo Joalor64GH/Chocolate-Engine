@@ -31,9 +31,7 @@ class MainMenuState extends MusicBeatState
 	var optionShit:Array<String> = [
 		'story mode',
 		'freeplay',
-		#if MODS_ALLOWED
-		'mods',
-		#end
+		#if MODS_ALLOWED 'mods', #end
 		'donate',
 		'credits',
 		'options'
@@ -62,7 +60,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-        var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
+                var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('mainmenu/menuBG'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.18;
