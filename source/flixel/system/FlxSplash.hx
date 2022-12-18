@@ -1,5 +1,6 @@
 package flixel.system;
 
+#if HAXEFLIXEL_LOGO
 import flash.display.Graphics;
 import flash.display.Sprite;
 import flash.Lib;
@@ -203,3 +204,4 @@ class FlxSplash extends FlxState
 		FlxG.game._gameJustStarted = true;
 	}
 }
+#end
