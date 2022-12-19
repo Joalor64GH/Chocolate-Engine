@@ -2,7 +2,7 @@
 
 # FNF - Chocolate Engine
 
-This is the repository for Chocolate Engine, which is basically a fork of the [original FNF](https://github.com/ninjamuffin99/Funkin).
+This is the repository for Chocolate Engine, which is basically a fork of the [original FNF](https://github.com/FunkinCrew/Funkin).
 Not everything is perfect, so contributions and/or [pull requests](https://github.com/Joalor64GH/Chocolate-Engine/pulls) would be nice!
 
 If you need a tutorial on modding, go check out [the wiki](https://github.com/Joalor64GH/Chocolate-Engine/wiki)!
