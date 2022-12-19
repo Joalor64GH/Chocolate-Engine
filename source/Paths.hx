@@ -176,7 +176,7 @@ class Paths
 }
 
 #if MODS_ALLOWED
-class ModPaths
+class ModPaths extends Paths
 {
         static final currentLevel:String = Paths.currentLevel;
 
