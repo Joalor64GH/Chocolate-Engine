@@ -2,7 +2,6 @@ package;
 
 import flixel.FlxG;
 import flixel.graphics.frames.FlxAtlasFrames;
-import openfl.utils.AssetType;
 import openfl.utils.Assets as OpenFlAssets;
 import haxe.Json;
 import flixel.graphics.FlxGraphic;
@@ -177,11 +176,11 @@ class Paths
 }
 
 #if MODS_ALLOWED
-class ModPaths
+class ModPaths extends Paths
 {
         static final currentLevel:String = Paths.currentLevel;
 
-	static public function file(file:String, ?mod:String)
+	static public function file(file:String, mod:String)
 	{
 		var path = "";
 		if (mod != null)
@@ -237,7 +236,7 @@ class ModPaths
 		return file('sounds/$key.$SOUND_EXT', mod);
 	}
 
-	inline static public function soundRandom(key:String, min:Int, max:Int, ?mod:String)
+	inline static public function soundRandom(key:String, min:Int, max:Int, mod:String)
 	{
 		return getModSound(key + FlxG.random.int(min, max), mod);
 	}
@@ -320,14 +319,19 @@ class ModPaths
 		return openfl.utils.Assets.exists('mods/$mod/_polymod_pack.txt');
 	}
 
-	inline static public function getModSparrowAtlas(key:String, ?mod:String)
+	inline static public function getModSparrowAtlas(key:String, mod:String)
 	{
 		return flixel.graphics.frames.FlxAtlasFrames.fromSparrow(getModImage(key, mod), file('images/$key.xml', mod));
 	}
 
-	inline static public function getModPackerAtlas(key:String, ?mod:String)
+	inline static public function getModPackerAtlas(key:String, mod:String)
 	{
 		return FlxAtlasFrames.fromSpriteSheetPacker(getModImage(key, mod), file('images/$key.txt', mod));
+	}
+	
+	inline static public function getModAnimateAtlas(key:String, mod:String)
+	{
+		return animate.FlxAnimate.fromAnimate(Paths.loadImage('$key/spritemap1'), file('images/$key/spritemap1.json'));
 	}
 }
 #end

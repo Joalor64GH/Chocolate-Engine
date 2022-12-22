@@ -53,6 +53,7 @@
 	<assets path="assets/" rename="assets" exclude="*.mp3|*.mp4" unless="web"/>
 
 	<!-- CUSTOM DEFINES -->
+	<define name="HAXEFLIXEL_LOGO"/> <!--Allows the Haxeflixel watermark to show on startup when compiled as release;.-->
 	<define name="VIDEO_PLUGIN" if="web || windows" unless="32bits"/>
 	<define name="WEBM_EXTENSION" if="windows || mac"/>
 	<define name="MODS_ALLOWED" if="desktop" unless="mac" />
@@ -86,7 +87,6 @@
 	</section>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<assets path='LICENSE' rename='LICENSE.txt' />
-	<assets path="commit.txt" embed="false" />
 
 	<!-- _______________________________ Libraries ______________________________ -->
 

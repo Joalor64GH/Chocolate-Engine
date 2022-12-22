@@ -3,12 +3,12 @@
 APIStuff.hx
 ### Newgrounds IO Stuff
 source/NGIo.hx
-source/io/
+source/io/*
 ### Misc
 Preloader.hx
 
 ### Crash Stuff
-crash-dialog/
+crash-dialog/*
 build-crash-dialog.bat
 build-crash-dialog-linux.sh
 build-crash-dialog-mac.sh
@@ -22,11 +22,12 @@ source/GameJolt.hx
 
 ### Android-Specific
 source/SUtil.hx
-source/android/
-assets/android/
-assets/images/androidcontrols/
+source/android/*
+assets/android/*
+assets/images/androidcontrols/*
 art/build_android.bat
 art/build_android-debug.bat
+mobile/*
 
 ### Misc
 example_mods/introMod/*

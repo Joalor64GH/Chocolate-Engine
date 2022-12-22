@@ -19,7 +19,6 @@ import openfl.Assets;
 import scripting.MMScript;
 import ModsMenuState;
 import states.*;
-import Main;
 
 using StringTools;
 
@@ -28,8 +27,6 @@ class MainMenuState extends MusicBeatState
 	var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
-	public static var firstStart:Bool = true;
-	public static var finishedFunnyMove:Bool = false;
 
 	var optionShit:Array<String> = [
 		'story mode',
@@ -63,7 +60,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-        var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
+                var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('mainmenu/menuBG'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.18;
@@ -99,7 +96,7 @@ class MainMenuState extends MusicBeatState
 
 		for (i in 0...optionShit.length)
 		{
-			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 80));
+			var menuItem:FlxSprite = new FlxSprite(0, 60 + (i * 120));
 			menuItem.frames = tex;
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
@@ -107,24 +104,16 @@ class MainMenuState extends MusicBeatState
 			menuItem.ID = i;
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
-			menuItem.scale.set(0.9, 0.9);
+			menuItem.scale.set(0.8, 0.8);
 			menuItem.scrollFactor.set(0, 0.15);
 			menuItem.antialiasing = true;
-			if (firstStart)
-					FlxTween.tween(menuItem,{y: 60 + (i * 160)},1 + (i * 0.25) ,{ease: FlxEase.expoInOut, onComplete: function(flxTween:FlxTween) 
-						{
-							finishedFunnyMove = true; 
-							changeItem();
-						}});
-				else
-					menuItem.y = 60 + (i * 160);
 		}
 
 		FlxG.camera.follow(camFollow, null, 1);
 
 		// Chocolate Engine
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'))
-			#if debug + (${Main.commit_id}) #end, 12);
+			#if debug + " DEBUG BUILD" #end, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
