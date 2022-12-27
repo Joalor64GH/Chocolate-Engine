@@ -331,7 +331,7 @@ class ModPaths extends Paths
 	
 	inline static public function getModAnimateAtlas(key:String, mod:String)
 	{
-		return animate.FlxAnimate.fromAnimate(Paths.loadImage('$key/spritemap1'), file('images/$key/spritemap1.json'));
+		return animate.FlxAnimate.fromAnimate(Paths.loadImage('$key/spritemap1'), file('images/$key/spritemap1.json', mod));
 	}
 }
 #end

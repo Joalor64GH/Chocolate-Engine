@@ -15,7 +15,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-import openfl.Assets;
+import openfl.utils.Assets;
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
 #end
@@ -51,7 +51,7 @@ class StoryMenuState extends MusicBeatState
 		['tankman', 'bf', 'gf']
 	];
 
-	var weekNames:Array<String> = CoolUtil.coolTextFile(Paths.txt('weekNames'));
+	var weekNames:Array<String>;
 
 	var txtWeekTitle:FlxText;
 
@@ -80,9 +80,25 @@ class StoryMenuState extends MusicBeatState
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
+		if (Assets.exists(Paths.txt('weekNames')))
+			weekNames = CoolUtil.coolTextFile(Paths.txt('weekNames'));
+		else {
+			weekNames = [
+				'How to Funk',
+				'Daddy Dearest',
+				'Spooky Month',
+				'PICO',
+				'MOMMY MUST MURDER',
+				'RED SNOW',
+				'Hating Simulator ft. Moawling',
+				'TANKMAN'
+			];
+			trace('weekNames.txt was not found in the data directory');
+		}
+
 		persistentUpdate = persistentDraw = true;
 
-		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
+		scoreText = new FlxText(10, 10, 0, "SCORE: PLACEHOLDER", 36);
 		scoreText.setFormat("VCR OSD Mono", 32);
 
 		txtWeekTitle = new FlxText(FlxG.width * 0.7, 10, 0, "", 32);
