@@ -29,7 +29,7 @@ class DiscordClient
 		DiscordRpc.shutdown();
 	}
 
-	public static function shutdown()
+	inline public static function shutdown()
 	{
 		DiscordRpc.shutdown();
 	}
@@ -44,23 +44,29 @@ class DiscordClient
 		});
 	}
 
-	static function onError(_code:Int, _message:String)
+	// idk if theses are okay to inline
+	inline static function onError(_code:Int, _message:String)
 	{
 		trace('Error! $_code : $_message');
 	}
 
-	static function onDisconnected(_code:Int, _message:String)
+	inline static function onDisconnected(_code:Int, _message:String)
 	{
 		trace('Disconnected! $_code : $_message');
 	}
 
 	public static function initialize()
 	{
+		#if (target.threaded)
 		var DiscordDaemon = sys.thread.Thread.create(() ->
 		{
 			new DiscordClient();
 		});
 		trace("Discord Client initialized");
+		#else
+		DiscordRpc.shutdown();
+		trace("Platform doesn't support threads");
+		#end
 	}
 
 	public static function changePresence(details:String, state:Null<String>, ?smallImageKey:String, ?hasStartTimestamp:Bool, ?endTimestamp:Float)
