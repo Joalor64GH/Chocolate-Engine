@@ -30,26 +30,28 @@ class CoolUtil
 	{
 		if(difficultyExists(PlayState.storyDifficulty, PlayState.SONG.song, false))
 			return difficultyMap.get(tosong(PlayState.SONG.song))[PlayState.storyDifficulty].toUpperCase();
-
-		if(difficultyArray[PlayState.storyDifficulty] != null)
+		else if(difficultyArray[PlayState.storyDifficulty] != null)
 			return difficultyArray[PlayState.storyDifficulty].toUpperCase();
 
 		return defaultDifficulty.toUpperCase();
 	}
+
 	public static function difficultyFromInt(i:Int, songName:String = ''):String // USE THIS!!
 	{
 		if(difficultyMap.exists(tosong(songName)) && tosong(songName) != '')
 			return difficultyMap.get(tosong(songName))[i].toUpperCase();
-
-		if(difficultyExists(i, songName))
+		else if(difficultyExists(i, songName))
 			return difficultyArray[i].toUpperCase();
 
 		return defaultDifficulty.toUpperCase();
 	}
+
 	public static function difficultyExists(i:Int, songName:String = '', tryArray:Bool = true):Bool
 	{
-		if(difficultyMap.exists(tosong(songName))) return (difficultyMap.get(tosong(songName))[i] != null);
-		if(tryArray) return (difficultyArray[i] != null);
+		if(difficultyMap.exists(tosong(songName))) 
+			return (difficultyMap.get(tosong(songName))[i] != null);
+		else if(tryArray) 
+			return (difficultyArray[i] != null);
 
 		return false;
 	}
@@ -71,38 +73,22 @@ class CoolUtil
 	}
 
 	public static inline function blueBalls():Int
-	{
 		return PlayState.instance.deaths;
-	}
 
-	public static inline function coolTextFile(path:String):Array<String>
-	{
-		var daList:Array<String> = Assets.getText(path).trim().split('\n');
-
-		for (i in 0...daList.length)
-		{
-			daList[i] = daList[i].trim();
-		}
-
-		return daList;
-	}
+	inline public static inline function coolTextFile(path:String):Array<String>
+		return [
+			for (i in Assets.getText(path).trim().split('\n'))
+			        i
+		];
 
 	public static inline function coolStringFile(path:String):Array<String>
-	{
-		var daList:Array<String> = path.trim().split('\n');
-
-		for (i in 0...daList.length)
-		{
-			daList[i] = daList[i].trim();
-		}
-
-		return daList;
-	}
+		return [for (i in path.trim().split('\n')) i];
 
 	// this is actual source code from VS Null https://gamebanana.com/wips/70592
+	// or was
 	public static inline function coolerTextFile(path:String, daString:String = ''):String
 	{
-		#if MODS_ALLOWED
+		#if sys
 		if (FileSystem.exists(path))
 			daString = File.getContent(path).trim();
 		#else
@@ -114,35 +100,22 @@ class CoolUtil
 	}
 
 	public static inline function numberArray(max:Int, min = 0):Array<Int>
-	{
-		var dumbArray:Array<Int> = [];
-		for (i in min...max)
-		{
-			dumbArray.push(i);
-		}
-		return dumbArray;
-	}
+		return [for (i in min..max) i];
 
-	public static function camLerpShit(ratio:Float)
+	inline public static function camLerpShit(ratio:Float)
 	{
 		return FlxG.elapsed / (1 / 60) * ratio;
 	}
 
-	public static function createBG(x:Float = 0, y:Float = 0, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false, state:FlxState):FlxSprite
+	inline public static function createBG(x:Float = 0, y:Float = 0, path:String, scrollFactor:Float = 1, ?antialiasing:Bool = false, state:FlxState):FlxSprite
 	{
 		var bg:FlxSprite = new FlxSprite(x, y).loadGraphic(Paths.image(path));
 		bg.scrollFactor.set(scrollFactor, scrollFactor);
-		bg.active = false;
 		bg.antialiasing = antialiasing;
 		state.add(bg);
-		if (bg != null)
-			return bg;
-		else
-			return null;
+		return bg;
 	}
 
 	inline public static function sortNotes(theOrder:Int, obj1:Note, obj2:Note):Int
-	{
 		return FlxSort.byValues(theOrder, obj1.strumTime, obj2.strumTime);
-	}
 }
