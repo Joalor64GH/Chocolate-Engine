@@ -24,7 +24,7 @@ class LLua
             gcinfo = nil
             debug = nil
             jit = nil
-            ";
+            ");
 	    }
 
 		var result:Null<Int> = LuaL.dofile(lua, script);
