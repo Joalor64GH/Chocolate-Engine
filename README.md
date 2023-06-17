@@ -1,6 +1,8 @@
 ![](https://github.com/Joalor64GH/Chocolate-Engine/blob/master/art/Chocolate-Engine-Logo.png?raw=true)
 
-# FNF - Chocolate Engine
+# FNF - Chocolate Engine (deprecated)
+
+This is currently deprecated. See [Joalor64Engine-Rewritten](https://github.com/Joalor64GH/Joalor64-Engine-Rewrite)
 
 This is the repository for Chocolate Engine, which is basically a fork of the [original FNF](https://github.com/FunkinCrew/Funkin).
 Not everything is perfect, so contributions and/or [pull requests](https://github.com/Joalor64GH/Chocolate-Engine/pulls) would be nice!
