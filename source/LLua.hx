@@ -13,7 +13,9 @@ class LLua
 		LuaL.openlibs(lua);
 		Lua.init_callbacks(lua);
 		// just for security reasons
-		LuaL.dostring(lua, "
+	        // I'll fix the formatting later
+	    if (!isNull()){		
+	    LuaL.dostring(lua, "
             os.execute, os.getenv, os.rename, os.remove, os.tmpname = nil, nil, nil, nil, nil
             io, load, loadfile, loadstring, dofile = nil, nil, nil, nil, nil
             require, module, package = nil, nil, nil
@@ -22,7 +24,8 @@ class LLua
             gcinfo = nil
             debug = nil
             jit = nil
-        ");
+            ";
+	    }
 
 		var result:Null<Int> = LuaL.dofile(lua, script);
 		var resultStr:String = Lua.tostring(lua, result);
@@ -98,8 +101,6 @@ class LLua
 	}
 
 	inline public function isNull():Bool
-	{
 		return lua == null;
-	}
 }
 #end
