@@ -61,8 +61,6 @@ class Main extends Sprite
 		// code by sqirra-rng for izzy engine
 		Application.current.window.onFocusOut.add(onWindowFocusOut);
 		Application.current.window.onFocusIn.add(onWindowFocusIn);
-
-		FlxG.fixedTimestep = false;
 	}
 
 	var oldVol:Float = 1.0;
@@ -86,13 +84,9 @@ class Main extends Sprite
 			else
 			{
 				if (oldVol > 0.1)
-				{
 					newVol = 0.1;
-				}
 				else
-				{
 					newVol = 0;
-				}
 			}
 
 			trace("Game unfocused");
@@ -237,6 +231,3 @@ class Main extends Sprite
 	}
 	#end
 }
-// I feel useless
-// and I wanna kms
-
