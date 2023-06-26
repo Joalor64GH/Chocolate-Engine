@@ -60,7 +60,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-                var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
+		var yScroll:Float = Math.max(0.25 - (0.05 * (optionShit.length - 4)), 0.1);
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('mainmenu/menuBG'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.18;
@@ -112,8 +112,7 @@ class MainMenuState extends MusicBeatState
 		FlxG.camera.follow(camFollow, null, 1);
 
 		// Chocolate Engine
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco'))
-			#if debug + " DEBUG BUILD" #end, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Chocolate Engine v" + Assets.getText(Paths.txt('versionChoco')) #if debug + " DEBUG BUILD" #end, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -135,9 +134,7 @@ class MainMenuState extends MusicBeatState
 		MMScript.onUpdate();
 
 		if (FlxG.sound.music.volume < 0.8)
-		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
-		}
 
 		if (!selectedSomethin)
 		{
@@ -214,10 +211,7 @@ class MainMenuState extends MusicBeatState
 
 		super.update(elapsed);
 
-		menuItems.forEach(function(spr:FlxSprite)
-		{
-			spr.screenCenter(X);
-		});
+		menuItems.forEach((spr:FlxSprite) -> spr.screenCenter(X));
 	}
 
 	function changeItem(huh:Int = 0)
@@ -231,7 +225,7 @@ class MainMenuState extends MusicBeatState
 		if (curSelected < 0)
 			curSelected = menuItems.length - 1;
 
-		menuItems.forEach(function(spr:FlxSprite)
+		menuItems.forEach((spr:FlxSprite) ->
 		{
 			spr.animation.play('idle');
 
@@ -239,9 +233,9 @@ class MainMenuState extends MusicBeatState
 			{
 				spr.animation.play('selected');
 				var add:Float = 0;
-				if(menuItems.length > 4) {
+				if(menuItems.length > 4)
 					add = menuItems.length * 8;
-				}
+
 				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y);
 			}
 
