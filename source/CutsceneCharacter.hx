@@ -1,6 +1,10 @@
 package;
 
+#if (flixel >= "5.3.0")
+import flixel.sound.FlxSound;
+#else
 import flixel.system.FlxSound;
+#end
 import openfl.Assets;
 import haxe.Json;
 import haxe.ds.IntMap;

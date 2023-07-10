@@ -20,7 +20,11 @@ import modding.ModList;
 import modding.PolymodHandler;
 import modding.ModsMenuStateOption;
 import flixel.group.FlxGroup;
+#if (flixel >= "5.3.0")
+import flixel.sound.FlxSound;
+#else
 import flixel.system.FlxSound;
+#end
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
