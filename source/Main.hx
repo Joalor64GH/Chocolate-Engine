@@ -28,17 +28,11 @@ class Main extends Sprite
 {
 	var gameWidth:Int; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var initialState:Class<FlxState> = TitleState; // The FlxState the game starts with.
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions. (Removed from Flixel 5.0.0)
-	var framerate:Int = 150; // How many frames per second the game should run at.
-	var skipSplash:Bool = #if HAXEFLIXEL_LOGO false #else true #end;
-	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
 	@:keep public static var letterOffset:Bool = false; // alphabet offset workaround idk;
 
 	var focusMusicTween:FlxTween;
-
-	// You can pretty much ignore everything from here on - your code should go in your states.
 
 	public static function main():Void
 	{
@@ -48,19 +42,60 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
+		
+		gameWidth = GameDimensions.width;
+		gameHeight = GameDimensions.height;
 
-		if (stage != null)
+		var stageWidth:Int = Lib.current.stage.stageWidth;
+		var stageHeight:Int = Lib.current.stage.stageHeight;
+
+		if (zoom == -1)
 		{
-			init();
+			final ratioX:Float = stageWidth / gameWidth;
+			final ratioY:Float = stageHeight / gameHeight;
+			zoom = Math.min(ratioX, ratioY);
+			gameWidth = Math.ceil(stageWidth / zoom);
+			gameHeight = Math.ceil(stageHeight / zoom);
 		}
-		else
-		{
-			addEventListener(Event.ADDED_TO_STAGE, init);
-		}
+
+		addChild(new FlxGame(gameWidth, gameHeight, TitleState, #if (flixel < "5.0.0") zoom, #end 150, 150, #if HAXEFLIXEL_LOGO false #else true #end, false));
+
+		addChild(new FPS(10, 3, 0xFFFFFF));
+
+		var ourSource:String = "assets/videos/DO NOT DELETE OR GAME WILL CRASH/dontDelete.webm";
+
+		#if web
+		var str1:String = "HTML CRAP";
+		var vHandler = new video.VideoHandler();
+		vHandler.init1();
+		vHandler.video.name = str1;
+		addChild(vHandler.video);
+		vHandler.init2();
+		video.GlobalVideo.setVid(vHandler);
+		vHandler.source(ourSource);
+		#elseif WEBM_EXTENSION
+		var str1:String = "WEBM SHIT";
+		var webmHandle = new video.WebmHandler();
+		webmHandle.source(ourSource);
+		webmHandle.makePlayer();
+		webmHandle.webm.name = str1;
+		addChild(webmHandle.webm);
+		video.GlobalVideo.setWebm(webmHandle);
+		#end
+
 		// Add event listeners for window focus
 		// code by sqirra-rng for izzy engine
 		Application.current.window.onFocusOut.add(onWindowFocusOut);
 		Application.current.window.onFocusIn.add(onWindowFocusIn);
+
+		#if CRASH_HANDLER
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+		#end
+	}
+
+	inline public static function framerateAdjust(input:Float)
+	{
+		return input * (60 / FlxG.drawFramerate);
 	}
 
 	var oldVol:Float = 1.0;
@@ -123,70 +158,6 @@ class Main extends Sprite
 		}
 	}
 
-	public static var webmHandler:video.WebmHandler;
-
-	private function init(?E:Event):Void
-	{
-		if (hasEventListener(Event.ADDED_TO_STAGE))
-		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-		}
-
-		setupGame();
-	}
-
-	private function setupGame():Void
-	{
-		gameWidth = GameDimensions.width;
-		gameHeight = GameDimensions.height;
-
-		var stageWidth:Int = Lib.current.stage.stageWidth;
-		var stageHeight:Int = Lib.current.stage.stageHeight;
-
-		if (zoom == -1)
-		{
-			final ratioX:Float = stageWidth / gameWidth;
-			final ratioY:Float = stageHeight / gameHeight;
-			zoom = Math.min(ratioX, ratioY);
-			gameWidth = Math.ceil(stageWidth / zoom);
-			gameHeight = Math.ceil(stageHeight / zoom);
-		}
-
-		addChild(new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen));
-
-		addChild(new FPS(10, 3, 0xFFFFFF));
-
-		var ourSource:String = "assets/videos/DO NOT DELETE OR GAME WILL CRASH/dontDelete.webm";
-
-		#if web
-		var str1:String = "HTML CRAP";
-		var vHandler = new video.VideoHandler();
-		vHandler.init1();
-		vHandler.video.name = str1;
-		addChild(vHandler.video);
-		vHandler.init2();
-		video.GlobalVideo.setVid(vHandler);
-		vHandler.source(ourSource);
-		#elseif WEBM_EXTENSION
-		var str1:String = "WEBM SHIT";
-		var webmHandle = new video.WebmHandler();
-		webmHandle.source(ourSource);
-		webmHandle.makePlayer();
-		webmHandle.webm.name = str1;
-		addChild(webmHandle.webm);
-		video.GlobalVideo.setWebm(webmHandle);
-		#end
-
-		#if CRASH_HANDLER
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
-		#end
-	}
-
-	inline public static function framerateAdjust(input:Float)
-	{
-		return input * (60 / FlxG.drawFramerate);
-	}
-
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
 	// very cool person for real they don't get enough credit for their work
 	#if CRASH_HANDLER
@@ -230,4 +201,6 @@ class Main extends Sprite
 		Sys.exit(1);
 	}
 	#end
+
+	public static var webmHandler:video.WebmHandler;
 }
