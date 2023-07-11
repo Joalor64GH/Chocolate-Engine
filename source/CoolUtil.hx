@@ -100,7 +100,7 @@ class CoolUtil
 	}
 
 	public static inline function numberArray(max:Int, min = 0):Array<Int>
-		return [for (i in min..max) i];
+		return [for (i in min...max) i];
 
 	inline public static function camLerpShit(ratio:Float)
 	{

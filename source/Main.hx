@@ -29,6 +29,7 @@ class Main extends Sprite
 	var gameWidth:Int; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var zoom:Float = -1; // If -1, zoom is automatically calculated to fit the window dimensions. (Removed from Flixel 5.0.0)
+	var framerate:Int = 150; // How many frames per second the game should run at.
 
 	@:keep public static var letterOffset:Bool = false; // alphabet offset workaround idk;
 
@@ -58,7 +59,7 @@ class Main extends Sprite
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
 
-		addChild(new FlxGame(gameWidth, gameHeight, TitleState, #if (flixel < "5.0.0") zoom, #end 150, 150, #if HAXEFLIXEL_LOGO false #else true #end, false));
+		addChild(new FlxGame(gameWidth, gameHeight, TitleState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, #if HAXEFLIXEL_LOGO false #else true #end, false));
 
 		addChild(new FPS(10, 3, 0xFFFFFF));
 
