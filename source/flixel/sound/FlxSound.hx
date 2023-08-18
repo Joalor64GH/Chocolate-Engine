@@ -8,6 +8,9 @@ import flash.media.SoundTransform;
 import flash.net.URLRequest;
 import flixel.FlxBasic;
 
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+
 import flixel.math.FlxPoint;
 import flixel.system.FlxAssets.FlxSoundAsset;
 import flixel.util.FlxStringUtil;
