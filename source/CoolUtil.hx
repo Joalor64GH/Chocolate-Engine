@@ -4,10 +4,15 @@ import flixel.FlxG;
 import lime.utils.Assets;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.math.FlxMath;
 #if MODS_ALLOWED
 import polymod.backends.PolymodAssets;
 import sys.FileSystem;
 import sys.io.File;
+#end
+#if sys
+import sys.io.File;
+import sys.FileSystem;
 #end
 import flixel.util.FlxSort;
 
@@ -75,11 +80,8 @@ class CoolUtil
 	public static inline function blueBalls():Int
 		return PlayState.instance.deaths;
 
-	inline public static inline function coolTextFile(path:String):Array<String>
-		return [
-			for (i in Assets.getText(path).trim().split('\n'))
-			        i
-		];
+	inline public static function coolTextFile(path:String):Array<String>
+		return FileAssets.exists(path) ? [for (i in Assets.getText(path).trim().split('\n')) i.trim()] : [];
 
 	public static inline function coolStringFile(path:String):Array<String>
 		return [for (i in path.trim().split('\n')) i];
