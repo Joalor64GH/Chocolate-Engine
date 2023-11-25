@@ -39,7 +39,7 @@ class ChocoLocales
 	inline public static function getLocale(language:String = 'english')
 	{
 		try {
-			curLang = haxe.Json.parse(Paths.locales('locales/$language/languageData.json'));
+			curLang = haxe.Json.parse(Paths.file('locales/$language/languageData.json'));
 		}
 		catch (e){
 			trace('Something went wrong with getting lang file: ' + e.toString());

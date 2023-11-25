@@ -105,11 +105,6 @@ class Paths
 		return 'assets/fonts/$key';
 	}
 
-	inline static public function locales(key:String)
-	{
-		return file('locales/$key/languageData.json');
-	}
-
 	inline static public function lua(key:String)
 	{
 		return file('scripts/$key.lua');
@@ -292,11 +287,6 @@ class ModPaths extends Paths
 	inline static public function getModChar(key:String, mod:String)
 	{
 		return file('characters/$key.json', mod);
-	}
-
-	inline static public function getModLocales(key:String, mod:String)
-	{
-		return file('locales/$key/languageData.json', mod);
 	}
 
 	inline static public function getModFrag(key:String, mod:String)
