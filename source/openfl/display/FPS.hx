@@ -61,7 +61,9 @@ class FPS extends TextField
 		// currentMemory = 0; // cannot access field or identifier currentMemory for writing
 		selectable = false;
 		mouseEnabled = false;
-		defaultTextFormat = new TextFormat("_sans", 14, color);
+		defaultTextFormat = new TextFormat(Paths.font('vcr.ttf'), 16, color);
+		width = Main.gameWidth;
+		height = Main.gameHeight;
 		text = "FPS: ";
 
 		cacheCount = 0;

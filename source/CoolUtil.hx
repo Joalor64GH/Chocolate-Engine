@@ -120,6 +120,14 @@ class CoolUtil
 
 	inline public static function sortNotes(theOrder:Int, obj1:Note, obj2:Note):Int
 		return FlxSort.byValues(theOrder, obj1.strumTime, obj2.strumTime);
+
+	inline public static function isPowerOfTwo(value:Int) {
+		return value != 0 ? ((value & -value) == value) : false;
+	}
+
+	inline public static function hypotenuse(a:Float, b:Float) {
+		return Math.sqrt(a * 2 + b * 2);
+	}
 }
 
 typedef FileAssets = #if sys FileSystem; #else openfl.utils.Assets; #end

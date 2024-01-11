@@ -49,7 +49,6 @@
 	<define name="CRASH_HANDLER" if="desktop release" />
 	<define name="MODCORE_ALLOWED" if="MODS_ALLOWED" />
 	<define name="CHOCO_WATERMARKS"/> <!-- DELETE THIS TO REMOVE WATERMARKS/DEV NAMES ON TITLE SCREEN -->
-	<define name="VANILLA_WATERMARKS" unless="CHOCO_WATERMARKS"/> <!-- DELETE THIS TO REMOVE WATERMARKS/DEV NAMES ON TITLE SCREEN -->
 	<define name="PRELOAD_ALL" unless="web" />
 	<define name="NO_PRELOAD_ALL" unless="PRELOAD_ALL"/>
 	
@@ -64,7 +63,7 @@
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 	<set name="BUILD_DIR" value="export/32bit" if="32bit" />
 
-	<classpath name="source" />
+	<source path="source" />
 
 	<assets path="assets/fonts" embed='true'/>
 	<assets path="assets/" rename="assets" exclude="*.ogg" if="web"/>
@@ -107,7 +106,7 @@
 	<haxelib name="polymod" if="MODS_ALLOWED"/>
 	<!--<haxelib name="firetounge" />-->
 	<haxelib name="discord_rpc" if="desktop"/>
-	<haxelib name="hxcpp-debug-server" if="desktop"/>
+	<haxelib name="hxcpp-debug-server" if="desktop debug"/>
 
 	<haxedef name="no-deprecation-warnings" />
 

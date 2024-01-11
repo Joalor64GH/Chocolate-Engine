@@ -434,7 +434,7 @@ class TitleState extends MusicBeatState
 			        #if CHOCO_WATERMARKS
 				var teamStuff = Assets.getText(Paths.txt('team')).split('--');
 				createCoolText(teamStuff);
-				#elseif VANILLA_WATERMARKS
+				#else
 				createCoolText(['ninjamuffin99', 'PhantomArcade', 'KawaiSprite', 'Evilsk8er']);
 				#end
 			// credTextShit.visible = true;
@@ -450,7 +450,7 @@ class TitleState extends MusicBeatState
 			case 5:
 			        #if CHOCO_WATERMARKS
 				createCoolText(['Not in association', 'with']);
-				#elseif VANILLA_WATERMARKS
+				#else
 				createCoolText(['In association', 'with']);
 				#end
 			case 7:
@@ -478,21 +478,21 @@ class TitleState extends MusicBeatState
 			case 13:
 			        #if CHOCO_WATERMARKS
 				addMoreText(gameName[0]);
-				#elseif VANILLA_WATERMARKS
+				#else
 				addMoreText('Friday');
 				#end
 			// credTextShit.visible = true;
 			case 14:
 			        #if CHOCO_WATERMARKS
 				addMoreText(gameName[1]);
-				#elseif VANILLA_WATERMARKS
+				#else
 				addMoreText('Night');
 				#end
 			// credTextShit.text += '\nNight';
 			case 15:
 			        #if CHOCO_WATERMARKS
 				addMoreText(gameName[2]);
-				#elseif VANILLA_WATERMARKS
+				#else
 				addMoreText('Funkin');
 				#end
 			// credTextShit.text += '\nFunkin';

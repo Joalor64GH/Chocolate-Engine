@@ -2,7 +2,7 @@
 <mod>
     <mod name="Test" />
     <mod description="This is a test." />
-    <mod author="You!"/>
+    <mod author="You!" />
     <mod version="1.0.0" />
     <api version="1.0.0" />
     <mod license="Apache-2.0" />
